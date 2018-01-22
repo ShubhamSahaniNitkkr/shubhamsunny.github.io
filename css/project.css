@@ -1,0 +1,330 @@
+
+.nav-tabs {
+    margin-bottom: 15px;
+}
+.sign-with {
+    margin-top: 25px;
+    padding: 20px;
+}
+div#OR {
+    height: 30px;
+    width: 30px;
+    border: 1px solid #C2C2C2;
+    border-radius: 50%;
+    font-weight: bold;
+    line-height: 28px;
+    text-align: center;
+    font-size: 12px;
+    float: right;
+    position: absolute;
+    right: -16px;
+    top: 40%;
+    z-index: 1;
+    background: #DFDFDF;
+}
+
+.glyphicon.glyphicon-menu-down{
+  font-size: 12px;
+}
+
+.glyphicon.glyphicon-menu-right{
+  font-size: 15px;
+}
+.containerfluid{
+  padding-right: 32px;
+padding-left: 0px;
+}
+.navbar-default .navbar-nav>li>a {
+    color: #777;
+    padding: 7px 17px;
+  }
+
+
+/*
+.container{
+  padding: 92px 0px 30px 0px;
+}*/
+
+.row{
+  margin-top:70px;
+}
+
+
+.navbar-default {
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 16px;
+    padding: 25px 25px 0px;
+    position: absolute;
+    top: 0px;
+    width: 1440px;
+  }
+
+.navbar-brand-image{
+  height: 115px;
+    position: relative;
+    top: -52px;
+}
+
+.brand-text{
+  font-size: 28px;
+font-weight: 300;
+}
+
+.signup{
+  background: rgba(0, 255, 255, 0.49);
+  border-radius: 31px;
+}
+.background-color{
+  background-color: #000000;
+}
+.jumbotron-image{
+  opacity: 0.3;
+}
+
+.jumbotron-heading{
+  position: absolute;
+  top: 12px;
+  color: white;
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 170px;
+  font-size: 49px;
+  font-weight: 300;
+
+}
+
+
+.jumbotron-subheading{
+  position: absolute;
+      top: 248px;
+      left: 600px;
+      color: black;
+      margin: 0 auto;
+      font-size: 25px;
+      font-weight: 300;
+      padding: 18px;
+      background:red;
+
+}
+img{
+  box-shadow: 0px 0px 10px rgba(8, 8, 8, 0.62);
+}
+
+.content1{
+margin-top: 9px;
+}
+
+.heading{
+  font-size: 39px;
+    font-weight: 900;
+    color: mediumvioletred;
+
+}
+
+.content1 .subheading{
+  padding-top: 10px;
+  font-size: 15px;
+}
+
+.content2{
+text-align: right;
+}
+
+.content2 .heading{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.content2 .subheading{
+  padding-top: 40px;
+  font-size: 15px;
+}
+
+.modal-content {
+    border-radius: 1px;
+}
+
+@media (max-width: 414px) {
+
+.logo_mobile_view{
+position: absolute;
+top: 75px;
+left: 11px;
+
+}
+
+.row{
+  margin-bottom: 50px;
+  margin: 0px 6px;
+}
+
+.col-sm-4{
+  margin-top: 12px;
+}
+
+
+.jumbotron-heading {
+      position: relative;
+      left: -288px;
+      color: #080808;
+      margin: 40px 2px;
+      width: 900px;
+      font-size: 19px;
+  }
+
+
+
+
+}
+/*classperformance page css*/
+.jumbotron {
+  background: rgba(0, 0, 0, 0.87);
+      padding: 204px 40px 30px;
+color: white;
+letter-spacing: 0.9;
+  }
+
+.jumbotron a{
+  color: white;
+}
+
+.jumbotron p{
+  font-size: 22px;
+}
+
+.invite_students_btn{
+  background: rgb(242, 133, 59);
+    border-radius:2px;
+    border: none;
+    color: white;
+    font-size: 19px;
+    margin-left:610px;
+
+}
+.classroom_settings_btn{
+font-size: 20px;
+}
+
+.progress {
+    height: 7px;
+    width: 100px;
+  }
+
+.area_of_weakness_btn{
+background: #ff6400;
+border-radius: 30px;
+color: white;
+letter-spacing: 0.6;
+border: none;
+padding:4px 42px 4px 17px;
+font-weight: 300;
+}
+
+.circle_area_of_weakness_btn{
+  position: absolute;
+      border-radius: 50%;
+      right: 12px;
+      top: -3px;
+      background: #ff7c00;
+
+}
+
+.table_img{
+  margin-right: 7px;
+    width: 35px;
+    height: 35px;
+    float: left;
+    position: relative;
+    top: -5px;
+
+}
+
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+  border-top:none;
+}
+
+
+/*classperformance mobile view optimization*/
+
+@media (max-width: 414px) {
+  body{
+    overflow-x: hidden;
+  }
+.table_img{
+  float: none;
+}
+
+.area_of_weakness_btn{
+  margin-top: 12px;
+  font-size: 30px;
+}
+
+.circle_area_of_weakness_btn{
+  margin-top: 12px;
+  font-size: 30px;
+  margin-right: -12px;
+
+}
+
+.area_of_weakness_text{
+  font-size: 30px;
+
+
+}
+}
+
+
+/*student performance section*/
+.area_of_score_btn{
+  border-radius: 50%;
+border-width: 4px;
+font-size: 23px;
+background: transparent;
+border-color: pink;
+  padding: 24px 18px;
+  animation: animate 5s linear infinite;
+}
+/*
+.area_of_score_btn:hover{
+  animation: animate 3s linear infinite;
+
+}*/
+
+@keyframes animate {
+
+  0%{
+    box-shadow: 0 0 0 0 rgba(74,144,226,.7);
+  }
+  40%{
+    box-shadow: 0 0 0 17px rgba(74,144,226,0);
+  }
+  80%{
+    box-shadow: 0 0 0 17px rgba(74,144,226,0);
+  }
+  100%{
+    box-shadow: 0 0 0 0 rgba(74,144,226,0);
+  }
+
+}
+
+.status_glyphicon{
+  position: absolute;
+  bottom: 22px;
+  box-shadow: 0px 0px 0px black;
+  width: 35px;
+  height: 30px;
+}
+
+
+.signup1{
+        margin-top: -5px;
+    background: #3389ca;
+    padding: 11px 15px;
+    border-radius: 19px;
+    cursor: hand;
+    color: white;
+    margin-left: 9px;
+}
