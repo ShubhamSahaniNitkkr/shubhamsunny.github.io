@@ -78,7 +78,10 @@ font-weight: 300;
 }
 .background-color{
   background-color: #000000;
+    margin-top: -3px;
+    height: 502px;
 }
+
 .jumbotron-image{
   opacity: 0.3;
 }
