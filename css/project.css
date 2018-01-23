@@ -88,7 +88,7 @@ font-weight: 300;
 
 .jumbotron-heading{
   position: absolute;
-  top: 12px;
+  top: 86px;
   color: white;
   margin: 0 auto;
   width: 100%;
@@ -101,7 +101,7 @@ font-weight: 300;
 
 .jumbotron-subheading{
   position: absolute;
-      top: 248px;
+      top: 309px;
       left: 600px;
       color: black;
       margin: 0 auto;
