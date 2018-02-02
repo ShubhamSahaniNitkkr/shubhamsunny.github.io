@@ -88,7 +88,7 @@ ul li {
 	list-style: none;
 }
 .section {
-	padding: 100px 0;
+	padding: 10px 0;
 }
 .no-padding {
 	padding: 0;
@@ -443,9 +443,9 @@ ul li {
 /* ------------------------------------------------------------------------------
 	Hire me
 -------------------------------------------------------------------------------*/
-.hireme {
+/* .hireme {
 	background-image: url('images/wall.jpg');
-}
+} */
 .hireme h3 {
 	font-family: "Roboto", sans-serif;
 	font-size: 30px;
