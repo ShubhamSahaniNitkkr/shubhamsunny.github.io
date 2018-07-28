@@ -76,7 +76,7 @@ a:hover, a:focus {
 	transition: background-color, color, 0.3s;
 }
 body {
-	font-family: "Roboto", sans-serif;
+	font-family: 'Poppins', sans-serif;
 	font-weight: 400;
 	color: #6c7279;
 }
