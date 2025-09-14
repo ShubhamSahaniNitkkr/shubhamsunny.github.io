@@ -375,98 +375,671 @@
           <span class="portfolio__item active-portfolio" data-filter="all"
             >All</span
           >
-          <span class="portfolio__item" data-filter=".web">Web</span>
-          <span class="portfolio__item" data-filter=".ux">Ui/Ux</span>
-          <span class="portfolio__item" data-filter=".app">App</span>
+          <span class="portfolio__item" data-filter=".automation"
+            >Automation</span
+          >
+          <span class="portfolio__item" data-filter=".scrapping"
+            >Data Scrapping</span
+          >
+          <span class="portfolio__item" data-filter=".web">Web App</span>
+          <span class="portfolio__item" data-filter=".app">Mobile App</span>
+          <span class="portfolio__item" data-filter=".desktop"
+            >Desktop App</span
+          >
+          <span class="portfolio__item" data-filter=".extensions"
+            >Chrome Extension</span
+          >
+          <span class="portfolio__item" data-filter=".ai">AI Integration</span>
         </div>
 
         <div class="portfolio__container bd-grid">
-          <div class="portfolio__content mix web">
-            <a href="#"
-              ><img src="assets/img/work1.jpg" alt="" class="portfolio__img"
-            /></a>
+          <!-- Project 1 -->
+          <div class="portfolio__content mix desktop scrapping">
+            <div class="swiper portfolioSwiper1">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <a
+                    href="assets/img/Work/1-1.png"
+                    class="glightbox"
+                    data-gallery="portfolio1"
+                  >
+                    <img
+                      src="assets/img/Work/1-1.png"
+                      class="portfolio__img"
+                      alt="Scraper Source"
+                    />
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a
+                    href="assets/img/Work/1-2.png"
+                    class="glightbox"
+                    data-gallery="portfolio1"
+                  >
+                    <img
+                      src="assets/img/Work/1-2.png"
+                      class="portfolio__img"
+                      alt="One Click Scrapper Tool"
+                    />
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a
+                    href="assets/img/Work/1-3.png"
+                    class="glightbox"
+                    data-gallery="portfolio1"
+                  >
+                    <img
+                      src="assets/img/Work/1-3.png"
+                      class="portfolio__img"
+                      alt="Excel Output"
+                    />
+                  </a>
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
             <div class="portfolio__data">
-              <span class="portfolio__subtitle">Web development</span>
-              <a href="#"
-                ><h2 class="portfolio__title">
-                  New portfolio of work done for a client.
-                </h2></a
+              <span class="portfolio__subtitle"
+                >Desktop App • Data Scraping</span
               >
+              <h2 class="portfolio__title">
+                One-Click Scraper for American Heart Association
+              </h2>
+              <p>
+                <strong>S:</strong> Client needed structured medical data from
+                <i>heart.org</i>.<br />
+                <strong>T:</strong> Extract event details by location & date.<br />
+                <strong>A:</strong> Built a <b>desktop app</b> using
+                <b>Puppeteer, JavaScript & ExcelJS</b>. One-click automation
+                scrapes and exports to Excel.<br />
+                <strong>R:</strong> 90% time saved vs manual effort, clean Excel
+                delivery.
+              </p>
+              <a
+                href="https://github.com/ShubhamSahaniNitkkr/One-Click-Scraper-for-American-Heart-Association"
+                target="_blank"
+                class="button button-link"
+                >View Code</a
+              >
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="portfolio__content mix app scrapping">
+            <div class="swiper portfolioSwiper2">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <a
+                    href="assets/img/work/2-1.png"
+                    class="glightbox"
+                    data-gallery="portfolio2"
+                  >
+                    <img
+                      src="assets/img/work/2-1.png"
+                      class="portfolio__img"
+                      alt="Onebound App Screenshot 1"
+                    />
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a
+                    href="assets/img/work/2-2.png"
+                    class="glightbox"
+                    data-gallery="portfolio2"
+                  >
+                    <img
+                      src="assets/img/work/2-2.png"
+                      class="portfolio__img"
+                      alt="Onebound App Data Scrapping"
+                    />
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a
+                    href="assets/img/work/2-3.png"
+                    class="glightbox"
+                    data-gallery="portfolio2"
+                  >
+                    <img
+                      src="assets/img/work/2-3.png"
+                      class="portfolio__img"
+                      alt="Onebound App Data Excel Sheet"
+                    />
+                  </a>
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+            <div class="portfolio__data">
+              <span class="portfolio__subtitle"
+                >Mobile App • Data Scraping</span
+              >
+              <h2 class="portfolio__title">
+                Data Extraction from Onebound Android App
+              </h2>
+              <p>
+                <strong>S:</strong> Extract complete
+                <i>Community Tab</i> dataset.<br />
+                <strong>T:</strong> Collect names, companies, roles &
+                profiles.<br />
+                <strong>A:</strong> Used <b>Appium + Node.js</b> to scrape
+                Android UI & export Excel.<br />
+                <strong>R:</strong> Delivered structured dataset (Name, Title,
+                Company, About).
+              </p>
+              <!-- <a
+                href="https://drive.google.com/yyyy"
+                target="_blank"
+                class="button button-link"
+                >View Demo</a
+              > -->
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="portfolio__content mix automation app">
+            <div class="swiper portfolioSwiper3">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <a
+                    href="assets/img/work/3-1.png"
+                    class="glightbox"
+                    data-gallery="portfolio3"
+                  >
+                    <img
+                      src="assets/img/work/3-1.png"
+                      class="portfolio__img"
+                      alt="Coupon Bot Screenshot 1"
+                    />
+                  </a>
+                </div>
+                <!-- <div class="swiper-slide">
+                  <a
+                    href="https://www.youtube.com/watch?v=zzzz"
+                    class="glightbox"
+                    data-gallery="portfolio3"
+                    data-type="video"
+                  >
+                    <img
+                      src="assets/img/work3-2.jpg"
+                      class="portfolio__img"
+                      alt="Coupon Bot Video"
+                    />
+                  </a>
+                </div> -->
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+            <div class="portfolio__data">
+              <span class="portfolio__subtitle"
+                >Mobile Automation • Appium</span
+              >
+              <h2 class="portfolio__title">
+                Automated Coupon Handling Bot For Mobile App
+              </h2>
+              <p>
+                <strong>S:</strong> Manual coupon checking & applying.<br />
+                <strong>T:</strong> Automate coupon read → validate → apply
+                flow.<br />
+                <strong>A:</strong> Built bots in
+                <b>Appium + Node.js + Google Sheets API</b>:<br />
+                - Reader extracts coupons<br />
+                - Buyer applies & orders<br />
+                - Notifier updates sheet & sends alerts<br />
+                <strong>R:</strong> 100% automated coupon lifecycle, instant
+                alerts.
+              </p>
+              <a
+                href="https://drive.google.com/file/d/1XlvzxG5iM4hCWtIsHfdxG7dgHYpvEgbW/view?usp=sharing"
+                target="_blank"
+                class="button button-link"
+                >View Demo</a
+              >
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="portfolio__content mix app scrapping">
+            <div class="swiper portfolioSwiper4">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <a
+                    href="assets/img/work/4-1.png"
+                    class="glightbox"
+                    data-gallery="portfolio4"
+                  >
+                    <img
+                      src="assets/img/work/4-1.png"
+                      class="portfolio__img"
+                      alt="National Council Screenshot 1"
+                    />
+                  </a>
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+            <div class="portfolio__data">
+              <span class="portfolio__subtitle"
+                >Mobile Scraping • Automation</span
+              >
+              <h2 class="portfolio__title">
+                National Council Mobile App Data Extraction
+              </h2>
+              <p>
+                Automated <b>Appium + JS</b> scraper to extract directory (Name,
+                Title, Company, Email, Phone). Saved countless hours of manual
+                lookup.
+              </p>
+              <a href="#" class="button button-link">View Demo</a>
+            </div>
+          </div>
+
+          <!-- Project 5 -->
+          <!-- Project 5 -->
+          <div class="portfolio__content mix app scrapping ai">
+            <div class="swiper portfolioSwiper5">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <a
+                    href="assets/img/work/5-1.jpeg"
+                    class="glightbox"
+                    data-gallery="portfolio5"
+                  >
+                    <img
+                      src="assets/img/work/5-1.jpeg"
+                      class="portfolio__img"
+                      alt="Dream11 Screenshot 1"
+                    />
+                  </a>
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+            <div class="portfolio__data">
+              <span class="portfolio__subtitle"
+                >Mobile Scraping • API Delivery</span
+              >
+              <h2 class="portfolio__title">Dream11 Basketball API</h2>
+              <p>
+                <strong>S:</strong> Extract live player stats.<br />
+                <strong>T:</strong> Deliver real-time data via API.<br />
+                <strong>A:</strong> Built automated scraper + Node.js REST
+                API.<br />
+                <strong>R:</strong> Instant live updates for analytics &
+                dashboards.
+              </p>
+              <a
+                href="https://drive.google.com/file/d/15pcdVbEgwEH7nBTaEL5flN88xIre7K2b/view?usp=sharing"
+                class="button button-link"
+                >View Demo</a
+              >
+            </div>
+          </div>
+
+          <!-- Project 6 -->
+          <div class="portfolio__content mix app scrapping">
+            <div class="swiper portfolioSwiper6">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <a
+                    href="assets/img/work6.jpg"
+                    class="glightbox"
+                    data-gallery="portfolio6"
+                  >
+                    <img
+                      src="assets/img/work6.jpg"
+                      class="portfolio__img"
+                      alt="Truth & Dare Screenshot 1"
+                    />
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a
+                    href="assets/img/work6-1.jpg"
+                    class="glightbox"
+                    data-gallery="portfolio6"
+                  >
+                    <img
+                      src="assets/img/work6-1.jpg"
+                      class="portfolio__img"
+                      alt="Truth & Dare Screenshot 2"
+                    />
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a
+                    href="https://www.youtube.com/watch?v=VIDEO_ID_6"
+                    class="glightbox"
+                    data-gallery="portfolio6"
+                    data-type="video"
+                  >
+                    <img
+                      src="assets/img/work6-1.jpg"
+                      class="portfolio__img"
+                      alt="Truth & Dare Video"
+                    />
+                  </a>
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+            <div class="portfolio__data">
+              <span class="portfolio__subtitle">Mobile Game • Automation</span>
+              <h2 class="portfolio__title">Truth & Dare Data Extraction</h2>
+              <p>
+                <strong>S:</strong> Game questions & levels needed.<br />
+                <strong>T:</strong> Extract and structure all game data.<br />
+                <strong>A:</strong> Automated with Appium & Node.js.<br />
+                <strong>R:</strong> Structured Excel dataset ready for reuse.
+              </p>
               <a href="#" class="button button-link">View Details</a>
             </div>
           </div>
 
-          <div class="portfolio__content mix web">
-            <a href="#"
-              ><img src="assets/img/work2.jpg" alt="" class="portfolio__img"
-            /></a>
+          <!-- Project 7 -->
+          <div class="portfolio__content mix automation app">
+            <div class="swiper portfolioSwiper7">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <a
+                    href="assets/img/work7.jpg"
+                    class="glightbox"
+                    data-gallery="portfolio7"
+                  >
+                    <img
+                      src="assets/img/work7.jpg"
+                      class="portfolio__img"
+                      alt="Zoya Stock Screenshot 1"
+                    />
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a
+                    href="assets/img/work7-1.jpg"
+                    class="glightbox"
+                    data-gallery="portfolio7"
+                  >
+                    <img
+                      src="assets/img/work7-1.jpg"
+                      class="portfolio__img"
+                      alt="Zoya Stock Screenshot 2"
+                    />
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a
+                    href="https://www.youtube.com/watch?v=VIDEO_ID_7"
+                    class="glightbox"
+                    data-gallery="portfolio7"
+                    data-type="video"
+                  >
+                    <img
+                      src="assets/img/work7-1.jpg"
+                      class="portfolio__img"
+                      alt="Zoya Stock Video"
+                    />
+                  </a>
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
             <div class="portfolio__data">
-              <span class="portfolio__subtitle">Web development</span>
-              <a href="#"
-                ><h2 class="portfolio__title">
-                  New portfolio of work done for a client.
-                </h2></a
-              >
+              <span class="portfolio__subtitle">Automation • Mobile App</span>
+              <h2 class="portfolio__title">Zoya Stock Automation</h2>
+              <p>
+                <strong>S:</strong> Manual stock checks.<br />
+                <strong>T:</strong> Automate stock extraction & email
+                results.<br />
+                <strong>A:</strong> Built bot with Appium + Node.js +
+                Nodemailer.<br />
+                <strong>R:</strong> Fully automated workflow, instant alerts.
+              </p>
               <a href="#" class="button button-link">View Details</a>
             </div>
           </div>
 
-          <div class="portfolio__content mix ux">
-            <a href="#"
-              ><img src="assets/img/work3.jpg" alt="" class="portfolio__img"
-            /></a>
+          <!-- Project 8 -->
+          <div class="portfolio__content mix automation app">
+            <div class="swiper portfolioSwiper8">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <a
+                    href="assets/img/work8.jpg"
+                    class="glightbox"
+                    data-gallery="portfolio8"
+                  >
+                    <img
+                      src="assets/img/work8.jpg"
+                      class="portfolio__img"
+                      alt="Attendance Screenshot 1"
+                    />
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a
+                    href="assets/img/work8-1.jpg"
+                    class="glightbox"
+                    data-gallery="portfolio8"
+                  >
+                    <img
+                      src="assets/img/work8-1.jpg"
+                      class="portfolio__img"
+                      alt="Attendance Screenshot 2"
+                    />
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a
+                    href="https://www.youtube.com/watch?v=VIDEO_ID_8"
+                    class="glightbox"
+                    data-gallery="portfolio8"
+                    data-type="video"
+                  >
+                    <img
+                      src="assets/img/work8-1.jpg"
+                      class="portfolio__img"
+                      alt="Attendance Video"
+                    />
+                  </a>
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
             <div class="portfolio__data">
-              <span class="portfolio__subtitle">Ux design</span>
-              <a href="#"
-                ><h2 class="portfolio__title">
-                  New portfolio of work done for a client.
-                </h2></a
-              >
+              <span class="portfolio__subtitle">Automation • Attendance</span>
+              <h2 class="portfolio__title">Auto Attendance Login/Logout</h2>
+              <p>
+                <strong>S:</strong> Manual check-ins.<br />
+                <strong>T:</strong> Automate geo-based login/logout.<br />
+                <strong>A:</strong> Appium + GPS mocking solution.<br />
+                <strong>R:</strong> Reduced manual dependency, faster check-ins.
+              </p>
               <a href="#" class="button button-link">View Details</a>
             </div>
           </div>
 
-          <div class="portfolio__content mix ux">
-            <a href="#"
-              ><img src="assets/img/work4.jpg" alt="" class="portfolio__img"
-            /></a>
+          <!-- Project 9 -->
+          <div class="portfolio__content mix app scrapping">
+            <div class="swiper portfolioSwiper9">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <a
+                    href="assets/img/work9.jpg"
+                    class="glightbox"
+                    data-gallery="portfolio9"
+                  >
+                    <img
+                      src="assets/img/work9.jpg"
+                      class="portfolio__img"
+                      alt="Game Screenshot 1"
+                    />
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a
+                    href="assets/img/work9-1.jpg"
+                    class="glightbox"
+                    data-gallery="portfolio9"
+                  >
+                    <img
+                      src="assets/img/work9-1.jpg"
+                      class="portfolio__img"
+                      alt="Game Screenshot 2"
+                    />
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a
+                    href="https://www.youtube.com/watch?v=VIDEO_ID_9"
+                    class="glightbox"
+                    data-gallery="portfolio9"
+                    data-type="video"
+                  >
+                    <img
+                      src="assets/img/work9-1.jpg"
+                      class="portfolio__img"
+                      alt="Game Video"
+                    />
+                  </a>
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
             <div class="portfolio__data">
-              <span class="portfolio__subtitle">Ux design</span>
-              <a href="#"
-                ><h2 class="portfolio__title">
-                  New portfolio of work done for a client.
-                </h2></a
+              <span class="portfolio__subtitle"
+                >Mobile Game • Data Extraction</span
               >
+              <h2 class="portfolio__title">Game Assets Extraction</h2>
+              <p>
+                <strong>S:</strong> Extract images & data from app.<br />
+                <strong>T:</strong> Organize all assets.<br />
+                <strong>A:</strong> Automated collection & structured
+                storage.<br />
+                <strong>R:</strong> Ready-to-use datasets on Google Drive.
+              </p>
               <a href="#" class="button button-link">View Details</a>
             </div>
           </div>
 
-          <div class="portfolio__content mix app">
-            <a href="#"
-              ><img src="assets/img/work5.jpg" alt="" class="portfolio__img"
-            /></a>
+          <!-- Project 10 -->
+          <div class="portfolio__content mix automation web">
+            <div class="swiper portfolioSwiper10">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <a
+                    href="assets/img/work10.jpg"
+                    class="glightbox"
+                    data-gallery="portfolio10"
+                  >
+                    <img
+                      src="assets/img/work10.jpg"
+                      class="portfolio__img"
+                      alt="WebSummit Screenshot 1"
+                    />
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a
+                    href="assets/img/work10-1.jpg"
+                    class="glightbox"
+                    data-gallery="portfolio10"
+                  >
+                    <img
+                      src="assets/img/work10-1.jpg"
+                      class="portfolio__img"
+                      alt="WebSummit Screenshot 2"
+                    />
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a
+                    href="https://www.youtube.com/watch?v=VIDEO_ID_10"
+                    class="glightbox"
+                    data-gallery="portfolio10"
+                    data-type="video"
+                  >
+                    <img
+                      src="assets/img/work10-1.jpg"
+                      class="portfolio__img"
+                      alt="WebSummit Video"
+                    />
+                  </a>
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
             <div class="portfolio__data">
-              <span class="portfolio__subtitle">Mobile app</span>
-              <a href="#"
-                ><h2 class="portfolio__title">
-                  New portfolio of work done for a client.
-                </h2></a
+              <span class="portfolio__subtitle"
+                >Web Automation • Conferences</span
               >
+              <h2 class="portfolio__title">WebSummit App Automation</h2>
+              <p>
+                <strong>S:</strong> Manual attendee data extraction.<br />
+                <strong>T:</strong> Automate connections & contact capture.<br />
+                <strong>A:</strong> Puppeteer + Appium hybrid solution.<br />
+                <strong>R:</strong> Complete networking dataset delivered.
+              </p>
               <a href="#" class="button button-link">View Details</a>
             </div>
           </div>
 
-          <div class="portfolio__content mix app">
-            <a href="#"
-              ><img src="assets/img/work6.jpg" alt="" class="portfolio__img"
-            /></a>
+          <!-- Project 11 -->
+          <div class="portfolio__content mix web scrapping">
+            <div class="swiper portfolioSwiper11">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <a
+                    href="assets/img/work11.jpg"
+                    class="glightbox"
+                    data-gallery="portfolio11"
+                  >
+                    <img
+                      src="assets/img/work11.jpg"
+                      class="portfolio__img"
+                      alt="eCommerce Screenshot 1"
+                    />
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a
+                    href="assets/img/work11-1.jpg"
+                    class="glightbox"
+                    data-gallery="portfolio11"
+                  >
+                    <img
+                      src="assets/img/work11-1.jpg"
+                      class="portfolio__img"
+                      alt="eCommerce Screenshot 2"
+                    />
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a
+                    href="https://www.youtube.com/watch?v=VIDEO_ID_11"
+                    class="glightbox"
+                    data-gallery="portfolio11"
+                    data-type="video"
+                  >
+                    <img
+                      src="assets/img/work11-1.jpg"
+                      class="portfolio__img"
+                      alt="eCommerce Video"
+                    />
+                  </a>
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
             <div class="portfolio__data">
-              <span class="portfolio__subtitle">Mobile app</span>
-              <a href="#"
-                ><h2 class="portfolio__title">
-                  New portfolio of work done for a client.
-                </h2></a
-              >
+              <span class="portfolio__subtitle">Web Scraping • eCommerce</span>
+              <h2 class="portfolio__title">Complete eCommerce Extraction</h2>
+              <p>
+                <strong>S:</strong> Collect product data & images.<br />
+                <strong>T:</strong> Structure attributes & images.<br />
+                <strong>A:</strong> Puppeteer scraper automation.<br />
+                <strong>R:</strong> Complete dataset ready on Google Drive.
+              </p>
               <a href="#" class="button button-link">View Details</a>
             </div>
           </div>
@@ -482,7 +1055,7 @@
           <div class="swiper-wrapper">
             <div class="testimonial__content swiper-slide">
               <img
-                src="assets/img/testimonial-placeholder.jpg"
+                src="assets/img/testimonial-placeholder.png"
                 alt="markapps"
                 class="testimonial__img"
               />
@@ -597,7 +1170,7 @@
 
             <div class="testimonial__content swiper-slide">
               <img
-                src="assets/img/testimonial-placeholder.jpg"
+                src="assets/img/testimonial-placeholder.png"
                 alt="michaelsmith760"
                 class="testimonial__img"
               />
@@ -655,7 +1228,7 @@
 
             <div class="testimonial__content swiper-slide">
               <img
-                src="assets/img/testimonial-placeholder.jpg"
+                src="assets/img/testimonial-placeholder.png"
                 alt="ahmidifashanu"
                 class="testimonial__img"
               />
@@ -683,7 +1256,7 @@
 
             <div class="testimonial__content swiper-slide">
               <img
-                src="assets/img/testimonial-placeholder.jpg"
+                src="assets/img/testimonial-placeholder.png"
                 alt="parshram"
                 class="testimonial__img"
               />
@@ -710,7 +1283,7 @@
 
             <div class="testimonial__content swiper-slide">
               <img
-                src="assets/img/testimonial-placeholder.jpg"
+                src="assets/img/testimonial-placeholder.png"
                 alt="stschuck"
                 class="testimonial__img"
               />
@@ -794,7 +1367,7 @@
 
             <div class="testimonial__content swiper-slide">
               <img
-                src="assets/img/testimonial-placeholder.jpg"
+                src="assets/img/testimonial-placeholder.png"
                 alt="aquanote"
                 class="testimonial__img"
               />
@@ -822,7 +1395,7 @@
 
             <div class="testimonial__content swiper-slide">
               <img
-                src="assets/img/testimonial-placeholder.jpg"
+                src="assets/img/testimonial-placeholder.png"
                 alt="aquanote"
                 class="testimonial__img"
               />
@@ -849,7 +1422,7 @@
 
             <div class="testimonial__content swiper-slide">
               <img
-                src="assets/img/testimonial-placeholder.jpg"
+                src="assets/img/testimonial-placeholder.png"
                 alt="jesuszayas74"
                 class="testimonial__img"
               />
@@ -1164,6 +1737,15 @@
       </div>
     </footer>
 
+    <!-- GLightbox CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"
+    />
+
+    <!-- GLightbox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
     <!-- ===== MIXITUP FILTER ===== -->
     <script src="assets/js/mixitup.min.js"></script>
 
@@ -1198,6 +1780,31 @@
             window.open(gmailLink, "_blank");
           }, 500);
         });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize all Swipers
+        document.querySelectorAll(".swiper").forEach((el) => {
+          new Swiper(el, {
+            loop: true,
+            autoplay: {
+              delay: 3000,
+              disableOnInteraction: false,
+            },
+            pagination: {
+              el: el.querySelector(".swiper-pagination"),
+              clickable: true,
+            },
+          });
+        });
+
+        // Initialize GLightbox
+        const lightbox = GLightbox({
+          selector: ".glightbox",
+          touchNavigation: true,
+          loop: true,
+        });
+      });
     </script>
     <script>
       var swiper = new Swiper(".swiper-container", {

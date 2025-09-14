@@ -486,7 +486,7 @@ img {
 }
 
 .portfolio__item {
-  margin: 0 var(--mb-2);
+  margin: 0 var(--mb-1);
   cursor: pointer;
 }
 
@@ -511,6 +511,7 @@ img {
 }
 
 .portfolio__data {
+  border-top: 1px solid gainsboro;
   padding: 1.5rem;
 }
 
