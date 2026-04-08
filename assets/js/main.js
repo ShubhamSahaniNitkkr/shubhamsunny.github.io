@@ -157,7 +157,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
   gsap.from('.home__data', { opacity: 0, duration: 1, delay: 0.45, y: 20, ease: 'power3.out' })
   gsap.from(
-    '.home__greeting, .home__name, .home__profession, .home__tagline, .home__actions .button, .home__connect',
+    '.home__greeting, .home__name, .home__focus-chips, .home__tagline, .home__actions .button, .home__connect',
     {
       opacity: 0,
       duration: 0.85,
