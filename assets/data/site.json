@@ -1,0 +1,799 @@
+{
+  "meta": {
+    "about": "Edit projects and reviews here. After changes, run node scripts/sync-site-data.js. That refreshes assets/js/site-data.js so the site works when opening index.html from disk (file://) and stays in sync on GitHub Pages."
+  },
+  "projects": [
+    {
+      "slug": "aha-scraper",
+      "categories": [
+        "desktop",
+        "scrapping"
+      ],
+      "card": {
+        "subtitle": "Health programmes · event lists in Excel",
+        "title": "One-Click Scraper for American Heart Association",
+        "summary": "Pulled public workshops and events from the association’s site into a clean spreadsheet with dates, places, and organisers so their team could plan outreach instead of retyping pages. One click to run; hours saved each week.",
+        "links": [
+          {
+            "href": "https://github.com/ShubhamSahaniNitkkr/One-Click-Scraper-for-American-Heart-Association",
+            "text": "GitHub reference",
+            "external": true
+          }
+        ]
+      },
+      "detail": {
+        "subtitle": "Less copy-paste for the American Heart Association",
+        "title": "One-Click Scraper for American Heart Association",
+        "overview": [
+          "The team needed an accurate list of public workshops and events from their site: dates, places, and who was running each session, so they could invite the right people and plan outreach without retyping everything.",
+          "Before we spoke, someone was doing it manually: open a page, copy a block, fix mistakes, repeat. I built a simple one-click tool that gathers those listings overnight (metaphorically speaking, often minutes) and drops them into a tidy spreadsheet their non-technical staff already knew how to use.",
+          "They stopped losing half a day to grunt work. What they got was a repeatable file they could filter, print, or hand to marketing with the same columns every time and no mystery gaps."
+        ],
+        "timeline": [
+          {
+            "phase": "Start",
+            "label": "What “good” looked like",
+            "text": "We lined up the fields they cared about and checked a short sample together so everyone agreed on the format before the full pull."
+          },
+          {
+            "phase": "Build",
+            "label": "Quiet background work",
+            "text": "The tool ran through event pages the way a careful intern would, just faster, and parked the results in Excel so nothing overwrote last week’s export by mistake."
+          },
+          {
+            "phase": "Polishing",
+            "label": "Real-world messiness",
+            "text": "Odd venues, duplicate headings, slow pages: we decided in advance what to skip vs. flag so the sheet stayed trustworthy."
+          },
+          {
+            "phase": "Handoff",
+            "label": "They could run it alone",
+            "text": "Short notes on how to open it and rerun after the website changed shape; their tech contact got a link if they ever wanted to peek under the hood."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://github.com/ShubhamSahaniNitkkr/One-Click-Scraper-for-American-Heart-Association",
+            "text": "GitHub (technical reference)"
+          }
+        ]
+      },
+      "gallery": [
+        {
+          "src": "assets/img/Work/project11.png",
+          "alt": "Scraper Source",
+          "href": "assets/img/Work/project11.png"
+        },
+        {
+          "src": "assets/img/Work/project12.png",
+          "alt": "One Click Scrapper Tool",
+          "href": "assets/img/Work/project12.png"
+        },
+        {
+          "src": "assets/img/Work/project13.png",
+          "alt": "Excel Output",
+          "href": "assets/img/Work/project13.png"
+        }
+      ]
+    },
+    {
+      "slug": "game-assets",
+      "categories": [
+        "app",
+        "scrapping",
+        "mobile-extract"
+      ],
+      "card": {
+        "subtitle": "Game studio · art & UI in one Drive folder",
+        "title": "Game App Assets Extraction",
+        "summary": "Gathered sprites and UI graphics from a mobile title into a single, well-labelled share on Google Drive so designers could reuse assets without digging through builds.",
+        "links": [
+          {
+            "href": "https://drive.google.com/file/d/1VV3-m6fnTi-ZjEYycRTMzs8CU8sr53Qa/view?usp=sharing",
+            "text": "Watch demo clip",
+            "external": true
+          }
+        ]
+      },
+      "detail": {
+        "subtitle": "Art and UI files, ready for the design team",
+        "title": "Game App Assets Extraction",
+        "overview": [
+          "The client had a mobile game but the art lived in bits and pieces across builds, hard to hand to designers or reuse in trailers.",
+          "I pulled the images and related metadata into one clean folder on Google Drive, with labels so you could find “this button” or “that background” without installing the game five times.",
+          "They went from screenshots and guesswork to a single delivery they could forward to a studio and say “everything’s in here.”"
+        ],
+        "timeline": [
+          {
+            "phase": "Sort",
+            "label": "What to keep vs. toss",
+            "text": "We agreed on naming and which file types mattered so nothing important got merged into fluff."
+          },
+          {
+            "phase": "Batch",
+            "label": "One organized pass",
+            "text": "A single run collected the batch without duplicating huge folders if we had to rerun after an update."
+          },
+          {
+            "phase": "Check",
+            "label": "Spot-checks against the live app",
+            "text": "Random samples so blurry or cropped assets got caught before handoff, not in Slack at midnight."
+          },
+          {
+            "phase": "Delivery",
+            "label": "Drive link + short walkthrough",
+            "text": "They got the folder structure, a brief inventory, and a demo clip so non-technical folks weren’t lost."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://drive.google.com/file/d/1VV3-m6fnTi-ZjEYycRTMzs8CU8sr53Qa/view?usp=sharing",
+            "text": "Watch the demo clip"
+          }
+        ]
+      },
+      "gallery": [
+        {
+          "src": "assets/img/Work/project91.png",
+          "alt": "Game Screenshot 1",
+          "href": "assets/img/Work/project91.png"
+        },
+        {
+          "src": "assets/img/Work/project92.png",
+          "alt": "Game Screenshot 2",
+          "href": "assets/img/Work/project92.png"
+        }
+      ]
+    },
+    {
+      "slug": "ecommerce-scrape",
+      "categories": [
+        "web",
+        "scrapping",
+        "react-web"
+      ],
+      "card": {
+        "subtitle": "Online retail · full catalog export",
+        "title": "Complete eCommerce Data Extraction",
+        "summary": "Built a complete product catalog (titles, variants, images, attributes) in one structured file on Drive so pricing and merchandising could move faster than copy-paste from the storefront.",
+        "links": [
+          {
+            "href": "https://drive.google.com/file/d/1MUEbBWwsh5e4nK0BGX_WyIFjGEymb8qy/view?usp=sharing",
+            "text": "Watch demo clip",
+            "external": true
+          }
+        ]
+      },
+      "detail": {
+        "subtitle": "Store catalog in one place, not fifty tabs",
+        "title": "Complete eCommerce Data Extraction",
+        "overview": [
+          "They were running an online shop workflow where prices, pictures, and variants changed faster than anyone could paste into Excel.",
+          "I delivered a full product catalog export with titles, attributes, and image links so they could compare runs over time, feed another tool, or onboard a new VA without training them on the storefront’s back office.",
+          "The win was a complete dataset on Drive instead of a half-filled sheet the day before a launch."
+        ],
+        "timeline": [
+          {
+            "phase": "Scope",
+            "label": "Must-have columns",
+            "text": "We separated what the business couldn’t live without from nice-to-haves so the first delivery was already usable."
+          },
+          {
+            "phase": "Pilot",
+            "label": "One category first",
+            "text": "Proved volume and accuracy on a slice before scaling to the whole catalog. Fewer surprises for everyone."
+          },
+          {
+            "phase": "Full run",
+            "label": "Safer pacing",
+            "text": "Handled big pulls in chunks with checkpoints so a hiccup didn’t mean starting from zero."
+          },
+          {
+            "phase": "Wrap",
+            "label": "Files + honest notes",
+            "text": "Packaged the export with a short list of quirks (e.g. old SKUs) so imports didn’t blindside them."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://drive.google.com/file/d/1MUEbBWwsh5e4nK0BGX_WyIFjGEymb8qy/view?usp=sharing",
+            "text": "Watch the demo clip"
+          }
+        ]
+      },
+      "gallery": [
+        {
+          "src": "assets/img/Work/project101.png",
+          "alt": "eCommerce Screenshot 1",
+          "href": "assets/img/Work/project101.png"
+        },
+        {
+          "src": "assets/img/Work/project102.png",
+          "alt": "eCommerce Screenshot 2",
+          "href": "assets/img/Work/project102.png"
+        },
+        {
+          "src": "assets/img/Work/project103.png",
+          "alt": "eCommerce Screenshot 2",
+          "href": "assets/img/Work/project103.png"
+        }
+      ]
+    },
+    {
+      "slug": "onebound-extraction",
+      "categories": [
+        "app",
+        "scrapping",
+        "mobile-extract"
+      ],
+      "card": {
+        "subtitle": "Member directory · from app to spreadsheet",
+        "title": "Data Extraction from Onebound Android App",
+        "summary": "Exported the app’s community profiles, name, role, company, short bio, into Excel so the client could analyse and reach out without scrolling hundreds of cards by hand.",
+        "links": []
+      },
+      "detail": {
+        "subtitle": "Member profiles off the phone and into a spreadsheet",
+        "title": "Data Extraction from Onebound Android App",
+        "overview": [
+          "They had a community directory inside an Android app, names, roles, companies, short bios, and leadership wanted it in rows for reporting and partner outreach.",
+          "There was no friendly “download CSV” button. I delivered a structured Excel file that matched how they already work: filter by company, sort by role, mail-merge if they want.",
+          "The payoff was hours of scrolling turned into something their ops team could actually analyse."
+        ],
+        "timeline": [
+          {
+            "phase": "Setup",
+            "label": "Stable starting point",
+            "text": "Locked the app version and flow so later runs didn’t suddenly point at the wrong screen."
+          },
+          {
+            "phase": "Collection",
+            "label": "Walking the member list",
+            "text": "Captured each profile methodically, including longer “about” text, without smushing the columns."
+          },
+          {
+            "phase": "Review",
+            "label": "Sample sign-off",
+            "text": "They checked a slice, tweaked labels once, then we ran the full set."
+          },
+          {
+            "phase": "Delivery",
+            "label": "Workbook + context",
+            "text": "Final Excel plus a one-pager on how to refresh later if the directory grows."
+          }
+        ],
+        "links": []
+      },
+      "gallery": [
+        {
+          "src": "assets/img/Work/project21.png",
+          "alt": "Onebound App Screenshot 1",
+          "href": "assets/img/Work/project21.png"
+        },
+        {
+          "src": "assets/img/Work/project22.png",
+          "alt": "Onebound App Data Scrapping",
+          "href": "assets/img/Work/project22.png"
+        },
+        {
+          "src": "assets/img/Work/project23.png",
+          "alt": "Onebound App Data Excel Sheet",
+          "href": "assets/img/Work/project23.png"
+        }
+      ]
+    },
+    {
+      "slug": "attendance-auto",
+      "categories": [
+        "automation",
+        "app"
+      ],
+      "card": {
+        "subtitle": "Shift workers · fewer missed check-ins",
+        "title": "Auto Attendance Login/Logout",
+        "summary": "Put clock-in and clock-out on a reliable rhythm tied to policy, less scrambling at shift change and fewer “oops” conversations with HR.",
+        "links": [
+          {
+            "href": "https://drive.google.com/file/d/1unGcoYCI_BMFITet5L7gTHsb6zXvsPv_/view?usp=sharing",
+            "text": "Watch demo clip",
+            "external": true
+          }
+        ]
+      },
+      "detail": {
+        "subtitle": "Fewer missed punches for shift workers",
+        "title": "Auto Attendance Login/Logout",
+        "overview": [
+          "Check-in rules were tied to showing up in the right place at the right window. Human error meant HR back-and-forth and sometimes unfair flags.",
+          "I automated the sequence so the punch happened in policy, without someone standing by the phone at 8:59. The team still owned the rules; the boring part got consistent.",
+          "They spent less time fixing mistakes and more time on actual operations."
+        ],
+        "timeline": [
+          {
+            "phase": "Clarity",
+            "label": "When automation is allowed",
+            "text": "Wrote down the time bands and scenarios so we didn’t step outside what HR was comfortable with."
+          },
+          {
+            "phase": "Trial",
+            "label": "Test account first",
+            "text": "Proved a clean check-in/out on a sandbox before touching real schedules."
+          },
+          {
+            "phase": "Stability",
+            "label": "Real life: slow networks, restarts",
+            "text": "Built in retries and sane logging: enough to debug, not a novel."
+          },
+          {
+            "phase": "Training",
+            "label": "Show, don’t mystify",
+            "text": "Short demo clip + a single-page runbook for whoever inherits it."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://drive.google.com/file/d/1unGcoYCI_BMFITet5L7gTHsb6zXvsPv_/view?usp=sharing",
+            "text": "Watch the demo clip"
+          }
+        ]
+      },
+      "gallery": [
+        {
+          "src": "assets/img/Work/project81.png",
+          "alt": "Attendance Screenshot 1",
+          "href": "assets/img/Work/project81.png"
+        },
+        {
+          "src": "assets/img/Work/project82.png",
+          "alt": "Attendance Screenshot 2",
+          "href": "assets/img/Work/project82.png"
+        }
+      ]
+    },
+    {
+      "slug": "coupon-bot",
+      "categories": [
+        "automation",
+        "app",
+        "bots"
+      ],
+      "card": {
+        "subtitle": "Retail promos · codes from sheet to app",
+        "title": "Automated Coupon Handling Bot For Mobile App",
+        "summary": "Tied a shared spreadsheet to the mobile checkout flow so promo codes applied in bulk with clear success/fail rows, less typing, fewer wrong redemptions.",
+        "links": [
+          {
+            "href": "https://drive.google.com/file/d/1XlvzxG5iM4hCWtIsHfdxG7dgHYpvEgbW/view?usp=sharing",
+            "text": "Watch demo clip",
+            "external": true
+          }
+        ]
+      },
+      "detail": {
+        "subtitle": "Promo codes applied faster, fewer typos",
+        "title": "Automated Coupon Handling Bot For Mobile App",
+        "overview": [
+          "Discount codes lived in a spreadsheet, but someone still had to read each one, type it in the app, and confirm, slow and easy to mess up at volume.",
+          "I connected that sheet to the app workflow: fresh codes get picked up, applied in order, and the sheet updates with what worked or failed. Alerts drew eyes when something broke mid-run.",
+          "Merchandising kept control from the spreadsheet; engineering didn’t need a new dashboard for every campaign."
+        ],
+        "timeline": [
+          {
+            "phase": "Sheet",
+            "label": "Statuses everyone understands",
+            "text": "Simple columns: pending, used, invalid, sortable without a training session."
+          },
+          {
+            "phase": "Flow",
+            "label": "Read vs. apply",
+            "text": "Split the work so a hiccup in one step didn’t trash the other."
+          },
+          {
+            "phase": "Reliability",
+            "label": "Night runs without drama",
+            "text": "Capped aggressive retries so the app didn’t get hostile while still finishing overnight batches."
+          },
+          {
+            "phase": "Support",
+            "label": "What to do when it stalls",
+            "text": "Alert path back to the sheet plus a short “first checks” note."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://drive.google.com/file/d/1XlvzxG5iM4hCWtIsHfdxG7dgHYpvEgbW/view?usp=sharing",
+            "text": "Watch the demo clip"
+          }
+        ]
+      },
+      "gallery": [
+        {
+          "src": "assets/img/Work/project31.png",
+          "alt": "Coupon Bot Screenshot 1",
+          "href": "assets/img/Work/project31.png"
+        }
+      ]
+    },
+    {
+      "slug": "national-council",
+      "categories": [
+        "app",
+        "scrapping",
+        "mobile-extract"
+      ],
+      "card": {
+        "subtitle": "Professional directory · contacts in one file",
+        "title": "National Council Mobile App Data Extraction",
+        "summary": "Turned a mobile-only membership directory into a filterable contact list with names, titles, firms, emails, and phones so staff could work from a spreadsheet instead of endless in-app search.",
+        "links": []
+      },
+      "detail": {
+        "subtitle": "Contact directory without manual lookup marathons",
+        "title": "National Council Mobile App Data Extraction",
+        "overview": [
+          "They needed names, titles, firms, emails, and phone numbers that only appeared inside a mobile directory. Great for members, painful for ops without an export.",
+          "I produced a consolidated workbook so they could filter by region or role and stop click-copying hundreds of cards.",
+          "Think of it as turning “find each person in the app” into “open this file and search.”"
+        ],
+        "timeline": [
+          {
+            "phase": "Map",
+            "label": "Where each field hides",
+            "text": "Not every contact showed email the same way. We mapped taps vs. plain display before scaling."
+          },
+          {
+            "phase": "Quality",
+            "label": "Tidy phone and title lines",
+            "text": "Light cleanup so Excel sorting didn’t look like alphabet soup."
+          },
+          {
+            "phase": "Volume",
+            "label": "Full pass with resumes",
+            "text": "Long runs could pause; we didn’t restart from scratch when the app napped."
+          },
+          {
+            "phase": "Export",
+            "label": "One row per person + oddities tab",
+            "text": "Partial rows landed in a side sheet so nothing silently disappeared."
+          }
+        ],
+        "links": []
+      },
+      "gallery": [
+        {
+          "src": "assets/img/Work/project41.png",
+          "alt": "National Council Screenshot 1",
+          "href": "assets/img/Work/project41.png"
+        }
+      ]
+    },
+    {
+      "slug": "dream11-api",
+      "categories": [
+        "app",
+        "scrapping",
+        "ai-app",
+        "ai",
+        "mobile-extract"
+      ],
+      "card": {
+        "subtitle": "Fantasy sports · live stats for their own models",
+        "title": "Dream11 Basketball Data API",
+        "summary": "Supplied fresh player stats through match night so their dashboards and prediction sheets updated without someone refreshing public pages by hand.",
+        "links": [
+          {
+            "href": "https://drive.google.com/file/d/15pcdVbEgwEH7nBTaEL5flN88xIre7K2b/view?usp=sharing",
+            "text": "Watch demo clip",
+            "external": true
+          }
+        ]
+      },
+      "detail": {
+        "subtitle": "Live basketball numbers for their own tools",
+        "title": "Dream11 Basketball Data API",
+        "overview": [
+          "A fantasy-style client wanted player stats updating through match night for their internal sheets and models, not by refreshing public pages by hand.",
+          "I gave them a small feed they could query like any other data service: reliable shape, sane errors when the source hiccuped, no babysitting tabs.",
+          "Their analysts spent energy on judgement calls, not on whether the last refresh was five minutes stale."
+        ],
+        "timeline": [
+          {
+            "phase": "Agreement",
+            "label": "What “fresh enough” means",
+            "text": "We picked refresh expectations before the first slate so nobody argued at halftime."
+          },
+          {
+            "phase": "Pipeline",
+            "label": "Steady updates without hammering",
+            "text": "Paced pulls so numbers felt live without picking fights with rate limits."
+          },
+          {
+            "phase": "Service",
+            "label": "Predictable responses",
+            "text": "Simple read endpoints plus logging hooks for “why is this blank?” support."
+          },
+          {
+            "phase": "Runbook",
+            "label": "If the feed goes quiet",
+            "text": "Where to look first, how to restart, so they weren’t blocked on my timezone."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://drive.google.com/file/d/15pcdVbEgwEH7nBTaEL5flN88xIre7K2b/view?usp=sharing",
+            "text": "Watch the demo clip"
+          }
+        ]
+      },
+      "gallery": [
+        {
+          "src": "assets/img/Work/project51.png",
+          "alt": "Dream11 Screenshot 1",
+          "href": "assets/img/Work/project51.png"
+        }
+      ]
+    },
+    {
+      "slug": "truth-dare",
+      "categories": [
+        "app",
+        "scrapping",
+        "mobile-extract"
+      ],
+      "card": {
+        "subtitle": "Game content · prompts ready for editors",
+        "title": "Truth & Dare App Data Extraction",
+        "summary": "Pulled every truth question, dare, and level bump out of the shipped game into spreadsheets, easier for localization, marketing, and legal review than playing through levels with a notepad.",
+        "links": []
+      },
+      "detail": {
+        "subtitle": "Game text out of the build and into edit-friendly sheets",
+        "title": "Truth & Dare App Data Extraction",
+        "overview": [
+          "Questions, levels, and dares lived only inside the shipped game, localization and marketing needed them in neutral spreadsheets for review.",
+          "I exported the content into workbooks editors could comment on row by row instead of playing through dozens of levels with a notepad.",
+          "Version-to-version diffs became practical when the publisher tweaked copy."
+        ],
+        "timeline": [
+          {
+            "phase": "Inventory",
+            "label": "Every place copy lived",
+            "text": "Mapped screens by level bands so nothing hid in a corner case menu."
+          },
+          {
+            "phase": "Pull",
+            "label": "Structured passes",
+            "text": "Separated truth prompts vs. dare prompts instead of dumping everything in one blurry column."
+          },
+          {
+            "phase": "Tidy",
+            "label": "Duplicates and odd characters",
+            "text": "Flagged repeats and encoding glitches before localization vendors saw them."
+          },
+          {
+            "phase": "Ship",
+            "label": "Tabs per content type + README",
+            "text": "Delivered files their PM could forward without a follow-up call."
+          }
+        ],
+        "links": []
+      },
+      "gallery": [
+        {
+          "src": "assets/img/Work/project61.png",
+          "alt": "Truth & Dare Screenshot 2",
+          "href": "assets/img/Work/project61.png"
+        },
+        {
+          "src": "assets/img/Work/project62.png",
+          "alt": "Truth & Dare Excel Output",
+          "href": "assets/img/Work/project62.png"
+        }
+      ]
+    },
+    {
+      "slug": "zoya-stock",
+      "categories": [
+        "automation",
+        "app"
+      ],
+      "card": {
+        "subtitle": "Ethical-investing list · watch without daily drudgery",
+        "title": "Zoya Stock App Automation",
+        "summary": "Monitored a curated stock roster in the Zoya app and surfaced meaningful changes by email, so the client didn’t open the same screens every morning just to see if anything moved.",
+        "links": []
+      },
+      "detail": {
+        "subtitle": "Compliance-friendly list tracking without daily eye strain",
+        "title": "Zoya Stock App Automation",
+        "overview": [
+          "The client cared about a curated, rules-based stock list inside a niche app. Opening it every morning to see what moved wasn’t sustainable.",
+          "I mirrored how they filtered and read the list, then diffed runs over time and pinged them when something meaningful changed, not every tiny UI quirk.",
+          "Net: less manual reopening, earlier notice when the roster shifted."
+        ],
+        "timeline": [
+          {
+            "phase": "Observe",
+            "label": "Their actual morning routine",
+            "text": "Recorded the taps and filters they trusted so automation matched human judgement."
+          },
+          {
+            "phase": "Automate",
+            "label": "Scheduled scans",
+            "text": "Compared today vs. yesterday so “what’s new?” was obvious."
+          },
+          {
+            "phase": "Signal",
+            "label": "Alert tuning",
+            "text": "Cut noise so cosmetic text changes didn’t cry wolf."
+          },
+          {
+            "phase": "Future-proof",
+            "label": "After an app redesign",
+            "text": "Left notes on refreshing the flow when buttons moved, so they weren’t stuck."
+          }
+        ],
+        "links": []
+      },
+      "gallery": [
+        {
+          "src": "assets/img/Work/project71.png",
+          "alt": "Zoya Stock Screenshot 1",
+          "href": "assets/img/Work/project71.png"
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "avatar": "assets/img/testimonial-placeholder.png",
+      "avatarAlt": "markapps",
+      "name": "markapps",
+      "countryCode": "lu",
+      "country": "Luxembourg",
+      "stars": "⭐⭐⭐⭐⭐",
+      "text": "Good job getting data from another android app. Thanks a lot for your patience and technical skills.",
+      "sourceUrl": "https://www.fiverr.com/shubhamsunny?public_mode=true"
+    },
+    {
+      "avatar": "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_small/v1/attachments/profile/photo/942387b7897f8a17d97776f92a95582a-1676710130271/e30b13e3-c863-4f75-b974-d166d04fdb23.png",
+      "avatarAlt": "hungff",
+      "name": "hungff",
+      "countryCode": "jp",
+      "country": "Japan",
+      "stars": "⭐⭐⭐⭐⭐",
+      "text": "It took time but he was patient and worked hard until everything was delivered perfectly. Really appreciated his effort and communication.",
+      "sourceUrl": "https://www.fiverr.com/shubhamsunny?public_mode=true"
+    },
+    {
+      "avatar": "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_small/v1/attachments/profile/photo/8be7c87805d94bbc837f9d3ad016b11a-1538721051748/0c4428a9-60d7-43f2-a3cb-8ba8ae1ef7d9.jpg",
+      "avatarAlt": "hardworlds",
+      "name": "hardworlds",
+      "countryCode": "in",
+      "country": "India",
+      "stars": "⭐⭐⭐⭐⭐",
+      "text": "Very satisfied with the work. Professional and quick delivery. Will hire again!",
+      "sourceUrl": "https://www.fiverr.com/shubhamsunny?public_mode=true"
+    },
+    {
+      "avatar": "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_small/v1/profile/photos/28235582/original/Ghayath.jpg",
+      "avatarAlt": "ghayath007",
+      "name": "ghayath007",
+      "countryCode": "jo",
+      "country": "Jordan",
+      "stars": "⭐⭐⭐⭐⭐",
+      "text": "Delivered what I asked for in no time. Very efficient and professional.",
+      "sourceUrl": "https://www.fiverr.com/shubhamsunny?public_mode=true"
+    },
+    {
+      "avatar": "assets/img/testimonial-placeholder.png",
+      "avatarAlt": "michaelsmith760",
+      "name": "michaelsmith760",
+      "countryCode": "us",
+      "country": "United States",
+      "stars": "⭐⭐⭐⭐☆",
+      "text": "Fast, efficient, accurate, and reasonable. Great communication throughout the project and delivered exactly what I needed. Highly recommend!",
+      "sourceUrl": "https://www.fiverr.com/shubhamsunny?public_mode=true"
+    },
+    {
+      "avatar": "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_small/v1/attachments/profile/photo/b54472a979182c50b823a4bf26ed1e81-1683327044517/668208af-ad88-4140-b4e9-532260f8bf1d.png",
+      "avatarAlt": "afzidshuvo",
+      "name": "afzidshuvo",
+      "countryCode": "bd",
+      "country": "Bangladesh",
+      "stars": "⭐⭐⭐⭐⭐",
+      "text": "I can't sing enough praises for Sunny! Their professionalism and expertise shine through. Delivered exactly as promised, and went above expectations.",
+      "sourceUrl": "https://www.fiverr.com/shubhamsunny?public_mode=true"
+    },
+    {
+      "avatar": "assets/img/testimonial-placeholder.png",
+      "avatarAlt": "ahmidifashanu",
+      "name": "ahmidifashanu",
+      "countryCode": "gb",
+      "country": "United Kingdom",
+      "stars": "⭐⭐⭐⭐⭐",
+      "text": "Perfect workflow, perfect communication, and perfect results. Will definitely come back for future work.",
+      "sourceUrl": "https://www.fiverr.com/shubhamsunny?public_mode=true"
+    },
+    {
+      "avatar": "assets/img/testimonial-placeholder.png",
+      "avatarAlt": "parshram",
+      "name": "parshram",
+      "countryCode": "gy",
+      "country": "Guyana",
+      "stars": "⭐⭐⭐⭐☆",
+      "text": "Excellent service! Will definitely work again.",
+      "sourceUrl": "https://www.fiverr.com/shubhamsunny?public_mode=true"
+    },
+    {
+      "avatar": "assets/img/testimonial-placeholder.png",
+      "avatarAlt": "stschuck",
+      "name": "stschuck",
+      "countryCode": "us",
+      "country": "United States",
+      "stars": "⭐⭐⭐⭐⭐",
+      "text": "Excellent fast work with data scrapping. Exactly what I needed, delivered on time.",
+      "sourceUrl": "https://www.fiverr.com/shubhamsunny?public_mode=true"
+    },
+    {
+      "avatar": "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_small/v1/attachments/profile/photo/4f0768360a5ebaacbbee04f8569b6647-13331721694533396281/JPEG_20230912_114315_1466485560169269606.jpg",
+      "avatarAlt": "reef215",
+      "name": "reef215",
+      "countryCode": "us",
+      "country": "United States",
+      "stars": "⭐⭐⭐⭐☆",
+      "text": "Thank you for doing your best. I appreciate your effort and commitment to finishing the job.",
+      "sourceUrl": "https://www.fiverr.com/shubhamsunny?public_mode=true"
+    },
+    {
+      "avatar": "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_small/v1/attachments/profile/photo/6371b614a6b6655bddf45597d50ae0d9-1717595628619/ba6464e8-32fe-4ce3-8f3a-dba705882705.jpeg",
+      "avatarAlt": "naveendagla452",
+      "name": "naveendagla452",
+      "countryCode": "in",
+      "country": "India",
+      "stars": "⭐⭐⭐⭐⭐",
+      "text": "Good 😊😊😊😊 Very happy with the results. Quick and professional.",
+      "sourceUrl": "https://www.fiverr.com/shubhamsunny?public_mode=true"
+    },
+    {
+      "avatar": "assets/img/testimonial-placeholder.png",
+      "avatarAlt": "aquanote",
+      "name": "aquanote",
+      "countryCode": "ca",
+      "country": "Canada",
+      "stars": "⭐⭐⭐⭐⭐",
+      "text": "Great to work with. Professional and very cooperative throughout.",
+      "sourceUrl": "https://www.fiverr.com/shubhamsunny?public_mode=true"
+    },
+    {
+      "avatar": "assets/img/testimonial-placeholder.png",
+      "avatarAlt": "aquanote",
+      "name": "aquanote",
+      "countryCode": "ca",
+      "country": "Canada",
+      "stars": "⭐⭐⭐⭐⭐",
+      "text": "Great experience. Everything was smooth and delivered perfectly.",
+      "sourceUrl": "https://www.fiverr.com/shubhamsunny?public_mode=true"
+    },
+    {
+      "avatar": "assets/img/testimonial-placeholder.png",
+      "avatarAlt": "jesuszayas74",
+      "name": "jesuszayas74",
+      "countryCode": "us",
+      "country": "United States",
+      "stars": "⭐⭐⭐⭐⭐",
+      "text": "Did an excellent job with the extraction of attendees. Very quick and precise, delivered exactly as needed.",
+      "sourceUrl": "https://www.fiverr.com/shubhamsunny?public_mode=true"
+    },
+    {
+      "avatar": "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_small/v1/profile/photos/27065360/original/no_image.jpg",
+      "avatarAlt": "massgn",
+      "name": "massgn",
+      "countryCode": "gb",
+      "country": "United Kingdom",
+      "stars": "⭐⭐⭐⭐⭐",
+      "text": "It was a pleasure working with Sunny. We collaborated on a challenging project, and he delivered exactly what was needed. Great communicator and problem solver.",
+      "sourceUrl": "https://www.fiverr.com/shubhamsunny?public_mode=true"
+    }
+  ]
+}
