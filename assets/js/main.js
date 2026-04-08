@@ -7,7 +7,10 @@ const showMenu = (toggleId, navId) =>{
         toggle.addEventListener('click', ()=>{
             nav.classList.toggle('show-menu')
             var open = nav.classList.contains('show-menu')
+            toggle.classList.toggle('is-open', open)
             toggle.setAttribute('aria-expanded', open ? 'true' : 'false')
+            toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu')
+            document.body.classList.toggle('nav-menu-open', open)
         })
     }
 }
@@ -20,7 +23,12 @@ function closeNavMenu(){
     const navMenu = document.getElementById('nav-menu')
     const t = document.querySelector('.nav__toggle')
     if (navMenu) navMenu.classList.remove('show-menu')
-    if (t) t.setAttribute('aria-expanded', 'false')
+    if (t) {
+        t.setAttribute('aria-expanded', 'false')
+        t.setAttribute('aria-label', 'Open menu')
+        t.classList.remove('is-open')
+    }
+    document.body.classList.remove('nav-menu-open')
 }
 
 navAnchors.forEach(function (link) {
@@ -38,6 +46,16 @@ navAnchors.forEach(function (link) {
         }
         closeNavMenu()
     })
+})
+
+document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return
+    if (!document.body.classList.contains('nav-menu-open')) return
+    closeNavMenu()
+})
+
+window.addEventListener('resize', function () {
+    if (window.matchMedia('(min-width: 992px)').matches) closeNavMenu()
 })
 
 /* Stacked sections: offsetTop ranges overlap; use last section whose top crossed the header line. */

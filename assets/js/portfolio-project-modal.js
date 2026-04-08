@@ -28,6 +28,46 @@
     };
   }
 
+  function mergeProjectLinks(raw) {
+    var seen = {};
+    var out = [];
+    function pushList(list) {
+      (list || []).forEach(function (lnk) {
+        if (!lnk || !lnk.href) return;
+        var h = String(lnk.href);
+        if (seen[h]) return;
+        seen[h] = true;
+        out.push(lnk);
+      });
+    }
+    if (raw && raw.detail) pushList(raw.detail.links);
+    if (raw && raw.card) pushList(raw.card.links);
+    return out;
+  }
+
+  function isVideoOrDemoLink(lnk) {
+    if (!lnk || !lnk.href) return false;
+    if (lnk.kind === "video" || lnk.kind === "demo") return true;
+    var href = String(lnk.href).toLowerCase();
+    var text = String(lnk.text || "").toLowerCase();
+    if (/watch|demo|clip|video/.test(text)) return true;
+    if (
+      /drive\.google\.com\/file|youtube\.com|youtu\.be|vimeo\.com/.test(href)
+    )
+      return true;
+    return false;
+  }
+
+  function isGitHubLink(lnk) {
+    if (!lnk || !lnk.href) return false;
+    if (lnk.kind === "github") return true;
+    return /github\.com/i.test(lnk.href) || /github/i.test(lnk.text || "");
+  }
+
+  function isStickyQuickLink(lnk) {
+    return isVideoOrDemoLink(lnk) || isGitHubLink(lnk);
+  }
+
   var modal = document.getElementById("project-detail-modal");
   if (!modal) return;
 
@@ -40,6 +80,8 @@
   var overviewEl = document.getElementById("project-detail-overview");
   var timelineEl = document.getElementById("project-detail-timeline");
   var actionsEl = document.getElementById("project-detail-actions");
+  var stickyRailEl = document.getElementById("project-detail-sticky-rail");
+  var stickyActionsEl = document.getElementById("project-detail-sticky-actions");
   var lastFocus = null;
   var thumbButtons = [];
 
@@ -129,18 +171,58 @@
       timelineEl.appendChild(li);
     });
 
+    var allLinks = mergeProjectLinks(raw);
+    var stickyLinks = allLinks.filter(isStickyQuickLink);
+    var otherLinks = allLinks.filter(function (lnk) {
+      return !isStickyQuickLink(lnk);
+    });
+
+    if (stickyActionsEl && stickyRailEl) {
+      stickyActionsEl.innerHTML = "";
+      if (stickyLinks.length) {
+        stickyRailEl.hidden = false;
+        stickyLinks.sort(function (a, b) {
+          return (isGitHubLink(a) ? 1 : 0) - (isGitHubLink(b) ? 1 : 0);
+        });
+        stickyLinks.forEach(function (lnk) {
+          var a = document.createElement("a");
+          a.href = lnk.href;
+          var gh = isGitHubLink(lnk);
+          a.className =
+            "project-detail__sticky-btn" +
+            (gh
+              ? " project-detail__sticky-btn--github"
+              : " project-detail__sticky-btn--video");
+          if (lnk.external !== false) {
+            a.target = "_blank";
+            a.rel = "noopener noreferrer";
+          }
+          var icon = document.createElement("i");
+          icon.setAttribute("aria-hidden", "true");
+          icon.className = gh ? "bx bxl-github" : "bx bx-play-circle";
+          var label = document.createElement("span");
+          label.textContent = lnk.text || (gh ? "GitHub" : "Demo");
+          a.appendChild(icon);
+          a.appendChild(label);
+          stickyActionsEl.appendChild(a);
+        });
+      } else {
+        stickyRailEl.hidden = true;
+      }
+    }
+
     actionsEl.innerHTML = "";
-    if (data.links && data.links.length) {
-      data.links.forEach(function (lnk) {
-        var a = document.createElement("a");
-        a.href = lnk.href;
-        a.className = "button button--primary project-detail__action";
+    otherLinks.forEach(function (lnk) {
+      var a = document.createElement("a");
+      a.href = lnk.href;
+      a.className = "button button--primary project-detail__action";
+      if (lnk.external !== false) {
         a.target = "_blank";
         a.rel = "noopener noreferrer";
-        a.textContent = lnk.text;
-        actionsEl.appendChild(a);
-      });
-    }
+      }
+      a.textContent = lnk.text;
+      actionsEl.appendChild(a);
+    });
 
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
