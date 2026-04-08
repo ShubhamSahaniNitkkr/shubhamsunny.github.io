@@ -58,7 +58,17 @@
 
     <header class="site-header l-header" id="header">
       <nav class="nav bd-container" aria-label="Primary">
-        <a href="#home" class="nav__logo">Shubham Sunny</a>
+        <a href="#home" class="nav__logo">
+          <img
+            class="nav__logo-icon"
+            src="assets/img/favicon.ico"
+            alt=""
+            width="28"
+            height="28"
+            decoding="async"
+          />
+          <span class="nav__logo-text">Shubham Sunny</span>
+        </a>
 
         <a
           class="nav__email"
@@ -110,7 +120,8 @@
           aria-expanded="false"
           aria-controls="nav-menu"
         >
-          <i class="bx bx-menu" aria-hidden="true"></i>
+          <i class="bx bx-menu nav__toggle-icon nav__toggle-icon--open" aria-hidden="true"></i>
+          <i class="bx bx-x nav__toggle-icon nav__toggle-icon--close" aria-hidden="true"></i>
         </button>
       </nav>
     </header>
@@ -785,36 +796,52 @@
             ></div>
           </div>
           <div class="project-detail__pane">
-            <p
-              class="project-detail__kicker"
-              id="project-detail-banner-subtitle"
-            ></p>
-            <h2 class="project-detail__title" id="project-detail-title">
-              Project
-            </h2>
-            <div
-              class="project-detail__overview prose"
-              id="project-detail-overview"
-            ></div>
-            <section
-              class="project-detail__timeline-section"
-              aria-labelledby="project-detail-timeline-heading"
-            >
-              <h3
-                class="project-detail__section-title"
-                id="project-detail-timeline-heading"
+            <div class="project-detail__pane-body">
+              <div class="project-detail__main">
+                <p
+                  class="project-detail__kicker"
+                  id="project-detail-banner-subtitle"
+                ></p>
+                <h2 class="project-detail__title" id="project-detail-title">
+                  Project
+                </h2>
+                <div
+                  class="project-detail__overview prose"
+                  id="project-detail-overview"
+                ></div>
+                <section
+                  class="project-detail__timeline-section"
+                  aria-labelledby="project-detail-timeline-heading"
+                >
+                  <h3
+                    class="project-detail__section-title"
+                    id="project-detail-timeline-heading"
+                  >
+                    How we got there
+                  </h3>
+                  <ol
+                    class="project-detail__timeline"
+                    id="project-detail-timeline"
+                  ></ol>
+                </section>
+                <div
+                  class="project-detail__actions"
+                  id="project-detail-actions"
+                ></div>
+              </div>
+              <aside
+                class="project-detail__sticky-rail"
+                id="project-detail-sticky-rail"
+                aria-label="Video and repository links"
+                hidden
               >
-                How we got there
-              </h3>
-              <ol
-                class="project-detail__timeline"
-                id="project-detail-timeline"
-              ></ol>
-            </section>
-            <div
-              class="project-detail__actions"
-              id="project-detail-actions"
-            ></div>
+                <p class="project-detail__sticky-heading">Quick links</p>
+                <div
+                  class="project-detail__sticky-actions"
+                  id="project-detail-sticky-actions"
+                ></div>
+              </aside>
+            </div>
           </div>
         </div>
       </div>
