@@ -6,39 +6,88 @@ const showMenu = (toggleId, navId) =>{
     if(toggle && nav){
         toggle.addEventListener('click', ()=>{
             nav.classList.toggle('show-menu')
+            var open = nav.classList.contains('show-menu')
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false')
         })
     }
 }
 showMenu('nav-toggle','nav-menu')
 
-/*===== REMOVE MENU MOBILE =====*/
-const navLink = document.querySelectorAll('.nav__link')
+/*===== NAV: MOBILE CLOSE + IN-PAGE SCROLL (sticky stack–safe) =====*/
+const navAnchors = document.querySelectorAll('.nav__menu .nav__link[href^="#"]')
 
-function linkAction(){
+function closeNavMenu(){
     const navMenu = document.getElementById('nav-menu')
-    navMenu.classList.remove('show-menu')
+    const t = document.querySelector('.nav__toggle')
+    if (navMenu) navMenu.classList.remove('show-menu')
+    if (t) t.setAttribute('aria-expanded', 'false')
 }
-navLink.forEach(n => n.addEventListener('click', linkAction))
 
-/*===== SCROLL SECTIONS ACTIVE LINK =====*/
-const sections = document.querySelectorAll('section[id]')
+navAnchors.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+        const href = link.getAttribute('href')
+        if (href && href.length > 1) {
+            const id = href.slice(1)
+            const target = document.getElementById(id)
+            if (target) {
+                e.preventDefault()
+                target.scrollIntoView({ behavior: 'auto', block: 'start' })
+                history.replaceState(null, '', href)
+                requestAnimationFrame(updateActiveNav)
+            }
+        }
+        closeNavMenu()
+    })
+})
 
-function scrollActive(){
-    const scrollY = window.pageYOffset
+/* Stacked sections: offsetTop ranges overlap; use last section whose top crossed the header line. */
+function updateActiveNav() {
+    var header = document.getElementById('header')
+    var trigger = (header ? header.offsetHeight : 64) + 24
+    var sections = document.querySelectorAll('main section[id]')
+    var currentId = sections.length ? sections[0].getAttribute('id') : 'home'
 
-    sections.forEach(current =>{
-        const sectionHeight = current.offsetHeight
-        const sectionTop = current.offsetTop - 50;
-        sectionId = current.getAttribute('id')
+    sections.forEach(function (sec) {
+        if (sec.getBoundingClientRect().top <= trigger) {
+            currentId = sec.getAttribute('id')
+        }
+    })
 
-        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
-        }else{
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link')
+    document.querySelectorAll('.nav__menu .nav__link[href^="#"]').forEach(function (link) {
+        var on = link.getAttribute('href') === '#' + currentId
+        link.classList.toggle('active-link', on)
+    })
+}
+
+window.addEventListener('scroll', updateActiveNav, { passive: true })
+window.addEventListener('resize', updateActiveNav)
+window.addEventListener('load', updateActiveNav)
+window.addEventListener('hashchange', updateActiveNav)
+document.addEventListener('site-data-ready', function () {
+    requestAnimationFrame(updateActiveNav)
+})
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateActiveNav)
+} else {
+    updateActiveNav()
+}
+
+var navLogo = document.querySelector('.nav__logo[href^="#"]')
+if (navLogo) {
+    navLogo.addEventListener('click', function (e) {
+        var href = navLogo.getAttribute('href')
+        if (href && href.length > 1) {
+            var target = document.getElementById(href.slice(1))
+            if (target) {
+                e.preventDefault()
+                target.scrollIntoView({ behavior: 'auto', block: 'start' })
+                history.replaceState(null, '', href)
+                requestAnimationFrame(updateActiveNav)
+            }
         }
     })
 }
-window.addEventListener('scroll', scrollActive)
 
 /*===== CHANGE BACKGROUND HEADER =====*/ 
 function scrollHeader(){
@@ -54,54 +103,132 @@ function scrollTop(){
 }
 window.addEventListener('scroll', scrollTop)
 
-/*===== MIXITUP FILTER PORTFOLIO =====*/ 
-var mixer = mixitup(".portfolio__container", {
-    selectors: {
-        target: '.portfolio__content'
-    },
-    animation: {
-        duration: 400
+/*===== MIXITUP FILTER PORTFOLIO (after site data loads) =====*/
+function initPortfolioMixer() {
+    var container = document.querySelector(".portfolio__container");
+    if (!container || !container.querySelector(".portfolio__content")) return;
+    if (window.portfolioMixer && typeof window.portfolioMixer.destroy === "function") {
+        window.portfolioMixer.destroy();
     }
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.portfolioMixer = mixitup(".portfolio__container", {
+        selectors: {
+            target: ".portfolio__content",
+        },
+        controls: {
+            enable: true,
+            scope: "global",
+        },
+        animation: {
+            enable: !reduceMotion,
+            duration: 220,
+            effects: "fade",
+            easing: "ease-out",
+            animateResizeContainer: false,
+            animateResizeTargets: false,
+            nudge: false,
+        },
+    });
+}
+document.addEventListener("site-data-ready", initPortfolioMixer);
+
+/* Link active portfolio + tab semantics */
+const linkPortfolio = document.querySelectorAll(".portfolio__item");
+
+function activePortfolio() {
+    if (!linkPortfolio) return;
+    linkPortfolio.forEach(function (l) {
+        l.classList.remove("active-portfolio");
+        l.setAttribute("aria-selected", "false");
+        l.setAttribute("tabindex", "-1");
+    });
+    this.classList.add("active-portfolio");
+    this.setAttribute("aria-selected", "true");
+    this.setAttribute("tabindex", "0");
+}
+linkPortfolio.forEach(function (l) {
+    l.addEventListener("click", activePortfolio);
 });
 
-/* Link active portfolio */ 
-const linkPortfolio = document.querySelectorAll('.portfolio__item')
+/* Testimonial swiper is initialized in index.html (single instance). */
 
-function activePortfolio(){
-    if(linkPortfolio){
-        linkPortfolio.forEach(l=> l.classList.remove('active-portfolio'))
-        this.classList.add('active-portfolio')
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  gsap.from('.home__img', { opacity: 0, duration: 1.1, delay: 0.35, y: 28, ease: 'power3.out' })
+
+  gsap.from('.home__data', { opacity: 0, duration: 1, delay: 0.45, y: 20, ease: 'power3.out' })
+  gsap.from(
+    '.home__greeting, .home__name, .home__profession, .home__tagline, .home__actions .button, .home__connect',
+    {
+      opacity: 0,
+      duration: 0.85,
+      delay: 0.55,
+      y: 18,
+      ease: 'power3.out',
+      stagger: 0.09,
     }
+  )
+
+  gsap.from('.nav__logo, .nav__toggle', {
+    opacity: 0,
+    duration: 0.7,
+    delay: 0.2,
+    y: 12,
+    ease: 'power3.out',
+    stagger: 0.05,
+  })
+  gsap.from('.nav__item', {
+    opacity: 0,
+    duration: 0.65,
+    delay: 0.35,
+    y: 10,
+    ease: 'power3.out',
+    stagger: 0.05,
+  })
+  gsap.from('.home__social-icon', {
+    opacity: 0,
+    duration: 0.75,
+    delay: 0.95,
+    y: 12,
+    ease: 'power3.out',
+    stagger: 0.06,
+  })
 }
-linkPortfolio.forEach(l=> l.addEventListener('click', activePortfolio))
 
-/*===== SWIPER CAROUSEL =====*/ 
-const mySwiper = new Swiper('.testimonial__container', {
-    spaceBetween: 16,
-    loop: true,
-    grabCursor: true,
-    
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    breakpoints: {
-        640: {
-            slidesPerView: 2,
-        },
-        1024: {
-            slidesPerView: 3,
-        },
+/*===== SCROLL REVEAL (premium section entrance) =====*/
+document.querySelectorAll('section[id]:not(#home)').forEach(function (sec) {
+    if (sec.classList.contains('testimonial--bleed')) {
+        sec.classList.add('js-reveal')
+        return
     }
+    var inner = sec.querySelector('.section__inner')
+    if (inner) {
+        inner.classList.add('js-reveal')
+        return
+    }
+    inner = sec.querySelector('.bd-container')
+    if (!inner && sec.classList.contains('bd-container')) inner = sec
+    if (inner) inner.classList.add('js-reveal')
 })
 
-gsap.from('.home__img', {opacity: 0, duration: 2, delay: .5, x: 60})
-
-gsap.from('.home__data', {opacity: 0, duration: 2, delay: .8, y: 25})
-gsap.from('.home__greeting, .home__name, .home__profession, .home__button', {opacity: 0, duration: 2, delay: 1, y: 25, ease:'expo.out', stagger: .2})
-
-gsap.from('.nav__logo, .nav__toggle', {opacity:0, duration: 2, delay: 1.5, y: 25, ease:'expo.out', stagger: .2});
-gsap.from('.nav__item', {opacity:0, duration: 2, delay: 1.8, y: 25, ease:'expo.out', stagger: .2});
-gsap.from('.home__social-icon', {opacity: 0, duration: 2.5, delay: 2.3, y: 25, ease:'expo.out', stagger: .2})
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var revealIo = new IntersectionObserver(
+        function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('js-reveal--visible')
+                    revealIo.unobserve(e.target)
+                }
+            })
+        },
+        { root: null, rootMargin: '0px 0px -8% 0px', threshold: 0.08 }
+    )
+    document.querySelectorAll('.js-reveal').forEach(function (el) {
+        revealIo.observe(el)
+    })
+} else {
+    document.querySelectorAll('.js-reveal').forEach(function (el) {
+        el.classList.add('js-reveal--visible')
+    })
+}
 
 

@@ -1,0 +1,30 @@
+name: Rollback After E2E Failure
+
+on:
+  repository_dispatch:
+    types: [rollback-prod]
+
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    if: ${{ vars.ROLLBACK_ENABLED == 'true' }}
+
+    steps:
+      - name: Print Rollback Payload
+        run: |
+          echo "Rollback requested"
+          echo "Env: ${{ github.event.client_payload.env }}"
+          echo "SHA: ${{ github.event.client_payload.sha }}"
+          echo "BaseURL: ${{ github.event.client_payload.baseUrl }}"
+          echo "E2E Run URL: ${{ github.event.client_payload.e2eRunUrl }}"
+
+      - name: Execute Rollback
+        run: |
+          echo "Run rollback command here"
+          # Example for Kubernetes:
+          # kubectl rollout undo deployment/myapp
+
+          # Example for Docker:
+          # docker service update --image myapp:previous myapp
+
+          # Example for ECS/Vercel - depends on your infra

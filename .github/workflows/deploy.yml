@@ -1,0 +1,55 @@
+name: Deploy and Trigger E2E
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    outputs:
+      baseUrl: ${{ steps.seturl.outputs.baseUrl }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Vite App
+        run: npm run build
+
+      - name: Deploy
+        run: |
+          echo "Deploy your app here..."
+          # Your deployment command goes here
+
+      - name: Set Deployed URL
+        id: seturl
+        run: |
+          echo "baseUrl=${{ vars.DEPLOYED_BASE_URL }}" >> $GITHUB_OUTPUT
+
+  trigger-e2e:
+    needs: deploy
+    runs-on: ubuntu-latest
+    if: ${{ vars.E2E_ENABLED == 'true' }}
+
+    steps:
+      - name: Trigger Playwright Repo
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.REPO_DISPATCH_TOKEN }}
+          repository: ${{ vars.E2E_REPO }}
+          event-type: run-e2e
+          client-payload: |
+            {
+              "baseUrl": "${{ needs.deploy.outputs.baseUrl }}",
+              "env": "${{ vars.E2E_ENV }}",
+              "sha": "${{ github.sha }}"
+            }
