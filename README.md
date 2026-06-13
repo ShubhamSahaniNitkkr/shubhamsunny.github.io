@@ -48,10 +48,10 @@ We proudly serve clients across:
 
 ## 📬 Get in Touch
 
-💼 **Company**: Shubham Sunny Softwares Pvt. Ltd.  
+💼 **Company**: http://shubhamsunny.com 
 📧 **Email**: [shubhamsahaninitkkr@gmail.com](mailto:shubhamsahaninitkkr@gmail.com)  
-🌐 **Website**: Coming soon...  
-🐙 **GitHub**: [github.com/ShubhamSunnySoftwaresPvtLtd](https://github.com/ShubhamSunnySoftwaresPvtLtd)
+🌐 **Website**: http://shubhamsunny.com 
+🐙 **GitHub**: [https://github.com/ShubhamSahaniNitkkr)
 
 ---
 
