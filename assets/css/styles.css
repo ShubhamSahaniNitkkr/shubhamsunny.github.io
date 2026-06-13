@@ -4008,6 +4008,19 @@ body.project-detail-open {
   background: #fff;
 }
 
+.project-card__iframe-wrap--idle {
+  background:
+    linear-gradient(
+      110deg,
+      rgba(15, 118, 110, 0.06) 0%,
+      rgba(15, 118, 110, 0.02) 45%,
+      rgba(15, 118, 110, 0.06) 90%
+    ),
+    #f8fafc;
+  background-size: 200% 100%;
+  animation: project-preview-shimmer 1.4s ease-in-out infinite;
+}
+
 .project-card__iframe-wrap:has(.project-card__iframe--idle) {
   background:
     linear-gradient(
@@ -4019,6 +4032,50 @@ body.project-detail-open {
     #f8fafc;
   background-size: 200% 100%;
   animation: project-preview-shimmer 1.4s ease-in-out infinite;
+}
+
+.project-card__iframe-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  background: rgba(248, 250, 252, 0.94);
+  pointer-events: none;
+}
+
+.project-card__iframe-loading[hidden] {
+  display: none !important;
+}
+
+.project-card__iframe-spinner {
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 2.5px solid rgba(15, 118, 110, 0.18);
+  border-top-color: var(--accent, #0f766e);
+  border-radius: 50%;
+  animation: project-iframe-spin 0.75s linear infinite;
+}
+
+.project-card__iframe-loading-text {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--accent, #0f766e);
+  letter-spacing: 0.02em;
+}
+
+@keyframes project-iframe-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.project-card__iframe-wrap--loading .project-card__iframe {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .project-card__iframe--idle {
@@ -4036,9 +4093,15 @@ body.project-detail-open {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .project-card__iframe-wrap--idle,
   .project-card__iframe-wrap:has(.project-card__iframe--idle) {
     animation: none;
     background: #f8fafc;
+  }
+
+  .project-card__iframe-spinner {
+    animation: none;
+    border-top-color: rgba(15, 118, 110, 0.18);
   }
 }
 

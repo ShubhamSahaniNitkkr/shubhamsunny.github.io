@@ -37,6 +37,8 @@
     "client-work",
   ];
 
+  var IFRAME_LOAD_TIMEOUT_MS = 15000;
+
   function esc(s) {
     return String(s == null ? "" : s)
       .replace(/&/g, "&amp;")
@@ -148,17 +150,29 @@
     var iframeSrcAttr = opts.lazyIframe
       ? ' data-src="' + url + '"'
       : ' src="' + url + '"';
+    var wrapStateClass = opts.lazyIframe
+      ? " project-card__iframe-wrap--idle"
+      : " project-card__iframe-wrap--loading";
+    var loadingHidden = opts.lazyIframe ? " hidden" : "";
 
     return (
       '<div class="project-card__preview">' +
-      '<div class="project-card__iframe-wrap">' +
+      '<div class="project-card__iframe-wrap' +
+      wrapStateClass +
+      '">' +
+      '<div class="project-card__iframe-loading"' +
+      loadingHidden +
+      ' aria-live="polite">' +
+      '<span class="project-card__iframe-spinner" aria-hidden="true"></span>' +
+      '<span class="project-card__iframe-loading-text">Loading preview</span>' +
+      "</div>" +
       '<iframe class="project-card__iframe' +
-      (opts.lazyIframe ? " project-card__iframe--idle" : "") +
+      (opts.lazyIframe ? " project-card__iframe--idle" : " project-card__iframe--loading") +
       '"' +
       iframeSrcAttr +
       ' title="' +
       title +
-      ' live preview" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" referrerpolicy="no-referrer"></iframe>' +
+      ' live preview" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" referrerpolicy="no-referrer"></iframe>' +
       "</div>" +
       '<div class="project-card__preview-fallback" hidden>' +
       "<p>Preview unavailable — site may block embedding.</p>" +
@@ -221,34 +235,137 @@
     );
   }
 
-  function wireIframeErrors(container) {
+  function getIframeWrap(frame) {
+    return frame ? frame.closest(".project-card__iframe-wrap") : null;
+  }
+
+  function getIframeLoadingEl(wrap) {
+    return wrap ? wrap.querySelector(".project-card__iframe-loading") : null;
+  }
+
+  function clearIframeLoadTimer(frame) {
+    if (!frame || !frame.dataset.loadTimer) return;
+    clearTimeout(Number(frame.dataset.loadTimer));
+    delete frame.dataset.loadTimer;
+  }
+
+  function setIframeLoadingUi(wrap, visible) {
+    if (!wrap) return;
+    var loadingEl = getIframeLoadingEl(wrap);
+    if (!loadingEl) return;
+    if (visible) loadingEl.removeAttribute("hidden");
+    else loadingEl.setAttribute("hidden", "");
+  }
+
+  function showIframeFallback(frame) {
+    if (!frame || frame.dataset.previewFailed === "1") return;
+    frame.dataset.previewFailed = "1";
+    clearIframeLoadTimer(frame);
+
+    var preview = frame.closest(".project-card__preview");
+    if (!preview) return;
+
+    var wrap = getIframeWrap(frame);
+    if (wrap) {
+      wrap.setAttribute("hidden", "");
+      wrap.classList.remove(
+        "project-card__iframe-wrap--idle",
+        "project-card__iframe-wrap--loading",
+        "project-card__iframe-wrap--ready"
+      );
+      wrap.classList.add("project-card__iframe-wrap--failed");
+      setIframeLoadingUi(wrap, false);
+    }
+
+    frame.removeAttribute("src");
+    frame.classList.remove(
+      "project-card__iframe--idle",
+      "project-card__iframe--loading",
+      "project-card__iframe--loaded"
+    );
+
+    var fb = preview.querySelector(".project-card__preview-fallback");
+    if (fb) fb.removeAttribute("hidden");
+  }
+
+  function markIframeLoaded(frame) {
+    if (!frame || !frame.getAttribute("src") || frame.dataset.previewFailed === "1") return;
+    clearIframeLoadTimer(frame);
+
+    frame.classList.remove("project-card__iframe--idle", "project-card__iframe--loading");
+    frame.classList.add("project-card__iframe--loaded");
+
+    var wrap = getIframeWrap(frame);
+    if (wrap) {
+      wrap.classList.remove("project-card__iframe-wrap--idle", "project-card__iframe-wrap--loading");
+      wrap.classList.add("project-card__iframe-wrap--ready");
+      setIframeLoadingUi(wrap, false);
+    }
+  }
+
+  function wireIframeLifecycle(container) {
     if (!container) return;
     container.querySelectorAll(".project-card__iframe").forEach(function (frame) {
-      if (frame.dataset.errorBound === "1") return;
-      frame.addEventListener("error", function () {
-        var wrap = frame.closest(".project-card__preview");
-        if (!wrap) return;
-        var iframeWrap = wrap.querySelector(".project-card__iframe-wrap");
-        if (iframeWrap) iframeWrap.setAttribute("hidden", "");
-        var fb = wrap.querySelector(".project-card__preview-fallback");
-        if (fb) fb.removeAttribute("hidden");
+      if (frame.dataset.lifecycleBound === "1") return;
+
+      frame.addEventListener("load", function () {
+        if (!frame.getAttribute("src")) return;
+        if (frame.classList.contains("project-card__iframe--loading")) {
+          markIframeLoaded(frame);
+        }
       });
-      frame.dataset.errorBound = "1";
+
+      frame.addEventListener("error", function () {
+        showIframeFallback(frame);
+      });
+
+      frame.dataset.lifecycleBound = "1";
     });
   }
 
   function loadLazyIframe(frame) {
-    if (!frame) return;
+    if (!frame || frame.dataset.previewFailed === "1") return;
     var src = frame.getAttribute("data-src");
     if (!src || frame.getAttribute("src")) return;
+
+    var wrap = getIframeWrap(frame);
+    if (wrap) {
+      wrap.classList.remove("project-card__iframe-wrap--idle", "project-card__iframe-wrap--ready");
+      wrap.classList.add("project-card__iframe-wrap--loading");
+      setIframeLoadingUi(wrap, true);
+    }
+
+    frame.classList.remove("project-card__iframe--idle", "project-card__iframe--loaded");
+    frame.classList.add("project-card__iframe--loading");
     frame.setAttribute("src", src);
-    frame.classList.remove("project-card__iframe--idle");
+
+    clearIframeLoadTimer(frame);
+    frame.dataset.loadTimer = String(
+      setTimeout(function () {
+        if (frame.classList.contains("project-card__iframe--loading")) {
+          showIframeFallback(frame);
+        }
+      }, IFRAME_LOAD_TIMEOUT_MS)
+    );
   }
 
   function unloadLazyIframe(frame) {
-    if (!frame || !frame.getAttribute("src")) return;
-    frame.removeAttribute("src");
+    if (!frame) return;
+    clearIframeLoadTimer(frame);
+
+    frame.classList.remove("project-card__iframe--loading", "project-card__iframe--loaded");
     frame.classList.add("project-card__iframe--idle");
+
+    if (frame.getAttribute("src")) {
+      frame.removeAttribute("src");
+    }
+
+    var wrap = getIframeWrap(frame);
+    if (wrap) {
+      wrap.classList.remove("project-card__iframe-wrap--loading", "project-card__iframe-wrap--ready");
+      wrap.classList.add("project-card__iframe-wrap--idle");
+      setIframeLoadingUi(wrap, false);
+    }
   }
 
   function unloadAllLazyIframes(container) {
@@ -269,6 +386,7 @@
     var maxLoaded = options.maxLoaded == null ? 4 : options.maxLoaded;
     var rootMargin = options.rootMargin || "160px 0px 160px 0px";
     var loadDelayMs = options.loadDelayMs == null ? 120 : options.loadDelayMs;
+    var minVisibleRatio = options.minVisibleRatio == null ? 0.08 : options.minVisibleRatio;
 
     var observer = null;
     var visibleCards = new Map();
@@ -284,7 +402,7 @@
 
       var visible = [];
       visibleCards.forEach(function (ratio, card) {
-        if (ratio > 0 && !card.hasAttribute("hidden")) {
+        if (ratio >= minVisibleRatio && !card.hasAttribute("hidden")) {
           visible.push({ card: card, ratio: ratio });
         }
       });
@@ -346,10 +464,11 @@
       var needsSync = false;
       entries.forEach(function (entry) {
         var card = entry.target;
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && entry.intersectionRatio >= minVisibleRatio) {
           visibleCards.set(card, entry.intersectionRatio);
           needsSync = true;
         } else {
+          if (visibleCards.has(card)) needsSync = true;
           visibleCards.delete(card);
           unloadLazyIframe(getIframe(card));
         }
@@ -532,7 +651,7 @@
       })
       .join("");
 
-    wireIframeErrors(modalGrid);
+    wireIframeLifecycle(modalGrid);
     renderProjectFilters(projects, "projects-modal-filters", "projects-modal-filters-wrap");
     wireProjectFilters(
       "projects-modal-filters",
@@ -553,9 +672,10 @@
     var modalIframeLoader = createViewportIframeLoader({
       root: modalBody,
       container: modalGrid,
-      maxLoaded: 3,
-      rootMargin: "180px 0px 220px 0px",
+      maxLoaded: 2,
+      rootMargin: "160px 0px 200px 0px",
       loadDelayMs: 150,
+      minVisibleRatio: 0.08,
     });
 
     if (wrap) {
@@ -627,12 +747,51 @@
   }
 
   var portfolioIframeLoader = null;
+  var portfolioSectionObserver = null;
+
+  function startLoaderWhenSectionVisible(sectionId, loader, rootMargin) {
+    if (!loader) return;
+    if (!sectionId || !("IntersectionObserver" in window)) {
+      loader.start();
+      return;
+    }
+
+    var section = document.getElementById(sectionId);
+    if (!section) {
+      loader.start();
+      return;
+    }
+
+    if (portfolioSectionObserver) {
+      portfolioSectionObserver.disconnect();
+      portfolioSectionObserver = null;
+    }
+
+    portfolioSectionObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          loader.start();
+          if (portfolioSectionObserver) {
+            portfolioSectionObserver.disconnect();
+            portfolioSectionObserver = null;
+          }
+        });
+      },
+      { rootMargin: rootMargin || "120px 0px 120px 0px", threshold: 0.01 }
+    );
+    portfolioSectionObserver.observe(section);
+  }
 
   function renderProjects(projects, previewCount) {
     var container = document.getElementById("portfolio-grid");
     if (!container || !projects || !projects.length) return;
 
     if (portfolioIframeLoader) portfolioIframeLoader.stop();
+    if (portfolioSectionObserver) {
+      portfolioSectionObserver.disconnect();
+      portfolioSectionObserver = null;
+    }
 
     var limit =
       previewCount == null || previewCount < 0
@@ -646,16 +805,17 @@
       })
       .join("");
 
-    wireIframeErrors(container);
+    wireIframeLifecycle(container);
 
     portfolioIframeLoader = createViewportIframeLoader({
       root: null,
       container: container,
       maxLoaded: 2,
-      rootMargin: "200px 0px 200px 0px",
-      loadDelayMs: 100,
+      rootMargin: "180px 0px 180px 0px",
+      loadDelayMs: 120,
+      minVisibleRatio: 0.08,
     });
-    portfolioIframeLoader.start();
+    startLoaderWhenSectionVisible("portfolio", portfolioIframeLoader, "160px 0px 160px 0px");
 
     document.addEventListener("portfolio-filtered", function onPortfolioFiltered() {
       if (portfolioIframeLoader) portfolioIframeLoader.refresh();

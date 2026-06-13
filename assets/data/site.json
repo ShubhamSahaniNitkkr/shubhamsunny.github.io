@@ -296,40 +296,6 @@
       ]
     },
     {
-      "slug": "real-estate-next-app",
-      "title": "Real Estate Listings",
-      "liveUrl": "https://shubhamsahaniNitkkr.github.io/real-estate-next-app/",
-      "host": "github-pages",
-      "bento": "tall",
-      "categories": [
-        "live-demo",
-        "full-stack",
-        "data"
-      ],
-      "highlights": [
-        "Property listings with Next.js 12, Chakra UI, and SSG.",
-        "Bayut RapidAPI integration with mock-data fallback.",
-        "Responsive cards with price, beds, baths, and agency info."
-      ]
-    },
-    {
-      "slug": "blue-ai",
-      "title": "Blue AI Chat",
-      "liveUrl": "https://shubhamsahaniNitkkr.github.io/blue-ai/",
-      "host": "github-pages",
-      "bento": "standard",
-      "categories": [
-        "live-demo",
-        "full-stack",
-        "automation"
-      ],
-      "highlights": [
-        "Draggable AI chat widget powered by Google Gemini.",
-        "React + Vite + Ant Design floating assistant UI.",
-        "Configurable via VITE_GEMINI_API_KEY environment variable."
-      ]
-    },
-    {
       "slug": "githubfinder",
       "title": "GitHub Finder",
       "liveUrl": "https://shubhamsahaniNitkkr.github.io/githubfinder/",
@@ -428,23 +394,6 @@
       ]
     },
     {
-      "slug": "blue-ai-chatbot",
-      "title": "Blue AI Chatbot Widget",
-      "liveUrl": "https://shubhamsahaniNitkkr.github.io/blue-ai-chatbot/",
-      "host": "github-pages",
-      "bento": "standard",
-      "categories": [
-        "live-demo",
-        "automation",
-        "full-stack"
-      ],
-      "highlights": [
-        "Embeddable IIFE chatbot widget for any website.",
-        "Page-aware responses with scroll-to-highlight feature.",
-        "React + Vite single-file build for drop-in deployment."
-      ]
-    },
-    {
       "slug": "guess-pokemon",
       "title": "Guess the Pokemon",
       "liveUrl": "https://shubhamsahaniNitkkr.github.io/AngularjsGuessPokemon/",
@@ -522,22 +471,6 @@
         "CSS-only Android-style mobile app UI mockup.",
         "Material-style cards, buttons, and quiz layout.",
         "No framework — pure CSS responsive design."
-      ]
-    },
-    {
-      "slug": "js-filteration",
-      "title": "JS Filteration Portal",
-      "liveUrl": "https://shubhamsahaniNitkkr.github.io/JS-Filteration/",
-      "host": "github-pages",
-      "bento": "half",
-      "categories": [
-        "live-demo",
-        "data"
-      ],
-      "highlights": [
-        "Client-side data filtering and sorting demo.",
-        "Static portal with JSON resource loading.",
-        "Converted from PHP to fetch-based static site."
       ]
     }
   ],
