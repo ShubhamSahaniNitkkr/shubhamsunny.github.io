@@ -1,77 +1,151 @@
-# 🚀 Shubham Sunny Softwares Pvt. Ltd.
+# Shubham Sunny
 
-**Shubham Sunny Softwares Pvt. Ltd.** is a premium **software development company in India** delivering cutting-edge **web apps, mobile apps, AI chatbots, automation tools, Chrome extensions, and custom enterprise solutions**.
+**Senior Software Developer** · 7+ years building scalable web applications, intelligent automation, and AI-driven products.
 
-With **7+ years of experience**, we specialize in building **scalable, secure, and user-friendly software solutions** using modern technologies like **React, Node.js, React Native, Firebase, Python, and AI/ML integrations**.
-
----
-
-## 🌟 Our Services
-
-✅ **Web Application Development** – Responsive, fast, and SEO-friendly websites using React, Next.js, Node.js, and Firebase.  
-✅ **Mobile App Development** – Cross-platform apps for **Android & iOS** using React Native and Flutter.  
-✅ **AI & Automation** – Intelligent chatbots, process automation, and AI-powered business tools.  
-✅ **Data Scraping & Mining** – Extract, analyze, and organize valuable data from websites and mobile apps.  
-✅ **Chrome Extensions** – Lightweight, secure, and productive browser extensions.  
-✅ **Desktop Applications** – Custom **Windows 11 desktop apps** with Electron and .NET.  
-✅ **Cloud & Firebase Solutions** – Real-time databases, authentication, and scalable backend services.
+Live site: [shubhamsunny.com](https://shubhamsunny.com)
 
 ---
 
-## 💡 Why Choose Us?
+## Profile
 
-- 🔹 7+ years of professional development experience
-- 🔹 Delivered 100+ successful projects worldwide
-- 🔹 Clients from **USA, Canada, UK, India & Europe**
-- 🔹 Expertise in **scalable architecture & secure solutions**
-- 🔹 Transparent communication & agile methodology
-
----
-
-## 🛠️ Tech Stack & Skills
-
-- **Frontend**: React.js, Next.js, HTML, CSS, JavaScript, TailwindCSS, Bootstrap
-- **Backend**: Node.js, Express.js, Firebase, MongoDB, SQL
-- **Mobile**: React Native, Flutter, Android SDK
-- **AI / Automation**: Python, OpenAI, TensorFlow, Auto.js, RPA
-- **Desktop**: Electron.js, C#, .NET, Windows app development
-- **Other**: GitHub Actions, Docker, CI/CD, Cloud deployment (AWS, GCP, Firebase)
+| | |
+|---|---|
+| **Role** | Senior Software Developer |
+| **Education** | B.Tech, Information Technology — NIT Kurukshetra |
+| **Location** | Patna, Bihar, India (Remote) |
+| **Open to** | Full-time · Part-time · Freelance |
+| **Email** | [shubhamsahaninitkkr@gmail.com](mailto:shubhamsahaninitkkr@gmail.com) |
+| **GitHub** | [github.com/ShubhamSahaniNitkkr](https://github.com/ShubhamSahaniNitkkr) |
+| **LinkedIn** | [linkedin.com/in/shubham-sunny-09b013129](https://www.linkedin.com/in/shubham-sunny-09b013129/) |
 
 ---
 
-## 🌍 Global Reach
+## What I Do
 
-We proudly serve clients across:  
-🇺🇸 United States | 🇨🇦 Canada | 🇬🇧 United Kingdom | 🇮🇳 India | 🇩🇪 Germany | 🇦🇺 Australia
+I lead development of internal tools, real-time dashboards, and AI-powered workflows for teams that need engineering that holds up after launch. My work spans:
 
----
+- **Scalable web applications** — React, TypeScript, Node.js, performance at scale
+- **AI-driven products** — OpenAI, LangChain, RAG systems, frontend ML integration
+- **Intelligent automation** — workflow automation, browser automation, data pipelines
+- **System design** — frontend architecture, state management, API integration
 
-## 📬 Get in Touch
-
-💼 **Company**: http://shubhamsunny.com 
-📧 **Email**: [shubhamsahaninitkkr@gmail.com](mailto:shubhamsahaninitkkr@gmail.com)  
-🌐 **Website**: http://shubhamsunny.com 
-🐙 **GitHub**: [https://github.com/ShubhamSahaniNitkkr)
+Currently **Senior Software Developer at Yum! Brands**. Previously at Kvantum Marketing Insights, Tolexo Online, and Triyama Software.
 
 ---
 
-## ⭐ Client Reviews
+## Featured Projects
 
-> "Great experience working with Sunny! Delivered excellent results on a challenging data scraping project with clear communication." – UK Client
+| Project | Live demo |
+|---------|-----------|
+| Massive Data Explorer | [mde-web.onrender.com](https://mde-web.onrender.com) |
+| Offline First Task Management App | [offline-first-task-management-app-ui.onrender.com](https://offline-first-task-management-app-ui.onrender.com) |
+| Server Driven UI | [sdui-pypy.onrender.com](https://sdui-pypy.onrender.com) |
+| Frontend Plugin Platform | [fpp-host.onrender.com](https://fpp-host.onrender.com) |
+| NPM Module for Server Driven UI | [npmjs.com/~shubhamsunnynitkkr](https://www.npmjs.com/~shubhamsunnynitkkr) |
 
-> "Did an excellent job with mobile app automation & extraction. Highly recommended." – US Client
-
-> "Professional, responsive, and skilled in building web apps. Will hire again." – Canada Client
-
----
-
-## 📈 Keywords to Help You Find Us
-
-**Software Development Company India, React Developer, Node.js Developer, React Native Mobile Apps, AI Chatbot Development, Data Scraping Services, Chrome Extension Developer, Desktop App Developer, Automation Tools, Firebase Expert, Web & Mobile Development Services, Full-Stack Developer, Shubham Sunny Softwares Pvt. Ltd.**
+Each project is rendered on the portfolio site with a live iframe preview and highlight bullets — managed from a single JSON file (see below).
 
 ---
 
-## 🤝 Let's Build Together!
+## Site configuration
 
-We love collaborating with startups, businesses, and entrepreneurs to create software solutions that scale.  
-**Have an idea? Let’s make it real.**
+All dynamic content lives in **`assets/data/site.json`**. After any edit, sync the bundled copy:
+
+```bash
+node scripts/sync-site-data.js
+```
+
+### Hide or show sections
+
+Set any section to `false` in `sections` — the block and its nav link disappear automatically:
+
+```json
+"sections": {
+  "home": true,
+  "about": true,
+  "experience": true,
+  "skills": true,
+  "portfolio": true,
+  "resume": true,
+  "testimonial": false,
+  "services": true,
+  "contact": true
+}
+```
+
+Available keys: `home`, `about`, `experience`, `skills`, `portfolio`, `resume`, `testimonial`, `services`, `contact`.
+
+### Add a project
+
+Paste a new object into the `projects` array:
+
+```json
+{
+  "slug": "my-new-project",
+  "title": "My New Project",
+  "liveUrl": "https://example.com",
+  "highlights": [
+    "First bullet — what you built.",
+    "Second bullet — tech or impact.",
+    "Third bullet — optional."
+  ]
+}
+```
+
+Then run `node scripts/sync-site-data.js` and refresh.
+
+### Resume PDF path
+
+Update the path in `site.json`:
+
+```json
+"resume": {
+  "pdf": "assets/pdf/Shubham_Sunny_Resume_2026_updated.pdf"
+}
+```
+
+Download links and the resume iframe preview both use this path.
+
+---
+
+## Local preview
+
+Open `index.html` directly in a browser, or serve the folder:
+
+```bash
+npx serve .
+# or
+python3 -m http.server 8080
+```
+
+The site uses `assets/js/site-data.js` (generated from `site.json`) so it works over `file://` without a server.
+
+---
+
+## Deploy
+
+GitHub Pages deploys from `master` via `.github/workflows/deploy.yml`. Push to publish.
+
+Custom domain: **shubhamsunny.com** (see `CNAME`).
+
+---
+
+## Tech stack (this site)
+
+Static HTML · CSS · vanilla JavaScript · JSON-driven content · GitHub Pages
+
+---
+
+## Contact
+
+Interested in **full-time**, **part-time**, or **freelance** work?
+
+- **Email:** shubhamsahaninitkkr@gmail.com
+- **WhatsApp:** +91 97718 23804
+- **Website:** [shubhamsunny.com](https://shubhamsunny.com)
+
+---
+
+<p align="center">
+  <sub>© 2026 Shubham Sunny · Built with care for recruiters, hiring managers, and clients.</sub>
+</p>

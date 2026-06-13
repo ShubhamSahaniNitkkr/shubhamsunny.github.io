@@ -121,55 +121,6 @@ function scrollTop(){
 }
 window.addEventListener('scroll', scrollTop)
 
-/*===== MIXITUP FILTER PORTFOLIO (after site data loads) =====*/
-function initPortfolioMixer() {
-    var container = document.querySelector(".portfolio__container");
-    if (!container || !container.querySelector(".portfolio__content")) return;
-    if (window.portfolioMixer && typeof window.portfolioMixer.destroy === "function") {
-        window.portfolioMixer.destroy();
-    }
-    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.portfolioMixer = mixitup(".portfolio__container", {
-        selectors: {
-            target: ".portfolio__content",
-        },
-        controls: {
-            enable: true,
-            scope: "global",
-        },
-        animation: {
-            enable: !reduceMotion,
-            duration: 220,
-            effects: "fade",
-            easing: "ease-out",
-            animateResizeContainer: false,
-            animateResizeTargets: false,
-            nudge: false,
-        },
-    });
-}
-document.addEventListener("site-data-ready", initPortfolioMixer);
-
-/* Link active portfolio + tab semantics */
-const linkPortfolio = document.querySelectorAll(".portfolio__item");
-
-function activePortfolio() {
-    if (!linkPortfolio) return;
-    linkPortfolio.forEach(function (l) {
-        l.classList.remove("active-portfolio");
-        l.setAttribute("aria-selected", "false");
-        l.setAttribute("tabindex", "-1");
-    });
-    this.classList.add("active-portfolio");
-    this.setAttribute("aria-selected", "true");
-    this.setAttribute("tabindex", "0");
-}
-linkPortfolio.forEach(function (l) {
-    l.addEventListener("click", activePortfolio);
-});
-
-/* Testimonial swiper is initialized in index.html (single instance). */
-
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   gsap.from('.home__img', { opacity: 0, duration: 1.1, delay: 0.35, y: 28, ease: 'power3.out' })
 
