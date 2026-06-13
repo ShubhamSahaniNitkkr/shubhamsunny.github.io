@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     <script>
       (function () {
         var h = location.hostname;
@@ -78,25 +77,6 @@
             decoding="async"
           />
           <span class="nav__logo-text">Shubham Sunny</span>
-        </a>
-
-        <a
-          class="nav__email"
-          href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=shubhamsahaninitkkr@gmail.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open Gmail to email shubhamsahaninitkkr@gmail.com"
-        >
-          <span class="nav__email-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" focusable="false">
-              <path fill="#EA4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.521-3.178 4.545-1.997L12 9.458l7.454-4.998C21.479 2.28 24 3.424 24 5.457z"/>
-            </svg>
-          </span>
-          <span class="nav__email-copy">
-            <span class="nav__email-lead">Connect with me</span>
-            <span class="nav__email-address" translate="no">shubhamsahaninitkkr@gmail.com</span>
-            <span class="nav__email-hint">Click to open Gmail</span>
-          </span>
         </a>
 
         <div class="nav__menu" id="nav-menu">
@@ -261,6 +241,24 @@
                   decoding="async"
                 />
               </figure>
+              <a
+                class="hero__connect-chip"
+                href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=shubhamsahaninitkkr@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Gmail to email shubhamsahaninitkkr@gmail.com"
+              >
+                <span class="hero__connect-chip-icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" focusable="false">
+                    <path fill="#EA4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.521-3.178 4.545-1.997L12 9.458l7.454-4.998C21.479 2.28 24 3.424 24 5.457z"/>
+                  </svg>
+                </span>
+                <span class="hero__connect-chip-copy">
+                  <span class="hero__connect-chip-lead">Connect with me</span>
+                  <span class="hero__connect-chip-address" translate="no">shubhamsahaninitkkr@gmail.com</span>
+                  <span class="hero__connect-chip-hint">Click to open Gmail</span>
+                </span>
+              </a>
             </div>
           </div>
           <p class="hero__trust" role="note">
@@ -584,6 +582,13 @@
         </p>
 
         <div class="portfolio__container projects-bento" id="portfolio-grid"></div>
+
+        <div class="portfolio__more-wrap" id="portfolio-more-wrap" hidden>
+          <button type="button" class="button button--primary portfolio__more-btn" id="projects-modal-open">
+            <span>View all projects</span>
+            <span class="portfolio__more-count" id="projects-more-count"></span>
+          </button>
+        </div>
         </div>
       </section>
       </div>
@@ -873,6 +878,41 @@
           <span aria-hidden="true">×</span>
         </button>
         <div class="review-detail-modal__body" id="review-detail-body"></div>
+      </div>
+    </div>
+
+    <div class="projects-modal" id="projects-modal" aria-hidden="true">
+      <div class="projects-modal__backdrop" tabindex="-1"></div>
+      <div
+        class="projects-modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="projects-modal-title"
+      >
+        <button
+          type="button"
+          class="projects-modal__close"
+          id="projects-modal-close"
+          aria-label="Close all projects"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+        <h2 class="projects-modal__title" id="projects-modal-title">All projects</h2>
+        <p class="projects-modal__subtitle">Scroll to browse every project — same cards and filters as above.</p>
+        <div class="projects-modal__filters-wrap" id="projects-modal-filters-wrap" hidden>
+          <div
+            class="portfolio__nav projects-modal__filters"
+            id="projects-modal-filters"
+            role="tablist"
+            aria-label="Filter all projects"
+          ></div>
+        </div>
+        <p class="portfolio__filter-empty projects-modal__filter-empty" id="projects-modal-filter-empty" hidden role="status">
+          No projects in this category.
+        </p>
+        <div class="projects-modal__body">
+          <div class="portfolio__container projects-bento projects-modal__grid" id="projects-modal-grid"></div>
+        </div>
       </div>
     </div>
 

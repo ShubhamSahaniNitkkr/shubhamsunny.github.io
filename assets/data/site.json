@@ -16,6 +16,7 @@
   "resume": {
     "pdf": "assets/pdf/Shubham_Sunny_Resume_2026_updated.pdf"
   },
+  "projectsPreviewCount": 6,
   "projects": [
     {
       "slug": "massive-data-explorer",

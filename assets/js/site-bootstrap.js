@@ -69,7 +69,52 @@
     if (iframe) iframe.setAttribute("src", pdf);
   }
 
-  function buildPreview(p) {
+  function canUseIframe(liveUrl) {
+    if (!liveUrl) return false;
+    var host = location.hostname;
+    if (
+      location.protocol === "http:" &&
+      host !== "localhost" &&
+      host !== "127.0.0.1"
+    ) {
+      return false;
+    }
+    try {
+      var u = new URL(liveUrl, location.href);
+      if (u.protocol !== "https:" && u.protocol !== "http:") return false;
+      if (u.hostname === host) return false;
+      var h = u.hostname.toLowerCase();
+      if (
+        h.indexOf("github.com") !== -1 ||
+        h.indexOf("npmjs.com") !== -1 ||
+        h.indexOf("drive.google.com") !== -1 ||
+        h.indexOf("google.com") !== -1
+      ) {
+        return false;
+      }
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function buildPreviewPlaceholder(title, url, note) {
+    return (
+      '<div class="project-card__preview project-card__preview--placeholder">' +
+      "<p>" +
+      esc(note || "Live preview opens in a new tab.") +
+      "</p>" +
+      '<a href="' +
+      url +
+      '" class="button button--primary project-card__cta" target="_blank" rel="noopener noreferrer">' +
+      "<span>Visit live website</span>" +
+      '<i class="bx bx-link-external" aria-hidden="true"></i></a>' +
+      "</div>"
+    );
+  }
+
+  function buildPreview(p, opts) {
+    opts = opts || {};
     var title = esc(p.title || "Project");
     var url = esc(p.liveUrl || "");
     var img = p.previewImage ? esc(p.previewImage) : "";
@@ -92,12 +137,24 @@
 
     if (!url) return '<div class="project-card__preview project-card__preview--empty"></div>';
 
+    if (!canUseIframe(p.liveUrl || "")) {
+      return buildPreviewPlaceholder(
+        title,
+        url,
+        "Embedded preview unavailable — open the live site in a new tab."
+      );
+    }
+
+    var iframeSrcAttr = opts.lazyIframe
+      ? ' data-src="' + url + '"'
+      : ' src="' + url + '"';
+
     return (
       '<div class="project-card__preview">' +
       '<div class="project-card__iframe-wrap">' +
-      '<iframe class="project-card__iframe" src="' +
-      url +
-      '" title="' +
+      '<iframe class="project-card__iframe"' +
+      iframeSrcAttr +
+      ' title="' +
       title +
       ' live preview" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" referrerpolicy="no-referrer"></iframe>' +
       "</div>" +
@@ -105,10 +162,93 @@
       "<p>Preview unavailable — site may block embedding.</p>" +
       '<a href="' +
       url +
-      '" class="button button--small project-card__cta" target="_blank" rel="noopener noreferrer">' +
-      '<span>Visit live website</span><i class="bx bx-link-external" aria-hidden="true"></i></a>' +
+      '" class="button button--primary project-card__cta" target="_blank" rel="noopener noreferrer">' +
+      "<span>Visit live website</span>" +
+      '<i class="bx bx-link-external" aria-hidden="true"></i></a>' +
       "</div></div>"
     );
+  }
+
+  function buildProjectCardHtml(p, idx, opts) {
+    opts = opts || {};
+    var slug = esc(p.slug || "");
+    var title = esc(p.title || "Project");
+    var bento = p.bento || "standard";
+    var categories = p.categories || [];
+    var catAttr = categories.map(esc).join(" ");
+    var accent = accentForIndex(idx);
+    var highlights = (p.highlights || []).slice(0, 3);
+    var listHtml = highlights
+      .map(function (h) {
+        return "<li>" + esc(h) + "</li>";
+      })
+      .join("");
+
+    return (
+      '<article class="project-card project-card--' +
+      esc(bento) +
+      '" data-project-slug="' +
+      slug +
+      '" data-categories="' +
+      catAttr +
+      '" style="--card-accent:' +
+      accent +
+      '">' +
+      '<div class="project-card__accent-bar" aria-hidden="true"></div>' +
+      buildPreview(p, opts) +
+      '<div class="project-card__body">' +
+      (categories.length
+        ? '<div class="project-card__tags">' +
+          categories
+            .map(function (c) {
+              return (
+                '<span class="project-card__tag">' +
+                esc(FILTER_LABELS[c] || c) +
+                "</span>"
+              );
+            })
+            .join("") +
+          "</div>"
+        : "") +
+      '<h3 class="project-card__title">' +
+      title +
+      "</h3>" +
+      (listHtml ? '<ul class="project-card__highlights">' + listHtml + "</ul>" : "") +
+      buildCta(p) +
+      "</div></article>"
+    );
+  }
+
+  function wireIframeErrors(container) {
+    if (!container) return;
+    container.querySelectorAll(".project-card__iframe").forEach(function (frame) {
+      if (frame.dataset.errorBound === "1") return;
+      frame.addEventListener("error", function () {
+        var wrap = frame.closest(".project-card__preview");
+        if (!wrap) return;
+        var iframeWrap = wrap.querySelector(".project-card__iframe-wrap");
+        if (iframeWrap) iframeWrap.setAttribute("hidden", "");
+        var fb = wrap.querySelector(".project-card__preview-fallback");
+        if (fb) fb.removeAttribute("hidden");
+      });
+      frame.dataset.errorBound = "1";
+    });
+  }
+
+  function activateModalIframes(container) {
+    if (!container) return;
+    container.querySelectorAll(".project-card__iframe[data-src]").forEach(function (frame) {
+      if (!frame.getAttribute("src")) {
+        frame.setAttribute("src", frame.getAttribute("data-src"));
+      }
+    });
+  }
+
+  function deactivateModalIframes(container) {
+    if (!container) return;
+    container.querySelectorAll(".project-card__iframe[src]").forEach(function (frame) {
+      frame.removeAttribute("src");
+    });
   }
 
   function buildCta(p) {
@@ -137,9 +277,9 @@
     });
   }
 
-  function renderProjectFilters(projects) {
-    var wrap = document.getElementById("portfolio-filters-wrap");
-    var nav = document.getElementById("portfolio-filters");
+  function renderProjectFilters(projects, navId, wrapId) {
+    var wrap = document.getElementById(wrapId || "portfolio-filters-wrap");
+    var nav = document.getElementById(navId || "portfolio-filters");
     if (!wrap || !nav) return;
 
     var keys = collectFilterKeys(projects);
@@ -149,7 +289,7 @@
     }
 
     nav.innerHTML = keys
-      .map(function (key, idx) {
+      .map(function (key) {
         var label = FILTER_LABELS[key] || key;
         var active = key === "all" ? " active-portfolio" : "";
         var selected = key === "all" ? "true" : "false";
@@ -173,9 +313,11 @@
     wrap.removeAttribute("hidden");
   }
 
-  function applyProjectFilter(filterKey) {
-    var cards = document.querySelectorAll(".project-card");
-    var emptyEl = document.getElementById("portfolio-filter-empty");
+  function applyProjectFilter(filterKey, gridSelector, emptyId) {
+    var grid = document.querySelector(gridSelector || "#portfolio-grid");
+    if (!grid) return;
+    var cards = grid.querySelectorAll(".project-card");
+    var emptyEl = document.getElementById(emptyId || "portfolio-filter-empty");
     var visible = 0;
 
     cards.forEach(function (card) {
@@ -192,11 +334,12 @@
     }
   }
 
-  function wireProjectFilters() {
-    var nav = document.getElementById("portfolio-filters");
+  function wireProjectFilters(navId, gridSelector, emptyId) {
+    var nav = document.getElementById(navId || "portfolio-filters");
     if (!nav) return;
 
     nav.querySelectorAll(".portfolio__item").forEach(function (btn) {
+      if (btn.dataset.filterBound === "1") return;
       btn.addEventListener("click", function () {
         var filterKey = btn.getAttribute("data-filter") || "all";
         nav.querySelectorAll(".portfolio__item").forEach(function (b) {
@@ -205,79 +348,104 @@
           b.setAttribute("aria-selected", on ? "true" : "false");
           b.setAttribute("tabindex", on ? "0" : "-1");
         });
-        applyProjectFilter(filterKey);
+        applyProjectFilter(filterKey, gridSelector, emptyId);
       });
+      btn.dataset.filterBound = "1";
     });
   }
 
-  function renderProjects(projects) {
-    var container = document.querySelector(".portfolio__container");
+  function setupProjectsModal(totalCount, previewCount) {
+    var wrap = document.getElementById("portfolio-more-wrap");
+    var countEl = document.getElementById("projects-more-count");
+    var modal = document.getElementById("projects-modal");
+    var openBtn = document.getElementById("projects-modal-open");
+    var closeBtn = document.getElementById("projects-modal-close");
+    var modalGrid = document.getElementById("projects-modal-grid");
+
+    if (wrap) {
+      if (totalCount > previewCount) {
+        wrap.removeAttribute("hidden");
+        if (countEl) countEl.textContent = "(" + totalCount + ")";
+      } else {
+        wrap.setAttribute("hidden", "");
+      }
+    }
+
+    if (!modal || setupProjectsModal._wired) return;
+    setupProjectsModal._wired = true;
+
+    function openModal() {
+      activateModalIframes(modalGrid);
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      if (closeBtn) closeBtn.focus();
+    }
+
+    function closeModal() {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      deactivateModalIframes(modalGrid);
+      var reviewsModal = document.getElementById("reviews-modal");
+      var reviewDetail = document.getElementById("review-detail-modal");
+      var reviewsOpen =
+        (reviewsModal && reviewsModal.classList.contains("is-open")) ||
+        (reviewDetail && reviewDetail.classList.contains("is-open"));
+      if (!reviewsOpen) document.body.style.overflow = "";
+      if (openBtn) openBtn.focus();
+    }
+
+    if (openBtn) openBtn.addEventListener("click", openModal);
+    if (closeBtn) closeBtn.addEventListener("click", closeModal);
+
+    var backdrop = modal.querySelector(".projects-modal__backdrop");
+    if (backdrop) backdrop.addEventListener("click", closeModal);
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "Escape" || !modal.classList.contains("is-open")) return;
+      closeModal();
+      e.preventDefault();
+    });
+  }
+
+  function renderProjects(projects, previewCount) {
+    var container = document.getElementById("portfolio-grid");
     if (!container || !projects || !projects.length) return;
 
-    container.innerHTML = projects
-      .map(function (p, idx) {
-        var slug = esc(p.slug || "");
-        var title = esc(p.title || "Project");
-        var bento = p.bento || "standard";
-        var categories = p.categories || [];
-        var catAttr = categories.map(esc).join(" ");
-        var accent = accentForIndex(idx);
-        var highlights = (p.highlights || []).slice(0, 3);
-        var listHtml = highlights
-          .map(function (h) {
-            return "<li>" + esc(h) + "</li>";
-          })
-          .join("");
+    var limit =
+      previewCount == null || previewCount < 0
+        ? projects.length
+        : Math.min(previewCount, projects.length);
+    var previewProjects = projects.slice(0, limit);
 
-        return (
-          '<article class="project-card project-card--' +
-          esc(bento) +
-          '" data-project-slug="' +
-          slug +
-          '" data-categories="' +
-          catAttr +
-          '" style="--card-accent:' +
-          accent +
-          '">' +
-          '<div class="project-card__accent-bar" aria-hidden="true"></div>' +
-          buildPreview(p) +
-          '<div class="project-card__body">' +
-          (categories.length
-            ? '<div class="project-card__tags">' +
-              categories
-                .map(function (c) {
-                  return (
-                    '<span class="project-card__tag">' +
-                    esc(FILTER_LABELS[c] || c) +
-                    "</span>"
-                  );
-                })
-                .join("") +
-              "</div>"
-            : "") +
-          '<h3 class="project-card__title">' +
-          title +
-          "</h3>" +
-          (listHtml ? '<ul class="project-card__highlights">' + listHtml + "</ul>" : "") +
-          buildCta(p) +
-          "</div></article>"
-        );
+    container.innerHTML = previewProjects
+      .map(function (p, idx) {
+        return buildProjectCardHtml(p, idx, {});
       })
       .join("");
 
-    container.querySelectorAll(".project-card__iframe").forEach(function (frame) {
-      frame.addEventListener("error", function () {
-        var wrap = frame.closest(".project-card__preview");
-        if (!wrap) return;
-        var iframeWrap = wrap.querySelector(".project-card__iframe-wrap");
-        if (iframeWrap) iframeWrap.setAttribute("hidden", "");
-        var fb = wrap.querySelector(".project-card__preview-fallback");
-        if (fb) fb.removeAttribute("hidden");
-      });
-    });
+    wireIframeErrors(container);
 
-    renderProjectFilters(projects);
-    wireProjectFilters();
+    renderProjectFilters(projects, "portfolio-filters", "portfolio-filters-wrap");
+    wireProjectFilters("portfolio-filters", "#portfolio-grid", "portfolio-filter-empty");
+
+    var modalGrid = document.getElementById("projects-modal-grid");
+    if (modalGrid) {
+      modalGrid.innerHTML = projects
+        .map(function (p, idx) {
+          return buildProjectCardHtml(p, idx, { lazyIframe: true });
+        })
+        .join("");
+      wireIframeErrors(modalGrid);
+      renderProjectFilters(projects, "projects-modal-filters", "projects-modal-filters-wrap");
+      wireProjectFilters(
+        "projects-modal-filters",
+        "#projects-modal-grid",
+        "projects-modal-filter-empty"
+      );
+    }
+
+    setupProjectsModal(projects.length, limit);
   }
 
   function renderReviews(reviews) {
@@ -326,14 +494,16 @@
   function onDataReady(data) {
     applySectionVisibility(data.sections || {});
     applyResumePath(data.resume || {});
-    renderProjects(data.projects || []);
+    var previewCount = data.projectsPreviewCount;
+    if (previewCount == null) previewCount = 6;
+    renderProjects(data.projects || [], previewCount);
     renderReviews(data.reviews || []);
     window.SITE_DATA = data;
     document.dispatchEvent(new CustomEvent("site-data-ready", { detail: data }));
   }
 
   function showPortfolioError() {
-    var c = document.querySelector(".portfolio__container");
+    var c = document.getElementById("portfolio-grid");
     if (c)
       c.innerHTML =
         '<p class="portfolio__load-error" role="alert">Could not load project data. Run: node scripts/sync-site-data.js after editing assets/data/site.json, then refresh.</p>';
