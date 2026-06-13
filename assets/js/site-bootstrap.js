@@ -332,6 +332,12 @@
       if (visible === 0) emptyEl.removeAttribute("hidden");
       else emptyEl.setAttribute("hidden", "");
     }
+
+    if (emptyId === "projects-modal-filter-empty") {
+      var modalBody = document.getElementById("projects-modal-body");
+      if (modalBody) modalBody.scrollTop = 0;
+      document.dispatchEvent(new CustomEvent("projects-modal-filtered"));
+    }
   }
 
   function wireProjectFilters(navId, gridSelector, emptyId) {
@@ -354,13 +360,34 @@
     });
   }
 
+  function renderModalGrid(projects) {
+    var modalGrid = document.getElementById("projects-modal-grid");
+    if (!modalGrid || !projects || !projects.length) return;
+
+    modalGrid.innerHTML = projects
+      .map(function (p, idx) {
+        return buildProjectCardHtml(p, idx, { lazyIframe: true });
+      })
+      .join("");
+
+    wireIframeErrors(modalGrid);
+    renderProjectFilters(projects, "projects-modal-filters", "projects-modal-filters-wrap");
+    wireProjectFilters(
+      "projects-modal-filters",
+      "#projects-modal-grid",
+      "projects-modal-filter-empty"
+    );
+  }
+
   function setupProjectsModal(totalCount, previewCount) {
     var wrap = document.getElementById("portfolio-more-wrap");
     var countEl = document.getElementById("projects-more-count");
     var modal = document.getElementById("projects-modal");
     var openBtn = document.getElementById("projects-modal-open");
     var closeBtn = document.getElementById("projects-modal-close");
+    var modalBody = document.getElementById("projects-modal-body");
     var modalGrid = document.getElementById("projects-modal-grid");
+    var scrollLockY = 0;
 
     if (wrap) {
       if (totalCount > previewCount) {
@@ -374,11 +401,26 @@
     if (!modal || setupProjectsModal._wired) return;
     setupProjectsModal._wired = true;
 
+    function lockPageScroll() {
+      scrollLockY = window.scrollY || window.pageYOffset || 0;
+      document.documentElement.classList.add("projects-modal-open");
+      document.body.classList.add("projects-modal-open");
+      document.body.style.top = "-" + scrollLockY + "px";
+    }
+
+    function unlockPageScroll() {
+      document.documentElement.classList.remove("projects-modal-open");
+      document.body.classList.remove("projects-modal-open");
+      document.body.style.top = "";
+      window.scrollTo(0, scrollLockY);
+    }
+
     function openModal() {
+      if (modalBody) modalBody.scrollTop = 0;
       activateModalIframes(modalGrid);
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
+      lockPageScroll();
       if (closeBtn) closeBtn.focus();
     }
 
@@ -391,7 +433,7 @@
       var reviewsOpen =
         (reviewsModal && reviewsModal.classList.contains("is-open")) ||
         (reviewDetail && reviewDetail.classList.contains("is-open"));
-      if (!reviewsOpen) document.body.style.overflow = "";
+      if (!reviewsOpen) unlockPageScroll();
       if (openBtn) openBtn.focus();
     }
 
@@ -402,9 +444,11 @@
     if (backdrop) backdrop.addEventListener("click", closeModal);
 
     document.addEventListener("keydown", function (e) {
-      if (e.key !== "Escape" || !modal.classList.contains("is-open")) return;
-      closeModal();
-      e.preventDefault();
+      if (!modal.classList.contains("is-open")) return;
+      if (e.key === "Escape") {
+        closeModal();
+        e.preventDefault();
+      }
     });
   }
 
@@ -429,22 +473,7 @@
     renderProjectFilters(projects, "portfolio-filters", "portfolio-filters-wrap");
     wireProjectFilters("portfolio-filters", "#portfolio-grid", "portfolio-filter-empty");
 
-    var modalGrid = document.getElementById("projects-modal-grid");
-    if (modalGrid) {
-      modalGrid.innerHTML = projects
-        .map(function (p, idx) {
-          return buildProjectCardHtml(p, idx, { lazyIframe: true });
-        })
-        .join("");
-      wireIframeErrors(modalGrid);
-      renderProjectFilters(projects, "projects-modal-filters", "projects-modal-filters-wrap");
-      wireProjectFilters(
-        "projects-modal-filters",
-        "#projects-modal-grid",
-        "projects-modal-filter-empty"
-      );
-    }
-
+    renderModalGrid(projects);
     setupProjectsModal(projects.length, limit);
   }
 
