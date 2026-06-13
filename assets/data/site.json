@@ -23,7 +23,10 @@
       "title": "Massive Data Explorer",
       "liveUrl": "https://mde-web.onrender.com",
       "bento": "feature",
-      "categories": ["live-demo", "full-stack"],
+      "categories": [
+        "live-demo",
+        "full-stack"
+      ],
       "highlights": [
         "Built a full-stack data explorer over 1M records with cursor-paginated API, server-side search/filter/sort, and TanStack Virtual rendering ~30 DOM rows via infinite scroll.",
         "Separated UI state (Redux), server state (RTK Query), and persistence (IndexedDB) so API data never leaked into UI slices.",
@@ -36,7 +39,10 @@
       "title": "Offline First Task Management App",
       "liveUrl": "https://offline-first-task-management-app-ui.onrender.com",
       "bento": "tall",
-      "categories": ["live-demo", "full-stack"],
+      "categories": [
+        "live-demo",
+        "full-stack"
+      ],
       "highlights": [
         "Built an offline-first ecommerce PWA where IndexedDB is the write path — users shop and checkout without connectivity; orders sync to the server when back online.",
         "Designed a client operation queue with idempotency keys, retry backoff, and conflict handling so flaky networks don't lose or duplicate orders.",
@@ -49,7 +55,10 @@
       "title": "Server Driven UI",
       "liveUrl": "https://sdui-pypy.onrender.com",
       "bento": "wide",
-      "categories": ["live-demo", "architecture"],
+      "categories": [
+        "live-demo",
+        "architecture"
+      ],
       "highlights": [
         "Built a server-driven UI platform where JSON schemas define pages, forms, and actions — removing frontend redeploys for structural changes to admin tools.",
         "Designed a recursive rendering engine (component registry, permission gates, action dispatcher) with 15+ schema-driven components and shared Zod validation across API and client.",
@@ -62,7 +71,10 @@
       "title": "Frontend Plugin Platform",
       "liveUrl": "https://fpp-host.onrender.com",
       "bento": "standard",
-      "categories": ["live-demo", "architecture"],
+      "categories": [
+        "live-demo",
+        "architecture"
+      ],
       "highlights": [
         "Built a VS Code-style plugin platform (Astro/React host, Express API) so teams ship features via marketplace install/enable — without redeploying the core app.",
         "Designed plugin integration through a SDK, Component Registry, and Zod-validated Event Bus with permission checks — plugins talk via events, not direct imports.",
@@ -75,7 +87,10 @@
       "title": "NPM Module for Server Driven UI",
       "liveUrl": "https://www.npmjs.com/~shubhamsunnynitkkr",
       "bento": "standard",
-      "categories": ["architecture", "open-source"],
+      "categories": [
+        "architecture",
+        "open-source"
+      ],
       "highlights": [
         "Built a server-driven UI framework (3 npm packages) that turns JSON schemas into React admin pages, separating a UI-agnostic core from Ant Design and Recharts adapters.",
         "Designed registry-based rendering with declarative actions, conditional fields (visibleIf), and schema-driven validation — complex flows live in JSON, not JSX.",
@@ -89,7 +104,10 @@
       "previewImage": "assets/img/Work/project51.png",
       "linkText": "Watch demo clip",
       "bento": "wide",
-      "categories": ["automation", "data"],
+      "categories": [
+        "automation",
+        "data"
+      ],
       "highlights": [
         "Supplied fresh player stats through match night so dashboards and prediction sheets updated without someone refreshing public pages by hand.",
         "Built a small feed clients could query like any other data service — reliable shape, sane errors when the source hiccuped, no babysitting tabs.",
@@ -103,7 +121,10 @@
       "previewImage": "assets/img/Work/project12.png",
       "linkText": "View on GitHub",
       "bento": "half",
-      "categories": ["automation", "open-source"],
+      "categories": [
+        "automation",
+        "open-source"
+      ],
       "highlights": [
         "Pulled public workshops and events into a clean spreadsheet with dates, places, and organisers — one click to run; hours saved each week.",
         "Built a simple one-click tool that gathers listings and drops them into a tidy spreadsheet non-technical staff already knew how to use.",
@@ -117,11 +138,291 @@
       "previewImage": "assets/img/Work/project31.png",
       "linkText": "Watch demo clip",
       "bento": "half",
-      "categories": ["automation", "client-work"],
+      "categories": [
+        "automation",
+        "client-work"
+      ],
       "highlights": [
         "Tied a shared spreadsheet to the mobile checkout flow so promo codes applied in bulk with clear success/fail rows.",
         "Connected sheet to app workflow: fresh codes get picked up, applied in order, and the sheet updates with what worked or failed.",
         "Merchandising kept control from the spreadsheet; engineering didn't need a new dashboard for every campaign."
+      ]
+    },
+    {
+      "slug": "todo-list-app-reactjs",
+      "title": "Daily Todo List",
+      "liveUrl": "https://shubhamsahaniNitkkr.github.io/todo-list-app-reactjs/",
+      "host": "github-pages",
+      "bento": "feature",
+      "categories": [
+        "live-demo",
+        "open-source"
+      ],
+      "highlights": [
+        "Nested todos with subtasks, edit/delete, and localStorage persistence.",
+        "React class components with recursive tree updates.",
+        "Bootstrap 4 UI — no backend required."
+      ]
+    },
+    {
+      "slug": "react-ecommerce",
+      "title": "React E-Commerce Store",
+      "liveUrl": "https://shubhamsahaniNitkkr.github.io/React_Ecommerce/",
+      "host": "github-pages",
+      "bento": "wide",
+      "categories": [
+        "live-demo",
+        "full-stack"
+      ],
+      "highlights": [
+        "Product catalog, cart, modals, and PayPal sandbox checkout.",
+        "React Context API + React Router for global cart state.",
+        "Bootstrap 4 storefront — classic shopping-cart learning project."
+      ]
+    },
+    {
+      "slug": "real-estate-next-app",
+      "title": "Real Estate Listings",
+      "liveUrl": "https://shubhamsahaniNitkkr.github.io/real-estate-next-app/",
+      "host": "github-pages",
+      "bento": "tall",
+      "categories": [
+        "live-demo",
+        "full-stack",
+        "data"
+      ],
+      "highlights": [
+        "Property listings with Next.js 12, Chakra UI, and SSG.",
+        "Bayut RapidAPI integration with mock-data fallback.",
+        "Responsive cards with price, beds, baths, and agency info."
+      ]
+    },
+    {
+      "slug": "blue-ai",
+      "title": "Blue AI Chat",
+      "liveUrl": "https://shubhamsahaniNitkkr.github.io/blue-ai/",
+      "host": "github-pages",
+      "bento": "standard",
+      "categories": [
+        "live-demo",
+        "full-stack",
+        "automation"
+      ],
+      "highlights": [
+        "Draggable AI chat widget powered by Google Gemini.",
+        "React + Vite + Ant Design floating assistant UI.",
+        "Configurable via VITE_GEMINI_API_KEY environment variable."
+      ]
+    },
+    {
+      "slug": "githubfinder",
+      "title": "GitHub Finder",
+      "liveUrl": "https://shubhamsahaniNitkkr.github.io/githubfinder/",
+      "host": "github-pages",
+      "bento": "standard",
+      "categories": [
+        "live-demo",
+        "data",
+        "open-source"
+      ],
+      "highlights": [
+        "Search GitHub users and explore profiles, repos, and followers.",
+        "React + GitHub REST API with React Router navigation.",
+        "Context API for shared search state across views."
+      ]
+    },
+    {
+      "slug": "boat",
+      "title": "Boat — GitHub Vlog",
+      "liveUrl": "https://shubhamsahaniNitkkr.github.io/boat/",
+      "host": "github-pages",
+      "bento": "half",
+      "categories": [
+        "live-demo",
+        "data"
+      ],
+      "highlights": [
+        "GitHub user search with repo browsing and routing.",
+        "React + Axios + React Router v6.",
+        "Mobile-responsive layout for profile exploration."
+      ]
+    },
+    {
+      "slug": "quiz-platform",
+      "title": "Quiz Platform",
+      "liveUrl": "https://shubhamsahaniNitkkr.github.io/Quiz-Platform/",
+      "host": "github-pages",
+      "bento": "wide",
+      "categories": [
+        "live-demo",
+        "open-source"
+      ],
+      "highlights": [
+        "Exam prep hub — JEE, NEET, UPSC, CAT, GRE, and more.",
+        "Static HTML + JSON-driven quiz pages (no backend).",
+        "Responsive exam grid with mobile-first UI redesign."
+      ]
+    },
+    {
+      "slug": "react-currency-converter",
+      "title": "Currency Converter",
+      "liveUrl": "https://shubhamsahaniNitkkr.github.io/react-currency-converter/",
+      "host": "github-pages",
+      "bento": "standard",
+      "categories": [
+        "live-demo",
+        "data"
+      ],
+      "highlights": [
+        "Real-time currency conversion with TypeScript + React.",
+        "Exchange Rates API with offline fallback rates.",
+        "useReducer + Context API for conversion state."
+      ]
+    },
+    {
+      "slug": "github-user-finder",
+      "title": "GitHub User Finder",
+      "liveUrl": "https://shubhamsahaniNitkkr.github.io/github_user_finder_simple_version/",
+      "host": "github-pages",
+      "bento": "half",
+      "categories": [
+        "live-demo",
+        "data",
+        "open-source"
+      ],
+      "highlights": [
+        "Minimal GitHub user lookup with profile card display.",
+        "React Context API + GitHub REST API.",
+        "Lightweight beginner-friendly API integration demo."
+      ]
+    },
+    {
+      "slug": "react-calendar-app",
+      "title": "React Calendar",
+      "liveUrl": "https://shubhamsahaniNitkkr.github.io/react-calendar-app/",
+      "host": "github-pages",
+      "bento": "standard",
+      "categories": [
+        "live-demo",
+        "open-source"
+      ],
+      "highlights": [
+        "Event scheduler built with Syncfusion React Scheduler.",
+        "Day/week/month views with drag-and-drop events.",
+        "Create React App + third-party calendar component integration."
+      ]
+    },
+    {
+      "slug": "blue-ai-chatbot",
+      "title": "Blue AI Chatbot Widget",
+      "liveUrl": "https://shubhamsahaniNitkkr.github.io/blue-ai-chatbot/",
+      "host": "github-pages",
+      "bento": "standard",
+      "categories": [
+        "live-demo",
+        "automation",
+        "full-stack"
+      ],
+      "highlights": [
+        "Embeddable IIFE chatbot widget for any website.",
+        "Page-aware responses with scroll-to-highlight feature.",
+        "React + Vite single-file build for drop-in deployment."
+      ]
+    },
+    {
+      "slug": "guess-pokemon",
+      "title": "Guess the Pokemon",
+      "liveUrl": "https://shubhamsahaniNitkkr.github.io/AngularjsGuessPokemon/",
+      "host": "github-pages",
+      "bento": "half",
+      "categories": [
+        "live-demo",
+        "open-source"
+      ],
+      "highlights": [
+        "AngularJS 1.6 guessing game with Pokemon silhouettes.",
+        "Score tracking and progressive difficulty.",
+        "Pure frontend — no build step required."
+      ]
+    },
+    {
+      "slug": "game-advertisement",
+      "title": "Game Advertisement Catalog",
+      "liveUrl": "https://shubhamsahaniNitkkr.github.io/Game_Advertisement.github.io/",
+      "host": "github-pages",
+      "bento": "standard",
+      "categories": [
+        "live-demo",
+        "data"
+      ],
+      "highlights": [
+        "Game catalog with search, filters, and detail pages.",
+        "JSON-driven content loaded via client-side fetch.",
+        "Converted from PHP to static for GitHub Pages hosting."
+      ]
+    },
+    {
+      "slug": "responsive-website",
+      "title": "Pure HTML Responsive Website",
+      "liveUrl": "https://shubhamsahaniNitkkr.github.io/PureHTMLResponsiveWebsite/",
+      "host": "github-pages",
+      "bento": "half",
+      "categories": [
+        "live-demo",
+        "open-source"
+      ],
+      "highlights": [
+        "Business website template with HTML + CSS only.",
+        "Mobile-first responsive layout with media queries.",
+        "About, services, and contact page structure."
+      ]
+    },
+    {
+      "slug": "bootstrap-website",
+      "title": "Bootstrap Portfolio Website",
+      "liveUrl": "https://shubhamsahaniNitkkr.github.io/R-D-Simple-Bootstrap-Website/",
+      "host": "github-pages",
+      "bento": "half",
+      "categories": [
+        "live-demo",
+        "open-source"
+      ],
+      "highlights": [
+        "Bootstrap + jQuery company/portfolio site.",
+        "Image slider, navigation, and content sections.",
+        "Classic responsive web design learning project."
+      ]
+    },
+    {
+      "slug": "android-app-layout",
+      "title": "Android App Layout (CSS)",
+      "liveUrl": "https://shubhamsahaniNitkkr.github.io/CSS-Android-App-Layout/",
+      "host": "github-pages",
+      "bento": "half",
+      "categories": [
+        "live-demo",
+        "open-source"
+      ],
+      "highlights": [
+        "CSS-only Android-style mobile app UI mockup.",
+        "Material-style cards, buttons, and quiz layout.",
+        "No framework — pure CSS responsive design."
+      ]
+    },
+    {
+      "slug": "js-filteration",
+      "title": "JS Filteration Portal",
+      "liveUrl": "https://shubhamsahaniNitkkr.github.io/JS-Filteration/",
+      "host": "github-pages",
+      "bento": "half",
+      "categories": [
+        "live-demo",
+        "data"
+      ],
+      "highlights": [
+        "Client-side data filtering and sorting demo.",
+        "Static portal with JSON resource loading.",
+        "Converted from PHP to fetch-based static site."
       ]
     }
   ],
