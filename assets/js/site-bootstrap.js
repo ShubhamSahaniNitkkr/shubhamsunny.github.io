@@ -152,7 +152,9 @@
     return (
       '<div class="project-card__preview">' +
       '<div class="project-card__iframe-wrap">' +
-      '<iframe class="project-card__iframe"' +
+      '<iframe class="project-card__iframe' +
+      (opts.lazyIframe ? " project-card__iframe--idle" : "") +
+      '"' +
       iframeSrcAttr +
       ' title="' +
       title +
@@ -235,20 +237,178 @@
     });
   }
 
-  function activateModalIframes(container) {
-    if (!container) return;
-    container.querySelectorAll(".project-card__iframe[data-src]").forEach(function (frame) {
-      if (!frame.getAttribute("src")) {
-        frame.setAttribute("src", frame.getAttribute("data-src"));
-      }
-    });
+  function loadLazyIframe(frame) {
+    if (!frame) return;
+    var src = frame.getAttribute("data-src");
+    if (!src || frame.getAttribute("src")) return;
+    frame.setAttribute("src", src);
+    frame.classList.remove("project-card__iframe--idle");
   }
 
-  function deactivateModalIframes(container) {
+  function unloadLazyIframe(frame) {
+    if (!frame || !frame.getAttribute("src")) return;
+    frame.removeAttribute("src");
+    frame.classList.add("project-card__iframe--idle");
+  }
+
+  function unloadAllLazyIframes(container) {
     if (!container) return;
-    container.querySelectorAll(".project-card__iframe[src]").forEach(function (frame) {
-      frame.removeAttribute("src");
-    });
+    container.querySelectorAll(".project-card__iframe[src]").forEach(unloadLazyIframe);
+  }
+
+  function activateAllLazyIframes(container) {
+    if (!container) return;
+    container.querySelectorAll(".project-card__iframe[data-src]").forEach(loadLazyIframe);
+  }
+
+  /** Load/unload live previews only for cards near the scroll viewport (prevents modal crash). */
+  function createViewportIframeLoader(options) {
+    options = options || {};
+    var scrollRoot = options.root || null;
+    var container = options.container;
+    var maxLoaded = options.maxLoaded == null ? 4 : options.maxLoaded;
+    var rootMargin = options.rootMargin || "160px 0px 160px 0px";
+    var loadDelayMs = options.loadDelayMs == null ? 120 : options.loadDelayMs;
+
+    var observer = null;
+    var visibleCards = new Map();
+    var loadTimer = null;
+    var rafId = null;
+
+    function getIframe(card) {
+      return card ? card.querySelector(".project-card__iframe[data-src]") : null;
+    }
+
+    function syncLoads() {
+      if (!container) return;
+
+      var visible = [];
+      visibleCards.forEach(function (ratio, card) {
+        if (ratio > 0 && !card.hasAttribute("hidden")) {
+          visible.push({ card: card, ratio: ratio });
+        }
+      });
+      visible.sort(function (a, b) {
+        return b.ratio - a.ratio;
+      });
+
+      var visibleSet = new Set(visible.map(function (v) {
+        return v.card;
+      }));
+
+      container.querySelectorAll(".project-card__iframe[src][data-src]").forEach(function (frame) {
+        var card = frame.closest(".project-card");
+        if (!card || !visibleSet.has(card)) unloadLazyIframe(frame);
+      });
+
+      var loadedVisible = [];
+      container.querySelectorAll(".project-card__iframe[src][data-src]").forEach(function (frame) {
+        var card = frame.closest(".project-card");
+        if (card && visibleSet.has(card)) {
+          loadedVisible.push({ frame: frame, ratio: visibleCards.get(card) || 0 });
+        }
+      });
+
+      var slots = maxLoaded - loadedVisible.length;
+      if (slots > 0) {
+        for (var i = 0; i < visible.length && slots > 0; i++) {
+          var frame = getIframe(visible[i].card);
+          if (frame && !frame.getAttribute("src")) {
+            loadLazyIframe(frame);
+            slots--;
+          }
+        }
+      }
+
+      if (loadedVisible.length > maxLoaded) {
+        loadedVisible.sort(function (a, b) {
+          return a.ratio - b.ratio;
+        });
+        for (var j = 0; j < loadedVisible.length - maxLoaded; j++) {
+          unloadLazyIframe(loadedVisible[j].frame);
+        }
+      }
+    }
+
+    function scheduleSyncLoads() {
+      if (loadTimer) clearTimeout(loadTimer);
+      loadTimer = setTimeout(function () {
+        loadTimer = null;
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(function () {
+          rafId = null;
+          syncLoads();
+        });
+      }, loadDelayMs);
+    }
+
+    function onIntersect(entries) {
+      var needsSync = false;
+      entries.forEach(function (entry) {
+        var card = entry.target;
+        if (entry.isIntersecting) {
+          visibleCards.set(card, entry.intersectionRatio);
+          needsSync = true;
+        } else {
+          visibleCards.delete(card);
+          unloadLazyIframe(getIframe(card));
+        }
+      });
+      if (needsSync) scheduleSyncLoads();
+    }
+
+    function observeCards() {
+      if (!container) return;
+      container.querySelectorAll(".project-card__iframe[data-src]").forEach(function (frame) {
+        if (!frame.getAttribute("src")) frame.classList.add("project-card__iframe--idle");
+      });
+      container.querySelectorAll(".project-card:not([hidden])").forEach(function (card) {
+        observer.observe(card);
+      });
+    }
+
+    function start() {
+      stop(false);
+      if (!container) return;
+      if (!("IntersectionObserver" in window)) {
+        activateAllLazyIframes(container);
+        return;
+      }
+      observer = new IntersectionObserver(onIntersect, {
+        root: scrollRoot,
+        rootMargin: rootMargin,
+        threshold: [0, 0.05, 0.15, 0.35, 0.6, 1],
+      });
+      observeCards();
+      scheduleSyncLoads();
+    }
+
+    function refresh() {
+      if (!observer || !container) return;
+      observer.disconnect();
+      visibleCards.clear();
+      observeCards();
+      scheduleSyncLoads();
+    }
+
+    function stop(unload) {
+      if (loadTimer) {
+        clearTimeout(loadTimer);
+        loadTimer = null;
+      }
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+      visibleCards.clear();
+      if (observer) {
+        observer.disconnect();
+        observer = null;
+      }
+      if (unload !== false) unloadAllLazyIframes(container);
+    }
+
+    return { start: start, stop: stop, refresh: refresh };
   }
 
   function buildCta(p) {
@@ -337,6 +497,8 @@
       var modalBody = document.getElementById("projects-modal-body");
       if (modalBody) modalBody.scrollTop = 0;
       document.dispatchEvent(new CustomEvent("projects-modal-filtered"));
+    } else if (emptyId === "portfolio-filter-empty") {
+      document.dispatchEvent(new CustomEvent("portfolio-filtered"));
     }
   }
 
@@ -388,6 +550,13 @@
     var modalBody = document.getElementById("projects-modal-body");
     var modalGrid = document.getElementById("projects-modal-grid");
     var scrollLockY = 0;
+    var modalIframeLoader = createViewportIframeLoader({
+      root: modalBody,
+      container: modalGrid,
+      maxLoaded: 3,
+      rootMargin: "180px 0px 220px 0px",
+      loadDelayMs: 150,
+    });
 
     if (wrap) {
       if (totalCount > previewCount) {
@@ -417,17 +586,17 @@
 
     function openModal() {
       if (modalBody) modalBody.scrollTop = 0;
-      activateModalIframes(modalGrid);
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
       lockPageScroll();
+      modalIframeLoader.start();
       if (closeBtn) closeBtn.focus();
     }
 
     function closeModal() {
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
-      deactivateModalIframes(modalGrid);
+      modalIframeLoader.stop();
       var reviewsModal = document.getElementById("reviews-modal");
       var reviewDetail = document.getElementById("review-detail-modal");
       var reviewsOpen =
@@ -450,11 +619,20 @@
         e.preventDefault();
       }
     });
+
+    document.addEventListener("projects-modal-filtered", function () {
+      if (!modal.classList.contains("is-open")) return;
+      modalIframeLoader.refresh();
+    });
   }
+
+  var portfolioIframeLoader = null;
 
   function renderProjects(projects, previewCount) {
     var container = document.getElementById("portfolio-grid");
     if (!container || !projects || !projects.length) return;
+
+    if (portfolioIframeLoader) portfolioIframeLoader.stop();
 
     var limit =
       previewCount == null || previewCount < 0
@@ -464,11 +642,24 @@
 
     container.innerHTML = previewProjects
       .map(function (p, idx) {
-        return buildProjectCardHtml(p, idx, {});
+        return buildProjectCardHtml(p, idx, { lazyIframe: true });
       })
       .join("");
 
     wireIframeErrors(container);
+
+    portfolioIframeLoader = createViewportIframeLoader({
+      root: null,
+      container: container,
+      maxLoaded: 2,
+      rootMargin: "200px 0px 200px 0px",
+      loadDelayMs: 100,
+    });
+    portfolioIframeLoader.start();
+
+    document.addEventListener("portfolio-filtered", function onPortfolioFiltered() {
+      if (portfolioIframeLoader) portfolioIframeLoader.refresh();
+    });
 
     renderProjectFilters(projects, "portfolio-filters", "portfolio-filters-wrap");
     wireProjectFilters("portfolio-filters", "#portfolio-grid", "portfolio-filter-empty");

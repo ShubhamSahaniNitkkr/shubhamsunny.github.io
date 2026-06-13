@@ -2252,7 +2252,7 @@ button.portfolio__item {
   min-height: 0;
   padding: 0.75rem 1rem max(1rem, env(safe-area-inset-bottom, 0px) + 0.5rem);
   -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   overscroll-behavior: contain;
   touch-action: pan-y;
 }
@@ -2262,10 +2262,13 @@ button.portfolio__item {
   max-width: none;
   margin: 0;
   gap: 1.75rem;
+  contain: layout style;
 }
 
-/* Modal — compact bento cards (smaller than main portfolio) */
 .projects-modal__grid .project-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 420px;
+  contain: layout style paint;
   border-radius: 1.1rem;
   border-width: 1.5px;
   max-width: 100%;
@@ -4003,6 +4006,40 @@ body.project-detail-open {
   min-height: 180px;
   overflow: hidden;
   background: #fff;
+}
+
+.project-card__iframe-wrap:has(.project-card__iframe--idle) {
+  background:
+    linear-gradient(
+      110deg,
+      rgba(15, 118, 110, 0.06) 0%,
+      rgba(15, 118, 110, 0.02) 45%,
+      rgba(15, 118, 110, 0.06) 90%
+    ),
+    #f8fafc;
+  background-size: 200% 100%;
+  animation: project-preview-shimmer 1.4s ease-in-out infinite;
+}
+
+.project-card__iframe--idle {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes project-preview-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card__iframe-wrap:has(.project-card__iframe--idle) {
+    animation: none;
+    background: #f8fafc;
+  }
 }
 
 .project-card__iframe-wrap::after {
