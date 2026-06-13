@@ -139,13 +139,18 @@
       "host": "render",
       "renderType": "web-service",
       "difficulty": "easy",
-      "liveUrl": "https://text-sms-node-app.onrender.com",
+      "liveUrl": "https://textsmsnodeapp.onrender.com",
       "repoUrl": "https://github.com/ShubhamSahaniNitkkr/TextSmsNodeApp",
       "rootDirectory": "TextSmsNodeApp",
       "buildCommand": "npm install",
       "startCommand": "npm start",
-      "env": { "DEMO_MODE": "true" },
-      "highlights": ["SMS API demo", "Socket.io", "No database needed"]
+      "env": {
+        "DEMO_MODE": "true",
+        "TWILIO_ACCOUNT_SID": "",
+        "TWILIO_AUTH_TOKEN": "",
+        "TWILIO_FROM_NUMBER": ""
+      },
+      "highlights": ["Twilio SMS API", "Socket.io live status", "Demo mode without API keys"]
     },
     {
       "folder": "Real_Time_Voting_App",
@@ -155,7 +160,7 @@
       "host": "render",
       "renderType": "web-service",
       "difficulty": "easy",
-      "liveUrl": "https://real-time-voting-app.onrender.com",
+      "liveUrl": "https://real-time-voting-app-b06n.onrender.com",
       "repoUrl": "https://github.com/ShubhamSahaniNitkkr/Real_Time_Voting_App",
       "rootDirectory": "Real_Time_Voting_App",
       "buildCommand": "npm install",
@@ -187,64 +192,13 @@
       "host": "render",
       "renderType": "web-service",
       "difficulty": "medium",
-      "liveUrl": "https://generate-pdf-nodejs.onrender.com",
+      "liveUrl": "https://generatepdfnodejs.onrender.com",
       "repoUrl": "https://github.com/ShubhamSahaniNitkkr/generatePDFNodeJs",
       "rootDirectory": "generatePDFNodeJs",
       "buildCommand": "npm install && npm run uiinstall && npm run build:ui",
       "startCommand": "npm start",
       "env": { "DEMO_MODE": "true", "SERVE_UI": "true" },
       "highlights": ["PDF generation", "React UI", "Invoice form"]
-    },
-    {
-      "folder": "PhoneDiary",
-      "slug": "phone-diary",
-      "title": "PhoneDiary — MERN Contacts",
-      "category": "MERN",
-      "host": "render",
-      "renderType": "web-service",
-      "difficulty": "medium",
-      "liveUrl": "https://phone-diary.onrender.com",
-      "repoUrl": "https://github.com/ShubhamSahaniNitkkr/PhoneDiary",
-      "rootDirectory": "PhoneDiary",
-      "buildCommand": "npm install && npm run uiinstall && npm run build:ui",
-      "startCommand": "npm start",
-      "env": { "DEMO_MODE": "true", "SERVE_UI": "true" },
-      "optionalEnv": { "MONGODB_URI": "mongodb+srv://..." },
-      "highlights": ["MERN stack", "JWT auth", "Contact CRUD"]
-    },
-    {
-      "folder": "laravel--node-js-shopping-cart",
-      "slug": "node-shopping-cart",
-      "title": "Node.js Shopping Cart",
-      "category": "Node.js",
-      "host": "render",
-      "renderType": "web-service",
-      "difficulty": "hard",
-      "liveUrl": "https://node-shopping-cart.onrender.com",
-      "repoUrl": "https://github.com/ShubhamSahaniNitkkr/laravel--node-js-shopping-cart",
-      "rootDirectory": "laravel--node-js-shopping-cart",
-      "buildCommand": "npm install",
-      "startCommand": "npm start",
-      "env": { "DEMO_MODE": "true" },
-      "optionalEnv": { "MONGODB_URI": "mongodb+srv://...", "STRIPE_SECRET_KEY": "sk_..." },
-      "highlights": ["E-commerce backend", "Stripe checkout", "MongoDB sessions"]
-    },
-    {
-      "folder": "RealtimeChatApp",
-      "slug": "realtime-chat-app",
-      "title": "Realtime Chat App",
-      "category": "Node.js",
-      "host": "render",
-      "renderType": "web-service",
-      "difficulty": "hard",
-      "liveUrl": "https://realtime-chat-app.onrender.com",
-      "repoUrl": "https://github.com/ShubhamSahaniNitkkr/RealtimeChatApp",
-      "rootDirectory": "RealtimeChatApp/server",
-      "buildCommand": "npm install",
-      "startCommand": "npm start",
-      "env": {},
-      "note": "Needs client build served from server — extra setup required",
-      "highlights": ["Socket.io chat", "React client", "Real-time messaging"]
     },
     {
       "slug": "coupon-bot",
@@ -342,22 +296,6 @@
         "Exam prep hub — JEE, NEET, UPSC, CAT, GRE, and more.",
         "Static HTML + JSON-driven quiz pages (no backend).",
         "Responsive exam grid with mobile-first UI redesign."
-      ]
-    },
-    {
-      "slug": "react-currency-converter",
-      "title": "Currency Converter",
-      "liveUrl": "https://shubhamsahaniNitkkr.github.io/react-currency-converter/",
-      "host": "github-pages",
-      "bento": "standard",
-      "categories": [
-        "live-demo",
-        "data"
-      ],
-      "highlights": [
-        "Real-time currency conversion with TypeScript + React.",
-        "Exchange Rates API with offline fallback rates.",
-        "useReducer + Context API for conversion state."
       ]
     },
     {
