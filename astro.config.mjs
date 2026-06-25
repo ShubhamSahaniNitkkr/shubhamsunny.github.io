@@ -7,6 +7,10 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://shubhamsunny.com',
   trailingSlash: 'never',
+  compressHTML: true,
+  build: {
+    inlineStylesheets: 'auto',
+  },
   vite: {
     plugins: [tailwindcss()],
     resolve: {
@@ -20,6 +24,23 @@ export default defineConfig({
         'react/jsx-dev-runtime',
         'framer-motion',
       ],
+    },
+    build: {
+      cssMinify: true,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('framer-motion')) return 'motion';
+            if (id.includes('node_modules/react-dom')) return 'react-dom';
+            if (id.includes('node_modules/react/')) return 'react';
+          },
+        },
+      },
+    },
+    server: {
+      proxy: {
+        '/api': { target: 'http://127.0.0.1:3001', changeOrigin: true },
+      },
     },
   },
   integrations: [

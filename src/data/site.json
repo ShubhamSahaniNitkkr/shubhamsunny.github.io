@@ -23,9 +23,15 @@
     "NIT Kurukshetra · 8+ Years Experience"
   ],
   "whatsappMessages": {
-    "consultation": "Hi Shubham, I saw your website. I'd like a free review of my business website.",
-    "package": "Hi Shubham, I'm interested in the {packageName} package (${price}). Can we discuss?",
-    "general": "Hi Shubham, I visited your website and would like to know more about website modernization.",
+    "consultation": "Hi Shubham,\n\nI saw your website and I'd like a free review of my business website.\n\nThanks!",
+    "package": "Hi Shubham,\n\nI'm interested in the {packageName} package (${price}). Can we discuss?\n\nThanks!",
+    "general": "Hi Shubham,\n\nI visited your website and would like to know more about website modernization.\n\nThanks!",
+    "payment": "Hi Shubham, I have a question about getting started. Name: {name}, Package: {package}."
+  },
+  "emailMessages": {
+    "consultation": "Hi Shubham,\n\nI saw your website and I'd like a free review of my business website.\n\nThanks!",
+    "package": "Hi Shubham,\n\nI'm interested in the {packageName} package (${price}). Can we discuss?\n\nThanks!",
+    "general": "Hi Shubham,\n\nI visited your website and would like to know more about website modernization.\n\nThanks!",
     "payment": "Hi Shubham, I have a question about getting started. Name: {name}, Package: {package}."
   }
 }

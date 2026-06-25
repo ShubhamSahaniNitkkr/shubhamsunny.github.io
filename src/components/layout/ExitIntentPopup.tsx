@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { getWhatsAppConsultationUrl } from '../../lib/utils';
+import { getConsultationEmailUrl } from '../../lib/utils';
 
 const STORAGE_KEY = 'ss-exit-popup-dismissed';
 const COOLDOWN_MS = 60 * 60 * 1000;
@@ -42,10 +42,10 @@ export default function ExitIntentPopup() {
         <p className="label">Free Review</p>
         <h3 className="font-display mt-4 text-3xl text-charcoal">Get a Free Website Review</h3>
         <p className="mt-3 text-sm text-muted">
-          Not sure if your site needs an upgrade? Message me on WhatsApp — I will review it and suggest the best path forward. No pressure.
+          Not sure if your site needs an upgrade? Send me your URL — I'll review it and suggest the best path forward.
         </p>
-        <a href={getWhatsAppConsultationUrl()} target="_blank" rel="noopener noreferrer" className="btn-whatsapp mt-8 block w-full text-center" onClick={dismiss}>
-          Chat on WhatsApp
+        <a href={getConsultationEmailUrl()} target="_blank" rel="noopener noreferrer" className="btn-rose mt-8 block w-full text-center" onClick={dismiss}>
+          Request Free Review
         </a>
       </div>
     </div>

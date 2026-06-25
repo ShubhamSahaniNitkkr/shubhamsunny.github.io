@@ -86,6 +86,17 @@ export interface SiteConfig {
     general: string;
     payment: string;
   };
+  emailMessages?: {
+    consultation: string;
+    package: string;
+    general: string;
+    payment: string;
+  };
+}
+
+export interface NotificationsConfig {
+  notifyOnVisit: boolean;
+  chatbotEnabled: boolean;
 }
 
 export interface SocialConfig {
@@ -104,6 +115,7 @@ export interface ClientProject {
   outcome: string;
   liveUrl?: string;
   highlights: string[];
+  bento?: string;
 }
 
 export interface SeoPageConfig {

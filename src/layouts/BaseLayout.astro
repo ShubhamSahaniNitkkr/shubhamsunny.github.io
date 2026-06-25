@@ -2,11 +2,13 @@
 import '../styles/global.css';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
-import StickyWhatsApp from '../components/layout/StickyWhatsApp';
 import ExitIntentPopup from '../components/layout/ExitIntentPopup';
+import ChatWidget from '../components/layout/ChatWidget';
+import VisitTracker from '../components/layout/VisitTracker';
 import SchemaMarkup from '../components/seo/SchemaMarkup.astro';
-import { siteConfig } from '../lib/utils';
+import { siteConfig, getCloudinaryUrl } from '../lib/utils';
 import media from '../data/media.json';
+import notifications from '../data/notifications.json';
 
 interface Props {
   title?: string;
@@ -35,7 +37,10 @@ const {
 const canonicalUrl = canonical || Astro.url.href;
 const cacheVersion = media.settings.cacheVersion;
 const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteConfig.domain}${ogImage}`;
-const heroLcp = media.hero.rotation.find((item) => item.type === 'image')?.src;
+const heroLcp = media.hero.rotation[0]?.src;
+const heroPreload = heroLcp ? getCloudinaryUrl(heroLcp, 900, 1125) : undefined;
+const notifyOnVisit = notifications.notifyOnVisit;
+const chatbotEnabled = notifications.chatbotEnabled;
 ---
 
 <!doctype html>
@@ -64,13 +69,14 @@ const heroLcp = media.hero.rotation.find((item) => item.type === 'image')?.src;
     <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM Full Site Details" />
     <title>{title}</title>
     <link rel="icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/media/team/shubham.jpg" />
-    {heroLcp && <link rel="preload" href={heroLcp} as="image" fetchpriority="high" />}
+    <link rel="apple-touch-icon" href={getCloudinaryUrl('/media/team/shubham.jpg', 180, 180)} />
+    {heroPreload && <link rel="preload" href={heroPreload} as="image" fetchpriority="high" />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <SchemaMarkup type={schemaType} serviceName={serviceName} serviceDescription={serviceDescription} pageUrl={canonical} />
   </head>
   <body>
+    <VisitTracker client:idle enabled={notifyOnVisit} />
     <Header />
     <div class="site-content relative z-[1]">
       <main>
@@ -78,7 +84,7 @@ const heroLcp = media.hero.rotation.find((item) => item.type === 'image')?.src;
       </main>
       <Footer />
     </div>
-    <StickyWhatsApp client:load />
+    <ChatWidget client:idle enabled={chatbotEnabled} />
     <ExitIntentPopup client:idle />
     <script define:vars={{ cacheVersion }}>
       if ('serviceWorker' in navigator) {

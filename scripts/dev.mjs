@@ -1,9 +1,8 @@
 #!/usr/bin/env node
-import { spawn } from 'child_process';
+import { spawn, execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { execSync } from 'child_process';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
@@ -33,12 +32,31 @@ fs.watch(excelPath, () => {
   }, 600);
 });
 
+function clearStaleDevServer() {
+  try {
+    execSync('npx astro dev stop', { cwd: root, stdio: 'ignore' });
+  } catch {
+    // No managed dev server — continue.
+  }
+
+  try {
+    const pids = execSync('lsof -ti :4321', { encoding: 'utf8' }).trim();
+    if (pids) {
+      console.log('Stopping stale process on port 4321...');
+      execSync(`kill ${pids.split('\n').join(' ')}`);
+    }
+  } catch {
+    // Port is free.
+  }
+}
+
 console.log('\n🚀 Starting dev server (Excel auto-sync enabled)\n');
+
+clearStaleDevServer();
 
 const child = spawn('npx', ['astro', 'dev', '--force'], {
   cwd: root,
   stdio: 'inherit',
-  shell: true,
   env: { ...process.env, NODE_ENV: 'development' },
 });
 child.on('exit', (code) => process.exit(code ?? 0));

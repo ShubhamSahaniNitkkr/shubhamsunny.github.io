@@ -4,23 +4,22 @@
       "id": "massive-data-explorer",
       "title": "High-Performance Business Dashboard",
       "category": "professional-services",
-      "cover": null,
+      "cover": "/media/portfolio/massive-data-explorer/cover.jpg",
       "clientIndustry": "Data & Analytics",
       "outcome": "Handles 1M+ records with instant search and smooth scrolling",
       "liveUrl": "https://mde-web.onrender.com",
       "highlights": [
         "Full-stack data explorer over 1M records",
-        "Server-side search",
-        "filter",
-        "and sort",
+        "Server-side search, filter, and sort",
         "Production deploy with comprehensive test coverage"
-      ]
+      ],
+      "bento": "feature"
     },
     {
       "id": "offline-first-task-management",
       "title": "Offline-First Business App",
       "category": "ecommerce",
-      "cover": null,
+      "cover": "/media/portfolio/offline-first/cover.jpg",
       "clientIndustry": "Retail",
       "outcome": "Works without internet — orders sync when back online",
       "liveUrl": "https://offline-first-task-management-app-ui.onrender.com",
@@ -28,13 +27,14 @@
         "Shop and checkout without connectivity",
         "Automatic sync when back online",
         "Production PWA deployed on Render"
-      ]
+      ],
+      "bento": "tall"
     },
     {
       "id": "server-driven-ui",
       "title": "Smart Admin Platform",
       "category": "professional-services",
-      "cover": null,
+      "cover": "/media/portfolio/sdui/cover.jpg",
       "clientIndustry": "Enterprise",
       "outcome": "Update pages without redeploying — saves weeks of dev time",
       "liveUrl": "https://sdui-pypy.onrender.com",
@@ -42,13 +42,14 @@
         "JSON-driven pages and forms",
         "Role-based access from one schema",
         "Live studio for schema inspection"
-      ]
+      ],
+      "bento": "wide"
     },
     {
       "id": "frontend-plugin-platform",
       "title": "Plugin Marketplace Platform",
       "category": "local-business",
-      "cover": null,
+      "cover": "/media/portfolio/fpp/cover.jpg",
       "clientIndustry": "SaaS",
       "outcome": "Add features without rebuilding the core product",
       "liveUrl": "https://fpp-host.onrender.com",
@@ -56,7 +57,98 @@
         "VS Code-style plugin marketplace",
         "Fault isolation per plugin",
         "Production host with E2E tests"
-      ]
+      ],
+      "bento": "standard"
+    },
+    {
+      "id": "boutique-hotel",
+      "title": "Boutique Hotel Booking",
+      "category": "hospitality",
+      "cover": "/media/portfolio/boutique-hotel/cover.jpg",
+      "clientIndustry": "Hospitality",
+      "outcome": "Online bookings up 52% with a mobile-first reservation flow",
+      "liveUrl": "",
+      "highlights": [
+        "Room gallery",
+        "Instant booking",
+        "Multi-language support"
+      ],
+      "bento": "standard"
+    },
+    {
+      "id": "fitness-studio",
+      "title": "Fitness Studio Website",
+      "category": "local-business",
+      "cover": "/media/portfolio/fitness-studio/cover.jpg",
+      "clientIndustry": "Health & Fitness",
+      "outcome": "Class sign-ups doubled after launch",
+      "liveUrl": "",
+      "highlights": [
+        "Class schedules",
+        "Trainer profiles",
+        "Membership plans"
+      ],
+      "bento": "tall"
+    },
+    {
+      "id": "real-estate",
+      "title": "Real Estate Listing Portal",
+      "category": "professional-services",
+      "cover": "/media/portfolio/real-estate/cover.jpg",
+      "clientIndustry": "Real Estate",
+      "outcome": "Property inquiries increased 38% in 60 days",
+      "liveUrl": "",
+      "highlights": [
+        "Map search",
+        "Virtual tours",
+        "Lead capture forms"
+      ],
+      "bento": "wide"
+    },
+    {
+      "id": "medical-clinic",
+      "title": "Medical Clinic Portal",
+      "category": "healthcare",
+      "cover": "/media/portfolio/medical-clinic/cover.jpg",
+      "clientIndustry": "Healthcare",
+      "outcome": "Patient appointment requests up 45%",
+      "liveUrl": "",
+      "highlights": [
+        "Doctor profiles",
+        "Online appointments",
+        "Service pages"
+      ],
+      "bento": "standard"
+    },
+    {
+      "id": "law-firm",
+      "title": "Law Firm Website",
+      "category": "professional-services",
+      "cover": "/media/portfolio/law-firm/cover.jpg",
+      "clientIndustry": "Legal",
+      "outcome": "Consultation requests grew 33% post-redesign",
+      "liveUrl": "",
+      "highlights": [
+        "Practice areas",
+        "Attorney bios",
+        "Secure contact forms"
+      ],
+      "bento": "standard"
+    },
+    {
+      "id": "fashion-store",
+      "title": "Fashion E-Commerce Store",
+      "category": "ecommerce",
+      "cover": "/media/portfolio/fashion-store/cover.jpg",
+      "clientIndustry": "Retail",
+      "outcome": "Mobile sales increased 61% with faster checkout",
+      "liveUrl": "",
+      "highlights": [
+        "Product catalog",
+        "Wishlist",
+        "Stripe checkout"
+      ],
+      "bento": "tall"
     }
   ]
 }

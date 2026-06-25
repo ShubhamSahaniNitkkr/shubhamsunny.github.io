@@ -2,7 +2,7 @@
 import SectionTitle from '../ui/SectionTitle.astro';
 import packages from '../../data/packages.json';
 import type { Package } from '../../types';
-import { getWhatsAppPackageUrl, formatPrice } from '../../lib/utils';
+import { getPackageEmailUrl, formatPrice } from '../../lib/utils';
 
 const pkgs = packages as Package[];
 ---
@@ -37,10 +37,10 @@ const pkgs = packages as Package[];
             ))}
           </ul>
           <a
-            href={getWhatsAppPackageUrl(pkg.name, pkg.price)}
+            href={getPackageEmailUrl(pkg.name, pkg.price)}
             target="_blank"
             rel="noopener noreferrer"
-            class:list={['mt-8 block w-full text-center', pkg.mostPopular ? 'btn-whatsapp' : 'btn-secondary']}
+            class:list={['mt-8 block w-full text-center', pkg.mostPopular ? 'btn-email' : 'btn-secondary']}
           >
             Get Started
           </a>

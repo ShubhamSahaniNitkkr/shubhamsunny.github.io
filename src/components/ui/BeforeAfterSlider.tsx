@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
+import { getCloudinaryUrl } from '../../lib/utils';
 
 interface Props {
   before: string;
@@ -43,9 +44,9 @@ function MediaLayer({
   }
   return (
     <img
-      src={src}
+      src={getCloudinaryUrl(src, 1400)}
       alt={alt}
-      className="absolute top-0 left-0 h-full object-cover"
+      className="absolute top-0 left-0 h-full object-cover object-top"
       style={style}
       loading="lazy"
       draggable={false}

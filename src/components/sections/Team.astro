@@ -2,19 +2,20 @@
 import SectionTitle from '../ui/SectionTitle.astro';
 import media from '../../data/media.json';
 import site from '../../data/site.json';
-import social from '../../data/social.json';
+import { getCloudinaryUrl } from '../../lib/utils';
 
 const founder = media.team.find((m) => m.isFounder) || media.team[0];
+const founderImage = getCloudinaryUrl(founder.image, 800, 1000);
 ---
 
 <section id="team" class="section-padding bg-surface">
   <div class="container-salon">
-    <SectionTitle label="About" title="Meet Shubham" subtitle="8 years helping businesses look professional online — in plain English, no jargon." />
+    <SectionTitle label="About" title="Meet Shubham Sunny" subtitle="Eight years helping businesses build a professional, trustworthy online presence." />
 
     <div class="grid items-start gap-8 lg:grid-cols-2 lg:gap-12">
       <div class="hero-frame mx-auto w-full max-w-md lg:mx-0">
         <img
-          src={founder.image}
+          src={founderImage}
           alt={founder.name}
           class="aspect-[3/4] w-full object-cover object-top"
           loading="eager"

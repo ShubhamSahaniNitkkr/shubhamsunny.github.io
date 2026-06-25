@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'ss-v1.0.0';
+const CACHE_VERSION = 'ss-v1.2.0';
 const STATIC_CACHE = `ss-static-${CACHE_VERSION}`;
 const MEDIA_CACHE = `ss-media-${CACHE_VERSION}`;
 const PRECACHE = [];

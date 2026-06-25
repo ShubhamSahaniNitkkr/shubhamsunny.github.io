@@ -13,6 +13,7 @@
     "sync": "node scripts/sync-excel.mjs",
     "upload:cloudinary": "node scripts/upload-cloudinary.mjs",
     "init:excel": "node scripts/init-excel.mjs",
+    "patch:excel": "node scripts/patch-excel.mjs",
     "prebuild": "npm run sync"
   },
   "dependencies": {
@@ -23,11 +24,14 @@
     "@types/react-dom": "^18.3.7",
     "astro": "^7.0.1",
     "framer-motion": "^11.18.2",
+    "nodemailer": "^6.10.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwindcss": "^4.3.1"
   },
   "devDependencies": {
+    "@types/nodemailer": "^6.4.17",
+    "@vercel/node": "^5.3.0",
     "cloudinary": "^2.10.0",
     "xlsx": "^0.18.5"
   }

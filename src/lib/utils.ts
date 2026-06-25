@@ -12,21 +12,48 @@ export function formatPrice(price: number, startingFrom = false): string {
   return startingFrom ? `From ${formatted}` : formatted;
 }
 
+/** Gmail compose — same flow as WhatsApp but opens email with pre-filled subject & body */
+export function getGmailUrl(subject: string, body: string): string {
+  const params = new URLSearchParams({
+    view: 'cm',
+    fs: '1',
+    to: siteConfig.email,
+    su: subject,
+    body: body,
+  });
+  return `https://mail.google.com/mail/?${params.toString()}`;
+}
+
+export function getConsultationEmailUrl(): string {
+  const msg = siteConfig.emailMessages?.consultation || siteConfig.whatsappMessages?.consultation || '';
+  return getGmailUrl('Free Website Review Request', msg);
+}
+
+export function getPackageEmailUrl(packageName: string, price: number): string {
+  const template =
+    siteConfig.emailMessages?.package || siteConfig.whatsappMessages?.package || '';
+  const body = template
+    .replace('{packageName}', packageName)
+    .replace('{price}', price.toLocaleString('en-US'));
+  return getGmailUrl(`Interested in ${packageName}`, body);
+}
+
+export function getGeneralEmailUrl(): string {
+  const msg = siteConfig.emailMessages?.general || siteConfig.whatsappMessages?.general || '';
+  return getGmailUrl('Website Inquiry', msg);
+}
+
+/** @deprecated use getGmailUrl — kept for gradual migration */
 export function getWhatsAppUrl(message: string): string {
-  const encoded = encodeURIComponent(message);
-  const wa = String(siteConfig.whatsapp).replace(/\D/g, '');
-  return `https://wa.me/${wa}?text=${encoded}`;
+  return getGmailUrl('Website Inquiry', message);
 }
 
 export function getWhatsAppConsultationUrl(): string {
-  return getWhatsAppUrl(siteConfig.whatsappMessages.consultation);
+  return getConsultationEmailUrl();
 }
 
 export function getWhatsAppPackageUrl(packageName: string, price: number): string {
-  const message = siteConfig.whatsappMessages.package
-    .replace('{packageName}', packageName)
-    .replace('{price}', price.toLocaleString('en-US'));
-  return getWhatsAppUrl(message);
+  return getPackageEmailUrl(packageName, price);
 }
 
 export function getPhoneUrl(): string {
@@ -45,6 +72,14 @@ export function getCloudinaryUrl(url: string, width = 800, height?: number): str
       ? `c_fill,w_${width},h_${height},g_face,q_auto,f_auto`
       : `c_limit,w_${width},q_auto,f_auto`;
     return url.replace('/upload/', `/upload/${transform}/`);
+  }
+  return url;
+}
+
+export function getCloudinaryVideoPoster(url: string, width = 800): string {
+  if (!url) return url;
+  if (url.includes('cloudinary.com') && isVideoUrl(url)) {
+    return url.replace('/upload/', `/upload/so_0,f_jpg,w_${width},q_auto/`);
   }
   return url;
 }

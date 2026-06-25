@@ -4,3 +4,5 @@ dist/
 .env
 cloudinary-manifest.json
 .DS_Store
+*.tmp.jpg
+public/media/transformations/try-*

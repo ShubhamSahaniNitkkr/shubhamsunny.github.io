@@ -10,8 +10,22 @@
 /*.ico
   Cache-Control: public, max-age=86400
 
-/*.txt
-  Cache-Control: public, max-age=86400
+/*.jpg
+  Cache-Control: public, max-age=604800
+
+/*.jpeg
+  Cache-Control: public, max-age=604800
+
+/*.webp
+  Cache-Control: public, max-age=604800
+
+/llms.txt
+  Cache-Control: public, max-age=3600
+  Content-Type: text/plain; charset=utf-8
+
+/llms-full.txt
+  Cache-Control: public, max-age=3600
+  Content-Type: text/plain; charset=utf-8
 
 /*.xml
   Cache-Control: public, max-age=86400

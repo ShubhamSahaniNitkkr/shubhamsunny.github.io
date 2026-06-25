@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import blog from '../../data/blog.json';
 import site from '../../data/site.json';
 import type { BlogPost } from '../../types';
-import { getWhatsAppConsultationUrl } from '../../lib/utils';
+import { getConsultationEmailUrl } from '../../lib/utils';
 
 export function getStaticPaths() {
   return (blog as BlogPost[])
@@ -24,7 +24,7 @@ const canonical = `${site.domain}/blog/${post.slug}`;
       <p class="mt-6 text-base leading-relaxed text-muted">{post.excerpt}</p>
       <div class="mt-8 rounded border border-champagne bg-ivory-dark p-6 text-sm text-muted">
         <p>Full article coming soon. In the meantime, get a free website review — I will look at your current site and give honest advice in plain English.</p>
-        <a href={getWhatsAppConsultationUrl()} target="_blank" rel="noopener noreferrer" class="btn-whatsapp mt-4 inline-flex">Free Website Review</a>
+        <a href={getConsultationEmailUrl()} target="_blank" rel="noopener noreferrer" class="btn-email mt-4 inline-flex">Free Website Review</a>
       </div>
       <a href="/blog" class="mt-8 inline-block text-sm text-rose-gold-dark hover:text-rose-gold">← Back to blog</a>
     </div>

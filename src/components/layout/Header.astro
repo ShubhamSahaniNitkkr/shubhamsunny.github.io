@@ -4,9 +4,9 @@ import media from '../../data/media.json';
 
 <header class="fixed top-0 right-0 left-0 z-50">
   <div class="border-b border-champagne/50 bg-ivory/90 backdrop-blur-lg" id="header-inner">
-    <div class="container-salon flex items-center justify-between px-5 py-3.5 sm:py-4">
+    <div class="mx-auto flex w-full max-w-5xl items-center justify-between px-2.5 py-3.5 sm:px-5 sm:py-4">
       <a href="/" class="shrink-0">
-        <img src={media.logo} alt={media.logoAlt} class="h-8 w-auto sm:h-9" width="160" height="36" />
+        <img src={media.logo} alt={media.logoAlt} class="h-8 w-auto sm:h-9" width="220" height="36" />
       </a>
       <nav class="hidden items-center gap-6 lg:flex">
         <a href="/#reviews" class="text-[11px] font-semibold tracking-[0.14em] text-charcoal uppercase hover:text-rose-gold-dark">Reviews</a>
@@ -32,7 +32,7 @@ import media from '../../data/media.json';
       <a href="/#packages" class="border-b border-champagne/40 py-4 text-[15px] font-medium text-charcoal hover:text-rose-gold-dark">Services</a>
       <a href="/projects" class="border-b border-champagne/40 py-4 text-[15px] font-medium text-charcoal hover:text-rose-gold-dark">Projects</a>
       <a href="/blog" class="border-b border-champagne/40 py-4 text-[15px] font-medium text-charcoal hover:text-rose-gold-dark">Blog</a>
-      <a href="/#contact" class="btn-whatsapp mt-5 w-full text-center">Free WhatsApp Review</a>
+        <a href="/#contact" class="btn-primary mt-5 w-full text-center">Free Review</a>
     </nav>
   </div>
 </header>

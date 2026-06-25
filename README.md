@@ -41,13 +41,32 @@ Deploys to GitHub Pages on push to `main` via `.github/workflows/deploy.yml`.
 | Blog | Article placeholders |
 | Roadmap | Future products |
 
+## Email, chatbot & visit alerts (Vercel)
+
+Deploy on **Vercel** (not GitHub Pages alone) so `/api/chat` and `/api/visit` work.
+
+1. Copy `.env.example` → `.env` locally; add the same vars in Vercel → Settings → Environment Variables
+2. Gmail: use an [App Password](https://myaccount.google.com/apppasswords) for `SMTP_PASS`
+
+**Excel toggles** (Site sheet):
+
+| field | values |
+|-------|--------|
+| `notify_on_visit` | `yes` / `no` — email when someone opens the site |
+| `chatbot_enabled` | `yes` / `no` — floating chat widget |
+
+**Email messages** (Site sheet): `email_consultation`, `email_package`, `email_general`
+
+All CTAs open **Gmail compose** with pre-filled subject & body (same flow as before, email instead of WhatsApp).
+
 ## Cloudinary (optional)
 
 ```bash
-cp .env.example .env   # add credentials
+cp .env.example .env   # add Cloudinary credentials
 npm run upload:cloudinary
 npm run sync
 ```
+
 
 ## SEO files
 
