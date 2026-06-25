@@ -97,6 +97,7 @@ export interface SiteConfig {
 export interface NotificationsConfig {
   notifyOnVisit: boolean;
   chatbotEnabled: boolean;
+  web3formsAccessKey?: string;
 }
 
 export interface SocialConfig {

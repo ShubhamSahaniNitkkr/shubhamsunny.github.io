@@ -1,4 +1,5 @@
 {
   "notifyOnVisit": true,
-  "chatbotEnabled": true
+  "chatbotEnabled": true,
+  "web3formsAccessKey": "df5f568e-3004-429c-8cd7-5799562bda15"
 }

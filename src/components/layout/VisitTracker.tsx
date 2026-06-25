@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { resolveVisitApiUrl } from '../../lib/utils';
 
 interface Props {
   enabled: boolean;
@@ -21,7 +22,7 @@ export default function VisitTracker({ enabled }: Props) {
       referrer: document.referrer || 'direct',
     };
 
-    fetch('/api/visit', {
+    fetch(resolveVisitApiUrl(), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),

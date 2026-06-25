@@ -48,17 +48,21 @@ export default defineConfig({
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,
-      lastmod: new Date(),
       serialize(item) {
         const url = item.url;
         if (url === 'https://shubhamsunny.com/') {
           item.priority = 1.0;
+          item.changefreq = 'weekly';
         } else if (url.includes('website-redesign') || url.includes('modernize')) {
           item.priority = 0.9;
+          item.changefreq = 'weekly';
+        } else if (url.includes('/blog/')) {
+          item.priority = 0.75;
+          item.changefreq = 'monthly';
         } else {
           item.priority = 0.7;
+          item.changefreq = 'weekly';
         }
-        item.changefreq = 'weekly';
         return item;
       },
     }),

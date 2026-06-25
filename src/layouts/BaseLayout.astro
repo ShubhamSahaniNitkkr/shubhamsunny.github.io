@@ -41,6 +41,7 @@ const heroLcp = media.hero.rotation[0]?.src;
 const heroPreload = heroLcp ? getCloudinaryUrl(heroLcp, 900, 1125) : undefined;
 const notifyOnVisit = notifications.notifyOnVisit;
 const chatbotEnabled = notifications.chatbotEnabled;
+const web3formsAccessKey = notifications.web3formsAccessKey;
 ---
 
 <!doctype html>
@@ -53,6 +54,7 @@ const chatbotEnabled = notifications.chatbotEnabled;
     <meta name="author" content={siteConfig.brand} />
     <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
     <link rel="canonical" href={canonicalUrl} />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
     <meta name="theme-color" content="#0F172A" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -84,7 +86,7 @@ const chatbotEnabled = notifications.chatbotEnabled;
       </main>
       <Footer />
     </div>
-    <ChatWidget client:idle enabled={chatbotEnabled} />
+    <ChatWidget client:idle enabled={chatbotEnabled} web3formsAccessKey={web3formsAccessKey} />
     <ExitIntentPopup client:idle />
     <script define:vars={{ cacheVersion }}>
       if ('serviceWorker' in navigator) {

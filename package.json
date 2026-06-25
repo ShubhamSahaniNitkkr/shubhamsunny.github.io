@@ -13,7 +13,6 @@
     "sync": "node scripts/sync-excel.mjs",
     "upload:cloudinary": "node scripts/upload-cloudinary.mjs",
     "init:excel": "node scripts/init-excel.mjs",
-    "patch:excel": "node scripts/patch-excel.mjs",
     "prebuild": "npm run sync"
   },
   "dependencies": {

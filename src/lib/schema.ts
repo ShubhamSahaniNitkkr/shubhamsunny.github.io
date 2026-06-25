@@ -3,7 +3,6 @@ import social from '../data/social.json';
 import testimonials from '../data/testimonials.json';
 import faq from '../data/faq.json';
 import packages from '../data/packages.json';
-import models from '../data/models.json';
 
 interface SchemaProps {
   type?: 'home' | 'service';
@@ -63,10 +62,15 @@ export function getWebSiteSchema() {
     '@type': 'WebSite',
     '@id': `${site.domain}/#website`,
     name: site.brand,
+    alternateName: 'Shubham Sunny Website Modernization',
     url: site.domain,
     description: site.seo?.description || site.tagline,
     publisher: { '@id': `${site.domain}/#business` },
     inLanguage: 'en-US',
+    about: {
+      '@type': 'Thing',
+      name: 'Website modernization for US small businesses',
+    },
   };
 }
 

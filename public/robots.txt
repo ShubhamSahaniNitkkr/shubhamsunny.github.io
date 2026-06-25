@@ -21,6 +21,6 @@ Allow: /
 
 Sitemap: https://shubhamsunny.com/sitemap-index.xml
 
-# LLM-readable summaries
-# https://shubhamsunny.com/llms.txt
-# https://shubhamsunny.com/llms-full.txt
+# LLM / AI discovery (llms.txt convention)
+# Summary: https://shubhamsunny.com/llms.txt
+# Full details: https://shubhamsunny.com/llms-full.txt

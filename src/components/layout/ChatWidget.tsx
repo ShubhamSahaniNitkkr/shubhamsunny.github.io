@@ -1,7 +1,9 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { getChatEmailUrl, siteConfig } from '../../lib/utils';
 
 interface Props {
   enabled: boolean;
+  web3formsAccessKey?: string;
 }
 
 type ChatMessage = { role: 'bot' | 'user'; text: string };
@@ -9,7 +11,35 @@ type ChatMessage = { role: 'bot' | 'user'; text: string };
 const GREETING =
   "Hi — ask me anything about website redesign, pricing, or timelines. I'll make sure Shubham gets your message.";
 
-export default function ChatWidget({ enabled }: Props) {
+async function sendViaWeb3Forms(
+  accessKey: string,
+  payload: { name: string; email: string; message: string; page: string },
+) {
+  const res = await fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({
+      access_key: accessKey,
+      subject: `Website chat — ${payload.name || 'Visitor'}`,
+      name: payload.name || 'Website visitor',
+      email: payload.email,
+      message: [
+        payload.message,
+        '',
+        `Page: ${payload.page || '/'}`,
+        'Sent via website chat on shubhamsunny.com',
+      ].join('\n'),
+    }),
+  });
+
+  const data = await res.json().catch(() => ({}));
+  return res.ok && data.success === true;
+}
+
+export default function ChatWidget({ enabled, web3formsAccessKey = '' }: Props) {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([{ role: 'bot', text: GREETING }]);
   const [input, setInput] = useState('');
@@ -18,6 +48,7 @@ export default function ChatWidget({ enabled }: Props) {
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const accessKey = String(web3formsAccessKey || import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || '').trim();
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -25,39 +56,49 @@ export default function ChatWidget({ enabled }: Props) {
 
   const sendMessage = useCallback(async () => {
     const text = input.trim();
+    const visitorName = name.trim();
+    const visitorEmail = email.trim();
+    const page = window.location.pathname;
+
     if (!text || sending) return;
+
+    if (!visitorEmail) {
+      setMessages((m) => [...m, { role: 'bot', text: 'Please add your email so Shubham can reply to you.' }]);
+      return;
+    }
 
     setMessages((m) => [...m, { role: 'user', text }]);
     setInput('');
     setSending(true);
 
-    try {
-      const res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: text,
-          name: name.trim() || undefined,
-          email: email.trim() || undefined,
-          page: window.location.pathname,
-        }),
-      });
+    const payload = { message: text, name: visitorName || 'Website visitor', email: visitorEmail, page };
 
-      if (res.ok) {
+    try {
+      if (accessKey && (await sendViaWeb3Forms(accessKey, payload))) {
         setSent(true);
         setMessages((m) => [
           ...m,
-          { role: 'bot', text: "Got it — your message was sent. Shubham typically replies within one business day." },
+          { role: 'bot', text: 'Got it — your message was sent. Shubham typically replies within one business day.' },
         ]);
-      } else {
-        setMessages((m) => [...m, { role: 'bot', text: 'Something went wrong. Please try again in a moment.' }]);
+        return;
       }
+
+      const gmailUrl = getChatEmailUrl(visitorName, visitorEmail, text, page);
+      window.open(gmailUrl, '_blank', 'noopener,noreferrer');
+      setSent(true);
+      setMessages((m) => [
+        ...m,
+        {
+          role: 'bot',
+          text: 'Gmail is opening with your message pre-filled — click Send there to deliver it to Shubham.',
+        },
+      ]);
     } catch {
-      setMessages((m) => [...m, { role: 'bot', text: 'Connection issue — please try again shortly.' }]);
+      setMessages((m) => [...m, { role: 'bot', text: `Something went wrong. Please email ${siteConfig.email} directly.` }]);
     } finally {
       setSending(false);
     }
-  }, [input, sending, name, email]);
+  }, [input, sending, name, email, accessKey]);
 
   if (!enabled) return null;
 
@@ -116,6 +157,7 @@ export default function ChatWidget({ enabled }: Props) {
               <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                 <input
                   type="text"
+                  name="name"
                   placeholder="Your name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -123,9 +165,11 @@ export default function ChatWidget({ enabled }: Props) {
                 />
                 <input
                   type="email"
-                  placeholder="Your email"
+                  name="email"
+                  placeholder="Your email *"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                   className="chat-input w-full rounded-xl border border-champagne/80 bg-white px-3.5 py-3 text-sm shadow-inner outline-none transition focus:border-rose-gold/50 focus:ring-2 focus:ring-rose-gold/15"
                 />
               </div>
@@ -135,18 +179,20 @@ export default function ChatWidget({ enabled }: Props) {
                 </label>
                 <textarea
                   id="chat-message"
+                  name="message"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   rows={9}
                   placeholder="Share your business, current website URL, and what you want to improve..."
                   className="chat-input w-full resize-y rounded-xl border border-champagne/80 bg-white px-4 py-3 text-sm leading-relaxed shadow-inner outline-none transition focus:border-rose-gold/50 focus:ring-2 focus:ring-rose-gold/15"
                   disabled={sending}
+                  required
                 />
               </div>
               <button
                 type="button"
                 onClick={sendMessage}
-                disabled={sending || !input.trim()}
+                disabled={sending || !input.trim() || !email.trim()}
                 className="w-full rounded-xl px-5 py-3.5 text-xs font-semibold uppercase tracking-wider text-white shadow-md transition disabled:opacity-50"
                 style={{ background: 'linear-gradient(135deg, #0F172A 0%, #334155 100%)' }}
               >

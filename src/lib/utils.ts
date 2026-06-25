@@ -38,26 +38,27 @@ export function getPackageEmailUrl(packageName: string, price: number): string {
   return getGmailUrl(`Interested in ${packageName}`, body);
 }
 
-export function getGeneralEmailUrl(): string {
-  const msg = siteConfig.emailMessages?.general || siteConfig.whatsappMessages?.general || '';
-  return getGmailUrl('Website Inquiry', msg);
+/** Opens Gmail compose for website chat — fallback when Web3Forms is unavailable */
+export function getChatEmailUrl(name: string, email: string, message: string, page: string): string {
+  const visitor = name.trim() || 'Website visitor';
+  const subject = `Website chat — ${visitor}`;
+  const body = [
+    'Hi Shubham,',
+    '',
+    message.trim(),
+    '',
+    '---',
+    `Name: ${visitor}`,
+    email.trim() ? `Reply-to: ${email.trim()}` : 'Reply-to: (not provided)',
+    `Page: ${page || '/'}`,
+    'Sent via website chat',
+  ].join('\n');
+  return getGmailUrl(subject, body);
 }
 
-/** @deprecated use getGmailUrl — kept for gradual migration */
-export function getWhatsAppUrl(message: string): string {
-  return getGmailUrl('Website Inquiry', message);
-}
-
-export function getWhatsAppConsultationUrl(): string {
-  return getConsultationEmailUrl();
-}
-
-export function getWhatsAppPackageUrl(packageName: string, price: number): string {
-  return getPackageEmailUrl(packageName, price);
-}
-
-export function getPhoneUrl(): string {
-  return `tel:${siteConfig.phone.replace(/\s/g, '')}`;
+export function resolveVisitApiUrl(): string {
+  const base = String(import.meta.env.PUBLIC_API_URL || '').replace(/\/$/, '');
+  return base ? `${base}/api/visit` : '/api/visit';
 }
 
 export function isVideoUrl(url: string): boolean {
