@@ -1,0 +1,30 @@
+[
+  {
+    "id": "website-modernization",
+    "name": "Website Modernization",
+    "status": "available",
+    "description": "Transform your outdated website into a modern, mobile-friendly site that builds trust.",
+    "eta": "Now"
+  },
+  {
+    "id": "ai-chatbot",
+    "name": "AI Website Chatbot",
+    "status": "coming_soon",
+    "description": "Answers visitor questions 24/7 on your website — so you never miss a lead.",
+    "eta": "Q3 2026"
+  },
+  {
+    "id": "lead-generation",
+    "name": "Lead Generation Tools",
+    "status": "planned",
+    "description": "Capture visitor details and follow up automatically — grow your pipeline.",
+    "eta": "2026"
+  },
+  {
+    "id": "offline-doc-chat",
+    "name": "Private Document Chat",
+    "status": "planned",
+    "description": "Chat with your business documents securely — for teams that need answers fast.",
+    "eta": "2026"
+  }
+]

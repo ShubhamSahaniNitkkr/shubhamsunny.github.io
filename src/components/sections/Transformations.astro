@@ -1,0 +1,16 @@
+---
+import SectionTitle from '../ui/SectionTitle.astro';
+import TransformationsSection from './TransformationsSection';
+---
+
+<section id="transformations" class="section-padding bg-dark">
+  <div class="container-salon">
+    <SectionTitle
+      label="Proof"
+      title="Before & After"
+      subtitle="Drag the slider. Real website transformations — from outdated to modern."
+      light={true}
+    />
+    <TransformationsSection client:load />
+  </div>
+</section>

@@ -1,0 +1,56 @@
+---
+import SectionTitle from '../ui/SectionTitle.astro';
+import media from '../../data/media.json';
+import site from '../../data/site.json';
+import social from '../../data/social.json';
+
+const founder = media.team.find((m) => m.isFounder) || media.team[0];
+---
+
+<section id="team" class="section-padding bg-surface">
+  <div class="container-salon">
+    <SectionTitle label="About" title="Meet Shubham" subtitle="8 years helping businesses look professional online — in plain English, no jargon." />
+
+    <div class="grid items-start gap-8 lg:grid-cols-2 lg:gap-12">
+      <div class="hero-frame mx-auto w-full max-w-md lg:mx-0">
+        <img
+          src={founder.image}
+          alt={founder.name}
+          class="aspect-[3/4] w-full object-cover object-top"
+          loading="eager"
+          width="600"
+          height="800"
+        />
+      </div>
+      <div class="text-center lg:text-left">
+        {founder.certification && <span class="badge-pill">{founder.certification}</span>}
+        <p class="mt-4 text-sm font-medium tracking-widest text-rose-gold-dark uppercase">{founder.role}</p>
+        {founder.philosophy && (
+          <blockquote class="font-display mt-6 text-xl leading-relaxed text-charcoal sm:text-2xl">
+            &ldquo;{founder.philosophy}&rdquo;
+          </blockquote>
+        )}
+        <p class="mt-6 text-base leading-relaxed text-muted">{founder.bio}</p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4 lg:justify-start">
+          <div class="salon-card px-4 py-3 text-center">
+            <p class="font-display text-xl font-semibold">{site.stats.yearsExperience}+</p>
+            <p class="text-[10px] tracking-widest text-muted uppercase">Years</p>
+          </div>
+          <div class="salon-card px-4 py-3 text-center">
+            <p class="font-display text-xl font-semibold">{site.stats.projectsDelivered}+</p>
+            <p class="text-[10px] tracking-widest text-muted uppercase">Projects</p>
+          </div>
+          <div class="salon-card px-4 py-3 text-center">
+            <p class="font-display text-xl font-semibold">Global</p>
+            <p class="text-[10px] tracking-widest text-muted uppercase">Clients</p>
+          </div>
+        </div>
+        {founder.linkedin && (
+          <a href={founder.linkedin} target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center gap-2 text-sm font-medium text-rose-gold-dark hover:text-rose-gold">
+            LinkedIn →
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "website-redesign-small-business",
+    "name": "Small Business Website Redesign",
+    "description": "I redesign outdated small business websites for US owners. Mobile-friendly, fast, and built to convert visitors into customers.",
+    "slug": "website-redesign-small-business"
+  },
+  {
+    "id": "modernize-outdated-website",
+    "name": "Modernize Your Outdated Website",
+    "description": "Turn your old website into a modern, trustworthy online presence. Plain English process, US timezone friendly.",
+    "slug": "modernize-outdated-website"
+  },
+  {
+    "id": "website-design-for-dentists",
+    "name": "Website Design for Dentists",
+    "description": "Professional dental website design that builds patient trust. Mobile-first, easy booking, clear contact options.",
+    "slug": "website-design-for-dentists"
+  },
+  {
+    "id": "restaurant-website-redesign",
+    "name": "Restaurant Website Redesign",
+    "description": "Modern restaurant websites with menus, hours, and click-to-call. Help hungry customers find and contact you.",
+    "slug": "restaurant-website-redesign"
+  },
+  {
+    "id": "professional-services-website",
+    "name": "Websites for Professional Services",
+    "description": "Premium websites for lawyers, consultants, and service businesses. Look credible, get more inquiries.",
+    "slug": "professional-services-website"
+  }
+]

@@ -1,1 +1,6 @@
-assets/.DS_Store
+node_modules/
+dist/
+.astro/
+.env
+cloudinary-manifest.json
+.DS_Store

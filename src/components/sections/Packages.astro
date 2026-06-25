@@ -1,0 +1,51 @@
+---
+import SectionTitle from '../ui/SectionTitle.astro';
+import packages from '../../data/packages.json';
+import type { Package } from '../../types';
+import { getWhatsAppPackageUrl, formatPrice } from '../../lib/utils';
+
+const pkgs = packages as Package[];
+---
+
+<section id="packages" class="section-padding bg-surface-alt">
+  <div class="container-salon">
+    <SectionTitle
+      label="Services"
+      title="Website Packages"
+      subtitle="Clear pricing in USD. No hidden fees. Pick what fits your business today."
+    />
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+      {pkgs.map((pkg) => (
+        <article class:list={['package-card flex flex-col p-6 sm:p-8', pkg.mostPopular ? 'package-card-popular' : 'salon-card']}>
+          {pkg.mostPopular && (
+            <span class="mb-4 inline-flex w-fit items-center bg-rose-gold/10 px-3 py-1 text-[10px] font-semibold tracking-[0.2em] text-rose-gold uppercase">
+              Most Popular
+            </span>
+          )}
+          <p class="text-[10px] font-semibold tracking-[0.22em] text-muted uppercase">Package</p>
+          <h3 class="font-display mt-2 text-xl font-semibold sm:text-2xl">{pkg.name}</h3>
+          {pkg.description && <p class="mt-3 text-sm leading-relaxed text-muted">{pkg.description}</p>}
+          <div class="mt-5 flex items-baseline gap-2 border-b border-champagne pb-5">
+            <p class="font-display text-4xl font-semibold">{formatPrice(pkg.price, pkg.startingFrom)}</p>
+          </div>
+          <ul class="mt-5 flex-1 space-y-2.5">
+            {pkg.includes.map((item) => (
+              <li class="flex gap-2 text-sm text-muted">
+                <span class="text-rose-gold">✓</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a
+            href={getWhatsAppPackageUrl(pkg.name, pkg.price)}
+            target="_blank"
+            rel="noopener noreferrer"
+            class:list={['mt-8 block w-full text-center', pkg.mostPopular ? 'btn-whatsapp' : 'btn-secondary']}
+          >
+            Get Started
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+---
+import { getWhatsAppConsultationUrl } from '../../lib/utils';
+import media from '../../data/media.json';
+---
+
+<section id="contact" class="section-padding bg-dark text-center">
+  <div class="container-salon">
+    <img src={media.logo} alt="" class="mx-auto h-10 w-auto invert opacity-90" loading="lazy" />
+    <h2 class="font-display mt-6 text-3xl font-semibold text-ivory sm:text-4xl">
+      Ready to Modernize Your Website?
+    </h2>
+    <p class="mx-auto mt-3 max-w-md text-sm text-ivory/60">
+      Free website review on WhatsApp. Tell me about your business — I will reply with honest, plain-English advice.
+    </p>
+    <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+      <a href={getWhatsAppConsultationUrl()} target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+        Chat on WhatsApp
+      </a>
+      <a href="mailto:shubhamsahaninitkkr@gmail.com" class="btn-secondary !border-ivory/25 !text-ivory hover:!border-rose-gold-light">
+        Email Me
+      </a>
+    </div>
+  </div>
+</section>

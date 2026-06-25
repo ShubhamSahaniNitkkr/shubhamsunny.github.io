@@ -1,0 +1,39 @@
+---
+import SectionTitle from '../ui/SectionTitle.astro';
+import ReviewsMarquee from '../ui/ReviewsMarquee';
+import site from '../../data/site.json';
+import social from '../../data/social.json';
+---
+
+<section id="reviews" class="section-padding bg-surface">
+  <div class="container-salon">
+    <SectionTitle
+      label="Reviews"
+      title="What Clients Say"
+      subtitle="Real feedback from business owners worldwide — including the US, UK, Canada, and Japan."
+    />
+    <div class="mx-auto mb-8 flex flex-wrap items-center justify-center gap-4 text-center sm:gap-6">
+      <div class="salon-card px-5 py-3">
+        <p class="font-display text-2xl font-semibold text-charcoal">★ {site.stats.googleRating}</p>
+        <p class="text-[10px] tracking-widest text-muted uppercase">Average rating</p>
+      </div>
+      <div class="salon-card px-5 py-3">
+        <p class="font-display text-2xl font-semibold text-charcoal">{site.stats.happyClients}+</p>
+        <p class="text-[10px] tracking-widest text-muted uppercase">Happy clients</p>
+      </div>
+      <div class="salon-card px-5 py-3">
+        <p class="font-display text-2xl font-semibold text-charcoal">{site.stats.yearsExperience}+</p>
+        <p class="text-[10px] tracking-widest text-muted uppercase">Years experience</p>
+      </div>
+    </div>
+    {social.fiverr.url && (
+      <p class="mb-4 text-center text-xs text-muted">
+        <a href={social.fiverr.url} target="_blank" rel="noopener noreferrer" class="underline hover:text-rose-gold-dark">View all reviews on Fiverr →</a>
+      </p>
+    )}
+  </div>
+  <div class="mt-2">
+    <ReviewsMarquee client:load />
+  </div>
+  <p class="mt-4 text-center text-[11px] text-muted">Hover to pause · Scroll for more</p>
+</section>

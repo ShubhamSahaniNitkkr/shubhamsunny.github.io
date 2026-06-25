@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/ui/SectionTitle.astro';
+import models from '../data/models.json';
+import site from '../data/site.json';
+---
+
+<BaseLayout
+  title={`Projects | ${site.brand}`}
+  description="Selected builds and demos — proof of technical depth behind every website modernization project."
+  canonical={`${site.domain}/projects`}
+>
+  <section class="section-padding bg-surface pt-28">
+    <div class="container-salon">
+      <SectionTitle
+        label="Portfolio"
+        title="Projects"
+        subtitle="Technical proof for buyers who want depth. Every project ships to production."
+      />
+      <div class="grid gap-6">
+        {models.models.map((project) => (
+          <article class="salon-card p-6 sm:p-8">
+            <div class="flex flex-wrap items-start justify-between gap-4">
+              <div>
+                <p class="text-[10px] tracking-widest text-muted uppercase">{project.clientIndustry || project.category}</p>
+                <h2 class="font-display mt-2 text-2xl font-semibold sm:text-3xl">{project.title}</h2>
+                <p class="mt-2 text-sm text-muted">{project.outcome}</p>
+              </div>
+              {project.liveUrl && (
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="btn-secondary shrink-0 !text-[10px]">
+                  Live Demo →
+                </a>
+              )}
+            </div>
+            {project.highlights?.length > 0 && (
+              <ul class="mt-6 space-y-2 border-t border-champagne pt-6">
+                {project.highlights.map((h) => (
+                  <li class="flex gap-2 text-sm text-muted">
+                    <span class="text-rose-gold">→</span>
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </article>
+        ))}
+      </div>
+      <div class="mt-12 text-center">
+        <a href="/#contact" class="btn-whatsapp">Discuss Your Project</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <rect width="800" height="500" fill="#94A3B8"/>
+  <rect x="40" y="40" width="720" height="60" fill="#64748B"/>
+  <rect x="40" y="130" width="300" height="24" fill="#CBD5E1"/>
+  <rect x="40" y="170" width="500" height="16" fill="#CBD5E1"/>
+  <rect x="40" y="200" width="450" height="16" fill="#CBD5E1"/>
+  <rect x="40" y="280" width="180" height="48" fill="#475569"/>
+  <text x="400" y="460" text-anchor="middle" font-family="system-ui" font-size="28" fill="#F8FAFC" font-weight="600">BEFORE — Outdated</text>
+</svg>

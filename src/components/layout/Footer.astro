@@ -1,0 +1,47 @@
+---
+import { siteConfig } from '../../lib/utils';
+import social from '../../data/social.json';
+import services from '../../data/services.json';
+import media from '../../data/media.json';
+import { getWhatsAppConsultationUrl } from '../../lib/utils';
+---
+
+<footer class="bg-black text-ivory/70">
+  <div class="container-salon section-padding !py-10 max-sm:!px-5 max-sm:!pb-24 sm:!py-16">
+    <div class="grid grid-cols-1 gap-8 max-sm:text-center sm:grid-cols-2 sm:gap-12 lg:grid-cols-4">
+      <div class="sm:col-span-2 lg:col-span-1">
+        <img src={media.logo} alt={media.logoAlt} class="mx-auto h-10 w-auto invert sm:mx-0" loading="lazy" />
+        <p class="mx-auto mt-4 max-w-sm text-sm leading-relaxed sm:mx-0">{siteConfig.tagline}</p>
+        <p class="mt-2 text-xs text-ivory/50">{siteConfig.stats.yearsExperience}+ years · {siteConfig.stats.projectsDelivered}+ projects</p>
+      </div>
+      <div>
+        <p class="text-[11px] font-medium tracking-[0.2em] text-ivory uppercase">Services</p>
+        <ul class="mt-3 space-y-2 text-sm sm:mt-5">
+          {services.slice(0, 5).map((s) => (
+            <li><a href={`/${s.slug}`} class="hover:text-ivory">{s.name}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <p class="text-[11px] font-medium tracking-[0.2em] text-ivory uppercase">Links</p>
+        <ul class="mt-3 space-y-2 text-sm sm:mt-5">
+          <li><a href="/projects" class="hover:text-ivory">Projects</a></li>
+          <li><a href="/blog" class="hover:text-ivory">Blog</a></li>
+          <li><a href="/#faq" class="hover:text-ivory">FAQ</a></li>
+          <li><a href={social.linkedin.url} target="_blank" rel="noopener" class="hover:text-ivory">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-[11px] font-medium tracking-[0.2em] text-ivory uppercase">Contact</p>
+        <ul class="mt-3 space-y-2 text-sm sm:mt-5">
+          <li>{siteConfig.location}</li>
+          <li><a href={`mailto:${siteConfig.email}`} class="hover:text-ivory">{siteConfig.email}</a></li>
+          <li><a href={getWhatsAppConsultationUrl()} target="_blank" rel="noopener" class="hover:text-ivory">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-8 border-t border-white/10 pt-6 text-center text-[10px] tracking-widest uppercase sm:mt-14 sm:pt-8">
+      © {new Date().getFullYear()} {siteConfig.brand}
+    </div>
+  </div>
+</footer>

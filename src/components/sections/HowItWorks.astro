@@ -1,0 +1,23 @@
+---
+import SectionTitle from '../ui/SectionTitle.astro';
+---
+
+<section id="process" class="section-padding bg-surface">
+  <div class="container-salon">
+    <SectionTitle label="Process" title="How It Works" subtitle="Simple steps — no technical knowledge required." />
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {[
+        { step: '01', title: 'Free Review', desc: 'Message me on WhatsApp. I review your current site and suggest the best path.' },
+        { step: '02', title: 'Plan Together', desc: 'We agree on pages, design direction, and timeline — in plain English.' },
+        { step: '03', title: 'I Build It', desc: 'I handle design, development, and mobile optimization. You get progress updates.' },
+        { step: '04', title: 'Launch', desc: 'Your new site goes live — fast, professional, and ready to win customers.' },
+      ].map((item) => (
+        <article class="salon-card p-6">
+          <p class="font-display text-3xl font-semibold text-rose-gold/40">{item.step}</p>
+          <h3 class="font-display mt-3 text-lg font-semibold">{item.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-muted">{item.desc}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

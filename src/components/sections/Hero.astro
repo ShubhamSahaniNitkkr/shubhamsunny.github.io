@@ -1,0 +1,44 @@
+---
+import media from '../../data/media.json';
+import site from '../../data/site.json';
+import { siteConfig, getWhatsAppConsultationUrl } from '../../lib/utils';
+import RotatingMedia from '../ui/RotatingMedia';
+
+const hero = media.hero;
+const interval = media.settings.rotationIntervalMs;
+---
+
+<section class="hero-section relative overflow-hidden sm:min-h-[90vh] lg:min-h-screen">
+  <div class="pointer-events-none absolute -top-24 right-0 h-72 w-72 rounded-full bg-rose-gold/10 blur-3xl" aria-hidden="true"></div>
+  <div class="container-salon relative grid items-center gap-8 px-5 pt-[6.25rem] pb-12 sm:gap-12 sm:pt-24 sm:pb-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 lg:pt-28">
+    <div class="hero-image-enter mx-auto w-full max-w-[17.5rem] sm:max-w-lg lg:order-1 lg:max-w-none lg:justify-self-end">
+      <div class="hero-frame hero-frame-glow">
+        <RotatingMedia client:load items={hero.rotation} intervalMs={interval} aspectRatio="3/4" rounded={false} className="hero-rotator-lg" />
+        <span class="hero-float-badge">{hero.badge}</span>
+      </div>
+    </div>
+    <div class="hero-copy-enter text-center lg:order-2 lg:text-left">
+      <p class="label">{hero.overline}</p>
+      <div class="divider mx-auto mt-3 lg:mx-0"></div>
+      <h1 class="font-display mt-4 text-[1.75rem] font-semibold leading-[1.15] sm:text-4xl lg:text-[3.25rem]">
+        <span class="hero-shimmer">{hero.titleLine1}</span><br />
+        <span class="text-rose-gold-dark">{hero.titleLine2}</span>
+      </h1>
+      <p class="mx-auto mt-3 max-w-sm text-sm font-medium text-muted sm:mt-4 sm:text-base lg:mx-0">
+        {siteConfig.stats.yearsExperience}+ years · {siteConfig.stats.projectsDelivered}+ projects · US & global clients
+      </p>
+      {hero.philosophy && (
+        <blockquote class="mx-auto mt-4 max-w-md border-l-2 border-rose-gold/50 pl-3 text-left text-xs italic text-muted sm:text-sm lg:mx-0">
+          &ldquo;{hero.philosophy}&rdquo;
+        </blockquote>
+      )}
+      <p class="mx-auto mt-3 max-w-md text-xs leading-relaxed text-muted-light sm:text-sm lg:mx-0">{hero.description}</p>
+      <div class="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:justify-center lg:justify-start">
+        <a href={getWhatsAppConsultationUrl()} target="_blank" rel="noopener noreferrer" class="btn-whatsapp hero-cta-pulse">
+          Free Website Review
+        </a>
+        <a href="#transformations" class="btn-secondary">See Before & After</a>
+      </div>
+    </div>
+  </div>
+</section>

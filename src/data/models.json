@@ -1,0 +1,62 @@
+{
+  "models": [
+    {
+      "id": "massive-data-explorer",
+      "title": "High-Performance Business Dashboard",
+      "category": "professional-services",
+      "cover": null,
+      "clientIndustry": "Data & Analytics",
+      "outcome": "Handles 1M+ records with instant search and smooth scrolling",
+      "liveUrl": "https://mde-web.onrender.com",
+      "highlights": [
+        "Full-stack data explorer over 1M records",
+        "Server-side search",
+        "filter",
+        "and sort",
+        "Production deploy with comprehensive test coverage"
+      ]
+    },
+    {
+      "id": "offline-first-task-management",
+      "title": "Offline-First Business App",
+      "category": "ecommerce",
+      "cover": null,
+      "clientIndustry": "Retail",
+      "outcome": "Works without internet — orders sync when back online",
+      "liveUrl": "https://offline-first-task-management-app-ui.onrender.com",
+      "highlights": [
+        "Shop and checkout without connectivity",
+        "Automatic sync when back online",
+        "Production PWA deployed on Render"
+      ]
+    },
+    {
+      "id": "server-driven-ui",
+      "title": "Smart Admin Platform",
+      "category": "professional-services",
+      "cover": null,
+      "clientIndustry": "Enterprise",
+      "outcome": "Update pages without redeploying — saves weeks of dev time",
+      "liveUrl": "https://sdui-pypy.onrender.com",
+      "highlights": [
+        "JSON-driven pages and forms",
+        "Role-based access from one schema",
+        "Live studio for schema inspection"
+      ]
+    },
+    {
+      "id": "frontend-plugin-platform",
+      "title": "Plugin Marketplace Platform",
+      "category": "local-business",
+      "cover": null,
+      "clientIndustry": "SaaS",
+      "outcome": "Add features without rebuilding the core product",
+      "liveUrl": "https://fpp-host.onrender.com",
+      "highlights": [
+        "VS Code-style plugin marketplace",
+        "Fault isolation per plugin",
+        "Production host with E2E tests"
+      ]
+    }
+  ]
+}

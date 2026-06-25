@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/ui/SectionTitle.astro';
+import TransformationsSection from '../components/sections/TransformationsSection';
+import Packages from '../components/sections/Packages.astro';
+import FAQ from '../components/sections/FAQ.astro';
+import seoPages from '../data/seo-pages.json';
+import packages from '../data/packages.json';
+import site from '../data/site.json';
+import type { SeoPageConfig, Package } from '../types';
+import { getWhatsAppConsultationUrl, getWhatsAppPackageUrl } from '../lib/utils';
+
+export function getStaticPaths() {
+  return seoPages.map((page: SeoPageConfig) => ({
+    params: { slug: page.slug },
+    props: { page },
+  }));
+}
+
+interface Props { page: SeoPageConfig; }
+const { page } = Astro.props;
+const featuredPackage = packages.find((p: Package) => p.id === page.featuredPackageId);
+const canonical = `${site.domain}/${page.slug}`;
+---
+
+<BaseLayout
+  title={page.title}
+  description={page.description}
+  keywords={page.keywords}
+  canonical={canonical}
+  schemaType="service"
+  serviceName={page.h1}
+  serviceDescription={page.description}
+>
+  <section class="section-padding bg-surface pt-28">
+    <div class="container-salon text-center">
+      <p class="label">Website Services</p>
+      <div class="divider mx-auto mt-4"></div>
+      <h1 class="font-display mt-6 text-4xl font-light sm:text-5xl">{page.h1}</h1>
+      <p class="mx-auto mt-5 max-w-xl text-sm text-muted">{page.description}</p>
+      <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <a href={getWhatsAppConsultationUrl()} target="_blank" rel="noopener noreferrer" class="btn-whatsapp">Free Website Review</a>
+        <a href="/#packages" class="btn-secondary">View Packages</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding bg-dark">
+    <div class="container-salon">
+      <SectionTitle label="Results" title="Before & After" subtitle="See what a modernization looks like." light={true} />
+      <TransformationsSection client:load />
+    </div>
+  </section>
+
+  {featuredPackage && (
+    <section class="section-padding bg-surface-alt text-center">
+      <div class="container-salon">
+        <p class="label">Recommended</p>
+        <h2 class="font-display mt-4 text-3xl font-semibold">{featuredPackage.name}</h2>
+        <p class="mt-2 text-muted">{featuredPackage.description}</p>
+        <a
+          href={getWhatsAppPackageUrl(featuredPackage.name, featuredPackage.price)}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-whatsapp mt-6 inline-flex"
+        >
+          Get Started on WhatsApp
+        </a>
+      </div>
+    </section>
+  )}
+
+  <FAQ limit={4} />
+</BaseLayout>

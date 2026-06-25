@@ -1,0 +1,17 @@
+---
+import { getAllSchemas } from '../../lib/schema';
+
+interface Props {
+  type?: 'home' | 'service';
+  serviceName?: string;
+  serviceDescription?: string;
+  pageUrl?: string;
+}
+
+const { type = 'home', serviceName, serviceDescription, pageUrl } = Astro.props;
+const schemas = getAllSchemas({ type, serviceName, serviceDescription, pageUrl });
+---
+
+{schemas.map((schema) => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}

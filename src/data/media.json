@@ -1,0 +1,77 @@
+{
+  "settings": {
+    "rotationIntervalMs": 4500,
+    "cacheVersion": "1.0.0"
+  },
+  "logo": "/media/logo.svg",
+  "logoAlt": "Shubham Sunny — Website Modernization",
+  "hero": {
+    "overline": "Website Modernization Expert",
+    "titleLine1": "Your website should",
+    "titleLine2": "win customers, not lose them",
+    "badge": "8+ Years · 50+ Projects",
+    "location": "Remote · US Time Zones Welcome",
+    "description": "I redesign outdated business websites so they look professional, work perfectly on phones, and make it easy for customers to contact you. No tech jargon — just clear results.",
+    "services": "Website Redesign | Mobile-First | Speed & SEO | WhatsApp Integration",
+    "philosophy": "A website should make a stranger feel confident enough to call you.",
+    "rotation": [
+      {
+        "type": "image",
+        "src": "/media/hero/hero-1.jpg",
+        "alt": "Shubham Sunny — website modernization expert"
+      },
+      {
+        "type": "image",
+        "src": "/media/team/shubham.jpg",
+        "alt": "Professional website developer"
+      }
+    ]
+  },
+  "transformations": [
+    {
+      "id": "transform-1",
+      "clientName": "Local Dental Clinic",
+      "industry": "Healthcare",
+      "story": "Their 2015 template looked outdated on phones. We rebuilt it with clear booking buttons and a modern, trustworthy design.",
+      "packageUsed": "Business Modernization",
+      "before": "/media/transformations/transform-1/before.svg",
+      "after": "/media/transformations/transform-1/after.svg",
+      "beforeType": "image",
+      "afterType": "image"
+    },
+    {
+      "id": "transform-2",
+      "clientName": "Family Restaurant",
+      "industry": "Food & Hospitality",
+      "story": "Slow, cluttered homepage → clean menu, hours, and click-to-call. Customers started calling from mobile within the first week.",
+      "packageUsed": "Starter Refresh",
+      "before": "/media/transformations/transform-2/before.svg",
+      "after": "/media/transformations/transform-2/after.svg",
+      "beforeType": "image",
+      "afterType": "image"
+    },
+    {
+      "id": "transform-3",
+      "clientName": "Law Office",
+      "industry": "Professional Services",
+      "story": "Generic template → premium look that matches their reputation. Clear practice areas and a simple contact form.",
+      "packageUsed": "Growth Website",
+      "before": "/media/transformations/transform-3/before.svg",
+      "after": "/media/transformations/transform-3/after.svg",
+      "beforeType": "image",
+      "afterType": "image"
+    }
+  ],
+  "team": [
+    {
+      "name": "Shubham Sunny",
+      "role": "Founder & Lead Developer",
+      "certification": "NIT Kurukshetra · 8+ Years",
+      "bio": "I have spent 8 years helping businesses look professional online — from global platforms like Fiverr to direct client work across the US, UK, Canada, and beyond. I focus on website modernization: taking outdated sites and turning them into something you are proud to share. Fast on mobile, easy to contact you, and built to earn trust.",
+      "philosophy": "A website should make a stranger feel confident enough to call you.",
+      "image": "/media/team/shubham.jpg",
+      "linkedin": "https://www.linkedin.com/in/shubham-sunny-09b013129/",
+      "isFounder": true
+    }
+  ]
+}

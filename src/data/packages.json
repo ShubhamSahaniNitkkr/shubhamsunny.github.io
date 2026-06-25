@@ -1,0 +1,48 @@
+[
+  {
+    "id": "starter-refresh",
+    "name": "Starter Refresh",
+    "price": 499,
+    "priceLabel": "USD",
+    "includes": [
+      "Mobile-friendly fixes",
+      "Speed improvements",
+      "Contact form setup",
+      "1 revision round",
+      "Launch support"
+    ],
+    "description": "For sites that need a quick professional upgrade without a full rebuild.",
+    "startingFrom": true
+  },
+  {
+    "id": "business-modern",
+    "name": "Business Modernization",
+    "price": 1499,
+    "priceLabel": "USD",
+    "includes": [
+      "Full visual redesign",
+      "Up to 5 pages",
+      "Mobile-first layout",
+      "Basic SEO setup",
+      "WhatsApp / chat link",
+      "2 revision rounds"
+    ],
+    "description": "Our most popular package — a complete trust makeover for your business.",
+    "mostPopular": true
+  },
+  {
+    "id": "growth-site",
+    "name": "Growth Website",
+    "price": 2999,
+    "priceLabel": "USD",
+    "includes": [
+      "Everything in Business Modern",
+      "Blog setup",
+      "Analytics & insights",
+      "Lead capture forms",
+      "Priority support",
+      "3 revision rounds"
+    ],
+    "description": "For businesses ready to grow online and capture more leads."
+  }
+]

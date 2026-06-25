@@ -1,0 +1,47 @@
+[
+  {
+    "slug": "website-redesign-small-business",
+    "title": "Small Business Website Redesign | Shubham Sunny",
+    "h1": "Small Business Website Redesign",
+    "description": "I redesign outdated small business websites for US owners. Mobile-friendly, fast, and built to convert visitors into customers.",
+    "keywords": "small business website redesign, website makeover small business",
+    "galleryCategory": "local-business",
+    "featuredPackageId": "business-modern"
+  },
+  {
+    "slug": "modernize-outdated-website",
+    "title": "Modernize Your Outdated Website | Shubham Sunny",
+    "h1": "Modernize Your Outdated Website",
+    "description": "Turn your old website into a modern, trustworthy online presence. Plain English process, US timezone friendly.",
+    "keywords": "modernize outdated website, old website redesign",
+    "galleryCategory": "all",
+    "featuredPackageId": "business-modern"
+  },
+  {
+    "slug": "website-design-for-dentists",
+    "title": "Website Design for Dentists | Shubham Sunny",
+    "h1": "Website Design for Dentists",
+    "description": "Professional dental website design that builds patient trust. Mobile-first, easy booking, clear contact options.",
+    "keywords": "dental website design, dentist website redesign",
+    "galleryCategory": "healthcare",
+    "featuredPackageId": "growth-site"
+  },
+  {
+    "slug": "restaurant-website-redesign",
+    "title": "Restaurant Website Redesign | Shubham Sunny",
+    "h1": "Restaurant Website Redesign",
+    "description": "Modern restaurant websites with menus, hours, and click-to-call. Help hungry customers find and contact you.",
+    "keywords": "restaurant website redesign, food business website",
+    "galleryCategory": "restaurant",
+    "featuredPackageId": "starter-refresh"
+  },
+  {
+    "slug": "professional-services-website",
+    "title": "Professional Services Website | Shubham Sunny",
+    "h1": "Websites for Professional Services",
+    "description": "Premium websites for lawyers, consultants, and service businesses. Look credible, get more inquiries.",
+    "keywords": "professional services website, law firm website design",
+    "galleryCategory": "professional-services",
+    "featuredPackageId": "growth-site"
+  }
+]

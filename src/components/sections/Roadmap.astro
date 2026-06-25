@@ -1,0 +1,31 @@
+---
+import SectionTitle from '../ui/SectionTitle.astro';
+import roadmap from '../../data/roadmap.json';
+import type { RoadmapItem } from '../../types';
+
+const items = roadmap as RoadmapItem[];
+
+const statusLabel: Record<string, string> = {
+  available: 'Available Now',
+  coming_soon: 'Coming Soon',
+  planned: 'Planned',
+};
+---
+
+<section id="roadmap" class="section-padding bg-surface">
+  <div class="container-salon">
+    <SectionTitle label="What's Next" title="Growing With You" subtitle="Starting with website modernization — more digital products on the way." />
+    <div class="grid gap-4 sm:grid-cols-2">
+      {items.map((item) => (
+        <article class="salon-card flex flex-col p-6">
+          <span class:list={['inline-flex w-fit border px-2.5 py-1 text-[10px] font-semibold tracking-widest uppercase', `status-${item.status}`]}>
+            {statusLabel[item.status] || item.status}
+          </span>
+          <h3 class="font-display mt-4 text-xl font-semibold">{item.name}</h3>
+          <p class="mt-2 flex-1 text-sm leading-relaxed text-muted">{item.description}</p>
+          {item.eta && <p class="mt-4 text-[10px] tracking-widest text-muted uppercase">{item.eta}</p>}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
