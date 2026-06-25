@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
 
 concurrency:
   group: pages
@@ -16,6 +15,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
     steps:
       - uses: actions/checkout@v5
 
@@ -31,51 +31,55 @@ jobs:
         run: |
           test -f dist/index.html || (echo "dist/index.html missing" && exit 1)
           test -f dist/CNAME || (echo "dist/CNAME missing" && exit 1)
-          grep -q "shubhamsunny.com" dist/CNAME
 
-      - name: Point Pages at gh-pages branch
-        run: |
-          HTTP_CODE=$(curl -sS -o /tmp/pages-response.json -w "%{http_code}" \
-            -X PUT \
-            -H "Authorization: Bearer ${{ github.token }}" \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            "https://api.github.com/repos/${{ github.repository }}/pages" \
-            -d '{"build_type":"legacy","source":{"branch":"gh-pages","path":"/"},"cname":"shubhamsunny.com"}')
-          echo "Pages config response ($HTTP_CODE):"
-          cat /tmp/pages-response.json
-          if [ "$HTTP_CODE" -ge 400 ]; then
-            echo "::warning::Could not auto-configure Pages branch (HTTP $HTTP_CODE)."
-            echo "Set Source to gh-pages / (root) in Settings → Pages if the site stays 404."
-          fi
+      - name: Copy built site to repository root
+        run: rsync -a dist/ ./
 
-      - name: Publish dist to gh-pages branch
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Commit and push static site files
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          folder: dist
-          branch: gh-pages
-          clean: true
-          single-commit: true
+          commit_message: "chore: publish site for GitHub Pages [skip ci]"
+          file_pattern: |
+            index.html
+            404.html
+            CNAME
+            .nojekyll
+            _astro/**
+            _headers
+            blog/**
+            projects/**
+            media/**
+            favicon.ico
+            robots.txt
+            sitemap-*.xml
+            sw.js
+            llms*.txt
+            website-redesign-small-business/**
+            modernize-outdated-website/**
+            website-design-for-dentists/**
+            restaurant-website-redesign/**
+            professional-services-website/**
 
   verify:
     needs: deploy
+    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
     runs-on: ubuntu-latest
     steps:
       - name: Smoke test live site
         run: |
-          for URL in \
-            "https://shubhamsunny.com" \
-            "https://ShubhamSahaniNitkkr.github.io/shubhamsunny.github.io/"
-          do
-            for i in 1 2 3 4 5 6 8 10; do
+          for i in 1 2 3 4 5 6 8 10; do
+            for URL in \
+              "https://shubhamsunny.com" \
+              "https://ShubhamSahaniNitkkr.github.io/shubhamsunny.github.io/"
+            do
               STATUS=$(curl -sS -L -o /tmp/home.html -w "%{http_code}" "$URL")
-              echo "Attempt $i for $URL: HTTP $STATUS"
+              echo "Attempt $i: $URL -> HTTP $STATUS"
               if [ "$STATUS" = "200" ] && grep -qi "website\|moderniz\|shubham" /tmp/home.html; then
                 echo "Site is live at $URL"
                 exit 0
               fi
-              sleep 20
             done
+            sleep 20
           done
           echo "::error::Site did not return expected content after deploy."
           head -20 /tmp/home.html || true
