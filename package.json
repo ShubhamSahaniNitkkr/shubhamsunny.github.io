@@ -31,7 +31,6 @@
   },
   "devDependencies": {
     "@types/nodemailer": "^6.4.17",
-    "@vercel/node": "^5.3.0",
     "cloudinary": "^2.10.0",
     "xlsx": "^0.18.5"
   },
