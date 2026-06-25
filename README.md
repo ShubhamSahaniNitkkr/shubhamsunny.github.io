@@ -24,7 +24,7 @@ Or run manually: `npm run sync`
 npm run build
 ```
 
-Deploys to GitHub Pages on push to `main` via `.github/workflows/deploy.yml`.
+Deploys to GitHub Pages on push to `master` via `.github/workflows/deploy.yml` (source must be **GitHub Actions**, not branch/root).
 
 ## Sheets in Excel
 

@@ -9,13 +9,35 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  administration: write
 
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
+  configure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use GitHub Actions as Pages source
+        run: |
+          HTTP_CODE=$(curl -sS -o /tmp/pages-response.json -w "%{http_code}" \
+            -X PUT \
+            -H "Authorization: Bearer ${{ github.token }}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${{ github.repository }}/pages" \
+            -d '{"build_type":"workflow","cname":"shubhamsunny.com"}')
+          echo "Pages config response ($HTTP_CODE):"
+          cat /tmp/pages-response.json
+          if [ "$HTTP_CODE" -ge 400 ]; then
+            echo "::error::Could not switch Pages to GitHub Actions (HTTP $HTTP_CODE)."
+            echo "Set Source to GitHub Actions manually: Settings → Pages → Build and deployment."
+            exit 1
+          fi
+
   build:
+    needs: configure
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -25,6 +47,11 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      - name: Verify build output
+        run: |
+          test -f dist/index.html || (echo "dist/index.html missing" && exit 1)
+          test -f dist/CNAME || (echo "dist/CNAME missing" && exit 1)
+          grep -q "shubhamsunny.com" dist/CNAME
       - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
@@ -38,3 +65,23 @@ jobs:
     steps:
       - uses: actions/deploy-pages@v5
         id: deployment
+
+  verify:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Smoke test live site
+        run: |
+          URL="https://shubhamsunny.github.io"
+          for i in 1 2 3 4 5 6; do
+            STATUS=$(curl -sS -o /tmp/home.html -w "%{http_code}" "$URL")
+            echo "Attempt $i: $URL returned HTTP $STATUS"
+            if [ "$STATUS" = "200" ] && grep -qi "shubham\|moderniz\|website" /tmp/home.html; then
+              echo "Site is live."
+              exit 0
+            fi
+            sleep 20
+          done
+          echo "::error::Site did not return 200 with expected content after deploy."
+          head -20 /tmp/home.html || true
+          exit 1
