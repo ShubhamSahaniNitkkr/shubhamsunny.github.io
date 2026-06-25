@@ -6,20 +6,34 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
-  id-token: write
-  administration: write
 
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
-  configure:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Use GitHub Actions as Pages source
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Verify build output
+        run: |
+          test -f dist/index.html || (echo "dist/index.html missing" && exit 1)
+          test -f dist/CNAME || (echo "dist/CNAME missing" && exit 1)
+          grep -q "shubhamsunny.com" dist/CNAME
+
+      - name: Point Pages at gh-pages branch
         run: |
           HTTP_CODE=$(curl -sS -o /tmp/pages-response.json -w "%{http_code}" \
             -X PUT \
@@ -27,44 +41,21 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             "https://api.github.com/repos/${{ github.repository }}/pages" \
-            -d '{"build_type":"workflow","cname":"shubhamsunny.com"}')
+            -d '{"build_type":"legacy","source":{"branch":"gh-pages","path":"/"},"cname":"shubhamsunny.com"}')
           echo "Pages config response ($HTTP_CODE):"
           cat /tmp/pages-response.json
           if [ "$HTTP_CODE" -ge 400 ]; then
-            echo "::error::Could not switch Pages to GitHub Actions (HTTP $HTTP_CODE)."
-            echo "Set Source to GitHub Actions manually: Settings → Pages → Build and deployment."
-            exit 1
+            echo "::warning::Could not auto-configure Pages branch (HTTP $HTTP_CODE)."
+            echo "Set Source to gh-pages / (root) in Settings → Pages if the site stays 404."
           fi
 
-  build:
-    needs: configure
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
+      - name: Publish dist to gh-pages branch
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
-      - run: npm run build
-      - name: Verify build output
-        run: |
-          test -f dist/index.html || (echo "dist/index.html missing" && exit 1)
-          test -f dist/CNAME || (echo "dist/CNAME missing" && exit 1)
-          grep -q "shubhamsunny.com" dist/CNAME
-      - uses: actions/upload-pages-artifact@v5
-        with:
-          path: dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - uses: actions/deploy-pages@v5
-        id: deployment
+          folder: dist
+          branch: gh-pages
+          clean: true
+          single-commit: true
 
   verify:
     needs: deploy
@@ -72,16 +63,20 @@ jobs:
     steps:
       - name: Smoke test live site
         run: |
-          URL="https://shubhamsunny.github.io"
-          for i in 1 2 3 4 5 6; do
-            STATUS=$(curl -sS -o /tmp/home.html -w "%{http_code}" "$URL")
-            echo "Attempt $i: $URL returned HTTP $STATUS"
-            if [ "$STATUS" = "200" ] && grep -qi "shubham\|moderniz\|website" /tmp/home.html; then
-              echo "Site is live."
-              exit 0
-            fi
-            sleep 20
+          for URL in \
+            "https://shubhamsunny.com" \
+            "https://ShubhamSahaniNitkkr.github.io/shubhamsunny.github.io/"
+          do
+            for i in 1 2 3 4 5 6 8 10; do
+              STATUS=$(curl -sS -L -o /tmp/home.html -w "%{http_code}" "$URL")
+              echo "Attempt $i for $URL: HTTP $STATUS"
+              if [ "$STATUS" = "200" ] && grep -qi "website\|moderniz\|shubham" /tmp/home.html; then
+                echo "Site is live at $URL"
+                exit 0
+              fi
+              sleep 20
+            done
           done
-          echo "::error::Site did not return 200 with expected content after deploy."
+          echo "::error::Site did not return expected content after deploy."
           head -20 /tmp/home.html || true
           exit 1
