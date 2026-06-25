@@ -24,7 +24,7 @@ Or run manually: `npm run sync`
 npm run build
 ```
 
-Deploys to GitHub Pages on push to `master` via `.github/workflows/deploy.yml` (source must be **GitHub Actions**, not branch/root).
+Deploys to GitHub Pages on push to `master`. The workflow builds Astro, copies `dist/` to the repo root, and commits static files so branch-based Pages can serve `index.html`.
 
 ## Sheets in Excel
 
