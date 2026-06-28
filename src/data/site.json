@@ -1,6 +1,18 @@
 {
   "brand": "Shubham Sunny",
-  "tagline": "Website Modernization for US Businesses",
+  "tagline": "Premium Development · Vision-First Clients Only",
+  "headline": "Developers for Businesses With a Vision",
+  "bioShort": "We are a selective development studio — we partner with premium clients who know where they are going, not businesses looking for the cheapest quote.",
+  "bioLong": "We do not take every project. If you have a clear goal and care about quality, we can talk. Websites, data work, and custom software — founder-led, with a small core team and trusted specialists when a build needs extra hands.",
+  "expertise": [
+    "Website Modernization",
+    "Data Scraping",
+    "Custom Software",
+    "Mobile Apps",
+    "Chrome Extensions",
+    "Telegram & WhatsApp Bots",
+    "Automation"
+  ],
   "location": "Remote · US Time Zones Welcome",
   "phone": "+91 97718 23804",
   "whatsapp": "919771823804",
@@ -8,30 +20,31 @@
   "address": "Remote · Serving US & Global Clients",
   "domain": "https://shubhamsunny.com",
   "seo": {
-    "title": "Shubham Sunny | Website Modernization for US Businesses",
-    "description": "I modernize outdated business websites for US owners. Mobile-friendly, fast, trustworthy. 8+ years, 50+ projects. Free WhatsApp consult.",
-    "keywords": "website modernization, small business website redesign, outdated website makeover, US web developer, mobile friendly website",
+    "title": "Shubham Sunny | Website Modernization, Data Scraping & Custom Software",
+    "description": "Founder-led studio helping businesses modernize websites, scrape data at scale, and build custom software. 8+ years, 163+ projects. Based in India, serving US & global clients.",
+    "keywords": "website modernization, data scraping, custom software, web app development, mobile app, chrome extension, telegram bot, whatsapp bot",
     "ogImage": "/media/team/shubham.jpg"
   },
   "stats": {
-    "happyClients": 40,
-    "projectsDelivered": 50,
+    "happyClients": 120,
+    "projectsDelivered": 163,
     "yearsExperience": 8,
+    "fiverrRating": 4.9,
     "googleRating": 4.9
   },
   "certifications": [
-    "NIT Kurukshetra · 8+ Years Experience"
+    "8+ Years Experience"
   ],
   "whatsappMessages": {
-    "consultation": "Hi Shubham,\n\nI saw your website and I'd like a free review of my business website.\n\nThanks!",
-    "package": "Hi Shubham,\n\nI'm interested in the {packageName} package (${price}). Can we discuss?\n\nThanks!",
-    "general": "Hi Shubham,\n\nI visited your website and would like to know more about website modernization.\n\nThanks!",
+    "consultation": "Hi Shubham, I saw your website. I'd like a free review of my business website.",
+    "package": "Hi Shubham, I'm interested in the {packageName} package (${price}). Can we discuss?",
+    "general": "Hi Shubham, I visited your website and would like to know more about website modernization.",
     "payment": "Hi Shubham, I have a question about getting started. Name: {name}, Package: {package}."
   },
   "emailMessages": {
-    "consultation": "Hi Shubham,\n\nI saw your website and I'd like a free review of my business website.\n\nThanks!",
-    "package": "Hi Shubham,\n\nI'm interested in the {packageName} package (${price}). Can we discuss?\n\nThanks!",
-    "general": "Hi Shubham,\n\nI visited your website and would like to know more about website modernization.\n\nThanks!",
+    "consultation": "Hi Shubham, I saw your website. I'd like a free review of my business website.",
+    "package": "Hi Shubham, I'm interested in the {packageName} package (${price}). Can we discuss?",
+    "general": "Hi Shubham, I visited your website and would like to know more about website modernization.",
     "payment": "Hi Shubham, I have a question about getting started. Name: {name}, Package: {package}."
   }
 }

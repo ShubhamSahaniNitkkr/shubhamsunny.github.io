@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ServiceDetailPage from '../../components/sections/ServiceDetailPage';
+import servicesHub from '../../data/services-hub.json';
+import serviceBlocks from '../../data/service-blocks.json';
+import servicePackages from '../../data/service-packages.json';
+import useCases from '../../data/use-cases.json';
+import models from '../../data/models.json';
+import site from '../../data/site.json';
+import type { ServiceHubItem, UseCase, ClientProject } from '../../types';
+
+const CATEGORY_MAP: Record<string, string> = {
+  'Web Modernization': 'web-modernization',
+  'Data Scraping': 'data-scraping',
+  'Custom Software': 'custom-software',
+};
+
+export function getStaticPaths() {
+  return (servicesHub as ServiceHubItem[]).map((service) => ({
+    params: { id: service.id },
+    props: { service },
+  }));
+}
+
+interface Props {
+  service: ServiceHubItem;
+}
+
+const { service } = Astro.props;
+const seo = site.seo || {};
+
+const stories = (useCases as UseCase[]).filter(
+  (uc) => uc.serviceId === service.id || CATEGORY_MAP[uc.category] === service.id,
+);
+
+const projects = (models.models as ClientProject[]).filter(
+  (p) => p.serviceId === service.id,
+);
+---
+
+<BaseLayout
+  title={`${service.name} | ${site.brand}`}
+  description={service.description}
+  keywords={seo.keywords}
+  canonical={`${site.domain}/services/${service.id}`}
+  schemaType="service"
+  serviceName={service.name}
+  serviceDescription={service.description}
+>
+  <div class="pt-16">
+    <ServiceDetailPage
+      client:load
+      service={service}
+      blocks={serviceBlocks}
+      packages={servicePackages}
+      stories={stories}
+      projects={projects}
+    />
+  </div>
+</BaseLayout>

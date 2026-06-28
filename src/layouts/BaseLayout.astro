@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
-import ExitIntentPopup from '../components/layout/ExitIntentPopup';
+import PreFooterCards from '../components/sections/PreFooterCards.astro';
 import ChatWidget from '../components/layout/ChatWidget';
 import VisitTracker from '../components/layout/VisitTracker';
 import SchemaMarkup from '../components/seo/SchemaMarkup.astro';
@@ -55,7 +55,7 @@ const web3formsAccessKey = notifications.web3formsAccessKey;
     <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
-    <meta name="theme-color" content="#0F172A" />
+    <meta name="theme-color" content="#FFFFFF" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
@@ -84,10 +84,10 @@ const web3formsAccessKey = notifications.web3formsAccessKey;
       <main>
         <slot />
       </main>
+      <PreFooterCards />
       <Footer />
     </div>
     <ChatWidget client:idle enabled={chatbotEnabled} web3formsAccessKey={web3formsAccessKey} />
-    <ExitIntentPopup client:idle />
     <script define:vars={{ cacheVersion }}>
       if ('serviceWorker' in navigator) {
         if (/localhost|127\.0\.0\.1/.test(location.hostname)) {

@@ -1,34 +1,50 @@
 [
   {
-    "question": "Do I need to know anything technical?",
-    "answer": "No. I handle everything and explain each step in plain English. You focus on your business — I handle the website."
+    "question": "Do you take every project?",
+    "answer": "Not every one. We pick work where the goal is clear and we can do it properly — if we say yes, you get our full attention."
   },
   {
-    "question": "How long does a website redesign take?",
-    "answer": "Most projects take 2–4 weeks depending on scope. I give you a clear timeline before we start."
+    "question": "Website modernization — what do I get?",
+    "answer": "A mobile-first site that loads fast and makes calling or booking easy. Hosting, SSL, and handoff included."
   },
   {
-    "question": "Will my site work on phones?",
-    "answer": "Yes — every site I build is mobile-first. Most of your customers will visit on their phone, so this is non-negotiable."
+    "question": "Is data scraping legal?",
+    "answer": "We collect publicly visible data only — no private logins. Every project starts with a scope review."
   },
   {
-    "question": "Do you work with US time zones?",
-    "answer": "Absolutely. I schedule calls and updates around your timezone and keep communication simple via WhatsApp or email."
+    "question": "What is custom software?",
+    "answer": "Web apps, mobile apps, bots, and tools built for your workflow when off-the-shelf products do not fit."
   },
   {
-    "question": "What if I already have a website?",
-    "answer": "Perfect — that is exactly what I modernize. I take your outdated site and transform it into something you are proud to share."
+    "question": "Price and timeline?",
+    "answer": "Websites from ~$800. Scraping from ~$200. Custom software after discovery. Most web projects: 2–4 weeks."
   },
   {
-    "question": "How do we get started?",
-    "answer": "Message me on WhatsApp for a free website review. I will look at your current site and suggest the best path forward — no pressure."
+    "question": "Do I need technical knowledge?",
+    "answer": "No. We handle servers, code, and deployment — you approve outcomes in plain English."
   },
   {
-    "question": "What happens after launch?",
-    "answer": "I make sure everything works before handoff. You get a site that is fast, mobile-ready, and easy for customers to contact you."
+    "question": "US / UK time zones?",
+    "answer": "Yes. We schedule calls and updates around your timezone."
   },
   {
-    "question": "Can you add WhatsApp chat to my site?",
-    "answer": "Yes. One-click WhatsApp contact is included in all packages — customers can reach you instantly from any page."
+    "question": "How do we start?",
+    "answer": "Use the contact form at the bottom of the page — we reply within one business day."
+  },
+  {
+    "question": "Do you build WhatsApp or Telegram bots?",
+    "answer": "Yes — order bots, lead qualifiers, and customer support flows. We scope the conversation, build it, and hand over docs so your team can run it."
+  },
+  {
+    "question": "Can you work with my existing hosting?",
+    "answer": "Usually yes. We can redesign on your current host or migrate to something faster — we document logins and handoff either way."
+  },
+  {
+    "question": "What support do I get after launch?",
+    "answer": "Every project includes a handoff guide. Optional monthly care covers updates, backups, and small content changes so you are not stuck alone."
+  },
+  {
+    "question": "Will you sign an NDA?",
+    "answer": "Yes, for client work that needs confidentiality. Many portfolio pieces stay private — we are used to working under NDA."
   }
 ]

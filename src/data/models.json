@@ -1,19 +1,58 @@
 {
   "models": [
     {
+      "id": "web-restaurant",
+      "title": "Restaurant Website Redesign",
+      "category": "restaurant",
+      "cover": "/media/transformations/transform-2/after.jpg",
+      "clientIndustry": "Food & Hospitality",
+      "outcome": "Mobile-first menu and click-to-call — client asked to keep branding private",
+      "liveUrl": "",
+      "highlights": [
+        "PDF menu replaced with scrollable mobile menu",
+        "Sticky call button",
+        "Sub-2s load on 4G"
+      ],
+      "bento": "feature",
+      "serviceId": "web-modernization",
+      "isLocked": true,
+      "publicDescription": "Full mobile-first rebuild for a family restaurant — scrollable menu, sticky call button, sub-2s load on 4G. Client requested no public demo or branding."
+    },
+    {
+      "id": "web-dental",
+      "title": "Dental Clinic Modernization",
+      "category": "healthcare",
+      "cover": "/media/transformations/transform-1/after.jpg",
+      "clientIndustry": "Healthcare",
+      "outcome": "Online booking and trust-first design — live demo withheld per clinic NDA",
+      "liveUrl": "",
+      "highlights": [
+        "Doctor profiles & insurance logos",
+        "Online booking widget",
+        "Trust-first mobile design"
+      ],
+      "bento": "standard",
+      "serviceId": "web-modernization",
+      "isLocked": true,
+      "publicDescription": "Trust-first healthcare site with doctor profiles, insurance logos, and online booking. Live URL withheld per clinic NDA."
+    },
+    {
       "id": "massive-data-explorer",
-      "title": "High-Performance Business Dashboard",
+      "title": "High-Performance Data Dashboard",
       "category": "professional-services",
       "cover": "/media/portfolio/massive-data-explorer/cover.jpg",
       "clientIndustry": "Data & Analytics",
-      "outcome": "Handles 1M+ records with instant search and smooth scrolling",
-      "liveUrl": "https://mde-web.onrender.com",
+      "outcome": "Handles 1M+ records with instant search",
+      "liveUrl": "",
       "highlights": [
         "Full-stack data explorer over 1M records",
         "Server-side search, filter, and sort",
-        "Production deploy with comprehensive test coverage"
+        "Production deploy with test coverage"
       ],
-      "bento": "feature"
+      "bento": "tall",
+      "serviceId": "data-scraping",
+      "isLocked": true,
+      "publicDescription": "Full-stack data explorer over 1M scraped records — server-side search, filter, sort. Client does not permit public access to live environment."
     },
     {
       "id": "offline-first-task-management",
@@ -21,14 +60,17 @@
       "category": "ecommerce",
       "cover": "/media/portfolio/offline-first/cover.jpg",
       "clientIndustry": "Retail",
-      "outcome": "Works without internet — orders sync when back online",
-      "liveUrl": "https://offline-first-task-management-app-ui.onrender.com",
+      "outcome": "Works without internet — syncs when back online",
+      "liveUrl": "",
       "highlights": [
         "Shop and checkout without connectivity",
         "Automatic sync when back online",
-        "Production PWA deployed on Render"
+        "Production PWA on Render"
       ],
-      "bento": "tall"
+      "bento": "wide",
+      "serviceId": "custom-software",
+      "isLocked": true,
+      "publicDescription": "PWA for field teams — shop and checkout offline, automatic sync when back online. Demo locked per client request."
     },
     {
       "id": "server-driven-ui",
@@ -36,14 +78,17 @@
       "category": "professional-services",
       "cover": "/media/portfolio/sdui/cover.jpg",
       "clientIndustry": "Enterprise",
-      "outcome": "Update pages without redeploying — saves weeks of dev time",
-      "liveUrl": "https://sdui-pypy.onrender.com",
+      "outcome": "Update pages without redeploying",
+      "liveUrl": "",
       "highlights": [
         "JSON-driven pages and forms",
         "Role-based access from one schema",
         "Live studio for schema inspection"
       ],
-      "bento": "wide"
+      "bento": "feature",
+      "serviceId": "custom-software",
+      "isLocked": true,
+      "publicDescription": "JSON-driven admin platform — pages and forms from schema, role-based access. Enterprise client — no public demo."
     },
     {
       "id": "frontend-plugin-platform",
@@ -52,103 +97,16 @@
       "cover": "/media/portfolio/fpp/cover.jpg",
       "clientIndustry": "SaaS",
       "outcome": "Add features without rebuilding the core product",
-      "liveUrl": "https://fpp-host.onrender.com",
+      "liveUrl": "",
       "highlights": [
         "VS Code-style plugin marketplace",
         "Fault isolation per plugin",
         "Production host with E2E tests"
       ],
-      "bento": "standard"
-    },
-    {
-      "id": "boutique-hotel",
-      "title": "Boutique Hotel Booking",
-      "category": "hospitality",
-      "cover": "/media/portfolio/boutique-hotel/cover.jpg",
-      "clientIndustry": "Hospitality",
-      "outcome": "Online bookings up 52% with a mobile-first reservation flow",
-      "liveUrl": "",
-      "highlights": [
-        "Room gallery",
-        "Instant booking",
-        "Multi-language support"
-      ],
-      "bento": "standard"
-    },
-    {
-      "id": "fitness-studio",
-      "title": "Fitness Studio Website",
-      "category": "local-business",
-      "cover": "/media/portfolio/fitness-studio/cover.jpg",
-      "clientIndustry": "Health & Fitness",
-      "outcome": "Class sign-ups doubled after launch",
-      "liveUrl": "",
-      "highlights": [
-        "Class schedules",
-        "Trainer profiles",
-        "Membership plans"
-      ],
-      "bento": "tall"
-    },
-    {
-      "id": "real-estate",
-      "title": "Real Estate Listing Portal",
-      "category": "professional-services",
-      "cover": "/media/portfolio/real-estate/cover.jpg",
-      "clientIndustry": "Real Estate",
-      "outcome": "Property inquiries increased 38% in 60 days",
-      "liveUrl": "",
-      "highlights": [
-        "Map search",
-        "Virtual tours",
-        "Lead capture forms"
-      ],
-      "bento": "wide"
-    },
-    {
-      "id": "medical-clinic",
-      "title": "Medical Clinic Portal",
-      "category": "healthcare",
-      "cover": "/media/portfolio/medical-clinic/cover.jpg",
-      "clientIndustry": "Healthcare",
-      "outcome": "Patient appointment requests up 45%",
-      "liveUrl": "",
-      "highlights": [
-        "Doctor profiles",
-        "Online appointments",
-        "Service pages"
-      ],
-      "bento": "standard"
-    },
-    {
-      "id": "law-firm",
-      "title": "Law Firm Website",
-      "category": "professional-services",
-      "cover": "/media/portfolio/law-firm/cover.jpg",
-      "clientIndustry": "Legal",
-      "outcome": "Consultation requests grew 33% post-redesign",
-      "liveUrl": "",
-      "highlights": [
-        "Practice areas",
-        "Attorney bios",
-        "Secure contact forms"
-      ],
-      "bento": "standard"
-    },
-    {
-      "id": "fashion-store",
-      "title": "Fashion E-Commerce Store",
-      "category": "ecommerce",
-      "cover": "/media/portfolio/fashion-store/cover.jpg",
-      "clientIndustry": "Retail",
-      "outcome": "Mobile sales increased 61% with faster checkout",
-      "liveUrl": "",
-      "highlights": [
-        "Product catalog",
-        "Wishlist",
-        "Stripe checkout"
-      ],
-      "bento": "tall"
+      "bento": "standard",
+      "serviceId": "custom-software",
+      "isLocked": true,
+      "publicDescription": "VS Code-style plugin host with fault isolation and E2E tests. SaaS client requested confidential delivery only."
     }
   ]
 }

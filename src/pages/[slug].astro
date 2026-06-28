@@ -39,7 +39,7 @@ const canonical = `${site.domain}/${page.slug}`;
       <h1 class="font-display mt-6 text-4xl font-light sm:text-5xl">{page.h1}</h1>
       <p class="mx-auto mt-5 max-w-xl text-sm text-muted">{page.description}</p>
       <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-        <a href={getConsultationEmailUrl()} target="_blank" rel="noopener noreferrer" class="btn-email">Free Website Review</a>
+        <a href={getConsultationEmailUrl()} class="btn-email">Free Website Review</a>
         <a href="/#packages" class="btn-secondary">View Packages</a>
       </div>
     </div>
@@ -59,9 +59,7 @@ const canonical = `${site.domain}/${page.slug}`;
         <h2 class="font-display mt-4 text-3xl font-semibold">{featuredPackage.name}</h2>
         <p class="mt-2 text-muted">{featuredPackage.description}</p>
         <a
-          href={getPackageEmailUrl(featuredPackage.name, featuredPackage.price)}
-          target="_blank"
-          rel="noopener noreferrer"
+            href={getPackageEmailUrl(featuredPackage.name, featuredPackage.price)}
           class="btn-email mt-6 inline-flex"
         >
           Get Started by Email

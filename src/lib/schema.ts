@@ -22,36 +22,72 @@ function mediaUrl(src: string) {
   return src.startsWith('http') ? src : `${site.domain}${src}`;
 }
 
+function fiverrReviews() {
+  return social.fiverrReviews || social.googleReviews;
+}
+
+function fiverrRating() {
+  return site.stats.fiverrRating ?? site.stats.googleRating ?? fiverrReviews()?.rating;
+}
+
+function realSocialUrls() {
+  const placeholders = new Set([
+    'https://twitter.com/',
+    'https://facebook.com/',
+    'https://instagram.com/',
+  ]);
+  return [
+    social.linkedin.url,
+    social.fiverr.url,
+    social.github.url,
+    social.twitter?.url,
+    social.facebook?.url,
+    social.instagram?.url,
+  ].filter((url) => url && !placeholders.has(url));
+}
+
 export function getProfessionalServiceSchema() {
-  const sameAs = [social.linkedin.url, social.fiverr.url, social.github.url].filter(Boolean);
+  const reviews = fiverrReviews();
   return {
     '@context': 'https://schema.org',
     '@type': ['ProfessionalService', 'LocalBusiness'],
     '@id': `${site.domain}/#business`,
     name: site.brand,
-    description: site.tagline,
+    description: site.bioLong || site.tagline,
     url: site.domain,
     telephone: site.phone,
     email: site.email,
     address: {
       '@type': 'PostalAddress',
-      addressCountry: 'US',
+      addressCountry: 'IN',
+      description: site.address || site.location,
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: social.googleReviews.rating,
-      reviewCount: social.googleReviews.totalReviews,
-    },
+    ...(reviews?.rating
+      ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: reviews.rating,
+            reviewCount: reviews.totalReviews,
+            bestRating: 5,
+            worstRating: 1,
+          },
+        }
+      : {}),
     priceRange: '$$',
     image: mediaUrl(site.seo?.ogImage || '/media/team/shubham.jpg'),
-    sameAs,
-    areaServed: { '@type': 'Country', name: 'United States' },
-    knowsAbout: [
+    sameAs: realSocialUrls(),
+    areaServed: [
+      { '@type': 'Country', name: 'United States' },
+      { '@type': 'Country', name: 'India' },
+    ],
+    knowsAbout: site.expertise || [
       'Website Modernization',
-      'Small Business Website Design',
-      'Mobile-First Web Design',
-      'Website Redesign',
-      'SEO Basics',
+      'Data Scraping',
+      'Custom Software Development',
+      'Mobile App Development',
+      'Chrome Extensions',
+      'Telegram Bots',
+      'WhatsApp Bots',
     ],
   };
 }
@@ -78,12 +114,13 @@ export function getPersonSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: 'Shubham Sunny',
-    jobTitle: 'Website Modernization Expert',
+    name: site.brand,
+    jobTitle: site.headline || 'Full-Stack Developer',
     worksFor: { '@id': `${site.domain}/#business` },
     url: site.domain,
-    sameAs: [social.linkedin.url],
-    knowsAbout: ['Website Design', 'Web Development', 'Mobile-First Design'],
+    sameAs: realSocialUrls(),
+    knowsAbout: site.expertise || ['Website Design', 'Web Development', 'Data Scraping', 'Mobile Apps'],
+    description: site.bioShort || site.tagline,
   };
 }
 
@@ -100,20 +137,27 @@ export function getFAQSchema() {
 }
 
 export function getReviewSchema() {
+  const reviews = fiverrReviews();
+  const rating = fiverrRating();
+  if (!rating || !reviews?.totalReviews) return null;
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
-    name: `${site.brand} - Website Modernization Services`,
+    name: `${site.brand} — Website Modernization (Fiverr reviews)`,
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: site.stats.googleRating,
-      reviewCount: social.googleReviews.totalReviews,
+      ratingValue: rating,
+      reviewCount: reviews.totalReviews,
+      bestRating: 5,
+      worstRating: 1,
     },
     review: testimonials.slice(0, 5).map((r) => ({
       '@type': 'Review',
       author: { '@type': 'Person', name: r.name },
       reviewRating: { '@type': 'Rating', ratingValue: r.rating },
       reviewBody: r.text,
+      publisher: { '@type': 'Organization', name: 'Fiverr' },
     })),
   };
 }
@@ -165,14 +209,15 @@ export function getBreadcrumbSchema(serviceName: string, pageUrl: string) {
 }
 
 export function getAllSchemas(props: SchemaProps = {}) {
+  const reviewSchema = getReviewSchema();
   const schemas: object[] = [
     getWebSiteSchema(),
     getProfessionalServiceSchema(),
     getPersonSchema(),
     getFAQSchema(),
-    getReviewSchema(),
     getServiceListSchema(),
   ];
+  if (reviewSchema) schemas.push(reviewSchema);
   if (props.type === 'service' && props.serviceName) {
     schemas.push(
       getServiceSchema(props.serviceName, props.serviceDescription || '', props.pageUrl || ''),

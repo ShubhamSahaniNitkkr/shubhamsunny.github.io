@@ -1,0 +1,42 @@
+[
+  {
+    "id": "competitor-intel",
+    "name": "Competitor Intel Dashboard",
+    "tagline": "Daily pricing & catalog tracking — on autopilot",
+    "description": "A private dashboard that scrapes competitor websites every night and delivers clean price-change alerts to your inbox. Built for e-commerce brands tired of manual checks.",
+    "category": "Data & Analytics",
+    "status": "invite-only",
+    "features": ["Automated daily scrapes", "Price change alerts", "CSV export & API access", "Custom competitor lists"],
+    "idealFor": "E-commerce brands, Amazon sellers, retail chains"
+  },
+  {
+    "id": "lead-enrichment",
+    "name": "Lead Enrichment Engine",
+    "tagline": "Turn a company name into a full sales profile",
+    "description": "Paste a list of company names — get back emails, social profiles, tech stack, and employee count. Built for agencies and B2B sales teams who need data fast.",
+    "category": "Sales Intelligence",
+    "status": "invite-only",
+    "features": ["Bulk company lookup", "Email & social discovery", "Tech stack detection", "CRM-ready export"],
+    "idealFor": "Sales agencies, outbound teams, recruiters"
+  },
+  {
+    "id": "client-portal",
+    "name": "White-Label Client Portal",
+    "tagline": "Your clients log in — you look professional at scale",
+    "description": "A branded portal where your clients track project progress, approve designs, and download deliverables. Built for freelancers and small agencies scaling up.",
+    "category": "Client Management",
+    "status": "by-request",
+    "features": ["Custom branding", "File sharing & approvals", "Status tracking", "Client messaging"],
+    "idealFor": "Agencies, consultants, dev shops"
+  },
+  {
+    "id": "automation-hub",
+    "name": "Business Automation Hub",
+    "tagline": "Connect your tools — kill the repetitive work",
+    "description": "Custom integrations between your CRM, email, spreadsheets, and messaging apps. When off-the-shelf Zapier isn't enough, we build the exact workflow you need.",
+    "category": "Automation",
+    "status": "by-request",
+    "features": ["Custom API integrations", "Scheduled jobs", "Error monitoring", "Slack/WhatsApp alerts"],
+    "idealFor": "Operations teams, growing SMBs, SaaS startups"
+  }
+]

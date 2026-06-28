@@ -1,0 +1,159 @@
+[
+  {
+    "id": "web-starter",
+    "serviceId": "web-modernization",
+    "name": "Starter Refresh",
+    "price": 499,
+    "priceLabel": "USD",
+    "includes": [
+      "Mobile-friendly fixes",
+      "Speed improvements",
+      "Contact form",
+      "1 revision round",
+      "Launch support"
+    ],
+    "description": "Quick professional upgrade — no full rebuild needed.",
+    "startingFrom": true,
+    "emoji": "✨"
+  },
+  {
+    "id": "scrape-starter",
+    "serviceId": "data-scraping",
+    "name": "One-Time Scrape",
+    "price": 200,
+    "priceLabel": "USD",
+    "includes": [
+      "Up to 5000 records",
+      "CSV or JSON export",
+      "1 target source",
+      "Clean formatted output",
+      "Delivery in 3–5 days"
+    ],
+    "description": "Perfect for a single dataset or competitor snapshot.",
+    "startingFrom": true,
+    "emoji": "📋"
+  },
+  {
+    "id": "soft-mvp",
+    "serviceId": "custom-software",
+    "name": "MVP Build",
+    "price": 1999,
+    "priceLabel": "USD",
+    "includes": [
+      "Core features only",
+      "Web or mobile",
+      "2-week prototype",
+      "1 revision round",
+      "Deploy to production"
+    ],
+    "description": "Validate your idea fast with a working prototype.",
+    "startingFrom": true,
+    "emoji": "⚡"
+  },
+  {
+    "id": "web-business",
+    "serviceId": "web-modernization",
+    "name": "Business Modernization",
+    "price": 1499,
+    "priceLabel": "USD",
+    "includes": [
+      "Full visual redesign",
+      "Up to 5 pages",
+      "Mobile-first",
+      "Basic SEO",
+      "WhatsApp link",
+      "2 revision rounds"
+    ],
+    "description": "Complete trust makeover — our most popular for small businesses.",
+    "mostPopular": true,
+    "emoji": "🏆"
+  },
+  {
+    "id": "scrape-monitor",
+    "serviceId": "data-scraping",
+    "name": "Monitoring Plan",
+    "price": 499,
+    "priceLabel": "USD",
+    "includes": [
+      "Daily or weekly runs",
+      "Change detection",
+      "Slack/email alerts",
+      "Multiple sources",
+      "Monthly data refresh"
+    ],
+    "description": "Ongoing price or listing tracking — set and forget.",
+    "mostPopular": true,
+    "emoji": "🔔"
+  },
+  {
+    "id": "soft-full",
+    "serviceId": "custom-software",
+    "name": "Full Application",
+    "price": 4999,
+    "priceLabel": "USD",
+    "includes": [
+      "Full feature set",
+      "Web + API",
+      "Weekly demos",
+      "3 revision rounds",
+      "Production deploy",
+      "30-day support"
+    ],
+    "description": "Complete custom app — bots, dashboards, mobile, or tools.",
+    "mostPopular": true,
+    "startingFrom": true,
+    "emoji": "🚀"
+  },
+  {
+    "id": "web-growth",
+    "serviceId": "web-modernization",
+    "name": "Growth Website",
+    "price": 2999,
+    "priceLabel": "USD",
+    "includes": [
+      "Everything in Business",
+      "Blog setup",
+      "Analytics",
+      "Lead forms",
+      "Priority support",
+      "3 revision rounds"
+    ],
+    "description": "For businesses ready to capture more leads online.",
+    "emoji": "📈"
+  },
+  {
+    "id": "scrape-enterprise",
+    "serviceId": "data-scraping",
+    "name": "Enterprise Pipeline",
+    "price": 1499,
+    "priceLabel": "USD",
+    "includes": [
+      "Unlimited sources (scoped)",
+      "Database integration",
+      "API endpoint",
+      "Proxy management",
+      "Priority fixes",
+      "Dedicated support"
+    ],
+    "description": "Large-scale scraping with direct database delivery.",
+    "startingFrom": true,
+    "emoji": "🏢"
+  },
+  {
+    "id": "soft-retainer",
+    "serviceId": "custom-software",
+    "name": "Monthly Retainer",
+    "price": 999,
+    "priceLabel": "USD",
+    "includes": [
+      "20 hrs development/month",
+      "Bug fixes",
+      "Small features",
+      "Priority response",
+      "Slack access"
+    ],
+    "description": "Ongoing development after launch or for evolving products.",
+    "startingFrom": true,
+    "emoji": "🤝"
+  }
+]

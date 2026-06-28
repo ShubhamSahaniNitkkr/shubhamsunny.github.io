@@ -1,0 +1,164 @@
+[
+  {
+    "serviceId": "web-modernization",
+    "blockType": "intro",
+    "title": "What is website modernization?",
+    "body": "We take your outdated site and rebuild it to look modern, load fast on phones, and make it easy for customers to call or book — without you touching code or servers.",
+    "order": 1,
+    "icon": "🌐"
+  },
+  {
+    "serviceId": "web-modernization",
+    "blockType": "step",
+    "title": "Free review call",
+    "body": "We look at your current site on mobile & desktop and tell you what is costing you leads — no jargon.",
+    "order": 1,
+    "icon": "📞"
+  },
+  {
+    "serviceId": "data-scraping",
+    "blockType": "intro",
+    "title": "What is data scraping?",
+    "body": "We automatically collect public data from websites and apps — prices, listings, catalogs, reviews — and deliver it clean in CSV, JSON, or your database.",
+    "order": 1,
+    "icon": "📊"
+  },
+  {
+    "serviceId": "data-scraping",
+    "blockType": "step",
+    "title": "Scope & targets",
+    "body": "You share URLs, apps, or categories. We confirm what is public, legal, and feasible before starting.",
+    "order": 1,
+    "icon": "🎯"
+  },
+  {
+    "serviceId": "custom-software",
+    "blockType": "intro",
+    "title": "What is custom software?",
+    "body": "Web apps, mobile apps, bots, and tools built exactly for how your business works — when off-the-shelf products do not fit.",
+    "order": 1,
+    "icon": "💻"
+  },
+  {
+    "serviceId": "custom-software",
+    "blockType": "step",
+    "title": "Discovery",
+    "body": "30-min call to map your goal, users, and must-have features. You talk business — we handle tech.",
+    "order": 1,
+    "icon": "💬"
+  },
+  {
+    "serviceId": "web-modernization",
+    "blockType": "difference",
+    "title": "How it makes a difference",
+    "body": "📱|Mobile-first|80% of your customers search on phones — your site must work there|⏱|Faster load|Slow sites lose 40% of visitors before they read anything|🤝|More trust|A modern site makes strangers feel safe enough to call|📞|More leads|Clear buttons, forms, and booking = more inquiries",
+    "order": 2
+  },
+  {
+    "serviceId": "web-modernization",
+    "blockType": "step",
+    "title": "Design & content",
+    "body": "You share photos, menu, services. We structure pages, write clear copy, and show you mockups before building.",
+    "order": 2,
+    "icon": "🎨"
+  },
+  {
+    "serviceId": "data-scraping",
+    "blockType": "difference",
+    "title": "How it makes a difference",
+    "body": "⏱|Save hours daily|Stop copy-pasting from tabs — data arrives on a schedule|👀|Beat competitors|See price changes and new listings before your rivals|📈|Better decisions|Real numbers instead of gut feeling|🔄|Always fresh|Daily or hourly updates — not stale spreadsheets",
+    "order": 2
+  },
+  {
+    "serviceId": "data-scraping",
+    "blockType": "step",
+    "title": "Build scraper",
+    "body": "Custom scrapers with proxies, retries, and change detection — built for your exact data shape.",
+    "order": 2,
+    "icon": "🔧"
+  },
+  {
+    "serviceId": "custom-software",
+    "blockType": "difference",
+    "title": "How it makes a difference",
+    "body": "🔧|Fits your workflow|No forcing your team to adapt to generic software|🌙|Runs 24/7|Bots and automations work while you sleep|📉|Fewer errors|Structured flows replace messy spreadsheets and chat orders|📈|Scales with you|Built to grow — add features without starting over",
+    "order": 2
+  },
+  {
+    "serviceId": "custom-software",
+    "blockType": "step",
+    "title": "Prototype",
+    "body": "Clickable mockup or MVP in 1–2 weeks so you can see it working before full build.",
+    "order": 2,
+    "icon": "📐"
+  },
+  {
+    "serviceId": "web-modernization",
+    "blockType": "step",
+    "title": "Build & optimize",
+    "body": "Mobile-first development, speed tuning, SEO basics, forms, analytics — all handled by us.",
+    "order": 3,
+    "icon": "⚙️"
+  },
+  {
+    "serviceId": "web-modernization",
+    "blockType": "support",
+    "title": "You do not need to do anything technical",
+    "body": "🆕|No website yet?|We register domain, set up hosting, SSL, and email forwarding — you just approve the design.|🖥️|Already have a site?|We document where it is hosted, where code lives (GitHub/your account), and migrate without downtime.|🔒|Ongoing support|Optional monthly care — updates, backups, uptime checks. You focus on your business.|📋|Full handoff doc|Server name, login links, repo URL, and how to request changes — all in one PDF.",
+    "order": 3
+  },
+  {
+    "serviceId": "data-scraping",
+    "blockType": "step",
+    "title": "Deliver data",
+    "body": "CSV, JSON, Google Sheets, PostgreSQL, or API — formatted exactly how your team needs it.",
+    "order": 3,
+    "icon": "📦"
+  },
+  {
+    "serviceId": "data-scraping",
+    "blockType": "support",
+    "title": "We handle the hard parts",
+    "body": "🛡️|Proxies & blocks|We manage IP rotation and anti-bot handling — you never touch it.|☁️|Where it runs|Scrapers run on our cloud or yours — documented in handoff.|📁|Your data, your account|Delivered to your S3, database, or inbox — we do not resell your data.|🔁|Maintenance|Sites change — we fix breakages as part of monitoring plans.",
+    "order": 3
+  },
+  {
+    "serviceId": "custom-software",
+    "blockType": "step",
+    "title": "Build sprints",
+    "body": "Weekly demos, you test on your phone/browser, feedback applied same week.",
+    "order": 3,
+    "icon": "🏗️"
+  },
+  {
+    "serviceId": "custom-software",
+    "blockType": "support",
+    "title": "Deployment & code — fully documented",
+    "body": "📱|App stores|We handle Play Store / deployment — or guide your account step by step.|☁️|Where it lives|Render, Vercel, AWS, or your server — documented with access links.|📂|Your code|GitHub repo in your account (or ours, transferred to you). Full source, no lock-in.|📖|Docs included|Setup guide, API docs, and how to request changes later.",
+    "order": 3
+  },
+  {
+    "serviceId": "web-modernization",
+    "blockType": "step",
+    "title": "Launch & handoff",
+    "body": "We deploy, test on real devices, and give you a simple guide to update text or images later.",
+    "order": 4,
+    "icon": "🚀"
+  },
+  {
+    "serviceId": "data-scraping",
+    "blockType": "step",
+    "title": "Monitor & alert",
+    "body": "Optional ongoing runs with Slack/email alerts when prices drop or new items appear.",
+    "order": 4,
+    "icon": "🔔"
+  },
+  {
+    "serviceId": "custom-software",
+    "blockType": "step",
+    "title": "Launch & support",
+    "body": "Deploy to production, train your team, hand over repo + docs. Support available after.",
+    "order": 4,
+    "icon": "🚀"
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "eyebrow": "Premium Development Studio",
+  "headline": "Developers for Businesses With a Vision",
+  "bioShort": "We are a selective development studio — we partner with premium clients who know where they are going, not businesses looking for the cheapest quote.",
+  "bioLong": "We do not take every project. If you have a clear goal and care about quality, we can talk. Websites, data work, and custom software — founder-led, with a small core team and trusted specialists when a build needs extra hands.",
+  "selectivityLine": "We do not work with everyone — only with clients who have a vision, clear goals, and the standards to match.",
+  "standards": [
+    "Vision-first clients",
+    "Hands-on founder review",
+    "Selective engagements",
+    "No cookie-cutter work"
+  ],
+  "statusBadge": "Select projects · High standards",
+  "philosophy": "We say no to most inquiries — so the yes means something.",
+  "expertise": [
+    "Website Modernization",
+    "Data Scraping",
+    "Custom Software",
+    "Mobile Apps",
+    "Chrome Extensions",
+    "Telegram & WhatsApp Bots",
+    "Automation"
+  ],
+  "portrait": "/media/team/shubham.jpg",
+  "portraitAlt": "Shubham Sunny"
+}

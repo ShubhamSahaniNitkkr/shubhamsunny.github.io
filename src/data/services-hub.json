@@ -1,0 +1,44 @@
+[
+  {
+    "id": "web-modernization",
+    "name": "Website Modernization",
+    "color": "#3B82F6",
+    "tagline": "Turn outdated sites into trust-building machines",
+    "description": "Modern, mobile-first websites that convert visitors into customers.",
+    "order": 1,
+    "cardImage": "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=800&q=80",
+    "processImages": [
+      "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200",
+      "https://images.unsplash.com/photo-1547658719-da2b51169166?w=1200",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200"
+    ]
+  },
+  {
+    "id": "data-scraping",
+    "name": "Data Scraping",
+    "color": "#10B981",
+    "tagline": "Extract data from any website or mobile app",
+    "description": "Competitor intelligence, product catalogs, images — scraped cleanly and delivered ready to use.",
+    "order": 2,
+    "cardImage": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+    "processImages": [
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200",
+      "https://images.unsplash.com/photo-1504639725595-9897832aa1e8?w=1200"
+    ]
+  },
+  {
+    "id": "custom-software",
+    "name": "Custom Software",
+    "color": "#8B5CF6",
+    "tagline": "Web, mobile, desktop, and bots — built for you",
+    "description": "From web apps to Android apps, Chrome extensions, and Telegram/WhatsApp bots.",
+    "order": 3,
+    "cardImage": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
+    "processImages": [
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200",
+      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200",
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200"
+    ]
+  }
+]

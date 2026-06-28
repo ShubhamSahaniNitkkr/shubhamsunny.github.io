@@ -1,0 +1,47 @@
+---
+interface Props {
+  id?: string;
+  eyebrow: string;
+  title: string;
+  subtitle?: string;
+  image: string;
+  imageAlt?: string;
+  overlay?: string;
+}
+
+const {
+  id,
+  eyebrow,
+  title,
+  subtitle,
+  image,
+  imageAlt = '',
+  overlay = 'from-violet-600/90 via-violet-800/80 to-violet-950/95',
+} = Astro.props;
+---
+
+<section {id} class="section-backdrop relative min-h-[520px] overflow-hidden sm:min-h-[580px]">
+  <img
+    src={image}
+    alt={imageAlt}
+    class="absolute inset-0 h-full w-full object-cover"
+    loading="lazy"
+    width="1920"
+    height="1080"
+  />
+  <slot name="floating" />
+  <div class={`absolute inset-0 bg-gradient-to-t ${overlay} via-black/55 to-black/30`} aria-hidden="true"></div>
+
+  <div class="relative z-10">
+    <div class="mx-auto max-w-7xl px-4 pb-6 pt-16 text-center sm:px-6 sm:pt-20 lg:px-10 lg:pt-24">
+      <p class="section-eyebrow !text-white/90 [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]">{eyebrow}</p>
+      <h2 class="section-title mt-2 !text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.7)]">{title}</h2>
+      {subtitle && (
+        <p class="section-subtitle mx-auto mt-3 !max-w-2xl !text-base !text-white/95 sm:!text-lg [text-shadow:0_1px_10px_rgba(0,0,0,0.65)]">{subtitle}</p>
+      )}
+    </div>
+    <div class="mx-auto w-full max-w-7xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-10">
+      <slot />
+    </div>
+  </div>
+</section>

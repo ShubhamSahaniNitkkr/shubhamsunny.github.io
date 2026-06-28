@@ -1,27 +1,54 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SectionTitle from '../../components/ui/SectionTitle.astro';
 import blog from '../../data/blog.json';
 import site from '../../data/site.json';
-import type { BlogPost } from '../types';
+import type { BlogPost } from '../../types';
 
 const posts = (blog as BlogPost[]).filter((p) => p.status === 'published');
+
+function formatDate(iso: string) {
+  if (!iso) return '';
+  try {
+    return new Date(iso).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  } catch {
+    return iso;
+  }
+}
 ---
 
 <BaseLayout
   title={`Blog | ${site.brand}`}
-  description="Plain-English insights on websites, mobile-friendly design, and growing your business online."
+  description="Plain-English insights on websites, data scraping, and custom software — from a developer who ships for real businesses."
   canonical={`${site.domain}/blog`}
 >
-  <section class="section-padding bg-surface pt-28">
-    <div class="container-salon">
-      <SectionTitle label="Blog" title="Insights" subtitle="Tips for business owners — no tech jargon." />
-      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+  <section class="bg-white section-padding pt-28">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="section-eyebrow">Blog</p>
+        <h1 class="section-title mt-2">Notes from 150+ projects</h1>
+        <p class="section-subtitle mx-auto mt-2">Written by Shubham Sunny — practical advice for owners, not developers.</p>
+      </div>
+
+      <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => (
-          <a href={`/blog/${post.slug}`} class="salon-card block p-6 hover:shadow-lg">
-            <p class="text-[10px] tracking-widest text-muted uppercase">{post.publishDate}</p>
-            <h2 class="font-display mt-3 text-xl font-semibold">{post.title}</h2>
-            <p class="mt-2 text-sm text-muted">{post.excerpt}</p>
+          <a href={`/blog/${post.slug}`} class="group flex flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-violet-200 hover:shadow-lg">
+            {post.image && (
+              <div class="aspect-[16/10] overflow-hidden bg-zinc-100">
+                <img src={post.image} alt="" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" width="600" height="375" />
+              </div>
+            )}
+            <div class="flex flex-1 flex-col p-5 sm:p-6">
+              <div class="flex flex-wrap items-center gap-2 text-[11px] font-medium text-zinc-500">
+                {post.category && <span class="rounded-full bg-violet-50 px-2.5 py-0.5 font-semibold text-violet-700">{post.category}</span>}
+                {post.readTime && <span>{post.readTime}</span>}
+              </div>
+              <h2 class="mt-3 font-display text-xl font-bold leading-snug text-zinc-900 group-hover:text-violet-700">{post.title}</h2>
+              <p class="mt-2 line-clamp-3 flex-1 text-sm leading-relaxed text-zinc-600">{post.excerpt}</p>
+              <div class="mt-4 flex items-center justify-between border-t border-zinc-100 pt-4 text-xs text-zinc-500">
+                <span>{post.author || site.brand}</span>
+                <span>{formatDate(post.publishDate)}</span>
+              </div>
+            </div>
           </a>
         ))}
       </div>

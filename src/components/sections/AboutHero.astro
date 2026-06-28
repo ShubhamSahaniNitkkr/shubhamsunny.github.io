@@ -1,0 +1,127 @@
+---
+import about from '../../data/about.json';
+import site from '../../data/site.json';
+import social from '../../data/social.json';
+import HeroTechAnimation from '../ui/HeroTechAnimation';
+import PortraitShine from '../ui/PortraitShine.astro';
+import SocialLinks from '../ui/SocialLinks.astro';
+import ReviewsMarquee from '../ui/ReviewsMarquee';
+import { getConsultationEmailUrl } from '../../lib/utils';
+
+const expertise = about.expertise?.length ? about.expertise : site.expertise || [];
+const standards = about.standards?.length ? about.standards : [];
+const clientCount = site.stats?.happyClients ?? 0;
+const fiverrRating = site.stats?.fiverrRating ?? social.fiverrReviews?.rating;
+const fiverrReviewCount = social.fiverrReviews?.totalReviews;
+---
+
+<section id="about" class="about-hero relative flex min-h-[100dvh] flex-col overflow-hidden">
+  <HeroTechAnimation client:load />
+
+  {/* Premium positioning strip — first thing visitors read */}
+  <div class="premium-strip relative z-20 border-b border-amber-200/60 bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 px-4 pb-2.5 pt-[4.75rem] text-center sm:px-6">
+    <p class="text-xs font-medium leading-relaxed text-zinc-300 sm:text-sm">
+      <span class="text-amber-400">◆</span>
+      {about.selectivityLine || 'We do not work with everyone — only with clients who have a vision and serious standards.'}
+      <span class="text-amber-400"> ◆</span>
+    </p>
+  </div>
+
+  <div class="relative z-10 flex flex-[65] flex-col justify-center px-4 pb-4 pt-8 sm:px-6 sm:pt-10 lg:px-10">
+    <div class="mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[minmax(260px,340px)_1fr] lg:gap-16">
+      <div class="reveal-up mx-auto w-full max-w-[300px] lg:mx-0 lg:max-w-none">
+        <PortraitShine src={about.portrait} alt={about.portraitAlt} />
+      </div>
+
+      <div class="text-center lg:text-left">
+        <div class="reveal-up inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-1.5">
+          <span class="text-amber-600" aria-hidden="true">◆</span>
+          <span class="text-xs font-semibold tracking-wide text-amber-900">{about.statusBadge || 'Select projects · High standards'}</span>
+        </div>
+
+        <p class="reveal-up reveal-delay-1 mt-5 text-xs font-bold uppercase tracking-[0.2em] text-zinc-500">{about.eyebrow || 'Premium Development Studio'}</p>
+        <h1 class="reveal-up reveal-delay-2 mt-2 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
+          <span class="text-gradient">{about.headline}</span>
+        </h1>
+        <p class="reveal-up reveal-delay-3 mt-4 max-w-2xl text-base leading-relaxed text-zinc-600 sm:text-lg lg:mx-0 mx-auto">
+          {about.bioLong || about.bioShort}
+        </p>
+
+        {standards.length > 0 && (
+          <div class="reveal-up reveal-delay-4 mt-6 flex flex-wrap justify-center gap-2 lg:justify-start">
+            {standards.map((item) => (
+              <span class="standard-pill">{item}</span>
+            ))}
+          </div>
+        )}
+
+        {about.philosophy && (
+          <p class="reveal-up reveal-delay-4 mt-5 text-sm italic text-zinc-500 lg:max-w-xl">
+            &ldquo;{about.philosophy}&rdquo;
+          </p>
+        )}
+
+        {expertise.length > 0 && (
+          <div class="reveal-up reveal-delay-5 mt-6 flex flex-wrap justify-center gap-2 lg:justify-start">
+            {expertise.map((skill) => (
+              <span class="expertise-pill">{skill}</span>
+            ))}
+          </div>
+        )}
+
+        <div class="reveal-up reveal-delay-6 mt-7 flex flex-col gap-3 sm:flex-row lg:justify-start">
+          <a href={getConsultationEmailUrl()} class="btn-glow w-full sm:w-auto">Request a Conversation</a>
+          <a href="#services" class="btn-ghost w-full sm:w-auto">Explore Services</a>
+        </div>
+
+        <div class="reveal-up reveal-delay-7 mt-8 flex flex-wrap items-center justify-center gap-5 border-t border-zinc-200 pt-6 lg:justify-start">
+          <div class="stat-block">
+            <span class="stat-block__value">{clientCount}+</span>
+            <span class="stat-block__label">Clients served</span>
+          </div>
+          <div class="hidden h-8 w-px bg-zinc-200 sm:block"></div>
+          <div class="stat-block">
+            <span class="stat-block__value">{site.stats.projectsDelivered}+</span>
+            <span class="stat-block__label">Projects Delivered</span>
+          </div>
+          <div class="hidden h-8 w-px bg-zinc-200 sm:block"></div>
+          <SocialLinks />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="reviews" class="reviews-band relative z-10 flex flex-[35] flex-col justify-end">
+    <div class="reviews-band-fade pointer-events-none absolute inset-x-0 top-0 h-12" aria-hidden="true"></div>
+    <div class="mb-3 flex flex-col gap-2 px-4 sm:flex-row sm:items-end sm:justify-between sm:px-6 lg:px-10">
+      <div>
+        <p class="section-eyebrow">Testimonials</p>
+        <p class="font-display text-xl font-bold text-zinc-900 sm:text-2xl">What our clients say about us</p>
+      </div>
+      <div class="flex flex-wrap items-center gap-3">
+        {fiverrRating && (
+          <p class="text-sm text-zinc-500">★ {fiverrRating} on Fiverr{fiverrReviewCount ? ` (${fiverrReviewCount} reviews)` : ''}</p>
+        )}
+        {social.fiverr.url && (
+          <a
+            href={social.fiverr.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-semibold text-emerald-700 transition hover:bg-emerald-100"
+          >
+            See us on Fiverr →
+          </a>
+        )}
+      </div>
+    </div>
+    <ReviewsMarquee client:visible />
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('is-visible'); }),
+    { threshold: 0.08 },
+  );
+  document.querySelectorAll('.reveal-up').forEach((el) => observer.observe(el));
+</script>

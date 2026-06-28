@@ -14,19 +14,71 @@ export function getStaticPaths() {
 interface Props { post: BlogPost; }
 const { post } = Astro.props;
 const canonical = `${site.domain}/blog/${post.slug}`;
+
+function formatDate(iso: string) {
+  if (!iso) return '';
+  try {
+    return new Date(iso).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  } catch {
+    return iso;
+  }
+}
 ---
 
 <BaseLayout title={`${post.title} | ${site.brand}`} description={post.excerpt} canonical={canonical}>
-  <article class="section-padding bg-surface pt-28">
-    <div class="container-salon mx-auto max-w-2xl">
-      <p class="label">{post.publishDate}</p>
-      <h1 class="font-display mt-4 text-3xl font-semibold sm:text-4xl">{post.title}</h1>
-      <p class="mt-6 text-base leading-relaxed text-muted">{post.excerpt}</p>
-      <div class="mt-8 rounded border border-champagne bg-ivory-dark p-6 text-sm text-muted">
-        <p>Full article coming soon. In the meantime, get a free website review — I will look at your current site and give honest advice in plain English.</p>
-        <a href={getConsultationEmailUrl()} target="_blank" rel="noopener noreferrer" class="btn-email mt-4 inline-flex">Free Website Review</a>
+  <article class="bg-white pt-28">
+    {post.image && (
+      <div class="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-10">
+        <div class="aspect-[21/9] overflow-hidden rounded-2xl bg-zinc-100 shadow-lg">
+          <img src={post.image} alt="" class="h-full w-full object-cover" loading="eager" width="1200" height="514" />
+        </div>
       </div>
-      <a href="/blog" class="mt-8 inline-block text-sm text-rose-gold-dark hover:text-rose-gold">← Back to blog</a>
+    )}
+
+    <div class="section-padding !pb-16 !pt-10">
+      <div class="mx-auto max-w-2xl">
+        <a href="/blog" class="text-sm font-semibold text-violet-600 hover:text-violet-700">← All articles</a>
+
+        <div class="mt-6 flex flex-wrap items-center gap-2 text-sm text-zinc-500">
+          {post.category && <span class="rounded-full bg-violet-50 px-3 py-1 text-xs font-semibold text-violet-700">{post.category}</span>}
+          {post.readTime && <span>{post.readTime}</span>}
+          {post.publishDate && <span>· {formatDate(post.publishDate)}</span>}
+        </div>
+
+        <h1 class="section-title mt-4 !text-3xl sm:!text-4xl">{post.title}</h1>
+        <p class="mt-4 text-lg leading-relaxed text-zinc-600">{post.excerpt}</p>
+
+        <p class="mt-6 flex items-center gap-3 border-b border-zinc-200 pb-8 text-sm text-zinc-500">
+          <span class="flex h-9 w-9 items-center justify-center rounded-full bg-violet-100 text-sm font-bold text-violet-700">
+            {(post.author || site.brand).charAt(0)}
+          </span>
+          <span>
+            <span class="block font-semibold text-zinc-900">{post.author || site.brand}</span>
+            <span class="text-xs">Founder · {site.brand}</span>
+          </span>
+        </p>
+
+        {post.sections && post.sections.length > 0 ? (
+          <div class="prose-blog space-y-10">
+            {post.sections.map((section) => (
+              <section>
+                <h2 class="font-display text-xl font-bold text-zinc-900 sm:text-2xl">{section.heading}</h2>
+                {section.paragraphs.map((para) => (
+                  <p class="mt-4 text-base leading-relaxed text-zinc-700">{para}</p>
+                ))}
+              </section>
+            ))}
+          </div>
+        ) : (
+          <p class="mt-8 text-base leading-relaxed text-zinc-700">{post.excerpt}</p>
+        )}
+
+        <div class="mt-12 rounded-2xl border border-violet-100 bg-violet-50/60 p-6 sm:p-8">
+          <p class="font-display text-lg font-bold text-zinc-900">Want an honest look at your site?</p>
+          <p class="mt-2 text-sm leading-relaxed text-zinc-600">Free review — we tell you what is costing leads, in plain English. No obligation.</p>
+          <a href={getConsultationEmailUrl()} class="btn-accent mt-5 inline-flex">Request a free review</a>
+        </div>
+      </div>
     </div>
   </article>
 </BaseLayout>

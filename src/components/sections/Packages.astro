@@ -38,8 +38,6 @@ const pkgs = packages as Package[];
           </ul>
           <a
             href={getPackageEmailUrl(pkg.name, pkg.price)}
-            target="_blank"
-            rel="noopener noreferrer"
             class:list={['mt-8 block w-full text-center', pkg.mostPopular ? 'btn-email' : 'btn-secondary']}
           >
             Get Started

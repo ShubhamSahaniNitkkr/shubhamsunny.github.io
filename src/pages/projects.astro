@@ -1,52 +1,71 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import SectionTitle from '../components/ui/SectionTitle.astro';
 import models from '../data/models.json';
 import site from '../data/site.json';
 ---
 
 <BaseLayout
   title={`Projects | ${site.brand}`}
-  description="Selected builds and demos — proof of technical depth behind every website modernization project."
+  description="Selected client work — descriptions only. Most projects stay private under NDA; demos are not public."
   canonical={`${site.domain}/projects`}
 >
-  <section class="section-padding bg-surface pt-28">
-    <div class="container-salon">
-      <SectionTitle
-        label="Portfolio"
-        title="Projects"
-        subtitle="Technical proof for buyers who want depth. Every project ships to production."
-      />
-      <div class="grid gap-6">
+  <section class="section-padding bg-white pt-28">
+    <div class="mx-auto max-w-6xl">
+      <p class="section-eyebrow">Portfolio</p>
+      <h1 class="section-title mt-2">Selected work</h1>
+      <p class="section-subtitle max-w-2xl">
+        Real projects we have shipped — but most clients ask us not to show live demos or branding publicly.
+        Below is what we can share without breaking confidentiality.
+      </p>
+
+      <div class="mt-10 grid gap-5">
         {models.models.map((project) => (
-          <article class="salon-card p-6 sm:p-8">
-            <div class="flex flex-wrap items-start justify-between gap-4">
-              <div>
-                <p class="text-[10px] tracking-widest text-muted uppercase">{project.clientIndustry || project.category}</p>
-                <h2 class="font-display mt-2 text-2xl font-semibold sm:text-3xl">{project.title}</h2>
-                <p class="mt-2 text-sm text-muted">{project.outcome}</p>
-              </div>
-              {project.liveUrl && (
-                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="btn-secondary shrink-0 !text-[10px]">
-                  Live Demo →
-                </a>
+          <article class="glass-card overflow-hidden p-0 sm:p-0">
+            <div class="grid sm:grid-cols-[220px_1fr]">
+              {project.cover && (
+                <div class="relative h-44 sm:h-auto">
+                  <img
+                    src={project.cover}
+                    alt=""
+                    class={`h-full w-full object-cover ${project.isLocked ? 'blur-[2px] brightness-90' : ''}`}
+                    loading="lazy"
+                    width="440"
+                    height="280"
+                  />
+                  {project.isLocked && (
+                    <span class="absolute inset-0 flex items-center justify-center bg-black/25 text-xs font-bold uppercase tracking-wider text-white">
+                      Client confidential
+                    </span>
+                  )}
+                </div>
               )}
+              <div class="p-6 sm:p-8">
+                <div class="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <p class="text-xs font-semibold uppercase tracking-wider text-blue-600">{project.clientIndustry || project.category}</p>
+                    <h2 class="font-display mt-2 text-xl font-bold text-zinc-900 sm:text-2xl">{project.title}</h2>
+                    <p class="mt-2 text-sm text-zinc-600">{project.publicDescription || project.outcome}</p>
+                  </div>
+                  {project.liveUrl ? (
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="btn-accent shrink-0 !text-xs">Live Demo →</a>
+                  ) : (
+                    <span class="shrink-0 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-zinc-500">No public demo</span>
+                  )}
+                </div>
+                {project.highlights?.length > 0 && (
+                  <ul class="mt-5 space-y-2 border-t border-zinc-100 pt-5">
+                    {project.highlights.map((h) => (
+                      <li class="flex gap-2 text-sm text-zinc-600"><span class="text-blue-600">→</span><span>{h}</span></li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </div>
-            {project.highlights?.length > 0 && (
-              <ul class="mt-6 space-y-2 border-t border-champagne pt-6">
-                {project.highlights.map((h) => (
-                  <li class="flex gap-2 text-sm text-muted">
-                    <span class="text-rose-gold">→</span>
-                    <span>{h}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
           </article>
         ))}
       </div>
       <div class="mt-12 text-center">
-        <a href="/#contact" class="btn-email">Discuss Your Project</a>
+        <a href="/#contact" class="btn-accent">Discuss Your Project</a>
       </div>
     </div>
   </section>

@@ -1,16 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/sections/Hero.astro';
-import Transformations from '../components/sections/Transformations.astro';
+import AboutHero from '../components/sections/AboutHero.astro';
+import ServicesPreview from '../components/sections/ServicesPreview';
 import Team from '../components/sections/Team.astro';
-import Packages from '../components/sections/Packages.astro';
-import HowItWorks from '../components/sections/HowItWorks.astro';
-import PortfolioBento from '../components/sections/PortfolioBento.astro';
 import FAQ from '../components/sections/FAQ.astro';
-import Roadmap from '../components/sections/Roadmap.astro';
-import BlogTeaser from '../components/sections/BlogTeaser.astro';
-import FinalCTA from '../components/sections/FinalCTA.astro';
+import UseCasesSection from '../components/sections/UseCasesSection.astro';
+import BlogSection from '../components/sections/BlogSection.astro';
+import ContactSection from '../components/sections/ContactSection.astro';
 import site from '../data/site.json';
+import servicesHub from '../data/services-hub.json';
 
 const seo = site.seo || {};
 ---
@@ -23,14 +21,11 @@ const seo = site.seo || {};
   canonical={`${site.domain}/`}
   schemaType="home"
 >
-  <Hero />
-  <Transformations />
+  <AboutHero />
+  <ServicesPreview client:visible services={servicesHub} />
   <Team />
-  <Packages />
-  <HowItWorks />
-  <PortfolioBento />
   <FAQ />
-  <Roadmap />
-  <BlogTeaser />
-  <FinalCTA />
+  <UseCasesSection />
+  <BlogSection />
+  <ContactSection />
 </BaseLayout>

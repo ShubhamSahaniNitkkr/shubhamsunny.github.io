@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import products from '../data/digital-products.json';
+import site from '../data/site.json';
+import { getConsultationEmailUrl } from '../lib/utils';
+
+const STATUS_LABEL: Record<string, { text: string; class: string }> = {
+  'invite-only': { text: 'Invite Only', class: 'bg-violet-100 text-violet-700 border-violet-200' },
+  'by-request': { text: 'Built On Request', class: 'bg-amber-100 text-amber-700 border-amber-200' },
+};
+---
+
+<BaseLayout
+  title={`Digital Products & SaaS Tools | ${site.brand}`}
+  description="Invite-only SaaS tools and digital products built on special demand for select clients — data dashboards, automation, and client portals."
+  canonical={`${site.domain}/products`}
+  schemaType="service"
+  serviceName="Digital Products & SaaS Tools"
+  serviceDescription="Custom SaaS tools built on demand for select clients"
+>
+  <section class="section-padding bg-white pt-28">
+    <div class="mx-auto max-w-6xl">
+      <a href="/#services" class="text-sm text-violet-600 hover:underline">← Back to Services</a>
+
+      <div class="mt-4 max-w-3xl">
+        <p class="section-eyebrow">Digital Products</p>
+        <h1 class="section-title mt-2">Custom tools from real client work</h1>
+        <p class="section-subtitle">
+          These are not mass-market SaaS products. Each started as a one-off build for a specific client — we reuse the pattern when another business has the same problem.
+        </p>
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <span class="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-violet-50 px-4 py-2 text-sm font-medium text-violet-800">
+          Invite-only access
+        </span>
+        <span class="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-700">
+          Custom-built, not off-the-shelf
+        </span>
+        <span class="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-700">
+          Fully owned by you after delivery
+        </span>
+      </div>
+
+      <div class="mt-12 grid gap-6 sm:grid-cols-2">
+        {products.map((product) => {
+          const badge = STATUS_LABEL[product.status] || STATUS_LABEL['by-request'];
+          return (
+            <article class="glass-card flex flex-col p-6">
+              <div class="flex items-start justify-between gap-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-violet-600">{product.category}</span>
+                <span class={`shrink-0 rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase ${badge.class}`}>
+                  {badge.text}
+                </span>
+              </div>
+              <h2 class="mt-3 font-display text-xl font-bold text-zinc-900">{product.name}</h2>
+              <p class="mt-1 text-sm font-medium text-zinc-500">{product.tagline}</p>
+              <p class="mt-3 flex-1 text-sm leading-relaxed text-zinc-600">{product.description}</p>
+
+              <ul class="mt-4 space-y-1.5">
+                {product.features.map((f) => (
+                  <li class="flex items-center gap-2 text-sm text-zinc-700">
+                    <span class="text-violet-500">✓</span> {f}
+                  </li>
+                ))}
+              </ul>
+
+              <p class="mt-4 text-xs text-zinc-400">
+                Ideal for: <span class="font-medium text-zinc-600">{product.idealFor}</span>
+              </p>
+
+              <a
+                href={getConsultationEmailUrl()}
+                class="btn-accent mt-5 w-full text-center !text-sm"
+              >
+                Request Access →
+              </a>
+            </article>
+          );
+        })}
+      </div>
+
+      <div class="mt-16 rounded-2xl border border-zinc-200 bg-zinc-50 p-8 text-center sm:p-10">
+        <h2 class="font-display text-2xl font-bold text-zinc-900">Need something that doesn&apos;t exist yet?</h2>
+        <p class="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-zinc-600">
+          Most of our best tools started as a one-off client request. Tell us your workflow problem — if it&apos;s worth building, we&apos;ll prototype it for you first.
+        </p>
+        <div class="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+          <a href="/#contact" class="btn-accent">Describe Your Idea</a>
+          <a href="/#services" class="btn-ghost">See All Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

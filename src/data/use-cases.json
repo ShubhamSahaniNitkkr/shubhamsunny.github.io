@@ -1,0 +1,1213 @@
+[
+  {
+    "id": "uc-ecommerce",
+    "title": "E-commerce Price Monitoring",
+    "pdfUrl": "#",
+    "thumbnail": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=340&fit=crop&q=80",
+    "category": "Data Scraping",
+    "serviceId": "data-scraping",
+    "cardTeaser": "Stopped checking prices manually — now gets Slack alerts before breakfast.",
+    "client": "US Shopify brand · 12 competitors",
+    "summary": "A Texas e-commerce brand was getting undercut overnight with no visibility until customers compared prices on Google.",
+    "challenge": "Ops spent 3 hours every morning copying competitor prices into Excel and still missed mid-day changes.",
+    "solution": "Nightly scraper across 12 stores with Slack alerts when any price drops more than 5%.",
+    "results": "Reaction time went from days to hours. Paid for itself in week one.",
+    "metric": "15 hrs/week saved",
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80",
+    "duration": "3 weeks",
+    "context": [
+      "A Texas-based Shopify brand selling home goods competed against a dozen similar stores. Pricing changed daily — sometimes hourly during sales seasons — and their ops lead spent every morning manually checking competitor sites.",
+      "By the time spreadsheets were updated, prices had already shifted again. They were reacting days late, losing margin on flash sales and missing chances to undercut rivals on slow movers."
+    ],
+    "challengeParagraphs": [
+      "Manual tracking could not scale across 12 stores × 200 SKUs. Human error meant wrong prices in decision decks."
+    ],
+    "solutionParagraphs": [
+      "Automated nightly scrape with intraday re-runs during Black Friday. Alerts include old price, new price, and direct link."
+    ],
+    "resultsParagraphs": [
+      "Reaction time collapsed from days to under an hour. Team repriced strategically and recovered margin on two key categories."
+    ],
+    "painPoints": [
+      {
+        "icon": "clock",
+        "label": "3+ hours every morning on manual price checks"
+      },
+      {
+        "icon": "money",
+        "label": "Margin leaks from reacting days too late"
+      },
+      {
+        "icon": "alert",
+        "label": "Mid-day price drops completely missed"
+      },
+      {
+        "icon": "manual",
+        "label": "Excel workflow nobody trusted"
+      }
+    ],
+    "highlights": [
+      {
+        "value": "12",
+        "label": "Competitors tracked"
+      },
+      {
+        "value": "15 hrs",
+        "label": "Saved weekly"
+      },
+      {
+        "value": "<1 hr",
+        "label": "Alert latency"
+      },
+      {
+        "value": "5%",
+        "label": "Drop threshold"
+      }
+    ],
+    "approach": [
+      "Scoped 12 competitor storefronts — confirmed public product pages only.",
+      "Mapped SKU fields needed: price, compare-at, stock badge, title hash.",
+      "Built Python scrapers with rotating residential proxies.",
+      "Normalized data into PostgreSQL with change-detection triggers.",
+      "Slack webhook alerts when any SKU drops more than 5%.",
+      "Daily CSV export for merchandising team legacy workflow.",
+      "Dashboard for ops lead — filter by category, sort by biggest delta.",
+      "Two-week parallel run vs manual checks to validate accuracy.",
+      "Documented runbook for adding new competitors.",
+      "Handoff: cron on Render, env vars, on-call fix SLA."
+    ],
+    "timeline": [
+      {
+        "phase": "Scope",
+        "duration": "Days 1–3",
+        "detail": "Legal review, target list, field mapping, alert rules."
+      },
+      {
+        "phase": "Build",
+        "duration": "Week 1–2",
+        "detail": "Scrapers, database, diff engine, Slack integration."
+      },
+      {
+        "phase": "Validate",
+        "duration": "Week 3",
+        "detail": "Parallel manual comparison, tuning, production deploy."
+      }
+    ],
+    "techStack": [
+      "Python",
+      "Scrapy",
+      "PostgreSQL",
+      "Slack API",
+      "Render Cron"
+    ],
+    "outcomes": [
+      {
+        "value": "15 hrs",
+        "label": "Weekly time saved",
+        "detail": "Ops lead redirected to strategy work."
+      },
+      {
+        "value": "Same day",
+        "label": "Reaction time",
+        "detail": "Down from 2–3 days on average."
+      },
+      {
+        "value": "Week 1",
+        "label": "ROI",
+        "detail": "Tool paid for itself after first prevented undercut."
+      }
+    ],
+    "deepSections": [
+      {
+        "title": "Background & context",
+        "paragraphs": [
+          "A Texas-based Shopify brand selling home goods competed against a dozen similar stores. Pricing changed daily — sometimes hourly during sales seasons — and their ops lead spent every morning manually checking competitor sites.",
+          "By the time spreadsheets were updated, prices had already shifted again. They were reacting days late, losing margin on flash sales and missing chances to undercut rivals on slow movers."
+        ]
+      },
+      {
+        "title": "The problem in detail",
+        "paragraphs": [
+          "Manual tracking could not scale across 12 stores × 200 SKUs. Human error meant wrong prices in decision decks."
+        ]
+      },
+      {
+        "title": "Our approach & delivery",
+        "paragraphs": [
+          "Automated nightly scrape with intraday re-runs during Black Friday. Alerts include old price, new price, and direct link."
+        ]
+      },
+      {
+        "title": "Outcomes & business impact",
+        "paragraphs": [
+          "Reaction time collapsed from days to under an hour. Team repriced strategically and recovered margin on two key categories."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "uc-restaurant",
+    "title": "Restaurant Website Redesign",
+    "pdfUrl": "#",
+    "thumbnail": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=340&fit=crop&q=80",
+    "category": "Web Modernization",
+    "serviceId": "web-modernization",
+    "cardTeaser": "PDF menu and no click-to-call → 40% more phone orders in month one.",
+    "client": "Family restaurant · Ohio, USA",
+    "summary": "A family Italian restaurant had a 2016 site that fell apart on phones where 80% of searches happen.",
+    "challenge": "Menu was a PDF. Hours buried in footer. Customers said the site looked closed.",
+    "solution": "Mobile-first rebuild with scrollable menu, sticky call button, and sub-2s load on 4G.",
+    "results": "Phone orders jumped 40%. Three Google reviews praised the easy new site.",
+    "metric": "+40% phone calls",
+    "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80",
+    "duration": "4 weeks",
+    "context": [
+      "A family-run Italian restaurant in Ohio had built a loyal local following over 15 years — but their digital front door told a different story. The website was built in 2016, never updated, and on mobile it looked abandoned.",
+      "The owner knew most new customers found them on Google from their phones. Yet the menu was a PDF that required pinch-zoom, hours were buried in the footer, and there was no obvious way to call or order. Staff reported hearing \"I thought you were closed\" several times a week.",
+      "They did not need a fancy rebrand — they needed a site that matched the warmth of the dining room and made calling or visiting effortless on a 5-inch screen."
+    ],
+    "challengeParagraphs": [
+      "The previous site was a generic WordPress theme with a stock photo of pasta that did not match their actual dishes. On mobile the navigation collapsed into a hamburger menu that hid the phone number entirely.",
+      "The PDF menu downloaded instead of displaying inline — many customers on cellular data never opened it. Competitors two blocks away had modern sites with online ordering widgets."
+    ],
+    "solutionParagraphs": [
+      "We rebuilt from scratch with a mobile-first layout: hero showing today's hours, one-tap call button fixed at the bottom, and a menu organized by category with real dish photos the owner provided.",
+      "We added structured data for local SEO, compressed all images to WebP, and wrote copy in plain language — no \"culinary journey\" fluff, just what customers need to decide to visit tonight."
+    ],
+    "resultsParagraphs": [
+      "Phone orders from mobile increased 40% in the first month — the owner attributed this directly to the sticky call button and clearer hours.",
+      "Staff stopped answering \"are you open?\" questions as often because hours and holiday closures were visible immediately. The project paid for itself within six weeks of additional cover turns."
+    ],
+    "painPoints": [
+      {
+        "icon": "phone",
+        "label": "80% of searches on mobile — site unusable there"
+      },
+      {
+        "icon": "manual",
+        "label": "Menu locked inside a PDF customers hated"
+      },
+      {
+        "icon": "trust",
+        "label": "Outdated design made the restaurant look closed"
+      },
+      {
+        "icon": "lost",
+        "label": "No click-to-call — customers gave up and picked another spot"
+      }
+    ],
+    "highlights": [
+      {
+        "value": "80%",
+        "label": "Mobile traffic"
+      },
+      {
+        "value": "4 wks",
+        "label": "Delivery"
+      },
+      {
+        "value": "+40%",
+        "label": "Phone orders"
+      },
+      {
+        "value": "2.1s",
+        "label": "Load on 4G"
+      }
+    ],
+    "approach": [
+      "Discovery call — walked through the old site on real phones and listed every friction point.",
+      "Content audit — collected menu items, hours, photos, and brand colors from the owner.",
+      "Mobile-first wireframes — sticky call button, scrollable menu, hero with same-day hours.",
+      "Design mockups — warm photography, readable typography, trust cues (years open, neighborhood).",
+      "Development — Astro + Tailwind, image optimization, local SEO basics baked in.",
+      "Menu build — categorized dishes with prices, dietary tags, no PDF anywhere.",
+      "Speed pass — compressed images, lazy loading, sub-2s target on 4G.",
+      "QA on 6 real devices — iPhone SE, Android mid-range, iPad, slow 3G throttling.",
+      "Launch + handoff — domain DNS, SSL, simple guide to update specials via spreadsheet.",
+      "Week-one check-in — Google Analytics review and small copy tweaks from staff feedback."
+    ],
+    "timeline": [
+      {
+        "phase": "Discovery",
+        "duration": "Week 1",
+        "detail": "Site audit, competitor scan, content collection, signed-off sitemap."
+      },
+      {
+        "phase": "Design",
+        "duration": "Week 2",
+        "detail": "Mockups for home, menu, contact. Two revision rounds with owner."
+      },
+      {
+        "phase": "Build",
+        "duration": "Week 3",
+        "detail": "Development, menu entry, forms, analytics, mobile QA."
+      },
+      {
+        "phase": "Launch",
+        "duration": "Week 4",
+        "detail": "DNS cutover, staff training, post-launch monitoring."
+      }
+    ],
+    "techStack": [
+      "Astro",
+      "Tailwind CSS",
+      "Cloudinary",
+      "Google Analytics",
+      "Web3Forms"
+    ],
+    "outcomes": [
+      {
+        "value": "+40%",
+        "label": "Phone orders",
+        "detail": "Measured month-over-month from call tracking."
+      },
+      {
+        "value": "3",
+        "label": "New Google reviews",
+        "detail": "Mentioned the easy new website specifically."
+      },
+      {
+        "value": "2.1s",
+        "label": "Mobile load time",
+        "detail": "Down from 8+ seconds on old WordPress theme."
+      },
+      {
+        "value": "0",
+        "label": "PDF menus",
+        "detail": "Fully native scrollable menu — staff can update specials."
+      }
+    ],
+    "deepSections": [
+      {
+        "title": "Page 1 — Where they started",
+        "paragraphs": [
+          "When we first opened the site on an iPhone SE, the owner winced. The hero image was pixelated, the phone number was missing above the fold, and the only menu link downloaded a 4MB PDF.",
+          "Google Search Console showed 82% mobile traffic but bounce rate on mobile was 71% — nearly double desktop. Customers who did call often said they struggled to find hours or thought the business might be closed.",
+          "The owner had tried a cheap template refresh in 2019 but never maintained it. Staff still printed paper menus for anyone who asked because they knew the website failed on phones."
+        ]
+      },
+      {
+        "title": "Page 2 — What we changed",
+        "paragraphs": [
+          "We rebuilt the information architecture around three jobs: confirm you are open, show the menu, make calling easy. Everything else moved down or off the homepage.",
+          "Photography came from the owner’s phone — real dishes, real dining room — compressed to WebP with responsive sizes. We removed WordPress entirely in favour of a static Astro build hosted on their existing domain.",
+          "Local SEO was part of delivery: Google Business Profile hours synced, schema markup for Restaurant, and page titles rewritten for “Italian restaurant + city” searches instead of generic taglines."
+        ]
+      },
+      {
+        "title": "Page 3 — Results & lessons",
+        "paragraphs": [
+          "Within 30 days, call tracking showed a 40% lift in phone orders originating from mobile. Three new Google reviews explicitly mentioned how easy the site was to use — the first time that happened.",
+          "Load time dropped from 8.2s to 2.1s on throttled 4G. The owner updates weekly specials through a simple shared spreadsheet we wired to the menu — no developer needed for routine changes.",
+          "The biggest lesson: for local restaurants, the website is not marketing fluff — it is the front door. Speed, hours, and one-tap call matter more than animation or trendy design."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "uc-lead-gen",
+    "title": "Lead Generation Bot",
+    "pdfUrl": "#",
+    "thumbnail": "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=340&fit=crop&q=80",
+    "category": "Custom Software",
+    "serviceId": "custom-software",
+    "cardTeaser": "Leads waited 4 hours for a reply. Bot responds in 90 seconds, 24/7.",
+    "client": "Marketing agency · London, UK",
+    "summary": "A 6-person agency lost warm leads after 6 PM when nobody was checking the inbox.",
+    "challenge": "Generic chat widget dumped emails into a spreadsheet checked only in the morning.",
+    "solution": "Telegram bot with 4 qualifying questions, lead scoring, and HubSpot push with full transcript.",
+    "results": "Response time: 4 hours → 90 seconds. Qualified conversions up 28% in Q1.",
+    "metric": "28% more conversions",
+    "image": "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&q=80",
+    "duration": "6 weeks",
+    "context": [
+      "A London marketing agency lost warm leads after 6 PM. Their chat widget emailed a spreadsheet nobody checked until morning."
+    ],
+    "challengeParagraphs": [
+      "Generic widget created noise, not pipeline. Sales checked leads once daily."
+    ],
+    "solutionParagraphs": [
+      "Structured bot conversation with scoring and instant CRM push."
+    ],
+    "resultsParagraphs": [
+      "Response time 4h → 90s. Sales focuses on warm, scored leads only."
+    ],
+    "painPoints": [
+      {
+        "icon": "clock",
+        "label": "4-hour average response time"
+      },
+      {
+        "icon": "lost",
+        "label": "Leads went cold overnight"
+      },
+      {
+        "icon": "manual",
+        "label": "No qualification before handoff"
+      }
+    ],
+    "highlights": [
+      {
+        "value": "90s",
+        "label": "Response time"
+      },
+      {
+        "value": "+28%",
+        "label": "Qualified conversions"
+      },
+      {
+        "value": "24/7",
+        "label": "Coverage"
+      }
+    ],
+    "approach": [
+      "Mapped 4 qualifying questions from sales playbook.",
+      "Built Telegram bot with branching logic and lead scoring.",
+      "HubSpot integration with full chat transcript.",
+      "Escalation to human for high-value leads.",
+      "Weekly report on drop-off points."
+    ],
+    "timeline": [
+      {
+        "phase": "Discovery",
+        "duration": "Week 1",
+        "detail": "Sales script audit."
+      },
+      {
+        "phase": "Build",
+        "duration": "Week 2–5",
+        "detail": "Bot + CRM integration."
+      },
+      {
+        "phase": "Launch",
+        "duration": "Week 6",
+        "detail": "Go-live + tuning."
+      }
+    ],
+    "techStack": [
+      "Node.js",
+      "Telegram Bot API",
+      "HubSpot",
+      "PostgreSQL"
+    ],
+    "outcomes": [
+      {
+        "value": "90s",
+        "label": "First reply",
+        "detail": "From 4 hours."
+      },
+      {
+        "value": "28%",
+        "label": "More qualified leads",
+        "detail": "Q1 after launch."
+      }
+    ],
+    "deepSections": [
+      {
+        "title": "Background & context",
+        "paragraphs": [
+          "A London marketing agency lost warm leads after 6 PM. Their chat widget emailed a spreadsheet nobody checked until morning."
+        ]
+      },
+      {
+        "title": "The problem in detail",
+        "paragraphs": [
+          "Generic widget created noise, not pipeline. Sales checked leads once daily."
+        ]
+      },
+      {
+        "title": "Our approach & delivery",
+        "paragraphs": [
+          "Structured bot conversation with scoring and instant CRM push."
+        ]
+      },
+      {
+        "title": "Outcomes & business impact",
+        "paragraphs": [
+          "Response time 4h → 90s. Sales focuses on warm, scored leads only."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "uc-competitor",
+    "title": "Competitor Analysis Report",
+    "pdfUrl": "#",
+    "thumbnail": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=340&fit=crop&q=80",
+    "category": "Data Scraping",
+    "serviceId": "data-scraping",
+    "cardTeaser": "Founder tracked 8 rivals manually. Now gets a Monday PDF with pricing + feature changes.",
+    "client": "B2B SaaS startup · San Francisco",
+    "summary": "Seed-stage founder needed competitor intel but could not afford enterprise CI tools.",
+    "challenge": "Every Sunday, 2 hours screenshotting competitor pages — mid-week updates missed.",
+    "solution": "Weekly scrapers on 8 competitors compiled into a branded PDF every Monday 8 AM.",
+    "results": "Used data to reposition pricing and win 2 enterprise deals.",
+    "metric": "8 rivals tracked weekly",
+    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    "duration": "2 weeks",
+    "context": [
+      "Seed-stage B2B SaaS founder tracked 8 competitors manually every Sunday — mid-week changes invisible."
+    ],
+    "challengeParagraphs": [
+      "Enterprise CI tools cost $2k+/mo — out of reach pre-seed."
+    ],
+    "solutionParagraphs": [
+      "Custom weekly pipeline at fraction of cost."
+    ],
+    "resultsParagraphs": [
+      "Used report to adjust pricing — won two enterprise pilots."
+    ],
+    "painPoints": [
+      {
+        "icon": "clock",
+        "label": "2 hrs every Sunday screenshotting"
+      },
+      {
+        "icon": "chart",
+        "label": "Missed mid-week pricing moves"
+      }
+    ],
+    "highlights": [
+      {
+        "value": "8",
+        "label": "Rivals tracked"
+      },
+      {
+        "value": "Mon 8AM",
+        "label": "Weekly PDF"
+      }
+    ],
+    "approach": [
+      "Weekly scrapers on pricing and feature pages.",
+      "Branded PDF template auto-generated.",
+      "Email delivery every Monday 8 AM.",
+      "Archive folder for board meetings."
+    ],
+    "timeline": [
+      {
+        "phase": "Build",
+        "duration": "Week 1",
+        "detail": "Scrapers + PDF template."
+      },
+      {
+        "phase": "Run",
+        "duration": "Week 2+",
+        "detail": "Scheduled delivery."
+      }
+    ],
+    "techStack": [
+      "Python",
+      "Playwright",
+      "PDFKit",
+      "Cron"
+    ],
+    "outcomes": [
+      {
+        "value": "2",
+        "label": "Enterprise deals",
+        "detail": "Repositioning from intel."
+      }
+    ],
+    "deepSections": [
+      {
+        "title": "Background & context",
+        "paragraphs": [
+          "Seed-stage B2B SaaS founder tracked 8 competitors manually every Sunday — mid-week changes invisible."
+        ]
+      },
+      {
+        "title": "The problem in detail",
+        "paragraphs": [
+          "Enterprise CI tools cost $2k+/mo — out of reach pre-seed."
+        ]
+      },
+      {
+        "title": "Our approach & delivery",
+        "paragraphs": [
+          "Custom weekly pipeline at fraction of cost."
+        ]
+      },
+      {
+        "title": "Outcomes & business impact",
+        "paragraphs": [
+          "Used report to adjust pricing — won two enterprise pilots."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "uc-mobile-app",
+    "title": "Offline-First Mobile App",
+    "pdfUrl": "#",
+    "thumbnail": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=340&fit=crop&q=80",
+    "category": "Custom Software",
+    "serviceId": "custom-software",
+    "cardTeaser": "Technicians in dead zones. App works offline, syncs when signal returns.",
+    "client": "Field services · rural India",
+    "summary": "Field techs lost job data when connectivity dropped — they went back to paper forms.",
+    "challenge": "Existing app crashed without internet. Office staff re-typed everything.",
+    "solution": "Offline-first Android with SQLite, photos, signatures, and background sync.",
+    "results": "Zero lost jobs after launch. 30% more jobs completed per day.",
+    "metric": "+30% jobs/day",
+    "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&q=80",
+    "duration": "10 weeks",
+    "context": [
+      "Field technicians in rural India lost job data when connectivity dropped — reverted to paper, office re-typed everything."
+    ],
+    "challengeParagraphs": [
+      "Legacy app required constant connectivity."
+    ],
+    "solutionParagraphs": [
+      "Offline-first architecture with reliable sync."
+    ],
+    "resultsParagraphs": [
+      "Zero lost jobs after launch. Paper forms eliminated."
+    ],
+    "painPoints": [
+      {
+        "icon": "alert",
+        "label": "App crashed offline"
+      },
+      {
+        "icon": "manual",
+        "label": "Double data entry"
+      }
+    ],
+    "highlights": [
+      {
+        "value": "+30%",
+        "label": "Jobs per day"
+      },
+      {
+        "value": "0",
+        "label": "Lost jobs post-launch"
+      }
+    ],
+    "approach": [
+      "SQLite local store for jobs, photos, signatures.",
+      "Background sync queue when online.",
+      "Conflict resolution rules documented.",
+      "Offline maps cached per region."
+    ],
+    "timeline": [
+      {
+        "phase": "MVP",
+        "duration": "Week 1–4",
+        "detail": "Core offline flows."
+      },
+      {
+        "phase": "Pilot",
+        "duration": "Week 5–8",
+        "detail": "10 techs in field."
+      },
+      {
+        "phase": "Rollout",
+        "duration": "Week 9–10",
+        "detail": "Full team."
+      }
+    ],
+    "techStack": [
+      "React Native",
+      "SQLite",
+      "REST API",
+      "Firebase Cloud Messaging"
+    ],
+    "outcomes": [
+      {
+        "value": "30%",
+        "label": "More jobs/day",
+        "detail": "Less admin time."
+      }
+    ],
+    "deepSections": [
+      {
+        "title": "Background & context",
+        "paragraphs": [
+          "Field technicians in rural India lost job data when connectivity dropped — reverted to paper, office re-typed everything."
+        ]
+      },
+      {
+        "title": "The problem in detail",
+        "paragraphs": [
+          "Legacy app required constant connectivity."
+        ]
+      },
+      {
+        "title": "Our approach & delivery",
+        "paragraphs": [
+          "Offline-first architecture with reliable sync."
+        ]
+      },
+      {
+        "title": "Outcomes & business impact",
+        "paragraphs": [
+          "Zero lost jobs after launch. Paper forms eliminated."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "uc-dental",
+    "title": "Dental Clinic Modernization",
+    "pdfUrl": "#",
+    "thumbnail": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&h=340&fit=crop&q=80",
+    "category": "Web Modernization",
+    "serviceId": "web-modernization",
+    "cardTeaser": "Old site looked sketchy. Online bookings = 35% of new patients.",
+    "client": "Dental clinic · New Jersey, USA",
+    "summary": "Decent local reputation but a 2009-looking site made new patients hesitate.",
+    "challenge": "No online booking. Missing doctor profiles. Insurance info unreadable.",
+    "solution": "Trust-first design with doctor photos, insurance logos, and integrated booking.",
+    "results": "35% of new patients book online. First time patients complimented the site.",
+    "metric": "35% online bookings",
+    "image": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1200&q=80",
+    "duration": "5 weeks",
+    "context": [
+      "A dental clinic in New Jersey had excellent chair-side reputation but a website that looked like 2009 — stock clipart, tiny text, no mobile booking.",
+      "New patients googling \"dentist near me\" bounced within seconds. Front desk said callers often asked \"is this the right office?\" because the site did not match the modern practice inside."
+    ],
+    "challengeParagraphs": [
+      "Competing clinics had modern sites with instant booking. Theirs felt like a placeholder and hurt first impressions on intake calls."
+    ],
+    "solutionParagraphs": [
+      "Trust-first redesign with real team photography, insurance clarity, and embedded scheduling. Every page answers \"why choose us\" in 5 seconds."
+    ],
+    "resultsParagraphs": [
+      "35% of new patients now book online. Front desk handles fewer routine scheduling calls and more complex care questions."
+    ],
+    "painPoints": [
+      {
+        "icon": "trust",
+        "label": "Site credibility did not match in-office experience"
+      },
+      {
+        "icon": "phone",
+        "label": "No online booking — phone tag for appointments"
+      },
+      {
+        "icon": "users",
+        "label": "Doctor profiles missing — patients could not choose"
+      },
+      {
+        "icon": "slow",
+        "label": "Insurance info unreadable on mobile"
+      }
+    ],
+    "highlights": [
+      {
+        "value": "35%",
+        "label": "Online bookings"
+      },
+      {
+        "value": "5 wks",
+        "label": "Project length"
+      },
+      {
+        "value": "4",
+        "label": "Doctor profiles"
+      },
+      {
+        "value": "4.9★",
+        "label": "Post-launch reviews"
+      }
+    ],
+    "approach": [
+      "Patient journey mapping — from Google search to booked appointment.",
+      "Photography direction — real team photos, not stock smiles.",
+      "Trust blocks — insurance logos, credentials, before/after gallery (with consent).",
+      "Service pages per treatment with plain-English explanations.",
+      "Integrated booking widget with availability sync.",
+      "HIPAA-aware contact forms — no PHI in email subjects.",
+      "Speed + accessibility pass — WCAG AA contrast targets.",
+      "Staff training video — 8 minutes on updating hours and closures."
+    ],
+    "timeline": [
+      {
+        "phase": "Research",
+        "duration": "Week 1",
+        "detail": "Competitor audit, patient interview notes, sitemap."
+      },
+      {
+        "phase": "Design",
+        "duration": "Week 2–3",
+        "detail": "Trust-first UI, mobile prototypes, content writing."
+      },
+      {
+        "phase": "Build & launch",
+        "duration": "Week 4–5",
+        "detail": "Development, booking integration, QA, go-live."
+      }
+    ],
+    "techStack": [
+      "Astro",
+      "Tailwind",
+      "Calendly embed",
+      "Cloudinary",
+      "Google Business Profile sync"
+    ],
+    "outcomes": [
+      {
+        "value": "35%",
+        "label": "New patients online",
+        "detail": "Book without calling — first time ever."
+      },
+      {
+        "value": "↓28%",
+        "label": "Phone volume",
+        "detail": "Routine booking moved self-serve."
+      },
+      {
+        "value": "6",
+        "label": "Compliments in reviews",
+        "detail": "Mentioned website specifically."
+      }
+    ],
+    "deepSections": [
+      {
+        "title": "Background & context",
+        "paragraphs": [
+          "A dental clinic in New Jersey had excellent chair-side reputation but a website that looked like 2009 — stock clipart, tiny text, no mobile booking.",
+          "New patients googling \"dentist near me\" bounced within seconds. Front desk said callers often asked \"is this the right office?\" because the site did not match the modern practice inside."
+        ]
+      },
+      {
+        "title": "The problem in detail",
+        "paragraphs": [
+          "Competing clinics had modern sites with instant booking. Theirs felt like a placeholder and hurt first impressions on intake calls."
+        ]
+      },
+      {
+        "title": "Our approach & delivery",
+        "paragraphs": [
+          "Trust-first redesign with real team photography, insurance clarity, and embedded scheduling. Every page answers \"why choose us\" in 5 seconds."
+        ]
+      },
+      {
+        "title": "Outcomes & business impact",
+        "paragraphs": [
+          "35% of new patients now book online. Front desk handles fewer routine scheduling calls and more complex care questions."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "uc-amazon",
+    "title": "Amazon Product Scraper",
+    "pdfUrl": "#",
+    "thumbnail": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=340&fit=crop&q=80",
+    "category": "Data Scraping",
+    "serviceId": "data-scraping",
+    "cardTeaser": "200K+ ASINs indexed with daily price tracking. Found 3 niches to expand into.",
+    "client": "Amazon FBA seller · Florida, USA",
+    "summary": "FBA seller needed competitor data across 15 categories with no bulk export from Amazon.",
+    "challenge": "Checking 50 products/day by hand — data stale before finishing a category.",
+    "solution": "Custom scraper with proxy rotation pulling price, rating, BSR daily into PostgreSQL.",
+    "results": "200K+ products in 3 weeks. Launched products now top-10 in category.",
+    "metric": "200K+ products indexed",
+    "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&q=80",
+    "duration": "4 weeks",
+    "context": [
+      "FBA seller needed competitor data across 15 categories — checking 50 products/day by hand."
+    ],
+    "challengeParagraphs": [
+      "Manual checks capped at 50 SKUs/day."
+    ],
+    "solutionParagraphs": [
+      "Automated pipeline with daily BSR and price history."
+    ],
+    "resultsParagraphs": [
+      "200K+ products in three weeks. Data-driven launch strategy."
+    ],
+    "painPoints": [
+      {
+        "icon": "clock",
+        "label": "Stale data before finishing one category"
+      },
+      {
+        "icon": "chart",
+        "label": "No BSR trend visibility"
+      }
+    ],
+    "highlights": [
+      {
+        "value": "200K+",
+        "label": "ASINs indexed"
+      },
+      {
+        "value": "Daily",
+        "label": "Refresh"
+      }
+    ],
+    "approach": [
+      "Proxy rotation pool for Amazon requests.",
+      "PostgreSQL warehouse for historical BSR.",
+      "Category dashboards with niche alerts.",
+      "Export API for existing tools."
+    ],
+    "timeline": [
+      {
+        "phase": "Pilot",
+        "duration": "Week 1",
+        "detail": "One category proof."
+      },
+      {
+        "phase": "Scale",
+        "duration": "Week 2–4",
+        "detail": "15 categories live."
+      }
+    ],
+    "techStack": [
+      "Python",
+      "Scrapy",
+      "PostgreSQL",
+      "Proxy mesh"
+    ],
+    "outcomes": [
+      {
+        "value": "Top 10",
+        "label": "Category rank",
+        "detail": "On new launches."
+      }
+    ],
+    "deepSections": [
+      {
+        "title": "Background & context",
+        "paragraphs": [
+          "FBA seller needed competitor data across 15 categories — checking 50 products/day by hand."
+        ]
+      },
+      {
+        "title": "The problem in detail",
+        "paragraphs": [
+          "Manual checks capped at 50 SKUs/day."
+        ]
+      },
+      {
+        "title": "Our approach & delivery",
+        "paragraphs": [
+          "Automated pipeline with daily BSR and price history."
+        ]
+      },
+      {
+        "title": "Outcomes & business impact",
+        "paragraphs": [
+          "200K+ products in three weeks. Data-driven launch strategy."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "uc-whatsapp",
+    "title": "WhatsApp Order Bot",
+    "pdfUrl": "#",
+    "thumbnail": "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=600&h=340&fit=crop&q=80",
+    "category": "Custom Software",
+    "serviceId": "custom-software",
+    "cardTeaser": "40+ unread WhatsApps at peak. Bot cut errors 90%, orders take 90 seconds.",
+    "client": "Cloud kitchen · Dubai, UAE",
+    "summary": "Cloud kitchen took orders via messy WhatsApp messages — wrong items, missing addresses.",
+    "challenge": "Staff spent more time clarifying orders than cooking during rush hours.",
+    "solution": "Structured bot: menu → cart → address → Stripe payment link, all in chat.",
+    "results": "Errors down 90%. Same staff handles 2x volume.",
+    "metric": "90% fewer errors",
+    "image": "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=1200&q=80",
+    "duration": "5 weeks",
+    "context": [
+      "Dubai cloud kitchen drowned in unstructured WhatsApp orders during peak — wrong items, missing addresses."
+    ],
+    "challengeParagraphs": [
+      "Staff clarified orders more than they cooked."
+    ],
+    "solutionParagraphs": [
+      "Structured bot eliminated ambiguity."
+    ],
+    "resultsParagraphs": [
+      "Errors down 90%. Same team handles double volume."
+    ],
+    "painPoints": [
+      {
+        "icon": "alert",
+        "label": "40+ unread messages at rush"
+      },
+      {
+        "icon": "lost",
+        "label": "90% order errors"
+      }
+    ],
+    "highlights": [
+      {
+        "value": "90%",
+        "label": "Fewer errors"
+      },
+      {
+        "value": "90s",
+        "label": "Order time"
+      }
+    ],
+    "approach": [
+      "Structured menu flow in WhatsApp Business API.",
+      "Cart → address → Stripe payment link.",
+      "Kitchen dashboard for confirmed orders.",
+      "Multi-language support EN/AR."
+    ],
+    "timeline": [
+      {
+        "phase": "Design",
+        "duration": "Week 1–2",
+        "detail": "Flow mapping."
+      },
+      {
+        "phase": "Build",
+        "duration": "Week 3–5",
+        "detail": "Bot + kitchen UI."
+      }
+    ],
+    "techStack": [
+      "WhatsApp Business API",
+      "Node.js",
+      "Stripe",
+      "React dashboard"
+    ],
+    "outcomes": [
+      {
+        "value": "2×",
+        "label": "Order volume",
+        "detail": "Same staff count."
+      }
+    ],
+    "deepSections": [
+      {
+        "title": "Background & context",
+        "paragraphs": [
+          "Dubai cloud kitchen drowned in unstructured WhatsApp orders during peak — wrong items, missing addresses."
+        ]
+      },
+      {
+        "title": "The problem in detail",
+        "paragraphs": [
+          "Staff clarified orders more than they cooked."
+        ]
+      },
+      {
+        "title": "Our approach & delivery",
+        "paragraphs": [
+          "Structured bot eliminated ambiguity."
+        ]
+      },
+      {
+        "title": "Outcomes & business impact",
+        "paragraphs": [
+          "Errors down 90%. Same team handles double volume."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "uc-lawfirm",
+    "title": "Law Firm Website",
+    "pdfUrl": "#",
+    "thumbnail": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=340&fit=crop&q=80",
+    "category": "Web Modernization",
+    "serviceId": "web-modernization",
+    "cardTeaser": "Prospects almost did not call because the site did not match the firm.",
+    "client": "Boutique law firm · Chicago, USA",
+    "summary": "15 years of wins but a 2008 template site hurt credibility on intake calls.",
+    "challenge": "Thin attorney bios, broken mobile layout, unencrypted contact form.",
+    "solution": "Premium redesign with credentials, practice area detail, and encrypted intake.",
+    "results": "Consultation requests up 55% in Q1.",
+    "metric": "+55% consultations",
+    "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80",
+    "duration": "6 weeks",
+    "context": [
+      "Chicago boutique firm — 15 years of wins but 2008 website hurt intake credibility."
+    ],
+    "challengeParagraphs": [
+      "Intake calls revealed trust gap from website."
+    ],
+    "solutionParagraphs": [
+      "Premium redesign aligned digital with courtroom reputation."
+    ],
+    "resultsParagraphs": [
+      "Consultation requests up 55% in first quarter."
+    ],
+    "painPoints": [
+      {
+        "icon": "trust",
+        "label": "Site did not match firm reputation"
+      },
+      {
+        "icon": "phone",
+        "label": "Unencrypted contact form"
+      }
+    ],
+    "highlights": [
+      {
+        "value": "+55%",
+        "label": "Consultation requests"
+      }
+    ],
+    "approach": [
+      "Attorney credential blocks with bar admissions.",
+      "Practice area depth pages.",
+      "Encrypted intake forms.",
+      "Mobile-first premium typography."
+    ],
+    "timeline": [
+      {
+        "phase": "Content",
+        "duration": "Week 1–2",
+        "detail": "Attorney bios + cases."
+      },
+      {
+        "phase": "Launch",
+        "duration": "Week 3–6",
+        "detail": "Build + compliance review."
+      }
+    ],
+    "techStack": [
+      "Astro",
+      "Tailwind",
+      "Encrypted forms",
+      "Cloudinary"
+    ],
+    "outcomes": [
+      {
+        "value": "55%",
+        "label": "More consultations",
+        "detail": "Q1 after launch."
+      }
+    ],
+    "deepSections": [
+      {
+        "title": "Background & context",
+        "paragraphs": [
+          "Chicago boutique firm — 15 years of wins but 2008 website hurt intake credibility."
+        ]
+      },
+      {
+        "title": "The problem in detail",
+        "paragraphs": [
+          "Intake calls revealed trust gap from website."
+        ]
+      },
+      {
+        "title": "Our approach & delivery",
+        "paragraphs": [
+          "Premium redesign aligned digital with courtroom reputation."
+        ]
+      },
+      {
+        "title": "Outcomes & business impact",
+        "paragraphs": [
+          "Consultation requests up 55% in first quarter."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "uc-realestate",
+    "title": "Real Estate Listing Aggregator",
+    "pdfUrl": "#",
+    "thumbnail": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=340&fit=crop&q=80",
+    "category": "Data Scraping",
+    "serviceId": "data-scraping",
+    "cardTeaser": "Checked 6 listing sites daily. One dashboard + instant alerts for new deals.",
+    "client": "Property investor · Toronto, Canada",
+    "summary": "Investor checked 6 portals every morning — good deals gone by the time he found them.",
+    "challenge": "2 hours daily tab-hopping. Listings often under offer before he saw them.",
+    "solution": "Scrapers every 2 hours, unified dashboard, SMS when criteria match.",
+    "results": "4 below-market deals in month 1 that he would have missed manually.",
+    "metric": "4 deals in month 1",
+    "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80",
+    "duration": "3 weeks",
+    "context": [
+      "Toronto investor checked 6 listing portals every morning — deals gone before he saw them."
+    ],
+    "challengeParagraphs": [
+      "Speed was the competitive edge — manual process too slow."
+    ],
+    "solutionParagraphs": [
+      "Real-time aggregation with instant alerts."
+    ],
+    "resultsParagraphs": [
+      "Four below-market acquisitions in first month."
+    ],
+    "painPoints": [
+      {
+        "icon": "clock",
+        "label": "2 hrs daily tab-hopping"
+      },
+      {
+        "icon": "lost",
+        "label": "Missed under-market listings"
+      }
+    ],
+    "highlights": [
+      {
+        "value": "6",
+        "label": "Portals unified"
+      },
+      {
+        "value": "2 hr",
+        "label": "Scrape interval"
+      }
+    ],
+    "approach": [
+      "Scrapers every 2 hours across portals.",
+      "Unified dashboard with filters.",
+      "SMS alerts when criteria match.",
+      "Historical price chart per listing."
+    ],
+    "timeline": [
+      {
+        "phase": "Build",
+        "duration": "Week 1–2",
+        "detail": "Scrapers + dashboard."
+      },
+      {
+        "phase": "Alerts",
+        "duration": "Week 3",
+        "detail": "SMS rules live."
+      }
+    ],
+    "techStack": [
+      "Python",
+      "Playwright",
+      "PostgreSQL",
+      "Twilio SMS"
+    ],
+    "outcomes": [
+      {
+        "value": "4",
+        "label": "Deals month 1",
+        "detail": "Would have missed manually."
+      }
+    ],
+    "deepSections": [
+      {
+        "title": "Background & context",
+        "paragraphs": [
+          "Toronto investor checked 6 listing portals every morning — deals gone before he saw them."
+        ]
+      },
+      {
+        "title": "The problem in detail",
+        "paragraphs": [
+          "Speed was the competitive edge — manual process too slow."
+        ]
+      },
+      {
+        "title": "Our approach & delivery",
+        "paragraphs": [
+          "Real-time aggregation with instant alerts."
+        ]
+      },
+      {
+        "title": "Outcomes & business impact",
+        "paragraphs": [
+          "Four below-market acquisitions in first month."
+        ]
+      }
+    ]
+  }
+]

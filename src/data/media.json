@@ -1,24 +1,24 @@
 {
   "settings": {
     "rotationIntervalMs": 4500,
-    "cacheVersion": "1.2.0"
+    "cacheVersion": "1.0.0"
   },
   "logo": "/media/logo.svg",
   "logoAlt": "Shubham Sunny — Website Modernization",
   "hero": {
-    "overline": "Website Modernization Expert",
+    "overline": "Premium Development Studio",
     "titleLine1": "Your website should",
     "titleLine2": "win customers, not lose them",
-    "badge": "8+ Years · 50+ Projects",
+    "badge": "8+ Years · 163+ Projects",
     "location": "Remote · US Time Zones Welcome",
-    "description": "I redesign outdated business websites so they look professional, work perfectly on phones, and make it easy for customers to contact you. No tech jargon — just clear results.",
+    "description": "A selective team of developers for premium clients with a vision — not a factory that takes every job. If you care about quality, clarity, and long-term results, you are in the right place.",
     "services": "Website Redesign | Mobile-First | Speed & SEO | WhatsApp Integration",
-    "philosophy": "A website should make a stranger feel confident enough to call you.",
+    "philosophy": "We say no to most inquiries — so the yes means something.",
     "rotation": [
       {
         "type": "image",
         "src": "/media/team/shubham.jpg",
-        "alt": "Shubham Sunny — website modernization expert"
+        "alt": "Shubham Sunny — founder & lead developer"
       }
     ]
   },
@@ -61,12 +61,64 @@
     {
       "name": "Shubham Sunny",
       "role": "Founder & Lead Developer",
-      "certification": "NIT Kurukshetra · 8+ Years",
-      "bio": "I have spent 8 years helping businesses look professional online — from global platforms like Fiverr to direct client work across the US, UK, Canada, and beyond. I focus on website modernization: taking outdated sites and turning them into something you are proud to share. Fast on mobile, easy to contact you, and built to earn trust.",
+      "certification": "8+ years · Founder",
+      "expertise": [
+        "Full-Stack",
+        "Web Apps",
+        "Data Scraping",
+        "Custom Software"
+      ],
+      "bio": "I founded this studio and own technical direction on every project — architecture, code quality, and client outcomes. We scale with trusted specialists per project, not a bloated bench for show.",
       "philosophy": "A website should make a stranger feel confident enough to call you.",
       "image": "/media/team/shubham.jpg",
       "linkedin": "https://www.linkedin.com/in/shubham-sunny-09b013129/",
+      "phone": "+91 97718 23804",
       "isFounder": true
+    },
+    {
+      "name": "Deep Shikha",
+      "role": "QA & Client Success Lead",
+      "certification": "Quality Assurance Expert",
+      "expertise": [
+        "Manual QA",
+        "Automation Testing",
+        "Client Onboarding",
+        "UAT"
+      ],
+      "bio": "Deep handles the rest of day-to-day delivery — QA on real devices, client kickoff calls, milestone tracking, and making sure nothing goes live until it is right.",
+      "philosophy": "Quality is not a phase — it is the reason clients come back.",
+      "image": "/media/team/deep-shikha.png",
+      "phone": "+91 9142760891"
+    },
+    {
+      "name": "Shushma Devi",
+      "role": "HR Expert & Marketing Team Head",
+      "certification": "People & Growth",
+      "expertise": [
+        "HR Operations",
+        "Talent Hiring",
+        "Brand Marketing",
+        "Client Outreach"
+      ],
+      "bio": "Shushma builds and runs the people side — hiring, culture, marketing outreach, and keeping the right specialists on every project.",
+      "philosophy": "Great delivery starts with great people — and great people need clear direction.",
+      "image": "/media/team/shushma-devi.png",
+      "phone": "+91 9939067781"
+    },
+    {
+      "name": "Vinay Thakur",
+      "role": "Delivery Manager & Mentor",
+      "certification": "Program & delivery",
+      "expertise": [
+        "Program Management",
+        "Agile Delivery",
+        "Enterprise Clients",
+        "Mentoring"
+      ],
+      "bio": "Vinay handles program management on larger builds — timelines, milestones, and mentoring developers through complex delivery.",
+      "philosophy": "Ship on time, communicate early, and never hide bad news.",
+      "image": "/media/team/vinay-thakur.png",
+      "phone": "+91 9931230810"
     }
   ]
 }

@@ -4,20 +4,227 @@
     "title": "5 Signs Your Website Is Costing You Customers",
     "excerpt": "If your site looks outdated on mobile or takes forever to load, you are losing business every day. Here is what to watch for.",
     "status": "published",
-    "publishDate": "2026-06-01"
+    "publishDate": "2026-06-01",
+    "category": "Website Tips",
+    "readTime": "6 min read",
+    "author": "Shubham Sunny",
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "heading": "Your site is your first salesperson",
+        "paragraphs": [
+          "Most small business owners invest in signs, ads, or referrals — then ignore the one place every stranger checks first: your website. If it looks outdated, loads slowly, or breaks on phones, you lose trust before anyone picks up the phone.",
+          "After 150+ projects, these are the five patterns I see most often — and they cost real money every week."
+        ]
+      },
+      {
+        "heading": "1. It looks wrong on a phone",
+        "paragraphs": [
+          "Open your site on your phone right now. Can you read the menu or services without zooming? Is the phone number visible without scrolling? If not, roughly 80% of your Google traffic is having the same problem.",
+          "Fix: mobile-first layout, readable text size, sticky call button."
+        ]
+      },
+      {
+        "heading": "2. It takes more than 3 seconds to load",
+        "paragraphs": [
+          "People leave slow sites. Google ranks them lower too. Old WordPress themes, uncompressed images, and cheap hosting are the usual culprits.",
+          "Fix: modern static build, WebP images, proper hosting — often a full refresh is cheaper than patching a 2015 theme forever."
+        ]
+      },
+      {
+        "heading": "3. Visitors cannot tell what you do in 5 seconds",
+        "paragraphs": [
+          "If someone lands on your homepage and thinks “what is this company?” — they leave. Clear headline, one photo of your work, and a single obvious next step (call, book, quote)."
+        ]
+      },
+      {
+        "heading": "4. No proof you are real",
+        "paragraphs": [
+          "Missing address, no photos of your team or work, generic stock images, no reviews — all signal “maybe scam.” Local businesses need local trust cues: real photos, Google reviews, hours, insurance logos where relevant."
+        ]
+      },
+      {
+        "heading": "5. Contact is buried",
+        "paragraphs": [
+          "Forms that go nowhere, phone numbers only in the footer, no WhatsApp — every extra click kills leads. Put contact where thumbs reach on mobile.",
+          "If two or more of these sound familiar, a modernization project usually pays for itself within weeks of extra calls or bookings. We offer a free review — no pitch, just an honest look at what is costing you customers."
+        ]
+      }
+    ]
   },
   {
     "slug": "what-mobile-friendly-means",
     "title": "What Mobile-Friendly Actually Means (Plain English)",
     "excerpt": "No jargon — just what mobile-friendly means for your business and why it matters for US customers.",
     "status": "published",
-    "publishDate": "2026-06-10"
+    "publishDate": "2026-06-10",
+    "category": "Plain English",
+    "readTime": "5 min read",
+    "author": "Shubham Sunny",
+    "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "heading": "Not just “it shrinks on a phone”",
+        "paragraphs": [
+          "Mobile-friendly does not mean your desktop site gets tiny. It means the layout, buttons, and text were designed for a small touch screen first — then scaled up for desktop.",
+          "Google uses mobile-first indexing: it primarily looks at your mobile version when deciding how to rank you."
+        ]
+      },
+      {
+        "heading": "What good looks like",
+        "paragraphs": [
+          "Text you can read without pinching. Buttons big enough for a thumb. No horizontal scrolling. Images that load fast on cellular data. Forms that work with autofill.",
+          "Test on an older Android phone on 4G, not just your latest iPhone on WiFi — that is what many of your customers use."
+        ]
+      },
+      {
+        "heading": "Why US customers care",
+        "paragraphs": [
+          "US consumers search on phones during lunch breaks, in parking lots, between meetings. If your competitor’s site loads in 2 seconds and yours takes 8, they call your competitor.",
+          "Mobile-friendly is not a nice-to-have for restaurants, dentists, contractors, and local services — it is the main storefront."
+        ]
+      }
+    ]
   },
   {
     "slug": "how-long-website-redesign-takes",
     "title": "How Long Does a Website Redesign Take?",
     "excerpt": "A realistic timeline for small business website projects — from first call to launch.",
     "status": "published",
-    "publishDate": "2026-06-15"
+    "publishDate": "2026-06-15",
+    "category": "Process",
+    "readTime": "4 min read",
+    "author": "Shubham Sunny",
+    "image": "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "heading": "Typical timeline: 2–4 weeks",
+        "paragraphs": [
+          "For a small business site (5–8 pages), most projects land between two and four weeks from kickoff to launch. Not because we drag — because you need time to approve design and send photos."
+        ]
+      },
+      {
+        "heading": "Week 1 — Discovery & plan",
+        "paragraphs": [
+          "We review your current site, list what is costing leads, collect content (services, photos, hours), and agree on sitemap. You get a clear scope and fixed price before build starts."
+        ]
+      },
+      {
+        "heading": "Week 2 — Design",
+        "paragraphs": [
+          "Mockups for homepage and one inner page. Usually two revision rounds. Goal: you can show it to a colleague and they immediately understand what you do."
+        ]
+      },
+      {
+        "heading": "Week 3 — Build & content",
+        "paragraphs": [
+          "Development, mobile QA, forms, analytics, speed tuning. We enter your content or help you write plain-English copy that converts."
+        ]
+      },
+      {
+        "heading": "Week 4 — Launch",
+        "paragraphs": [
+          "DNS, SSL, final device testing, handoff doc. Optional: we stay on for small updates the first month.",
+          "Rush jobs are possible for simpler sites; complex e-commerce or custom features need longer — we always give a realistic date upfront, not a surprise delay later."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "when-data-scraping-makes-sense",
+    "title": "When Does Data Scraping Actually Make Sense?",
+    "excerpt": "Stop copy-pasting from competitor sites — here is when automation pays for itself (and when it does not).",
+    "status": "published",
+    "publishDate": "2026-06-18",
+    "category": "Data & Automation",
+    "readTime": "7 min read",
+    "author": "Shubham Sunny",
+    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "heading": "Copy-paste is not a strategy",
+        "paragraphs": [
+          "If someone on your team spends hours every week copying prices, listings, or leads from websites into Excel — that is a signal scraping might pay for itself in days.",
+          "Scraping means automated collection of public data: competitor prices, product catalogs, job listings, reviews — delivered on a schedule to CSV, JSON, or your database."
+        ]
+      },
+      {
+        "heading": "When it is worth it",
+        "paragraphs": [
+          "You check the same sites repeatedly. Data goes stale before you finish a category. You need alerts when something changes. Manual work does not scale past a few dozen items.",
+          "When it is not: one-time lookup of ten URLs — just do it manually. We will tell you honestly if automation is overkill."
+        ]
+      },
+      {
+        "heading": "Legal & ethical basics",
+        "paragraphs": [
+          "We only collect publicly visible data — no bypassing logins or paywalls. Every project starts with a scope review so you know exactly what is collected and how it will be used."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "why-we-do-not-take-every-project",
+    "title": "Why We Do Not Take Every Project",
+    "excerpt": "We say no to most inquiries on purpose. Here is what we look for — and what you get when we say yes.",
+    "status": "published",
+    "publishDate": "2026-06-22",
+    "category": "How we work",
+    "readTime": "5 min read",
+    "author": "Shubham Sunny",
+    "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "heading": "Selective on purpose",
+        "paragraphs": [
+          "We say no to most inbound inquiries. Not because we are arrogant — because half-finished projects hurt everyone. We work with clients who have a clear goal, realistic budget, and patience for quality."
+        ]
+      },
+      {
+        "heading": "What we look for",
+        "paragraphs": [
+          "A vision for where the business is going. Willingness to share content and feedback on time. Respect for a structured process — discovery, design, build, launch.",
+          "Red flags: “cheapest quote wins,” no decision-maker on calls, scope that changes daily without timeline adjustment."
+        ]
+      },
+      {
+        "heading": "What you get when we say yes",
+        "paragraphs": [
+          "A founder-led team of 20+ specialists, enterprise delivery oversight, and direct access to whoever is building your project. When we commit, you have our full attention until launch."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "whatsapp-bots-for-local-business",
+    "title": "WhatsApp Bots for Local Business — Worth It?",
+    "excerpt": "If customers message you on WhatsApp at 9 PM, a structured bot beats a messy inbox every time.",
+    "status": "published",
+    "publishDate": "2026-06-26",
+    "category": "Custom Software",
+    "readTime": "6 min read",
+    "author": "Shubham Sunny",
+    "image": "https://images.unsplash.com/photo-1611746872915-64382b5c76da?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "heading": "Your customers already use WhatsApp",
+        "paragraphs": [
+          "For restaurants, clinics, and local shops in many markets, WhatsApp is the default — not email, not contact forms. If you answer manually at 9 PM, you lose orders. If you ignore messages, you lose trust."
+        ]
+      },
+      {
+        "heading": "What a bot actually does",
+        "paragraphs": [
+          "Structured flow: menu → cart → address → payment link. Or: book appointment → pick service → confirm time. No more “which item?” back-and-forth during rush hour.",
+          "We have built bots that cut order errors by 90% for cloud kitchens and cut response time from hours to under two minutes for agencies."
+        ]
+      },
+      {
+        "heading": "Build vs generic widget",
+        "paragraphs": [
+          "Generic chat widgets dump text into an inbox. Custom bots qualify, calculate, and push to your CRM or kitchen screen. Cost starts higher but ROI shows up in week one if volume is there."
+        ]
+      }
+    ]
   }
 ]

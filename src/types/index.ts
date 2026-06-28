@@ -38,6 +38,8 @@ export interface Testimonial {
   projectType?: string;
   date?: string;
   image?: string;
+  videoUrl?: string;
+  youtubeId?: string;
   sourceUrl?: string;
   featured?: boolean;
 }
@@ -46,10 +48,13 @@ export interface TeamMember {
   name: string;
   role: string;
   certification?: string;
+  pastCompany?: string;
+  expertise?: string[];
   bio: string;
   philosophy?: string;
   image: string;
   linkedin?: string;
+  phone?: string;
   isFounder?: boolean;
 }
 
@@ -61,6 +66,10 @@ export interface FAQ {
 export interface SiteConfig {
   brand: string;
   tagline: string;
+  headline?: string;
+  bioShort?: string;
+  bioLong?: string;
+  expertise?: string[];
   location: string;
   phone: string;
   whatsapp: string;
@@ -78,6 +87,7 @@ export interface SiteConfig {
     projectsDelivered: number;
     yearsExperience: number;
     googleRating: number;
+    fiverrRating?: number;
   };
   certifications: string[];
   whatsappMessages: {
@@ -102,9 +112,14 @@ export interface NotificationsConfig {
 
 export interface SocialConfig {
   linkedin: { handle: string; url: string };
+  twitter?: { url: string };
+  facebook?: { url: string };
+  instagram?: { url: string };
   fiverr: { url: string };
   github: { url: string };
-  googleReviews: { url: string; rating: number; totalReviews: number };
+  fiverrReviews: { url: string; rating: number; totalReviews: number };
+  /** @deprecated use fiverrReviews */
+  googleReviews?: { url: string; rating: number; totalReviews: number };
 }
 
 export interface ClientProject {
@@ -117,6 +132,9 @@ export interface ClientProject {
   liveUrl?: string;
   highlights: string[];
   bento?: string;
+  serviceId?: string;
+  isLocked?: boolean;
+  publicDescription?: string;
 }
 
 export interface SeoPageConfig {
@@ -135,6 +153,11 @@ export interface BlogPost {
   excerpt: string;
   status: string;
   publishDate: string;
+  category?: string;
+  readTime?: string;
+  author?: string;
+  image?: string;
+  sections?: { heading: string; paragraphs: string[] }[];
 }
 
 export interface RoadmapItem {
@@ -150,4 +173,130 @@ export interface Service {
   name: string;
   description: string;
   slug: string;
+}
+
+export interface ServicePackage {
+  id: string;
+  serviceId: string;
+  name: string;
+  price: number;
+  priceLabel?: string;
+  includes: string[];
+  description?: string;
+  mostPopular?: boolean;
+  startingFrom?: boolean;
+  emoji?: string;
+}
+
+export interface ServiceHubItem {
+  id: string;
+  name: string;
+  color: string;
+  tagline: string;
+  description: string;
+  order: number;
+  cardImage?: string;
+  processImages?: string[];
+}
+
+export interface ServiceBlock {
+  serviceId: string;
+  blockType: string;
+  title: string;
+  body: string;
+  order: number;
+  icon?: string;
+}
+
+export interface Template {
+  id: string;
+  name: string;
+  category: string;
+  thumbnail: string;
+  downloadUrl: string;
+  description: string;
+}
+
+export interface DataArchiveEntry {
+  id: string;
+  name: string;
+  keywords: string[];
+  url: string;
+  description: string;
+}
+
+export interface VideoItem {
+  id: string;
+  serviceId: string;
+  title: string;
+  youtubeId: string;
+  thumbnail: string;
+}
+
+export interface UseCasePainPoint {
+  icon: string;
+  label: string;
+}
+
+export interface UseCaseHighlight {
+  label: string;
+  value: string;
+}
+
+export interface UseCaseTimeline {
+  phase: string;
+  duration: string;
+  detail: string;
+}
+
+export interface UseCaseOutcome {
+  label: string;
+  value: string;
+  detail?: string;
+}
+
+export interface UseCaseQuote {
+  text: string;
+  author: string;
+  role: string;
+}
+
+export interface UseCase {
+  id: string;
+  title: string;
+  pdfUrl: string;
+  thumbnail: string;
+  category: string;
+  cardTeaser?: string;
+  client?: string;
+  summary?: string;
+  challenge?: string;
+  solution?: string;
+  results?: string;
+  metric?: string;
+  image?: string;
+  duration?: string;
+  teamSize?: string;
+  context?: string[];
+  challengeParagraphs?: string[];
+  solutionParagraphs?: string[];
+  resultsParagraphs?: string[];
+  painPoints?: UseCasePainPoint[];
+  highlights?: UseCaseHighlight[];
+  timeline?: UseCaseTimeline[];
+  approach?: string[];
+  techStack?: string[];
+  outcomes?: UseCaseOutcome[];
+  quote?: UseCaseQuote;
+  serviceId?: string;
+  deepSections?: { title: string; paragraphs: string[] }[];
+}
+
+export interface AboutConfig {
+  headline: string;
+  bioShort: string;
+  bioLong: string;
+  expertise: string[];
+  portrait: string;
+  portraitAlt: string;
 }

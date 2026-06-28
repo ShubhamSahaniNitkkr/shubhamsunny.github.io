@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TemplateGrid from '../components/ui/TemplateGrid';
+import templates from '../data/templates.json';
+import site from '../data/site.json';
+---
+
+<BaseLayout
+  title={`Free Website Templates | ${site.brand}`}
+  description="Free responsive website templates — currently being refreshed with 20+ new 2020–2026 designs."
+  canonical={`${site.domain}/templates`}
+  schemaType="service"
+  serviceName="Free Website Templates"
+  serviceDescription="Free website templates — library under review, new designs coming soon."
+>
+  <section class="section-padding bg-white pt-28">
+    <div class="mx-auto max-w-7xl">
+      <a href="/#services" class="text-sm font-semibold text-violet-600 hover:text-violet-700">← Back to Services</a>
+      <h1 class="section-title mt-4">Free Website Templates</h1>
+      <p class="section-subtitle mt-2">20+ new templates (2020–2026 style) — library refresh in progress.</p>
+      <div class="mt-10">
+        <TemplateGrid client:load templates={templates} locked={true} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

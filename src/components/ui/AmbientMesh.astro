@@ -1,0 +1,13 @@
+---
+interface Props {
+  variant?: 'hero' | 'section' | 'warm';
+}
+const { variant = 'section' } = Astro.props;
+---
+
+<div class={`ambient-mesh ambient-mesh--${variant} pointer-events-none absolute inset-0 overflow-hidden`} aria-hidden="true">
+  <div class="ambient-orb ambient-orb-1"></div>
+  <div class="ambient-orb ambient-orb-2"></div>
+  <div class="ambient-orb ambient-orb-3"></div>
+  <div class="ambient-noise"></div>
+</div>

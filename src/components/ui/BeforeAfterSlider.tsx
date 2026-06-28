@@ -109,7 +109,7 @@ export default function BeforeAfterSlider({
   return (
     <div
       ref={containerRef}
-      className="relative aspect-[4/3] w-full cursor-col-resize select-none overflow-hidden bg-charcoal"
+      className="relative h-full min-h-[200px] w-full cursor-col-resize select-none overflow-hidden bg-zinc-900"
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
@@ -119,18 +119,18 @@ export default function BeforeAfterSlider({
         <MediaLayer src={before} type={beforeType} alt={`${alt} before`} fullWidth={fullWidth} />
       </div>
 
-      <div className="absolute top-0 bottom-0 z-10 w-px bg-rose-gold" style={{ left: `${position}%` }}>
-        <div className="absolute top-1/2 left-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center border border-rose-gold bg-white shadow-md">
-          <svg className="h-4 w-4 text-rose-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <div className="absolute top-0 bottom-0 z-10 w-0.5 bg-violet-500" style={{ left: `${position}%` }}>
+        <div className="absolute top-1/2 left-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-violet-500 bg-white shadow-lg">
+          <svg className="h-4 w-4 text-violet-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
           </svg>
         </div>
       </div>
 
-      <span className="absolute top-4 left-4 z-20 bg-black/70 px-3 py-1 text-[10px] font-medium tracking-widest text-white uppercase">
+      <span className="absolute top-4 left-4 z-20 rounded-md bg-black/70 px-3 py-1 text-[10px] font-medium tracking-widest text-white uppercase">
         Before
       </span>
-      <span className="absolute top-4 right-4 z-20 border border-rose-gold bg-white/90 px-3 py-1 text-[10px] font-medium tracking-widest text-rose-gold-dark uppercase">
+      <span className="absolute top-4 right-4 z-20 rounded-md border border-violet-500 bg-white/95 px-3 py-1 text-[10px] font-medium tracking-widest text-violet-700 uppercase">
         After
       </span>
     </div>

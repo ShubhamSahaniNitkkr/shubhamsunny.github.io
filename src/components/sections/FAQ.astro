@@ -1,24 +1,12 @@
 ---
-import SectionTitle from '../ui/SectionTitle.astro';
+import FAQSection from './FAQSection';
 import faq from '../../data/faq.json';
-import type { FAQ } from '../../types';
 
-const items = faq as FAQ[];
+interface Props {
+  limit?: number;
+}
+
+const { limit } = Astro.props;
 ---
 
-<section id="faq" class="section-padding bg-surface-alt">
-  <div class="container-salon">
-    <SectionTitle label="FAQ" title="Good to Know" subtitle="Answers in plain English — no tech jargon." />
-    <div class="mx-auto max-w-2xl divide-y divide-champagne border-y border-champagne">
-      {items.map((item) => (
-        <details class="group">
-          <summary class="flex cursor-pointer items-center justify-between gap-4 py-5 text-left text-sm font-medium marker:content-none sm:text-base">
-            {item.question}
-            <span class="shrink-0 text-lg text-rose-gold transition-transform group-open:rotate-45">+</span>
-          </summary>
-          <p class="pb-5 text-sm leading-relaxed text-muted">{item.answer}</p>
-        </details>
-      ))}
-    </div>
-  </div>
-</section>
+<FAQSection client:visible items={faq} limit={limit} />
