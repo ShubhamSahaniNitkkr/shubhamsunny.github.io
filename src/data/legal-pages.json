@@ -1,0 +1,624 @@
+[
+  {
+    "slug": "privacy-policy",
+    "title": "Privacy Policy",
+    "shortTitle": "Privacy",
+    "description": "How Shubham Sunny collects, uses, stores, and protects personal data when you visit shubhamsunny.com or work with us.",
+    "lastUpdated": "2026-06-28",
+    "sections": [
+      {
+        "heading": "1. Introduction",
+        "paragraphs": [
+          "Shubham Sunny (\"we,\" \"us,\" or \"Company\") operates shubhamsunny.com and provides website modernization, data scraping, custom software, and related professional services to businesses worldwide. We are committed to protecting your privacy and handling personal data responsibly, transparently, and in compliance with applicable laws.",
+          "This Privacy Policy explains what information we collect, why we collect it, how we use and share it, how long we keep it, and the rights available to you. It applies to visitors of our website, prospective clients, active clients, and anyone who communicates with us through our contact forms, email, chat widget, or other channels.",
+          "By using our website or engaging our services, you acknowledge that you have read this Privacy Policy. If you do not agree with our practices, please do not use the website or submit personal data to us."
+        ]
+      },
+      {
+        "heading": "2. Who We Are (Data Controller)",
+        "paragraphs": [
+          "For the purposes of applicable data protection laws, Shubham Sunny is the data controller responsible for personal data collected through shubhamsunny.com and direct business communications.",
+          "Contact details for privacy inquiries:"
+        ],
+        "bullets": [
+          "Business name: Shubham Sunny",
+          "Website: https://shubhamsunny.com",
+          "Email: shubhamsahaninitkkr@gmail.com",
+          "Phone: +91 97718 23804",
+          "Location: Remote operations · India · Serving US & global clients"
+        ]
+      },
+      {
+        "heading": "3. Information We Collect",
+        "paragraphs": [
+          "We collect only the information necessary to operate our website, respond to inquiries, deliver services, and maintain security. The categories of data we may collect include:"
+        ],
+        "bullets": [
+          "Identity & contact data: name, email address, phone number, company name, job title, and any details you voluntarily provide in messages.",
+          "Project & business data: service interests, project descriptions, URLs, technical requirements, files, and communications related to scoping or delivery.",
+          "Website usage data: pages visited, referring URL, browser type, device information, approximate location derived from IP address, and timestamps.",
+          "Technical & security data: IP address, session identifiers stored locally, service worker cache metadata, and logs used for abuse prevention.",
+          "Payment & billing data: when applicable, billing contact details and transaction references processed through agreed payment channels (we do not store full card numbers on our servers).",
+          "Cookie & consent preferences: your cookie choices and related local storage entries, as described in our Cookie Policy."
+        ]
+      },
+      {
+        "heading": "4. How We Collect Information",
+        "paragraphs": [
+          "We collect personal data through several channels:"
+        ],
+        "bullets": [
+          "Directly from you when you submit our contact form, use the website chat widget, email us, message us on WhatsApp, or enter into a service agreement.",
+          "Automatically when you browse our website, including through server logs, session storage, and first-party scripts that support core functionality.",
+          "From third-party form delivery services that relay your submissions to us (for example, Web3Forms), subject to their own privacy terms.",
+          "From publicly available business sources when preparing proposals, only where lawful and relevant to a legitimate business inquiry."
+        ]
+      },
+      {
+        "heading": "5. Legal Bases for Processing (GDPR & Similar Laws)",
+        "paragraphs": [
+          "Where the EU/UK General Data Protection Regulation (GDPR) or similar laws apply, we process personal data on the following legal bases:"
+        ],
+        "bullets": [
+          "Contract performance: to respond to inquiries, prepare proposals, and deliver agreed services.",
+          "Legitimate interests: to operate and secure our website, understand how visitors use our content, prevent fraud, and grow our business — balanced against your rights.",
+          "Consent: where required for non-essential cookies, marketing communications, or other optional processing. You may withdraw consent at any time.",
+          "Legal obligation: to comply with tax, accounting, or regulatory requirements where applicable."
+        ]
+      },
+      {
+        "heading": "6. How We Use Your Information",
+        "paragraphs": [
+          "We use personal data for specific, limited purposes:"
+        ],
+        "bullets": [
+          "To respond to contact form submissions, chat messages, and email inquiries.",
+          "To scope, quote, deliver, and support website and software projects.",
+          "To send service-related updates, invoices, and project communications.",
+          "To maintain website security, diagnose technical issues, and prevent abuse.",
+          "To improve our website content and understand which services generate interest.",
+          "To comply with legal obligations and enforce our Terms of Service.",
+          "With your consent, to send occasional business updates or case-study invitations (you may opt out at any time)."
+        ]
+      },
+      {
+        "heading": "7. Information Sharing & Subprocessors",
+        "paragraphs": [
+          "We do not sell personal data. We do not rent or trade your information to data brokers or advertisers. We share data only when necessary:"
+        ],
+        "bullets": [
+          "Service providers (subprocessors) who help us operate our business — for example, email delivery (SMTP/Gmail), form relay (Web3Forms), hosting (Vercel), image CDN (Cloudinary), and font delivery (Google Fonts). Each provider is used only for its intended function.",
+          "Professional advisors (accountants, legal counsel) under confidentiality obligations, when required.",
+          "Law enforcement or regulators when required by applicable law, court order, or to protect our rights, users, or the public.",
+          "Business transfers: in the event of a merger, acquisition, or asset sale, personal data may transfer to the successor entity subject to equivalent privacy protections."
+        ],
+        "paragraphsAfter": [
+          "A current list of key subprocessors is available on request at shubhamsahaninitkkr@gmail.com. We require subprocessors to handle data securely and only on our instructions."
+        ]
+      },
+      {
+        "heading": "8. International Data Transfers",
+        "paragraphs": [
+          "We are based in India and serve clients globally, including the United States, United Kingdom, and European Economic Area. Personal data may be transferred to and processed in India or other countries where our service providers operate.",
+          "Where required, we implement appropriate safeguards for cross-border transfers, including Standard Contractual Clauses (SCCs), data processing agreements, and technical measures such as encryption in transit (HTTPS/TLS)."
+        ]
+      },
+      {
+        "heading": "9. Data Retention",
+        "paragraphs": [
+          "We retain personal data only as long as necessary for the purposes described in this policy:"
+        ],
+        "bullets": [
+          "Contact inquiries: up to 24 months after last meaningful communication, unless a client relationship continues.",
+          "Active client project data: for the duration of the engagement plus up to 7 years for legal, tax, and dispute-resolution purposes.",
+          "Website server logs: typically 30–90 days unless needed for security investigations.",
+          "Cookie/consent records: up to 12 months or as required by law.",
+          "Marketing preferences: until you unsubscribe or request deletion."
+        ],
+        "paragraphsAfter": [
+          "When data is no longer needed, we securely delete or anonymize it."
+        ]
+      },
+      {
+        "heading": "10. Security Measures",
+        "paragraphs": [
+          "We implement administrative, technical, and organizational measures designed to protect personal data against unauthorized access, alteration, disclosure, or destruction. These include HTTPS encryption, access controls, secure hosting, and limited access on a need-to-know basis.",
+          "No method of transmission or storage is 100% secure. While we work diligently to protect your data, we cannot guarantee absolute security. Please use strong passwords and avoid sending sensitive credentials through unencrypted channels."
+        ]
+      },
+      {
+        "heading": "11. Your Privacy Rights",
+        "paragraphs": [
+          "Depending on your location, you may have the following rights regarding your personal data:"
+        ],
+        "bullets": [
+          "Access: request a copy of the personal data we hold about you.",
+          "Correction: request correction of inaccurate or incomplete data.",
+          "Deletion: request deletion of your data, subject to legal retention requirements.",
+          "Restriction: request that we limit processing in certain circumstances.",
+          "Portability: receive your data in a structured, commonly used format where applicable.",
+          "Objection: object to processing based on legitimate interests or direct marketing.",
+          "Withdraw consent: where processing is based on consent, withdraw it at any time without affecting prior lawful processing.",
+          "Complaint: lodge a complaint with your local data protection authority."
+        ],
+        "paragraphsAfter": [
+          "California residents (CCPA/CPRA): you have the right to know what personal information we collect, request deletion, and opt out of the sale or sharing of personal information. We do not sell personal information.",
+          "To exercise any rights, email shubhamsahaninitkkr@gmail.com with the subject line \"Privacy Request.\" We will verify your identity and respond within 30 days (or as required by applicable law)."
+        ]
+      },
+      {
+        "heading": "12. Children's Privacy",
+        "paragraphs": [
+          "Our website and services are directed at businesses and professionals. We do not knowingly collect personal data from children under 16. If you believe a child has provided us with personal data, contact us and we will promptly delete it."
+        ]
+      },
+      {
+        "heading": "13. Third-Party Links",
+        "paragraphs": [
+          "Our website may contain links to third-party sites (LinkedIn, GitHub, Fiverr, client portfolios, etc.). We are not responsible for the privacy practices of those sites. We encourage you to review their privacy policies before providing personal data."
+        ]
+      },
+      {
+        "heading": "14. Changes to This Policy",
+        "paragraphs": [
+          "We may update this Privacy Policy from time to time to reflect changes in our practices, technology, or legal requirements. The \"Last updated\" date at the top of this page indicates the latest revision. Material changes will be posted on this page. Continued use of the website after changes constitutes acceptance of the updated policy."
+        ]
+      },
+      {
+        "heading": "15. Contact Us",
+        "paragraphs": [
+          "For privacy questions, data subject requests, or subprocessors list inquiries, contact us at shubhamsahaninitkkr@gmail.com or +91 97718 23804. We aim to respond within five business days."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "terms-of-service",
+    "title": "Terms of Service",
+    "shortTitle": "Terms",
+    "description": "Terms governing use of shubhamsunny.com and engagement of Shubham Sunny professional services.",
+    "lastUpdated": "2026-06-28",
+    "sections": [
+      {
+        "heading": "1. Agreement to Terms",
+        "paragraphs": [
+          "These Terms of Service (\"Terms\") constitute a legally binding agreement between you (\"Client,\" \"you,\" or \"User\") and Shubham Sunny (\"Company,\" \"we,\" or \"us\") governing your access to shubhamsunny.com and any professional services we provide.",
+          "By accessing our website, submitting an inquiry, or entering into a project agreement, you agree to these Terms. If you are accepting on behalf of an organization, you represent that you have authority to bind that organization."
+        ]
+      },
+      {
+        "heading": "2. Services Overview",
+        "paragraphs": [
+          "We provide website modernization, data scraping, custom software development, mobile applications, browser extensions, automation, and related consulting services. Specific scope, deliverables, timeline, and fees are defined in a written proposal, statement of work (SOW), or service package agreement that supplements these Terms.",
+          "In case of conflict between these Terms and a signed SOW or master services agreement, the signed document controls for that specific engagement."
+        ]
+      },
+      {
+        "heading": "3. Website Use License",
+        "paragraphs": [
+          "We grant you a limited, non-exclusive, non-transferable, revocable license to access and use shubhamsunny.com for lawful personal and business purposes. You agree not to:"
+        ],
+        "bullets": [
+          "Use the website in any way that violates applicable laws or regulations.",
+          "Attempt to gain unauthorized access to our systems, APIs, or data.",
+          "Scrape, crawl, or harvest content from our website in a manner that overloads infrastructure or bypasses robots.txt, except by standard search-engine crawlers.",
+          "Copy, reproduce, or redistribute website content for commercial purposes without written permission.",
+          "Introduce malware, automated abuse, or interference with website operation.",
+          "Misrepresent your identity or affiliation when contacting us."
+        ]
+      },
+      {
+        "heading": "4. Client Responsibilities",
+        "paragraphs": [
+          "Successful delivery depends on timely cooperation. Clients agree to:"
+        ],
+        "bullets": [
+          "Provide accurate project requirements, access credentials, content, and approvals within agreed timelines.",
+          "Ensure they have legal rights to any materials, data, logos, or third-party assets supplied to us.",
+          "Designate a primary point of contact for decisions and feedback.",
+          "Review deliverables promptly and provide consolidated feedback within the review window specified in the SOW.",
+          "Pay invoices according to agreed terms."
+        ]
+      },
+      {
+        "heading": "5. Fees, Payments & Refunds",
+        "paragraphs": [
+          "Pricing is communicated upfront in proposals or package descriptions on our website. Unless otherwise stated in writing:"
+        ],
+        "bullets": [
+          "Projects typically require a deposit before work begins, with remaining balance due at milestones or upon completion.",
+          "Invoices are due within the payment period stated on the invoice (commonly 7–14 days).",
+          "Late payments may pause work and incur reasonable reminder fees after written notice.",
+          "Deposits for work already commenced are generally non-refundable. If we have not started substantive work, a partial refund may be offered at our discretion.",
+          "Third-party costs (hosting, domains, APIs, stock assets, licensed software) are billed separately unless included in the quoted price."
+        ]
+      },
+      {
+        "heading": "6. Intellectual Property",
+        "paragraphs": [
+          "Upon full payment for a project, clients receive ownership or a perpetual license to custom deliverables specifically created for them, as defined in the SOW. We retain ownership of:"
+        ],
+        "bullets": [
+          "Pre-existing code, frameworks, templates, and tools developed before or independent of the project.",
+          "General methodologies, know-how, and non-client-specific components.",
+          "Our brand, website content, and marketing materials."
+        ],
+        "paragraphsAfter": [
+          "Clients may request that proprietary pre-existing components remain licensed rather than assigned. Open-source components included in deliverables remain subject to their respective licenses.",
+          "We may display completed work in our portfolio unless a mutual NDA or written opt-out restricts public reference."
+        ]
+      },
+      {
+        "heading": "7. Confidentiality",
+        "paragraphs": [
+          "Both parties agree to keep confidential any non-public business, technical, or financial information disclosed during an engagement. Confidential information does not include information that is publicly available, independently developed, or lawfully obtained from a third party without restriction.",
+          "Formal mutual NDAs are available upon request for enterprise engagements."
+        ]
+      },
+      {
+        "heading": "8. Warranties & Disclaimers",
+        "paragraphs": [
+          "We warrant that services will be performed in a professional and workmanlike manner consistent with industry standards. For website and software deliverables, we provide a reasonable bug-fix period (typically 14–30 days post-delivery) for issues attributable to our work, as specified in the SOW.",
+          "EXCEPT AS EXPRESSLY STATED, SERVICES AND THE WEBSITE ARE PROVIDED \"AS IS\" AND \"AS AVAILABLE\" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.",
+          "We do not guarantee specific business outcomes (search rankings, revenue, lead volume, uptime of third-party platforms, or compliance with laws outside the agreed scope)."
+        ]
+      },
+      {
+        "heading": "9. Limitation of Liability",
+        "paragraphs": [
+          "TO THE MAXIMUM EXTENT PERMITTED BY LAW, OUR TOTAL LIABILITY FOR ANY CLAIM ARISING FROM THESE TERMS OR A PROJECT SHALL NOT EXCEED THE FEES PAID BY YOU FOR THE SPECIFIC PROJECT GIVING RISE TO THE CLAIM DURING THE TWELVE (12) MONTHS PRECEDING THE CLAIM.",
+          "WE SHALL NOT BE LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING LOST PROFITS, LOST DATA, OR BUSINESS INTERRUPTION, EVEN IF ADVISED OF THE POSSIBILITY.",
+          "Some jurisdictions do not allow certain limitations; in those cases, our liability is limited to the fullest extent permitted by law."
+        ]
+      },
+      {
+        "heading": "10. Indemnification",
+        "paragraphs": [
+          "You agree to indemnify and hold harmless Shubham Sunny from claims, damages, and expenses (including reasonable legal fees) arising from: (a) materials or instructions you provide; (b) your use of deliverables in violation of law or third-party rights; (c) your breach of these Terms; or (d) your misuse of scraped or processed data contrary to our Acceptable Use Policy or your legal obligations."
+        ]
+      },
+      {
+        "heading": "11. Termination",
+        "paragraphs": [
+          "Either party may terminate an engagement according to the termination clause in the SOW, or with written notice if the other party materially breaches and fails to cure within 14 days of notice.",
+          "Upon termination, you pay for work performed through the termination date. We will deliver work-in-progress in its current state if payment obligations are satisfied."
+        ]
+      },
+      {
+        "heading": "12. Governing Law & Disputes",
+        "paragraphs": [
+          "These Terms are governed by the laws of India, without regard to conflict-of-law principles. Parties agree to attempt good-faith negotiation before pursuing formal dispute resolution.",
+          "For international clients, we are open to specifying alternate governing law or arbitration in a signed master agreement. Default jurisdiction for unresolved disputes: courts in India, unless otherwise agreed in writing."
+        ]
+      },
+      {
+        "heading": "13. Changes to Terms",
+        "paragraphs": [
+          "We may update these Terms periodically. Updated Terms take effect when posted on this page with a revised \"Last updated\" date. Continued website use after changes constitutes acceptance."
+        ]
+      },
+      {
+        "heading": "14. Contact",
+        "paragraphs": [
+          "Questions about these Terms: shubhamsahaninitkkr@gmail.com · +91 97718 23804."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "cookie-policy",
+    "title": "Cookie Policy",
+    "shortTitle": "Cookies",
+    "description": "How shubhamsunny.com uses cookies, local storage, and similar technologies, and how you can control them.",
+    "lastUpdated": "2026-06-28",
+    "sections": [
+      {
+        "heading": "1. What Are Cookies & Similar Technologies?",
+        "paragraphs": [
+          "Cookies are small text files stored on your device when you visit a website. We also use local storage, session storage, and service workers — technologies that serve similar functions for remembering preferences and enabling core site features.",
+          "This Cookie Policy explains what we use, why we use it, and how you can manage your choices. It should be read alongside our Privacy Policy."
+        ]
+      },
+      {
+        "heading": "2. How We Use Cookies",
+        "paragraphs": [
+          "We classify cookies and storage by purpose:"
+        ],
+        "bullets": [
+          "Strictly necessary: required for the website to function — security, load balancing, cookie consent memory, and service worker caching for performance.",
+          "Functional: remember chat session details, contact form prefill preferences, and visit-notification session flags so features work smoothly without repeated prompts.",
+          "Analytics (optional): if enabled with your consent, limited first-party metrics to understand page popularity and improve content. We do not use invasive third-party advertising trackers."
+        ]
+      },
+      {
+        "heading": "3. Cookies & Storage We Use",
+        "paragraphs": [
+          "The following table describes key technologies on shubhamsunny.com:"
+        ],
+        "bullets": [
+          "ss-cookie-consent (localStorage) — Stores your cookie preference (accept / essential only). Duration: 12 months. Category: Strictly necessary.",
+          "ss-visit-notified (sessionStorage) — Prevents duplicate visit notifications within a browser session. Duration: Session. Category: Functional.",
+          "ss-chat-session (sessionStorage) — Remembers chat name/email during a session. Duration: Session. Category: Functional.",
+          "ss-contact-prefill (sessionStorage) — Pre-fills contact form from page context. Duration: Session. Category: Functional.",
+          "Service Worker cache (Cache API) — Caches static assets for faster repeat visits. Duration: Until cache refresh. Category: Strictly necessary.",
+          "Third-party fonts (Google Fonts) — May set minimal technical cookies or log IP for font delivery. Category: Functional / third-party.",
+          "Cloudinary CDN — Delivers optimized images; may log technical request data. Category: Strictly necessary for media delivery."
+        ]
+      },
+      {
+        "heading": "4. Third-Party Services",
+        "paragraphs": [
+          "When you submit a contact form or chat message, data may be processed by Web3Forms (form relay) to deliver your message to us. These services may set their own cookies or process IP addresses according to their policies.",
+          "We do not embed third-party advertising networks, social media tracking pixels, or cross-site profiling tools on our website."
+        ]
+      },
+      {
+        "heading": "5. Managing Your Preferences",
+        "paragraphs": [
+          "When you first visit our website, a cookie banner allows you to accept all cookies or continue with essential cookies only. You can change your mind at any time by clearing site data in your browser or clicking \"Cookie settings\" in the website footer (when available).",
+          "Most browsers also let you block or delete cookies through settings. Note that blocking strictly necessary cookies may affect website functionality."
+        ],
+        "bullets": [
+          "Chrome: Settings → Privacy and security → Cookies",
+          "Safari: Settings → Privacy → Manage Website Data",
+          "Firefox: Settings → Privacy & Security → Cookies and Site Data",
+          "Edge: Settings → Cookies and site permissions"
+        ]
+      },
+      {
+        "heading": "6. Do Not Track",
+        "paragraphs": [
+          "Some browsers send \"Do Not Track\" (DNT) signals. There is no universal industry standard for responding to DNT. We honor your explicit cookie choices via our consent banner and treat non-essential analytics as opt-in where required."
+        ]
+      },
+      {
+        "heading": "7. Updates & Contact",
+        "paragraphs": [
+          "We may update this Cookie Policy when we add or change technologies. Check the \"Last updated\" date above for the current version.",
+          "Questions: shubhamsahaninitkkr@gmail.com."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "acceptable-use-policy",
+    "title": "Acceptable Use Policy",
+    "shortTitle": "Acceptable Use",
+    "description": "Rules for lawful, ethical use of Shubham Sunny services — especially data scraping, automation, and software we build.",
+    "lastUpdated": "2026-06-28",
+    "sections": [
+      {
+        "heading": "1. Purpose",
+        "paragraphs": [
+          "This Acceptable Use Policy (\"AUP\") sets standards for how clients may use our website, deliverables, and services — particularly data scraping, automation, and custom software. It protects our business, our clients, and third parties from misuse.",
+          "By engaging our services, you agree to comply with this AUP in addition to our Terms of Service."
+        ]
+      },
+      {
+        "heading": "2. Lawful Use Only",
+        "paragraphs": [
+          "You must use our services and deliverables only for lawful purposes and in compliance with all applicable laws, including data protection, intellectual property, computer fraud, and anti-spam regulations. You are solely responsible for determining whether your intended use is legal in your jurisdiction."
+        ]
+      },
+      {
+        "heading": "3. Data Scraping & Automation",
+        "paragraphs": [
+          "When we build scrapers, bots, or automation tools, you agree to:"
+        ],
+        "bullets": [
+          "Scrape only publicly accessible data unless you have explicit authorization to access restricted data.",
+          "Respect robots.txt, terms of service, and rate limits of target websites unless you have written permission to do otherwise.",
+          "Not use our tools to circumvent authentication, CAPTCHAs, paywalls, or technical access controls without authorization.",
+          "Not collect personal data beyond what is necessary for your stated business purpose, and handle any personal data in compliance with GDPR, CCPA, and other applicable privacy laws.",
+          "Not use scraped data for spam, harassment, discrimination, or fraudulent activity.",
+          "Maintain your own records of lawful basis and consent where required."
+        ]
+      },
+      {
+        "heading": "4. Prohibited Activities",
+        "paragraphs": [
+          "You may not use our services or deliverables to:"
+        ],
+        "bullets": [
+          "Violate any law or third-party rights (copyright, trademark, trade secret, privacy).",
+          "Distribute malware, ransomware, or harmful code.",
+          "Launch denial-of-service attacks or infrastructure abuse.",
+          "Engage in unauthorized surveillance or stalking.",
+          "Create or distribute deepfakes, deceptive impersonation, or fraudulent content.",
+          "Process illegal goods/services content (e.g., unauthorized access tools for criminal purposes).",
+          "Reverse-engineer our proprietary pre-existing tools except as permitted by law.",
+          "Resell our services or white-label deliverables without a written reseller agreement."
+        ]
+      },
+      {
+        "heading": "5. Client-Supplied Data & Credentials",
+        "paragraphs": [
+          "If you provide login credentials, API keys, target URLs, or datasets, you warrant that you have the legal right to use them and that our processing on your behalf will not violate any agreement or law. We may refuse or suspend work if we reasonably believe a request is unlawful or unethical."
+        ]
+      },
+      {
+        "heading": "6. Enforcement",
+        "paragraphs": [
+          "Violation of this AUP may result in immediate suspension of services, termination of agreements, and reporting to authorities where required. We cooperate with lawful requests from regulators and law enforcement.",
+          "Report suspected abuse to shubhamsahaninitkkr@gmail.com."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "data-processing-addendum",
+    "title": "Data Processing Addendum",
+    "shortTitle": "DPA",
+    "description": "Standard data processing terms for business clients who share personal data with Shubham Sunny under GDPR and similar regulations.",
+    "lastUpdated": "2026-06-28",
+    "sections": [
+      {
+        "heading": "1. Scope & Roles",
+        "paragraphs": [
+          "This Data Processing Addendum (\"DPA\") applies when a client (\"Controller\") shares personal data with Shubham Sunny (\"Processor\") for processing in connection with website, software, or data services.",
+          "The Controller determines the purposes and means of processing. The Processor processes personal data only on documented instructions from the Controller, as set out in the Statement of Work and this DPA."
+        ]
+      },
+      {
+        "heading": "2. Processing Details",
+        "paragraphs": [
+          "Subject matter: professional services as described in the applicable SOW.",
+          "Duration: term of the engagement plus retention periods in our Privacy Policy.",
+          "Nature & purpose: development, hosting configuration, data extraction, transformation, integration, and support as instructed.",
+          "Categories of data subjects: Controller's customers, employees, website visitors, or other individuals whose data Controller submits.",
+          "Types of personal data: as specified by Controller — may include names, emails, phone numbers, usage logs, and business records."
+        ]
+      },
+      {
+        "heading": "3. Processor Obligations",
+        "paragraphs": [
+          "Shubham Sunny shall:"
+        ],
+        "bullets": [
+          "Process personal data only on documented instructions from the Controller, unless required by law.",
+          "Ensure personnel with access are bound by confidentiality obligations.",
+          "Implement appropriate technical and organizational security measures (encryption in transit, access controls, secure development practices).",
+          "Assist the Controller with data subject requests where feasible.",
+          "Assist with DPIAs and regulatory inquiries related to our processing, where reasonable.",
+          "Notify the Controller without undue delay after becoming aware of a personal data breach.",
+          "Delete or return personal data at end of services, unless retention is required by law.",
+          "Make available information necessary to demonstrate compliance and allow audits upon reasonable notice (no more than once per year unless required by a breach or regulator)."
+        ]
+      },
+      {
+        "heading": "4. Subprocessors",
+        "paragraphs": [
+          "Controller authorizes use of subprocessors necessary to deliver services (hosting, email, form relay, CDN). We maintain a subprocessors list and will notify Controller of material changes. Controller may object on reasonable grounds within 14 days.",
+          "We impose data protection obligations on subprocessors equivalent to those in this DPA."
+        ]
+      },
+      {
+        "heading": "5. International Transfers",
+        "paragraphs": [
+          "Where personal data is transferred outside the EEA/UK, we implement appropriate safeguards including Standard Contractual Clauses (2021/914) or equivalent mechanisms upon request."
+        ]
+      },
+      {
+        "heading": "6. Liability",
+        "paragraphs": [
+          "Each party's liability under this DPA is subject to the limitation of liability in the governing service agreement. Nothing in this DPA limits either party's liability where prohibited by applicable data protection law."
+        ]
+      },
+      {
+        "heading": "7. Execution",
+        "paragraphs": [
+          "This DPA is incorporated by reference into applicable service agreements. Enterprise clients may request a countersigned copy or custom SCC appendix at shubhamsahaninitkkr@gmail.com."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "accessibility-statement",
+    "title": "Accessibility Statement",
+    "shortTitle": "Accessibility",
+    "description": "Our commitment to making shubhamsunny.com accessible to people with disabilities, and how to request accommodations.",
+    "lastUpdated": "2026-06-28",
+    "sections": [
+      {
+        "heading": "1. Our Commitment",
+        "paragraphs": [
+          "Shubham Sunny is committed to ensuring digital accessibility for people with disabilities. We continually improve the user experience for everyone and apply relevant accessibility standards to shubhamsunny.com and client deliverables when accessibility is in scope."
+        ]
+      },
+      {
+        "heading": "2. Conformance Status",
+        "paragraphs": [
+          "We aim to conform to the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA. Our website includes features such as:"
+        ],
+        "bullets": [
+          "Skip-to-main-content link for keyboard users.",
+          "Semantic HTML structure and descriptive alt text on key images.",
+          "Sufficient color contrast on primary text and interactive elements.",
+          "Keyboard-navigable navigation and form controls.",
+          "Responsive layout for mobile and zoomed views.",
+          "Reduced-motion support where users prefer less animation."
+        ],
+        "paragraphsAfter": [
+          "We recognize that some areas may not yet fully meet all WCAG 2.1 AA criteria. We are actively working to address known gaps."
+        ]
+      },
+      {
+        "heading": "3. Known Limitations",
+        "paragraphs": [
+          "Some third-party embeds, legacy portfolio screenshots, or client-provided media may not meet full accessibility standards. We prioritize fixes on pages that receive the most traffic and on contact/conversion paths."
+        ]
+      },
+      {
+        "heading": "4. Feedback & Assistance",
+        "paragraphs": [
+          "If you encounter accessibility barriers on our website or need information in an alternative format, contact us:"
+        ],
+        "bullets": [
+          "Email: shubhamsahaninitkkr@gmail.com (subject: Accessibility)",
+          "Phone: +91 97718 23804",
+          "Response target: within five business days"
+        ],
+        "paragraphsAfter": [
+          "Please describe the page URL, the issue encountered, and your preferred contact method. We will work with you to provide the information or service through an accessible alternative."
+        ]
+      },
+      {
+        "heading": "5. Accessibility in Client Projects",
+        "paragraphs": [
+          "When accessibility is included in a project scope, we follow WCAG 2.1 AA as a baseline, provide semantic markup, keyboard support, and document known exceptions. Formal VPAT/ACR documentation is available for enterprise engagements upon request."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "disclaimer",
+    "title": "Disclaimer",
+    "shortTitle": "Disclaimer",
+    "description": "Important limitations on website content, testimonials, and general information provided by Shubham Sunny.",
+    "lastUpdated": "2026-06-28",
+    "sections": [
+      {
+        "heading": "1. General Information Only",
+        "paragraphs": [
+          "Content on shubhamsunny.com — including blog articles, case studies, FAQs, package descriptions, and use-case examples — is provided for general informational purposes. It does not constitute legal, financial, tax, or professional advice. You should consult qualified advisors before making business decisions based on website content."
+        ]
+      },
+      {
+        "heading": "2. No Guarantee of Results",
+        "paragraphs": [
+          "Past project outcomes, testimonials, ratings, and metrics (such as traffic improvements or delivery timelines) reflect specific client situations and are not guarantees of future results. Your results depend on your industry, starting point, budget, cooperation, third-party platforms, and market conditions."
+        ]
+      },
+      {
+        "heading": "3. Third-Party References",
+        "paragraphs": [
+          "Mentions of third-party products, platforms (WordPress, Shopify, Google, etc.), or services do not imply endorsement unless explicitly stated. Third-party terms, pricing, and availability may change without notice."
+        ]
+      },
+      {
+        "heading": "4. External Links",
+        "paragraphs": [
+          "Links to external websites are provided for convenience. We do not control and are not responsible for the content, privacy practices, or availability of linked sites."
+        ]
+      },
+      {
+        "heading": "5. Professional Relationship",
+        "paragraphs": [
+          "Browsing this website or submitting an inquiry does not create a client relationship. A binding engagement begins only when both parties agree to a written proposal, SOW, or signed agreement."
+        ]
+      },
+      {
+        "heading": "6. Accuracy & Updates",
+        "paragraphs": [
+          "We strive to keep information accurate and current but make no warranties about completeness or error-free content. We may update or remove content at any time without notice."
+        ]
+      },
+      {
+        "heading": "7. Contact",
+        "paragraphs": [
+          "Questions about this Disclaimer: shubhamsahaninitkkr@gmail.com."
+        ]
+      }
+    ]
+  }
+]

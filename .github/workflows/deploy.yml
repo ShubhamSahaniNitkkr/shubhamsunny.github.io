@@ -49,30 +49,53 @@ jobs:
       - uses: actions/deploy-pages@v4
         id: deployment
 
-  verify:
+  configure-domain:
     needs: deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Smoke test live site
+      - name: Register custom domain with GitHub Pages
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          for i in 1 2 3 4 5 6 8 10; do
-            for URL in \
-              "https://shubhamsunny.com" \
-              "https://ShubhamSahaniNitkkr.github.io/shubhamsunny.github.io/"
-            do
-              STATUS=$(curl -sS -L -o /tmp/home.html -w "%{http_code}" "$URL")
-              CSS_PATH=$(grep -oE '/_astro/[^"'\'' ]+\.css' /tmp/home.html | head -1)
-              CSS_STATUS=000
-              if [ -n "$CSS_PATH" ]; then
-                CSS_STATUS=$(curl -sS -L -o /dev/null -w "%{http_code}" "${URL%/}$CSS_PATH")
-              fi
-              echo "Attempt $i: $URL -> HTTP $STATUS, CSS $CSS_PATH -> HTTP $CSS_STATUS"
-              if [ "$STATUS" = "200" ] && [ "$CSS_STATUS" = "200" ]; then
-                echo "Site and CSS are live at $URL"
-                exit 0
-              fi
-            done
+          set -euo pipefail
+          REPO="${{ github.repository }}"
+
+          # Workflow-based Pages ignores CNAME in the artifact; the domain must
+          # be registered in repository Pages settings (via API after migration
+          # from branch-based deploy removed the root CNAME commit).
+          if ! gh api "repos/$REPO/pages" --silent 2>/dev/null; then
+            echo "Creating GitHub Pages site (workflow build type)..."
+            gh api --method POST "repos/$REPO/pages" -f build_type='workflow'
+          fi
+
+          echo "Setting custom domain to shubhamsunny.com..."
+          gh api --method PUT "repos/$REPO/pages" \
+            -f build_type='workflow' \
+            -f cname='shubhamsunny.com' \
+            -F https_enforced=true
+
+          gh api "repos/$REPO/pages" --jq '{cname, build_type, status, html_url, https_enforced}'
+
+  verify:
+    needs: configure-domain
+    runs-on: ubuntu-latest
+    steps:
+      - name: Smoke test custom domain
+        run: |
+          SITE_URL="https://shubhamsunny.com"
+          for i in 1 2 3 4 5 6 8 10 12 15; do
+            STATUS=$(curl -sS -L -o /tmp/home.html -w "%{http_code}" "$SITE_URL")
+            CSS_PATH=$(grep -oE '/_astro/[^"'\'' ]+\.css' /tmp/home.html | head -1)
+            CSS_STATUS=000
+            if [ -n "$CSS_PATH" ]; then
+              CSS_STATUS=$(curl -sS -L -o /dev/null -w "%{http_code}" "${SITE_URL}${CSS_PATH}")
+            fi
+            echo "Attempt $i: $SITE_URL -> HTTP $STATUS, CSS $CSS_PATH -> HTTP $CSS_STATUS"
+            if [ "$STATUS" = "200" ] && [ "$CSS_STATUS" = "200" ]; then
+              echo "Custom domain is live with CSS at $SITE_URL"
+              exit 0
+            fi
             sleep 20
           done
-          echo "::error::Site or CSS did not return 200 after deploy."
+          echo "::error::shubhamsunny.com did not return 200 after deploy."
           exit 1

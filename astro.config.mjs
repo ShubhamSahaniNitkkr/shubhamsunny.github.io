@@ -95,6 +95,12 @@ export default defineConfig({
         } else if (url.includes('/templates') || url.includes('/products')) {
           item.priority = 0.65;
           item.changefreq = 'monthly';
+        } else if (url.includes('/legal/')) {
+          item.priority = 0.5;
+          item.changefreq = 'monthly';
+        } else if (url.endsWith('/legal')) {
+          item.priority = 0.55;
+          item.changefreq = 'monthly';
         } else {
           item.priority = 0.7;
           item.changefreq = 'weekly';

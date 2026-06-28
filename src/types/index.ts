@@ -306,3 +306,19 @@ export interface AboutConfig {
   portrait: string;
   portraitAlt: string;
 }
+
+export interface LegalSection {
+  heading: string;
+  paragraphs: string[];
+  bullets?: string[];
+  paragraphsAfter?: string[];
+}
+
+export interface LegalPage {
+  slug: string;
+  title: string;
+  shortTitle: string;
+  description: string;
+  lastUpdated: string;
+  sections: LegalSection[];
+}

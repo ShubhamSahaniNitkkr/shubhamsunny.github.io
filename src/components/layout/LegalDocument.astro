@@ -1,0 +1,48 @@
+---
+import type { LegalPage } from '../../types';
+
+interface Props {
+  page: LegalPage;
+}
+
+const { page } = Astro.props;
+
+function formatDate(iso: string) {
+  try {
+    return new Date(iso).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  } catch {
+    return iso;
+  }
+}
+---
+
+<article class="legal-document">
+  <header class="border-b border-zinc-200 pb-8">
+    <a href="/legal" class="text-sm font-semibold text-violet-600 hover:text-violet-700">← All policies &amp; documents</a>
+    <p class="mt-6 text-xs font-semibold uppercase tracking-wider text-violet-600">Legal</p>
+    <h1 class="section-title mt-3 !text-3xl sm:!text-4xl">{page.title}</h1>
+    <p class="mt-4 max-w-2xl text-base leading-relaxed text-zinc-600">{page.description}</p>
+    <p class="mt-4 text-sm text-zinc-500">Last updated: {formatDate(page.lastUpdated)}</p>
+  </header>
+
+  <div class="legal-prose mt-10 space-y-10">
+    {page.sections.map((section) => (
+      <section>
+        <h2 class="font-display text-xl font-bold text-zinc-900 sm:text-2xl">{section.heading}</h2>
+        {section.paragraphs.map((para) => (
+          <p class="mt-4 text-base leading-relaxed text-zinc-700">{para}</p>
+        ))}
+        {section.bullets && section.bullets.length > 0 && (
+          <ul class="mt-4 list-disc space-y-2 pl-5 text-base leading-relaxed text-zinc-700">
+            {section.bullets.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        )}
+        {section.paragraphsAfter?.map((para) => (
+          <p class="mt-4 text-base leading-relaxed text-zinc-700">{para}</p>
+        ))}
+      </section>
+    ))}
+  </div>
+</article>

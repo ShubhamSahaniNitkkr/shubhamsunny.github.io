@@ -27,7 +27,7 @@ const readme = [
   [''],
   ['Services columns: id | name | color | tagline | description | order | card_image | process_images'],
   ['ServicePackages columns: id | service_id | name | price | price_label | includes | description | starting_from | most_popular | emoji | order'],
-  ['Team columns: name | role | certification | past_company | expertise | bio | philosophy | image_path | is_founder | linkedin | phone | order'],
+  ['Team columns: name | role | certification | expertise | bio | philosophy | image_path | is_founder | linkedin | phone | order'],
   [''],
   ['UseCases columns: id | title | category | thumbnail | image | client | card_teaser | summary | challenge | solution | results | metric | pdf_url'],
   ['  thumbnail = card image URL  |  image = modal hero (can be same or larger)'],
@@ -92,8 +92,6 @@ const transformations = [
     folder: 'transform-1',
     before_file: 'before.jpg',
     after_file: 'after.jpg',
-    before_type: 'image',
-    after_type: 'image',
   },
   {
     id: 'transform-2',
@@ -104,8 +102,6 @@ const transformations = [
     folder: 'transform-2',
     before_file: 'before.jpg',
     after_file: 'after.jpg',
-    before_type: 'image',
-    after_type: 'image',
   },
   {
     id: 'transform-3',
@@ -116,8 +112,6 @@ const transformations = [
     folder: 'transform-3',
     before_file: 'before.jpg',
     after_file: 'after.jpg',
-    before_type: 'image',
-    after_type: 'image',
   },
 ];
 
@@ -170,18 +164,18 @@ const faq = [
 ];
 
 const testimonials = [
-  { id: 'rev-1', name: 'Michael S.', rating: 5, text: 'Fast, efficient, and great communication throughout. Delivered exactly what I needed — highly recommend for any business owner.', country: 'United States', project_type: 'Custom project', date: '2024', image: '', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: 'yes' },
-  { id: 'rev-2', name: 'Jesus Z.', rating: 5, text: 'Excellent job — very quick and precise. He understood what I needed without me having to explain technical details.', country: 'United States', project_type: 'Data project', date: '2024', image: '', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: 'yes' },
-  { id: 'rev-3', name: 'Steve S.', rating: 5, text: 'Excellent fast work, delivered on time. Exactly what I needed for my business.', country: 'United States', project_type: 'Automation', date: '2023', image: '', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: 'yes' },
-  { id: 'rev-4', name: 'Reef M.', rating: 4, text: 'Thank you for doing your best. I appreciate the effort and commitment to finishing the job.', country: 'United States', project_type: 'Web project', date: '2023', image: '', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: '' },
-  { id: 'rev-5', name: 'Mass G.', rating: 5, text: 'A pleasure to work with on a challenging project. Great communicator and problem solver — delivered exactly what was needed.', country: 'United Kingdom', project_type: 'Complex build', date: '2023', image: '', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: 'yes' },
-  { id: 'rev-6', name: 'Ahmidi F.', rating: 5, text: 'Perfect workflow, perfect communication, and perfect results. Will definitely come back for future work.', country: 'United Kingdom', project_type: 'Web development', date: '2023', image: '', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: '' },
-  { id: 'rev-7', name: 'Hung F.', rating: 5, text: 'Patient and hardworking until everything was delivered perfectly. Really appreciated the effort and clear updates.', country: 'Japan', project_type: 'App integration', date: '2023', image: '', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: '' },
-  { id: 'rev-8', name: 'Shuvo A.', rating: 5, text: "Professionalism and expertise shine through. Delivered exactly as promised and went above expectations.", country: 'Bangladesh', project_type: 'Development', date: '2023', image: '', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: '' },
-  { id: 'rev-9', name: 'Aqua Note', rating: 5, text: 'Great to work with. Professional and very cooperative throughout the entire project.', country: 'Canada', project_type: 'Web project', date: '2023', image: '', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: '' },
-  { id: 'rev-10', name: 'Hardworlds', rating: 5, text: 'Very satisfied with the work. Professional and quick delivery. Will hire again!', country: 'India', project_type: 'Development', date: '2023', image: '', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: '' },
-  { id: 'rev-11', name: 'Ghayath', rating: 5, text: 'Delivered what I asked for in no time. Very efficient and professional.', country: 'Jordan', project_type: 'Quick turnaround', date: '2023', image: '', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: '' },
-  { id: 'rev-12', name: 'Mark', rating: 5, text: 'Thanks for the patience and skill. Communicated clearly and delivered on time.', country: 'Luxembourg', project_type: 'Integration', date: '2023', image: '', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: '' },
+  { id: 'rev-1', name: 'Michael S.', rating: 5, text: 'Fast, efficient, and great communication throughout. Delivered exactly what I needed — highly recommend for any business owner.', country: 'United States', project_type: 'Custom project', date: '2024', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: 'yes' },
+  { id: 'rev-2', name: 'Jesus Z.', rating: 5, text: 'Excellent job — very quick and precise. He understood what I needed without me having to explain technical details.', country: 'United States', project_type: 'Data project', date: '2024', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: 'yes' },
+  { id: 'rev-3', name: 'Steve S.', rating: 5, text: 'Excellent fast work, delivered on time. Exactly what I needed for my business.', country: 'United States', project_type: 'Automation', date: '2023', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: 'yes' },
+  { id: 'rev-4', name: 'Reef M.', rating: 4, text: 'Thank you for doing your best. I appreciate the effort and commitment to finishing the job.', country: 'United States', project_type: 'Web project', date: '2023', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: '' },
+  { id: 'rev-5', name: 'Mass G.', rating: 5, text: 'A pleasure to work with on a challenging project. Great communicator and problem solver — delivered exactly what was needed.', country: 'United Kingdom', project_type: 'Complex build', date: '2023', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: 'yes' },
+  { id: 'rev-6', name: 'Ahmidi F.', rating: 5, text: 'Perfect workflow, perfect communication, and perfect results. Will definitely come back for future work.', country: 'United Kingdom', project_type: 'Web development', date: '2023', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: '' },
+  { id: 'rev-7', name: 'Hung F.', rating: 5, text: 'Patient and hardworking until everything was delivered perfectly. Really appreciated the effort and clear updates.', country: 'Japan', project_type: 'App integration', date: '2023', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: '' },
+  { id: 'rev-8', name: 'Shuvo A.', rating: 5, text: "Professionalism and expertise shine through. Delivered exactly as promised and went above expectations.", country: 'Bangladesh', project_type: 'Development', date: '2023', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: '' },
+  { id: 'rev-9', name: 'Aqua Note', rating: 5, text: 'Great to work with. Professional and very cooperative throughout the entire project.', country: 'Canada', project_type: 'Web project', date: '2023', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: '' },
+  { id: 'rev-10', name: 'Hardworlds', rating: 5, text: 'Very satisfied with the work. Professional and quick delivery. Will hire again!', country: 'India', project_type: 'Development', date: '2023', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: '' },
+  { id: 'rev-11', name: 'Ghayath', rating: 5, text: 'Delivered what I asked for in no time. Very efficient and professional.', country: 'Jordan', project_type: 'Quick turnaround', date: '2023', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: '' },
+  { id: 'rev-12', name: 'Mark', rating: 5, text: 'Thanks for the patience and skill. Communicated clearly and delivered on time.', country: 'Luxembourg', project_type: 'Integration', date: '2023', source_url: 'https://www.fiverr.com/shubhamsunny?public_mode=true', featured: '' },
 ];
 
 const team = [
@@ -189,7 +183,6 @@ const team = [
     name: 'Shubham Sunny',
     role: 'Founder & Lead Developer',
     certification: '8+ years · Founder since 2018',
-    past_company: '',
     expertise: 'Full-Stack|Web Apps|Data Scraping|Custom Software',
     bio: 'I started freelancing on Fiverr in 2018 and built this into a small studio over eight years. I still review architecture and code on every project — websites, scrapers, and custom apps for clients who need someone reliable.',
     philosophy: 'A website should make a stranger feel confident enough to call you.',
@@ -203,7 +196,6 @@ const team = [
     name: 'Deep Shikha',
     role: 'QA & Client Success Lead',
     certification: 'Quality Assurance Expert',
-    past_company: '',
     expertise: 'Manual QA|Automation Testing|Client Onboarding|UAT',
     bio: 'Deep has been with us for years handling QA on real devices, client kickoff calls, milestone tracking, and making sure nothing goes live until it passes her checklist.',
     philosophy: 'Quality is not a phase — it is the reason clients come back.',
@@ -217,7 +209,6 @@ const team = [
     name: 'Shushma Devi',
     role: 'HR Expert & Marketing Team Head',
     certification: 'People & Growth',
-    past_company: '',
     expertise: 'HR Operations|Talent Hiring|Brand Marketing|Client Outreach',
     bio: 'Shushma runs hiring, team culture, and client outreach — the reason we can keep the same trusted people on projects instead of rotating strangers.',
     philosophy: 'Great delivery starts with great people — and great people need clear direction.',
@@ -231,7 +222,6 @@ const team = [
     name: 'Vinay Thakur',
     role: 'Delivery Manager & Mentor',
     certification: 'Program & delivery',
-    past_company: '',
     expertise: 'Program Management|Agile Delivery|Enterprise Clients|Mentoring',
     bio: 'Vinay manages timelines and delivery on larger builds — weekly check-ins, milestone tracking, and keeping complex projects moving without surprises.',
     philosophy: 'Ship on time, communicate early, and never hide bad news.',
@@ -246,9 +236,6 @@ const team = [
 const social = [
   { field: 'linkedin_url', value: 'https://www.linkedin.com/in/shubham-sunny-09b013129/' },
   { field: 'linkedin_handle', value: 'Shubham Sunny' },
-  { field: 'twitter_url', value: '' },
-  { field: 'facebook_url', value: '' },
-  { field: 'instagram_url', value: '' },
   { field: 'fiverr_url', value: 'https://www.fiverr.com/shubhamsunny?public_mode=true' },
   { field: 'github_url', value: 'https://github.com/ShubhamSahaniNitkkr' },
   { field: 'google_reviews_url', value: 'https://www.fiverr.com/shubhamsunny?public_mode=true' },
@@ -332,7 +319,6 @@ const templates = Array.from({ length: 30 }, (_, i) => ({
   id: `template-${i + 1}`,
   name: `Modern Template ${i + 1}`,
   category: ['Business', 'Portfolio', 'E-commerce', 'Restaurant', 'Healthcare'][i % 5],
-  thumbnail: '',
   download_url: '#',
   description: `Free responsive website template — ready to customize and deploy.`,
 }));

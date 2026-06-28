@@ -130,6 +130,17 @@ export default function ContactForm({ web3formsAccessKey = '' }: Props) {
       <button type="submit" disabled={sending || !email.trim() || !message.trim()} className="btn-accent w-full disabled:opacity-50">
         {sending ? 'Sending…' : 'Send Message'}
       </button>
+      <p className="text-center text-xs leading-relaxed text-zinc-500">
+        By submitting, you agree to our{' '}
+        <a href="/legal/privacy-policy" className="font-medium text-violet-600 hover:text-violet-700">
+          Privacy Policy
+        </a>{' '}
+        and{' '}
+        <a href="/legal/terms-of-service" className="font-medium text-violet-600 hover:text-violet-700">
+          Terms of Service
+        </a>
+        . We use your details only to respond to your inquiry.
+      </p>
       {status === 'success' && (
         <p className="rounded-lg bg-emerald-50 px-4 py-3 text-center text-sm text-emerald-700">Message sent — we&apos;ll reply within one business day.</p>
       )}

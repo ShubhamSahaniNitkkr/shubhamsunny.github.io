@@ -605,3 +605,13 @@ h1, h2, h3, h4 {
 
   .chat-panel { border-radius: 1rem; max-height: min(90vh, 640px) !important; }
 }
+
+.legal-prose a {
+  color: var(--color-violet-600, #7c3aed);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.legal-prose a:hover {
+  color: var(--color-violet-700, #6d28d9);
+}

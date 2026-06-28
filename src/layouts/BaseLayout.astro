@@ -5,6 +5,7 @@ import Footer from '../components/layout/Footer.astro';
 import PreFooterCards from '../components/sections/PreFooterCards.astro';
 import ChatWidget from '../components/layout/ChatWidget';
 import VisitTracker from '../components/layout/VisitTracker';
+import CookieConsent from '../components/layout/CookieConsent';
 import SchemaMarkup from '../components/seo/SchemaMarkup.astro';
 import { siteConfig, getCloudinaryUrl } from '../lib/utils';
 import media from '../data/media.json';
@@ -146,6 +147,7 @@ const web3formsAccessKey = notifications.web3formsAccessKey;
       <Footer />
     </div>
     <ChatWidget client:idle enabled={chatbotEnabled} web3formsAccessKey={web3formsAccessKey} />
+    <CookieConsent client:idle />
     <script define:vars={{ cacheVersion }}>
       if ('serviceWorker' in navigator) {
         if (/localhost|127\.0\.0\.1/.test(location.hostname)) {

@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LegalDocument from '../../components/layout/LegalDocument.astro';
+import legalPages from '../../data/legal-pages.json';
+import site from '../../data/site.json';
+import type { LegalPage } from '../../types';
+
+export function getStaticPaths() {
+  return (legalPages as LegalPage[]).map((page) => ({
+    params: { slug: page.slug },
+    props: { page },
+  }));
+}
+
+interface Props {
+  page: LegalPage;
+}
+
+const { page } = Astro.props;
+const canonical = `${site.domain}/legal/${page.slug}`;
+const related = (legalPages as LegalPage[]).filter((p) => p.slug !== page.slug);
+---
+
+<BaseLayout
+  title={`${page.title} | ${site.brand}`}
+  description={page.description}
+  keywords={`${page.shortTitle}, legal, privacy, terms, ${site.seo?.keywords || 'website development'}`}
+  canonical={canonical}
+  schemaType="page"
+  pageTitle={page.title}
+  pageDescription={page.description}
+>
+  <div class="bg-white pt-28">
+    <div class="section-padding !pb-16 !pt-10">
+      <div class="mx-auto max-w-2xl">
+        <LegalDocument page={page} />
+
+        {related.length > 0 && (
+          <aside class="mt-14 rounded-2xl border border-zinc-200 bg-zinc-50 p-6 sm:p-8">
+            <p class="text-xs font-semibold uppercase tracking-wider text-zinc-900">Related documents</p>
+            <ul class="mt-4 space-y-2 text-sm">
+              {related.map((doc) => (
+                <li>
+                  <a href={`/legal/${doc.slug}`} class="font-medium text-violet-600 hover:text-violet-700">
+                    {doc.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        )}
+
+        <div class="mt-10 rounded-2xl border border-violet-100 bg-violet-50/60 p-6 sm:p-8">
+          <p class="font-display text-lg font-bold text-zinc-900">Questions about these terms?</p>
+          <p class="mt-2 text-sm leading-relaxed text-zinc-600">
+            For legal, privacy, or compliance inquiries, email us directly. We respond within five business days.
+          </p>
+          <a href={`mailto:${site.email}?subject=Legal%20inquiry`} class="btn-accent mt-5 inline-flex">
+            Contact for legal inquiries
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

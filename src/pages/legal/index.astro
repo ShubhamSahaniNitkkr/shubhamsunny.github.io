@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import legalPages from '../../data/legal-pages.json';
+import site from '../../data/site.json';
+import type { LegalPage } from '../../types';
+
+const pages = legalPages as LegalPage[];
+const canonical = `${site.domain}/legal`;
+
+function formatDate(iso: string) {
+  try {
+    return new Date(iso).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  } catch {
+    return iso;
+  }
+}
+---
+
+<BaseLayout
+  title={`Legal & Compliance | ${site.brand}`}
+  description="Privacy policy, terms of service, cookie policy, data processing addendum, accessibility statement, and other legal documents for Shubham Sunny."
+  keywords="privacy policy, terms of service, cookie policy, DPA, legal, compliance"
+  canonical={canonical}
+  schemaType="page"
+  pageTitle="Legal & Compliance"
+  pageDescription="Official policies and legal documents for shubhamsunny.com and Shubham Sunny professional services."
+>
+  <div class="bg-white pt-28">
+    <div class="section-padding !pb-16 !pt-10">
+      <div class="mx-auto max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-wider text-violet-600">Trust &amp; transparency</p>
+        <h1 class="section-title mt-3">Legal &amp; compliance</h1>
+        <p class="mt-4 max-w-2xl text-base leading-relaxed text-zinc-600">
+          We publish clear, accessible policies so clients, partners, and regulators can see how we handle data,
+          deliver services, and operate responsibly. These documents are maintained and updated as our practices evolve.
+        </p>
+
+        <div class="mt-10 grid gap-4 sm:grid-cols-2">
+          {pages.map((page) => (
+            <a
+              href={`/legal/${page.slug}`}
+              class="group rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition hover:border-violet-200 hover:shadow-md"
+            >
+              <p class="font-display text-lg font-bold text-zinc-900 group-hover:text-violet-700">{page.title}</p>
+              <p class="mt-2 text-sm leading-relaxed text-zinc-600">{page.description}</p>
+              <p class="mt-4 text-xs text-zinc-400">Updated {formatDate(page.lastUpdated)}</p>
+            </a>
+          ))}
+        </div>
+
+        <div class="mt-12 rounded-2xl border border-zinc-200 bg-zinc-50 p-6 sm:p-8">
+          <h2 class="font-display text-lg font-bold text-zinc-900">Enterprise &amp; partnership inquiries</h2>
+          <p class="mt-3 text-sm leading-relaxed text-zinc-600">
+            For vendor security reviews, signed DPAs, subprocessors lists, or acquisition due diligence packages,
+            contact us directly. We can provide additional documentation on request.
+          </p>
+          <ul class="mt-4 space-y-2 text-sm text-zinc-700">
+            <li>Email: <a href={`mailto:${site.email}`} class="font-medium text-violet-600 hover:text-violet-700">{site.email}</a></li>
+            <li>Phone: <a href={`tel:${site.phone.replace(/\s/g, '')}`} class="font-medium text-violet-600 hover:text-violet-700">{site.phone}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
