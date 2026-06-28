@@ -6,6 +6,8 @@ import {
   readCachedContactPrefill,
 } from '../../lib/contact-prefill';
 
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+
 interface Props {
   web3formsAccessKey?: string;
 }
@@ -22,7 +24,7 @@ export default function ContactForm({ web3formsAccessKey = '' }: Props) {
 
   const accessKey = String(web3formsAccessKey || import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || '').trim();
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const applied = applyContactPrefillToDom();
     if (applied?.service) setService(applied.service);
     if (applied?.message) setMessage(applied.message);
