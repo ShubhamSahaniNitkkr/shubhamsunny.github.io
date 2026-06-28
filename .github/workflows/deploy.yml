@@ -42,6 +42,8 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -49,27 +51,76 @@ jobs:
       - uses: actions/deploy-pages@v4
         id: deployment
 
+      - name: Register custom domain with GitHub Pages
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const cname = 'shubhamsunny.com';
+            try {
+              await github.rest.repos.updateInformationAboutPagesSite({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                build_type: 'workflow',
+                cname,
+                https_enforced: true,
+              });
+              core.info(`Registered custom domain: ${cname}`);
+            } catch (error) {
+              core.warning(
+                `Could not register ${cname} via API (${error.status ?? 'unknown'}). ` +
+                  'Set it manually under Settings → Pages → Custom domain if the verify job fails.'
+              );
+            }
+
   verify:
     needs: deploy
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
       - name: Smoke test custom domain
+        env:
+          CUSTOM_DOMAIN: https://shubhamsunny.com
+          PAGES_URL: ${{ needs.deploy.outputs.page_url }}
         run: |
-          SITE_URL="https://shubhamsunny.com"
+          set -euo pipefail
+
+          echo "GitHub Pages deployment URL: ${PAGES_URL:-unknown}"
+          if [ -n "${PAGES_URL:-}" ]; then
+            PAGES_STATUS=$(curl -sS -L -o /dev/null -w "%{http_code}" "$PAGES_URL")
+            echo "Deployment URL check: $PAGES_URL -> HTTP $PAGES_STATUS"
+            if [ "$PAGES_STATUS" != "200" ]; then
+              echo "::warning::GitHub Pages URL did not return 200. The artifact may not have deployed correctly."
+            fi
+          fi
+
           for i in 1 2 3 4 5 6 8 10 12 15; do
-            STATUS=$(curl -sS -L -o /tmp/home.html -w "%{http_code}" "$SITE_URL")
-            CSS_PATH=$(grep -oE '/_astro/[^"'\'' ]+\.css' /tmp/home.html | head -1)
+            STATUS=$(curl -sS -L -o /tmp/home.html -w "%{http_code}" "$CUSTOM_DOMAIN")
+            CSS_PATH=$(grep -oE '/_astro/[^"'\'' ]+\.css' /tmp/home.html | head -1 || true)
             CSS_STATUS=000
             if [ -n "$CSS_PATH" ]; then
-              CSS_STATUS=$(curl -sS -L -o /dev/null -w "%{http_code}" "${SITE_URL}${CSS_PATH}")
+              CSS_STATUS=$(curl -sS -L -o /dev/null -w "%{http_code}" "${CUSTOM_DOMAIN}${CSS_PATH}")
             fi
-            echo "Attempt $i: $SITE_URL -> HTTP $STATUS, CSS $CSS_PATH -> HTTP $CSS_STATUS"
+            echo "Attempt $i: $CUSTOM_DOMAIN -> HTTP $STATUS, CSS ${CSS_PATH:-none} -> HTTP $CSS_STATUS"
             if [ "$STATUS" = "200" ] && [ "$CSS_STATUS" = "200" ]; then
-              echo "Custom domain is live with CSS at $SITE_URL"
+              echo "Custom domain is live with CSS at $CUSTOM_DOMAIN"
               exit 0
+            fi
+            if grep -q 'Site not found' /tmp/home.html 2>/dev/null; then
+              echo "GitHub returned its 'Site not found' page — custom domain is not linked to this repo yet."
             fi
             sleep 20
           done
-          echo "::warning::shubhamsunny.com did not return 200 within the smoke-test window. Deploy may still be propagating — check GitHub Pages settings if this persists."
+
+          cat <<'EOF'
+          ::warning::shubhamsunny.com did not return 200 within the smoke-test window.
+
+          The build and deploy jobs succeeded, but the custom domain is not serving this site yet.
+          Fix in GitHub: Settings → Pages → Custom domain → enter "shubhamsunny.com" → Save → wait for DNS check.
+
+          DNS should be:
+            shubhamsunny.com      A     185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
+            www.shubhamsunny.com  CNAME ShubhamSahaniNitkkr.github.io
+
+          If the domain is already used by another repository, remove it there first.
+          EOF
           exit 1
