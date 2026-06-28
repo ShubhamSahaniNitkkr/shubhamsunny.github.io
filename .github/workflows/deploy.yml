@@ -6,16 +6,17 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
     steps:
       - uses: actions/checkout@v5
 
@@ -34,56 +35,22 @@ jobs:
           CSS_FILE=$(grep -oE '/_astro/[^"'\'' ]+\.css' dist/index.html | head -1 | sed 's|^/||')
           test -f "dist/$CSS_FILE" || (echo "CSS referenced by index.html missing: $CSS_FILE" && exit 1)
 
-      - name: Replace published static files
-        run: |
-          rm -rf \
-            _astro \
-            blog \
-            projects \
-            media \
-            website-redesign-small-business \
-            modernize-outdated-website \
-            website-design-for-dentists \
-            restaurant-website-redesign \
-            professional-services-website
-          rsync -a dist/ ./
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
 
-      - name: Commit and push static site files
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A \
-            index.html \
-            404.html \
-            CNAME \
-            .nojekyll \
-            _astro \
-            _headers \
-            blog \
-            projects \
-            media \
-            favicon.ico \
-            robots.txt \
-            sitemap-0.xml \
-            sitemap-index.xml \
-            sw.js \
-            llms-full.txt \
-            llms.txt \
-            website-redesign-small-business \
-            modernize-outdated-website \
-            website-design-for-dentists \
-            restaurant-website-redesign \
-            professional-services-website
-          if git diff --staged --quiet; then
-            echo "No static site changes to publish."
-            exit 0
-          fi
-          git commit -m "chore: publish site for GitHub Pages [skip ci]"
-          git push
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
 
   verify:
     needs: deploy
-    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
     runs-on: ubuntu-latest
     steps:
       - name: Smoke test live site

@@ -6,3 +6,25 @@ cloudinary-manifest.json
 .DS_Store
 *.tmp.jpg
 public/media/transformations/try-*
+
+# Published static site (deployed by GitHub Actions — source lives in src/ and public/)
+/CNAME
+/index.html
+/404.html
+/_astro/
+/_headers
+/blog/
+/projects/
+/media/
+/website-redesign-small-business/
+/modernize-outdated-website/
+/website-design-for-dentists/
+/restaurant-website-redesign/
+/professional-services-website/
+/llms-full.txt
+/llms.txt
+/robots.txt
+/sitemap-0.xml
+/sitemap-index.xml
+/sw.js
+/favicon.ico
