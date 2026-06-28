@@ -40,8 +40,13 @@ export default defineConfig({
     optimizeDeps: {
       // Vite 8 Rolldown prebundles production React stubs (jsxDEV = void 0) unless
       // NODE_ENV is forced to development during dev dependency optimization.
-      include: ['framer-motion'],
-      exclude: ['react', 'react-dom', 'react/jsx-runtime', 'react/jsx-dev-runtime'],
+      include: [
+        'react',
+        'react-dom',
+        'react/jsx-runtime',
+        'react/jsx-dev-runtime',
+        'framer-motion',
+      ],
     },
     build: {
       cssMinify: true,
@@ -69,11 +74,26 @@ export default defineConfig({
         if (url === 'https://shubhamsunny.com/') {
           item.priority = 1.0;
           item.changefreq = 'weekly';
-        } else if (url.includes('website-redesign') || url.includes('modernize')) {
+        } else if (
+          url.includes('website-redesign') ||
+          url.includes('modernize') ||
+          url.includes('dentists') ||
+          url.includes('restaurant') ||
+          url.includes('professional-services')
+        ) {
           item.priority = 0.9;
+          item.changefreq = 'weekly';
+        } else if (url.includes('/services/')) {
+          item.priority = 0.85;
+          item.changefreq = 'weekly';
+        } else if (url.endsWith('/blog')) {
+          item.priority = 0.8;
           item.changefreq = 'weekly';
         } else if (url.includes('/blog/')) {
           item.priority = 0.75;
+          item.changefreq = 'monthly';
+        } else if (url.includes('/templates') || url.includes('/products')) {
+          item.priority = 0.65;
           item.changefreq = 'monthly';
         } else {
           item.priority = 0.7;

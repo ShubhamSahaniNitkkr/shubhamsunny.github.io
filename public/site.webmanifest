@@ -1,0 +1,17 @@
+{
+  "name": "Shubham Sunny — Website Modernization & Custom Software",
+  "short_name": "Shubham Sunny",
+  "description": "Founder-led website modernization, data scraping, and custom software development since 2018.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

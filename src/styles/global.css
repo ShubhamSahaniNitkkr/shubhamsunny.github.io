@@ -186,6 +186,7 @@ h1, h2, h3, h4 {
   background: linear-gradient(135deg, rgba(37,99,235,0.22), rgba(217,119,6,0.18), rgba(37,99,235,0.14));
 }
 .portrait-frame {
+  border-radius: 0.5rem;
   background: linear-gradient(155deg, #3B82F6 0%, #D97706 45%, #2563EB 100%);
   box-shadow:
     0 2px 4px rgba(0,0,0,0.04),
@@ -360,7 +361,10 @@ h1, h2, h3, h4 {
   mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
 }
 .usecases-marquee-track { display: flex; width: max-content; animation: usecases-marquee 42s linear infinite; will-change: transform; }
-.usecases-marquee:hover .usecases-marquee-track { animation-play-state: paused; }
+.usecases-marquee:hover .usecases-marquee-track,
+.usecases-marquee.is-paused .usecases-marquee-track,
+.usecases-marquee:has(.usecase-card:active) .usecases-marquee-track { animation-play-state: paused; }
+.marquee-group[aria-hidden="true"] { pointer-events: none; }
 
 @keyframes service-stories-marquee {
   from { transform: translateX(0); }

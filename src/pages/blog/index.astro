@@ -19,7 +19,12 @@ function formatDate(iso: string) {
 <BaseLayout
   title={`Blog | ${site.brand}`}
   description="Plain-English insights on websites, data scraping, and custom software — from a developer who ships for real businesses."
+  keywords={`blog, website tips, data scraping, custom software, ${site.seo?.keywords || ''}`}
   canonical={`${site.domain}/blog`}
+  schemaType="blog"
+  pageTitle="Blog"
+  pageDescription="Plain-English insights on websites, data scraping, and custom software — from a developer who ships for real businesses."
+  blogPosts={posts}
 >
   <section class="bg-white section-padding pt-28">
     <div class="mx-auto max-w-7xl">
@@ -34,7 +39,7 @@ function formatDate(iso: string) {
           <a href={`/blog/${post.slug}`} class="group flex flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-violet-200 hover:shadow-lg">
             {post.image && (
               <div class="aspect-[16/10] overflow-hidden bg-zinc-100">
-                <img src={post.image} alt="" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" width="600" height="375" />
+                <img src={post.image} alt={post.title} class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" width="600" height="375" />
               </div>
             )}
             <div class="flex flex-1 flex-col p-5 sm:p-6">

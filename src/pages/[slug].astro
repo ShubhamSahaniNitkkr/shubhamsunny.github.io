@@ -27,8 +27,12 @@ const canonical = `${site.domain}/${page.slug}`;
   title={page.title}
   description={page.description}
   keywords={page.keywords}
+  ogImage={site.seo?.ogImage}
+  ogImageAlt={page.h1}
   canonical={canonical}
   schemaType="service"
+  pageTitle={page.h1}
+  pageDescription={page.description}
   serviceName={page.h1}
   serviceDescription={page.description}
 >

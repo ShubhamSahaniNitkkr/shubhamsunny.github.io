@@ -25,12 +25,31 @@ function formatDate(iso: string) {
 }
 ---
 
-<BaseLayout title={`${post.title} | ${site.brand}`} description={post.excerpt} canonical={canonical}>
-  <article class="bg-white pt-28">
+<BaseLayout
+  title={`${post.title} | ${site.brand}`}
+  description={post.excerpt}
+  keywords={`${post.category || 'blog'}, ${site.seo?.keywords || 'website modernization'}`}
+  canonical={canonical}
+  ogImage={post.image || site.seo?.ogImage}
+  ogImageAlt={post.title}
+  ogType="article"
+  articlePublishedTime={post.publishDate}
+  articleModifiedTime={post.publishDate}
+  articleAuthor={post.author || site.brand}
+  articleSection={post.category}
+  schemaType="blog-post"
+  pageTitle={post.title}
+  pageDescription={post.excerpt}
+  blogPost={post}
+>
+  <article class="bg-white pt-28" itemscope itemtype="https://schema.org/BlogPosting">
+    <meta itemprop="headline" content={post.title} />
+    <meta itemprop="description" content={post.excerpt} />
+    {post.publishDate && <meta itemprop="datePublished" content={post.publishDate} />}
     {post.image && (
       <div class="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-10">
         <div class="aspect-[21/9] overflow-hidden rounded-2xl bg-zinc-100 shadow-lg">
-          <img src={post.image} alt="" class="h-full w-full object-cover" loading="eager" width="1200" height="514" />
+          <img src={post.image} alt={post.title} itemprop="image" class="h-full w-full object-cover" loading="eager" width="1200" height="514" />
         </div>
       </div>
     )}

@@ -16,11 +16,32 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: Claude-Web
+Allow: /
+
 User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Bytespider
 Allow: /
 
 Sitemap: https://shubhamsunny.com/sitemap-index.xml
 
-# LLM / AI discovery (llms.txt convention)
+# LLM / AI discovery
+# ai.txt: https://shubhamsunny.com/ai.txt
 # Summary: https://shubhamsunny.com/llms.txt
 # Full details: https://shubhamsunny.com/llms-full.txt
+# Well-known: https://shubhamsunny.com/.well-known/llms.txt
+# Blog RSS: https://shubhamsunny.com/blog/rss.xml

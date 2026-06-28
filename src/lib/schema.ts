@@ -4,11 +4,28 @@ import testimonials from '../data/testimonials.json';
 import faq from '../data/faq.json';
 import packages from '../data/packages.json';
 
-interface SchemaProps {
-  type?: 'home' | 'service';
+export type SchemaPageType = 'home' | 'service' | 'blog' | 'blog-post' | 'page';
+
+export interface BlogPostSchemaInput {
+  slug: string;
+  title: string;
+  excerpt: string;
+  publishDate: string;
+  category?: string;
+  author?: string;
+  image?: string;
+  sections?: { heading: string; paragraphs: string[] }[];
+}
+
+export interface SchemaProps {
+  type?: SchemaPageType;
   serviceName?: string;
   serviceDescription?: string;
   pageUrl?: string;
+  pageTitle?: string;
+  pageDescription?: string;
+  blogPost?: BlogPostSchemaInput;
+  blogPosts?: BlogPostSchemaInput[];
 }
 
 function absoluteUrl(pathOrUrl: string) {
@@ -124,6 +141,21 @@ export function getPersonSchema() {
   };
 }
 
+export function getWebPageSchema(pageUrl: string, name: string, description: string) {
+  const url = absoluteUrl(pageUrl);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${url}#webpage`,
+    url,
+    name,
+    description,
+    isPartOf: { '@id': `${site.domain}/#website` },
+    about: { '@id': `${site.domain}/#business` },
+    inLanguage: 'en-US',
+  };
+}
+
 export function getFAQSchema() {
   return {
     '@context': 'https://schema.org',
@@ -191,38 +223,131 @@ export function getServiceSchema(serviceName: string, description: string, pageU
     '@type': 'Service',
     name: serviceName,
     description,
-    provider: { '@type': 'ProfessionalService', name: site.brand, url: site.domain },
+    provider: { '@id': `${site.domain}/#business` },
     areaServed: { '@type': 'Country', name: 'United States' },
     url: absoluteUrl(pageUrl),
   };
 }
 
-export function getBreadcrumbSchema(serviceName: string, pageUrl: string) {
+export function getBreadcrumbSchema(items: { name: string; url: string }[]) {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: site.domain },
-      { '@type': 'ListItem', position: 2, name: serviceName, item: absoluteUrl(pageUrl) },
-    ],
+    itemListElement: items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.name,
+      item: absoluteUrl(item.url),
+    })),
+  };
+}
+
+export function getBlogPostingSchema(post: BlogPostSchemaInput, pageUrl: string) {
+  const url = absoluteUrl(pageUrl);
+  const image = post.image
+    ? mediaUrl(post.image)
+    : mediaUrl(site.seo?.ogImage || '/media/team/shubham.jpg');
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    '@id': `${url}#article`,
+    headline: post.title,
+    description: post.excerpt,
+    image,
+    datePublished: post.publishDate,
+    dateModified: post.publishDate,
+    author: {
+      '@type': 'Person',
+      name: post.author || site.brand,
+      url: site.domain,
+    },
+    publisher: { '@id': `${site.domain}/#business` },
+    mainEntityOfPage: { '@id': `${url}#webpage` },
+    url,
+    ...(post.category ? { articleSection: post.category } : {}),
+    inLanguage: 'en-US',
+    ...(post.sections?.length
+      ? {
+          articleBody: post.sections
+            .flatMap((s) => [s.heading, ...(s.paragraphs || [])])
+            .join('\n\n'),
+        }
+      : {}),
+  };
+}
+
+export function getBlogCollectionSchema(posts: BlogPostSchemaInput[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': `${site.domain}/blog#collection`,
+    name: `Blog | ${site.brand}`,
+    description:
+      'Plain-English insights on websites, data scraping, and custom software — from a developer who ships for real businesses.',
+    url: `${site.domain}/blog`,
+    isPartOf: { '@id': `${site.domain}/#website` },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: posts.map((post, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `${site.domain}/blog/${post.slug}`,
+        name: post.title,
+      })),
+    },
   };
 }
 
 export function getAllSchemas(props: SchemaProps = {}) {
-  const reviewSchema = getReviewSchema();
+  const type = props.type || 'page';
+  const pageUrl = props.pageUrl || site.domain;
+  const pageTitle = props.pageTitle || site.seo?.title || site.brand;
+  const pageDescription = props.pageDescription || site.seo?.description || site.tagline;
+
   const schemas: object[] = [
     getWebSiteSchema(),
     getProfessionalServiceSchema(),
     getPersonSchema(),
-    getFAQSchema(),
-    getServiceListSchema(),
+    getWebPageSchema(pageUrl, pageTitle, pageDescription),
   ];
-  if (reviewSchema) schemas.push(reviewSchema);
-  if (props.type === 'service' && props.serviceName) {
+
+  if (type === 'home') {
+    schemas.push(getFAQSchema(), getServiceListSchema());
+    const reviewSchema = getReviewSchema();
+    if (reviewSchema) schemas.push(reviewSchema);
+  }
+
+  if (type === 'service' && props.serviceName) {
     schemas.push(
-      getServiceSchema(props.serviceName, props.serviceDescription || '', props.pageUrl || ''),
-      getBreadcrumbSchema(props.serviceName, props.pageUrl || ''),
+      getServiceSchema(props.serviceName, props.serviceDescription || '', pageUrl),
+      getBreadcrumbSchema([
+        { name: 'Home', url: site.domain },
+        { name: props.serviceName, url: pageUrl },
+      ]),
     );
   }
+
+  if (type === 'blog' && props.blogPosts?.length) {
+    schemas.push(getBlogCollectionSchema(props.blogPosts));
+    schemas.push(
+      getBreadcrumbSchema([
+        { name: 'Home', url: site.domain },
+        { name: 'Blog', url: `${site.domain}/blog` },
+      ]),
+    );
+  }
+
+  if (type === 'blog-post' && props.blogPost) {
+    schemas.push(getBlogPostingSchema(props.blogPost, pageUrl));
+    schemas.push(
+      getBreadcrumbSchema([
+        { name: 'Home', url: site.domain },
+        { name: 'Blog', url: `${site.domain}/blog` },
+        { name: props.blogPost.title, url: pageUrl },
+      ]),
+    );
+  }
+
   return schemas;
 }

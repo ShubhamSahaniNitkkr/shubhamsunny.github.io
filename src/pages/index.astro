@@ -18,8 +18,11 @@ const seo = site.seo || {};
   description={seo.description}
   keywords={seo.keywords}
   ogImage={seo.ogImage}
+  ogImageAlt={`${site.brand} — Website Modernization & Custom Software`}
   canonical={`${site.domain}/`}
   schemaType="home"
+  pageTitle={seo.title}
+  pageDescription={seo.description}
 >
   <AboutHero />
   <ServicesPreview client:visible services={servicesHub} />

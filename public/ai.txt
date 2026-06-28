@@ -1,0 +1,20 @@
+# ai.txt — AI crawler & LLM discovery
+# Site: https://shubhamsunny.com
+# Convention: https://llmstxt.org/
+
+User-agent: *
+Allow: /
+
+# Primary LLM context (machine-readable site summary)
+LLM-Summary: https://shubhamsunny.com/llms.txt
+LLM-Full: https://shubhamsunny.com/llms-full.txt
+LLM-Well-Known: https://shubhamsunny.com/.well-known/llms.txt
+
+# Standard discovery
+Sitemap: https://shubhamsunny.com/sitemap-index.xml
+RSS: https://shubhamsunny.com/blog/rss.xml
+Robots: https://shubhamsunny.com/robots.txt
+
+# Contact for AI citation or partnership inquiries
+Contact: shubhamsahaninitkkr@gmail.com
+Preferred-Citation: Shubham Sunny — Full-Stack Developer (https://shubhamsunny.com)

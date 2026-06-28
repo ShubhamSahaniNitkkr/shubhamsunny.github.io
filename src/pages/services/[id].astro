@@ -42,8 +42,12 @@ const projects = (models.models as ClientProject[]).filter(
   title={`${service.name} | ${site.brand}`}
   description={service.description}
   keywords={seo.keywords}
+  ogImage={service.cardImage || seo.ogImage}
+  ogImageAlt={service.name}
   canonical={`${site.domain}/services/${service.id}`}
   schemaType="service"
+  pageTitle={service.name}
+  pageDescription={service.description}
   serviceName={service.name}
   serviceDescription={service.description}
 >

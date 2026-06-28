@@ -13,8 +13,11 @@ const STATUS_LABEL: Record<string, { text: string; class: string }> = {
 <BaseLayout
   title={`Digital Products & SaaS Tools | ${site.brand}`}
   description="Invite-only SaaS tools and digital products built on special demand for select clients — data dashboards, automation, and client portals."
+  keywords={`digital products, SaaS tools, automation, data dashboard, ${site.seo?.keywords || ''}`}
   canonical={`${site.domain}/products`}
   schemaType="service"
+  pageTitle="Digital Products & SaaS Tools"
+  pageDescription="Invite-only SaaS tools and digital products built on special demand for select clients — data dashboards, automation, and client portals."
   serviceName="Digital Products & SaaS Tools"
   serviceDescription="Custom SaaS tools built on demand for select clients"
 >

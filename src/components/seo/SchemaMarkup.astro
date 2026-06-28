@@ -1,15 +1,38 @@
 ---
-import { getAllSchemas } from '../../lib/schema';
+import { getAllSchemas, type SchemaPageType, type BlogPostSchemaInput } from '../../lib/schema';
 
 interface Props {
-  type?: 'home' | 'service';
+  type?: SchemaPageType;
   serviceName?: string;
   serviceDescription?: string;
   pageUrl?: string;
+  pageTitle?: string;
+  pageDescription?: string;
+  blogPost?: BlogPostSchemaInput;
+  blogPosts?: BlogPostSchemaInput[];
 }
 
-const { type = 'home', serviceName, serviceDescription, pageUrl } = Astro.props;
-const schemas = getAllSchemas({ type, serviceName, serviceDescription, pageUrl });
+const {
+  type = 'page',
+  serviceName,
+  serviceDescription,
+  pageUrl,
+  pageTitle,
+  pageDescription,
+  blogPost,
+  blogPosts,
+} = Astro.props;
+
+const schemas = getAllSchemas({
+  type,
+  serviceName,
+  serviceDescription,
+  pageUrl,
+  pageTitle,
+  pageDescription,
+  blogPost,
+  blogPosts,
+});
 ---
 
 {schemas.map((schema) => (

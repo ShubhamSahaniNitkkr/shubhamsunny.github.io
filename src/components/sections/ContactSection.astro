@@ -50,7 +50,12 @@ const contactQuote =
       </ul>
     </div>
     <div id="contact-form" class="scroll-mt-28 rounded-2xl border border-zinc-200 bg-white p-6 shadow-xl sm:p-8">
-      <ContactForm client:visible web3formsAccessKey={notifications.web3formsAccessKey} />
+      <ContactForm client:load web3formsAccessKey={notifications.web3formsAccessKey} />
     </div>
   </div>
 </SectionBackdrop>
+
+<script>
+  import { initContactPrefill } from '../../lib/contact-prefill';
+  initContactPrefill();
+</script>

@@ -27,5 +27,17 @@
   Cache-Control: public, max-age=3600
   Content-Type: text/plain; charset=utf-8
 
+/ai.txt
+  Cache-Control: public, max-age=3600
+  Content-Type: text/plain; charset=utf-8
+
+/.well-known/llms.txt
+  Cache-Control: public, max-age=3600
+  Content-Type: text/plain; charset=utf-8
+
+/blog/rss.xml
+  Cache-Control: public, max-age=3600
+  Content-Type: application/rss+xml; charset=utf-8
+
 /*.xml
   Cache-Control: public, max-age=86400

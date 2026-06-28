@@ -7,7 +7,11 @@ import site from '../data/site.json';
 <BaseLayout
   title={`Projects | ${site.brand}`}
   description="Selected client work — descriptions only. Most projects stay private under NDA; demos are not public."
+  keywords={`portfolio, client projects, website modernization, ${site.seo?.keywords || ''}`}
   canonical={`${site.domain}/projects`}
+  schemaType="page"
+  pageTitle="Selected Work & Portfolio"
+  pageDescription="Selected client work — descriptions only. Most projects stay private under NDA; demos are not public."
 >
   <section class="section-padding bg-white pt-28">
     <div class="mx-auto max-w-6xl">

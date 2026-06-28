@@ -48,16 +48,20 @@ function CardImage({ src, alt, fallback, category }: { src: string; alt: string;
 function UseCaseCard({
   item,
   onSelect,
+  onActivate,
 }: {
   item: UseCase;
   onSelect: (item: UseCase) => void;
+  onActivate?: () => void;
 }) {
   const catColor = CATEGORY_COLOR[item.category] || 'bg-zinc-100 text-zinc-700';
   return (
     <button
       type="button"
+      data-use-case-id={item.id}
+      onPointerDown={() => onActivate?.()}
       onClick={() => onSelect(item)}
-      className="flex w-[min(88vw,320px)] shrink-0 flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white text-left shadow-sm transition hover:border-violet-300 hover:shadow-lg sm:w-[340px]"
+      className="usecase-card flex w-[min(88vw,320px)] shrink-0 cursor-pointer flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white text-left shadow-sm transition hover:border-violet-300 hover:shadow-lg sm:w-[340px]"
     >
       <div className="relative h-[150px] w-full shrink-0 overflow-hidden bg-zinc-100 sm:h-[165px]">
         <CardImage
@@ -91,9 +95,12 @@ function UseCaseCard({
 
 export default function UseCasesMarquee({ items }: Props) {
   const [active, setActive] = useState<UseCase | null>(null);
+  const [marqueePaused, setMarqueePaused] = useState(false);
 
   if (!items.length) return null;
   const groupItems = expandMarqueeItems(items);
+  const pauseMarquee = () => setMarqueePaused(true);
+  const resumeMarquee = () => setMarqueePaused(false);
 
   return (
     <>
@@ -104,16 +111,24 @@ export default function UseCasesMarquee({ items }: Props) {
           ))}
         </div>
       </div>
-      <div className="usecases-marquee hidden w-full overflow-hidden pb-2 sm:block">
+      <div
+        className={`usecases-marquee hidden w-full overflow-hidden pb-2 sm:block${marqueePaused || active ? ' is-paused' : ''}`}
+        onPointerEnter={pauseMarquee}
+        onPointerLeave={resumeMarquee}
+        onFocusCapture={pauseMarquee}
+        onBlurCapture={(e) => {
+          if (!e.currentTarget.contains(e.relatedTarget as Node | null)) resumeMarquee();
+        }}
+      >
         <div className="usecases-marquee-track flex w-max flex-nowrap items-stretch px-4 sm:px-6">
           <div className="marquee-group">
             {groupItems.map((item, i) => (
-              <UseCaseCard key={`a-${item.id}-${i}`} item={item} onSelect={setActive} />
+              <UseCaseCard key={`a-${item.id}-${i}`} item={item} onSelect={setActive} onActivate={pauseMarquee} />
             ))}
           </div>
-          <div className="marquee-group" aria-hidden="true">
+          <div className="marquee-group pointer-events-none" aria-hidden="true">
             {groupItems.map((item, i) => (
-              <UseCaseCard key={`b-${item.id}-${i}`} item={item} onSelect={setActive} />
+              <UseCaseCard key={`b-${item.id}-${i}`} item={item} onSelect={setActive} onActivate={pauseMarquee} />
             ))}
           </div>
         </div>

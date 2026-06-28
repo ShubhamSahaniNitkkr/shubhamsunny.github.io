@@ -1,60 +1,51 @@
-import { useState, useEffect } from 'react';
-import { siteConfig, getContactFormEmailUrl, mapServiceOption } from '../../lib/utils';
+import { useState, useEffect, useLayoutEffect } from 'react';
+import { getContactFormEmailUrl } from '../../lib/utils';
+import {
+  applyContactPrefillToDom,
+  bootContactPrefill,
+  readCachedContactPrefill,
+} from '../../lib/contact-prefill';
 
 interface Props {
   web3formsAccessKey?: string;
 }
 
-function readPrefillFromUrl() {
-  const params = new URLSearchParams(window.location.search);
-  const serviceRaw = params.get('service') || params.get('package') || '';
-  const message = params.get('message') || '';
-  const intent = params.get('intent') || '';
-
-  let service = serviceRaw ? mapServiceOption(serviceRaw) : '';
-  if (!service && serviceRaw) service = serviceRaw;
-
-  let prefillMessage = message;
-  if (!prefillMessage && intent === 'consultation') {
-    prefillMessage = siteConfig.emailMessages?.consultation || siteConfig.whatsappMessages?.consultation || '';
-  }
-
-  return { service, message: prefillMessage };
-}
-
-function scrollToForm() {
-  const el = document.getElementById('contact-form');
-  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  window.setTimeout(() => {
-    document.getElementById('contact-message')?.focus();
-  }, 400);
-}
-
 export default function ContactForm({ web3formsAccessKey = '' }: Props) {
+  const initial = readCachedContactPrefill();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [service, setService] = useState('');
-  const [message, setMessage] = useState('');
+  const [service, setService] = useState(initial.service);
+  const [message, setMessage] = useState(initial.message);
   const [sending, setSending] = useState(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'gmail' | 'error'>('idle');
 
   const accessKey = String(web3formsAccessKey || import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || '').trim();
 
+  useLayoutEffect(() => {
+    const applied = applyContactPrefillToDom();
+    if (applied?.service) setService(applied.service);
+    if (applied?.message) setMessage(applied.message);
+  }, []);
+
   useEffect(() => {
-    const applyPrefill = () => {
-      const { service: s, message: m } = readPrefillFromUrl();
-      if (s) setService(s);
-      if (m) setMessage(m);
-      if (window.location.hash === '#contact') scrollToForm();
+    const syncPrefill = () => {
+      bootContactPrefill();
+      const applied = readCachedContactPrefill();
+      if (applied.service) setService(applied.service);
+      if (applied.message) setMessage(applied.message);
     };
 
-    applyPrefill();
-    window.addEventListener('hashchange', applyPrefill);
-    window.addEventListener('ss-prefill-contact', applyPrefill);
+    syncPrefill();
+    window.addEventListener('hashchange', syncPrefill);
+    window.addEventListener('popstate', syncPrefill);
+    window.addEventListener('pageshow', syncPrefill);
+    window.addEventListener('ss-prefill-contact', syncPrefill);
     return () => {
-      window.removeEventListener('hashchange', applyPrefill);
-      window.removeEventListener('ss-prefill-contact', applyPrefill);
+      window.removeEventListener('hashchange', syncPrefill);
+      window.removeEventListener('popstate', syncPrefill);
+      window.removeEventListener('pageshow', syncPrefill);
+      window.removeEventListener('ss-prefill-contact', syncPrefill);
     };
   }, []);
 
