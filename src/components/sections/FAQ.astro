@@ -1,5 +1,6 @@
 ---
 import FAQSection from './FAQSection';
+import SectionBackdrop from '../ui/SectionBackdrop.astro';
 import faq from '../../data/faq.json';
 
 interface Props {
@@ -9,4 +10,14 @@ interface Props {
 const { limit } = Astro.props;
 ---
 
-<FAQSection client:visible items={faq} limit={limit} />
+<SectionBackdrop
+  id="faq"
+  eyebrow="FAQ"
+  title="Good to know"
+  subtitle="Clear answers to common questions about our services and process."
+  image="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1920&q=80"
+  imageAlt="Guides and answers"
+  overlay="from-emerald-600/90 via-emerald-800/80 to-emerald-950/95"
+>
+  <FAQSection client:visible items={faq} limit={limit} />
+</SectionBackdrop>

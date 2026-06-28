@@ -4,6 +4,27 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
+/** @type {import('vite').Plugin} */
+function devReactOptimize() {
+  return {
+    name: 'dev-react-optimize',
+    config(_, { command }) {
+      if (command !== 'serve') return;
+      return {
+        optimizeDeps: {
+          rolldownOptions: {
+            transform: {
+              define: {
+                'process.env.NODE_ENV': '"development"',
+              },
+            },
+          },
+        },
+      };
+    },
+  };
+}
+
 export default defineConfig({
   site: 'https://shubhamsunny.com',
   trailingSlash: 'never',
@@ -12,18 +33,15 @@ export default defineConfig({
     inlineStylesheets: 'auto',
   },
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss(), devReactOptimize()],
     resolve: {
       dedupe: ['react', 'react-dom'],
     },
     optimizeDeps: {
-      include: [
-        'react',
-        'react-dom',
-        'react/jsx-runtime',
-        'react/jsx-dev-runtime',
-        'framer-motion',
-      ],
+      // Vite 8 Rolldown prebundles production React stubs (jsxDEV = void 0) unless
+      // NODE_ENV is forced to development during dev dependency optimization.
+      include: ['framer-motion'],
+      exclude: ['react', 'react-dom', 'react/jsx-runtime', 'react/jsx-dev-runtime'],
     },
     build: {
       cssMinify: true,
@@ -31,8 +49,6 @@ export default defineConfig({
         output: {
           manualChunks(id) {
             if (id.includes('framer-motion')) return 'motion';
-            if (id.includes('node_modules/react-dom')) return 'react-dom';
-            if (id.includes('node_modules/react/')) return 'react';
           },
         },
       },

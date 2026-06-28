@@ -4,11 +4,14 @@ import site from '../../data/site.json';
 import social from '../../data/social.json';
 import HeroTechAnimation from '../ui/HeroTechAnimation';
 import PortraitShine from '../ui/PortraitShine.astro';
+import PortraitExpertiseRotator from '../ui/PortraitExpertiseRotator';
 import SocialLinks from '../ui/SocialLinks.astro';
 import ReviewsMarquee from '../ui/ReviewsMarquee';
 import { getConsultationEmailUrl } from '../../lib/utils';
 
 const expertise = about.expertise?.length ? about.expertise : site.expertise || [];
+const rotatingExpertise = new Set(['Website Modernization', 'Data Scraping', 'Custom Software']);
+const staticExpertise = expertise.filter((skill) => !rotatingExpertise.has(skill));
 const standards = about.standards?.length ? about.standards : [];
 const clientCount = site.stats?.happyClients ?? 0;
 const fiverrRating = site.stats?.fiverrRating ?? social.fiverrReviews?.rating;
@@ -18,28 +21,28 @@ const fiverrReviewCount = social.fiverrReviews?.totalReviews;
 <section id="about" class="about-hero relative flex min-h-[100dvh] flex-col overflow-hidden">
   <HeroTechAnimation client:load />
 
-  {/* Premium positioning strip — first thing visitors read */}
   <div class="premium-strip relative z-20 border-b border-amber-200/60 bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 px-4 pb-2.5 pt-[4.75rem] text-center sm:px-6">
     <p class="text-xs font-medium leading-relaxed text-zinc-300 sm:text-sm">
       <span class="text-amber-400">◆</span>
-      {about.selectivityLine || 'We do not work with everyone — only with clients who have a vision and serious standards.'}
+      {about.selectivityLine || '8 years · 120+ clients · Founder-led on every project'}
       <span class="text-amber-400"> ◆</span>
     </p>
   </div>
 
   <div class="relative z-10 flex flex-[65] flex-col justify-center px-4 pb-4 pt-8 sm:px-6 sm:pt-10 lg:px-10">
-    <div class="mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[minmax(260px,340px)_1fr] lg:gap-16">
-      <div class="reveal-up mx-auto w-full max-w-[300px] lg:mx-0 lg:max-w-none">
+    <div class="mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[minmax(300px,400px)_1fr] lg:gap-16">
+      <div class="reveal-up mx-auto flex w-full max-w-[380px] flex-col lg:mx-0 lg:max-w-none lg:self-stretch">
         <PortraitShine src={about.portrait} alt={about.portraitAlt} />
+        <PortraitExpertiseRotator client:visible />
       </div>
 
       <div class="text-center lg:text-left">
         <div class="reveal-up inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-1.5">
           <span class="text-amber-600" aria-hidden="true">◆</span>
-          <span class="text-xs font-semibold tracking-wide text-amber-900">{about.statusBadge || 'Select projects · High standards'}</span>
+          <span class="text-xs font-semibold tracking-wide text-amber-900">{about.statusBadge || '8+ years in business · Reply within 24h'}</span>
         </div>
 
-        <p class="reveal-up reveal-delay-1 mt-5 text-xs font-bold uppercase tracking-[0.2em] text-zinc-500">{about.eyebrow || 'Premium Development Studio'}</p>
+        <p class="reveal-up reveal-delay-1 mt-5 text-xs font-bold uppercase tracking-[0.2em] text-zinc-500">{about.eyebrow || '8+ Years · Websites & Software'}</p>
         <h1 class="reveal-up reveal-delay-2 mt-2 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
           <span class="text-gradient">{about.headline}</span>
         </h1>
@@ -61,16 +64,16 @@ const fiverrReviewCount = social.fiverrReviews?.totalReviews;
           </p>
         )}
 
-        {expertise.length > 0 && (
+        {staticExpertise.length > 0 && (
           <div class="reveal-up reveal-delay-5 mt-6 flex flex-wrap justify-center gap-2 lg:justify-start">
-            {expertise.map((skill) => (
+            {staticExpertise.map((skill) => (
               <span class="expertise-pill">{skill}</span>
             ))}
           </div>
         )}
 
         <div class="reveal-up reveal-delay-6 mt-7 flex flex-col gap-3 sm:flex-row lg:justify-start">
-          <a href={getConsultationEmailUrl()} class="btn-glow w-full sm:w-auto">Request a Conversation</a>
+          <a href={getConsultationEmailUrl()} class="btn-glow w-full sm:w-auto">Get in Touch</a>
           <a href="#services" class="btn-ghost w-full sm:w-auto">Explore Services</a>
         </div>
 

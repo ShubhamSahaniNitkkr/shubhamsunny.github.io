@@ -8,18 +8,18 @@ interface Props {
   height?: number;
 }
 
-const { src, alt, width = 640, height = 800 } = Astro.props;
+const { src, alt, width = 600, height = 800 } = Astro.props;
 const imgSrc = getCloudinaryUrl(src, width, height);
 ---
 
-<div class="portrait-wrap relative mx-auto w-full max-w-[340px] lg:max-w-none">
-  <div class="portrait-glow absolute -inset-4 rounded-[2rem] opacity-60 blur-2xl" aria-hidden="true"></div>
-  <div class="portrait-frame relative overflow-hidden rounded-[1.75rem] p-[2px]">
-    <div class="portrait-inner overflow-hidden rounded-[1.65rem] bg-[#12121a]">
+<div class="portrait-wrap relative mx-auto w-full max-w-[340px] sm:max-w-[380px] lg:max-w-none lg:h-full">
+  <div class="portrait-glow absolute -inset-6 opacity-70 blur-3xl" aria-hidden="true"></div>
+  <div class="portrait-frame relative h-full overflow-hidden p-[2px]">
+    <div class="portrait-inner relative h-full overflow-hidden bg-[#12121a]">
       <img
         src={imgSrc}
         alt={alt}
-        class="aspect-[4/5] w-full object-cover object-top"
+        class="aspect-[3/4] w-full object-cover object-[center_12%] lg:aspect-auto lg:min-h-[min(68vh,620px)] lg:h-full"
         width={width}
         height={height}
         fetchpriority="high"

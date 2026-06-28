@@ -3,6 +3,11 @@ import ContactForm from './ContactForm';
 import SectionBackdrop from '../ui/SectionBackdrop.astro';
 import ContactFloatingReviews from '../ui/ContactFloatingReviews';
 import notifications from '../../data/notifications.json';
+import about from '../../data/about.json';
+
+const contactQuote =
+  about.contactQuote ||
+  "I've been running this studio since 2018. If we take your project, you talk to real people — not a ticket queue — and get straight answers on timeline and cost.";
 ---
 
 <SectionBackdrop
@@ -30,11 +35,7 @@ import notifications from '../../data/notifications.json';
       </div>
 
       <blockquote class="mt-6 rounded-2xl border border-white/15 bg-white/10 p-5 text-sm leading-relaxed text-white/95 backdrop-blur-sm">
-        <p>
-          We work with clients who are genuinely passionate about their work and vision.
-          Our name matters more than a quick payout — money can be earned again, but trust,
-          once lost, is nearly impossible to rebuild at the same level.
-        </p>
+        <p>{contactQuote}</p>
       </blockquote>
 
       <ul class="mt-5 space-y-3 text-sm">

@@ -25,7 +25,7 @@ function formatDate(iso: string) {
       <a href="/blog" class="btn-ghost shrink-0 self-start sm:self-auto">All articles →</a>
     </div>
 
-    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="mobile-swipe-cards mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {posts.map((post) => (
         <a href={`/blog/${post.slug}`} class="group flex flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-violet-200 hover:shadow-md">
           {post.image && (

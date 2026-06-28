@@ -1,9 +1,9 @@
 {
   "brand": "Shubham Sunny",
-  "tagline": "Premium Development · Vision-First Clients Only",
-  "headline": "Developers for Businesses With a Vision",
-  "bioShort": "We are a selective development studio — we partner with premium clients who know where they are going, not businesses looking for the cheapest quote.",
-  "bioLong": "We do not take every project. If you have a clear goal and care about quality, we can talk. Websites, data work, and custom software — founder-led, with a small core team and trusted specialists when a build needs extra hands.",
+  "tagline": "Website & Software Development · Since 2018",
+  "headline": "I help businesses fix websites, scrape data, and build software that works",
+  "bioShort": "I've been building websites and custom software for US and global clients since 2018 — 163+ projects, mostly repeat work and referrals.",
+  "bioLong": "Eight years in, the work is still straightforward: understand what you need, build it properly, and hand it over with clear docs so you are not stuck for every small change. I review every project personally. Deep handles QA, Shushma runs people and outreach, and Vinay keeps larger builds on track.",
   "expertise": [
     "Website Modernization",
     "Data Scraping",
@@ -21,7 +21,7 @@
   "domain": "https://shubhamsunny.com",
   "seo": {
     "title": "Shubham Sunny | Website Modernization, Data Scraping & Custom Software",
-    "description": "Founder-led studio helping businesses modernize websites, scrape data at scale, and build custom software. 8+ years, 163+ projects. Based in India, serving US & global clients.",
+    "description": "Founder-led development since 2018 — website modernization, data scraping, and custom software. 8+ years, 163+ projects. Based in India, serving US & global clients.",
     "keywords": "website modernization, data scraping, custom software, web app development, mobile app, chrome extension, telegram bot, whatsapp bot",
     "ogImage": "/media/team/shubham.jpg"
   },
@@ -33,7 +33,7 @@
     "googleRating": 4.9
   },
   "certifications": [
-    "8+ Years Experience"
+    "8+ Years · Since 2018"
   ],
   "whatsappMessages": {
     "consultation": "Hi Shubham, I saw your website. I'd like a free review of my business website.",

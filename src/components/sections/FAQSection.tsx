@@ -16,15 +16,8 @@ export default function FAQSection({ items, limit }: Props) {
   }
 
   return (
-    <section id="faq" className="bg-zinc-50 section-padding">
-      <div className="mx-auto max-w-7xl">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="section-eyebrow">FAQ</p>
-          <h2 className="section-title mt-2">Good to know</h2>
-          <p className="section-subtitle mx-auto mt-2">Plain answers — tap a card to read one at a time.</p>
-        </div>
-
-        <div className="mx-auto mt-8 grid max-w-4xl grid-cols-1 items-start gap-2.5 sm:grid-cols-2 sm:gap-3">
+    <div className="mx-auto max-w-4xl">
+        <div className="mobile-swipe-cards grid grid-cols-1 items-start gap-3 md:grid-cols-2">
           {displayItems.map((item) => {
             const id = item.question;
             const isOpen = openId === id;
@@ -32,26 +25,29 @@ export default function FAQSection({ items, limit }: Props) {
               <div
                 key={id}
                 className={`self-start rounded-xl border bg-white transition-shadow ${
-                  isOpen ? 'border-violet-200 shadow-md ring-1 ring-violet-100' : 'border-zinc-200 shadow-sm hover:border-zinc-300'
+                  isOpen ? 'border-zinc-300 shadow-md' : 'border-zinc-200 shadow-sm hover:border-zinc-300'
                 }`}
               >
                 <button
                   type="button"
                   onClick={() => toggle(id)}
-                  className="flex w-full items-start justify-between gap-2 p-3.5 text-left sm:p-4"
+                  className="flex w-full items-center justify-between gap-3 p-4 text-left sm:p-5"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-[13px] font-semibold leading-snug text-zinc-900 sm:text-sm">{item.question}</span>
-                  <span
-                    className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[11px] font-bold transition ${
-                      isOpen ? 'rotate-45 bg-violet-600 text-white' : 'bg-zinc-100 text-zinc-500'
-                    }`}
+                  <span className="text-sm font-medium leading-snug text-zinc-900">{item.question}</span>
+                  <svg
+                    className={`h-4 w-4 shrink-0 text-zinc-400 transition-transform duration-200 ${isOpen ? 'rotate-180 text-zinc-700' : ''}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    aria-hidden="true"
                   >
-                    +
-                  </span>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
                 </button>
                 {isOpen ? (
-                  <p className="border-t border-violet-50 px-3.5 pb-3.5 text-[13px] leading-relaxed text-zinc-600 sm:px-4 sm:pb-4">
+                  <p className="border-t border-zinc-100 px-4 pb-4 text-sm leading-relaxed text-zinc-600 sm:px-5 sm:pb-5">
                     {item.answer}
                   </p>
                 ) : null}
@@ -60,7 +56,7 @@ export default function FAQSection({ items, limit }: Props) {
           })}
         </div>
 
-        <div className="mx-auto mt-8 max-w-4xl">
+        <div className="mt-8">
           <a
             href={getContactUrl({ message: 'I have a question:\n\n', intent: 'general' })}
             className="group flex w-full items-center gap-4 rounded-2xl border-2 border-dashed border-violet-300/80 bg-gradient-to-br from-violet-50 via-white to-indigo-50 px-4 py-4 text-left shadow-sm transition hover:border-violet-400 hover:shadow-md sm:px-5 sm:py-5"
@@ -80,7 +76,6 @@ export default function FAQSection({ items, limit }: Props) {
             </span>
           </a>
         </div>
-      </div>
-    </section>
+    </div>
   );
 }

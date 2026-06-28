@@ -1,17 +1,19 @@
 {
-  "eyebrow": "Premium Development Studio",
-  "headline": "Developers for Businesses With a Vision",
-  "bioShort": "We are a selective development studio — we partner with premium clients who know where they are going, not businesses looking for the cheapest quote.",
-  "bioLong": "We do not take every project. If you have a clear goal and care about quality, we can talk. Websites, data work, and custom software — founder-led, with a small core team and trusted specialists when a build needs extra hands.",
-  "selectivityLine": "We do not work with everyone — only with clients who have a vision, clear goals, and the standards to match.",
+  "eyebrow": "8+ Years · Websites & Software",
+  "headline": "I help businesses fix websites, scrape data, and build software that works",
+  "bioShort": "I've been building websites and custom software for US and global clients since 2018 — 163+ projects, mostly repeat work and referrals.",
+  "bioLong": "Eight years in, the work is still straightforward: understand what you need, build it properly, and hand it over with clear docs so you are not stuck for every small change. I review every project personally. Deep handles QA, Shushma runs people and outreach, and Vinay keeps larger builds on track.",
+  "selectivityLine": "8 years · 120+ clients · Founder-led on every project",
   "standards": [
-    "Vision-first clients",
-    "Hands-on founder review",
-    "Selective engagements",
-    "No cookie-cutter work"
+    "8+ years experience",
+    "Founder reviews every build",
+    "US & UK time zones",
+    "Clear pricing upfront"
   ],
-  "statusBadge": "Select projects · High standards",
-  "philosophy": "We say no to most inquiries — so the yes means something.",
+  "statusBadge": "8+ years in business · Reply within 24h",
+  "philosophy": "I'd rather take a week longer and ship something solid than rush something you'll need fixed in a month.",
+  "contactQuote": "I've been running this studio since 2018. If we take your project, you talk to real people — not a ticket queue — and get straight answers on timeline and cost.",
+  "teamIntro": "A small core team we have worked with for years — founder-led development, QA, delivery, and HR. For bigger builds we bring in trusted specialists, not random freelancers.",
   "expertise": [
     "Website Modernization",
     "Data Scraping",

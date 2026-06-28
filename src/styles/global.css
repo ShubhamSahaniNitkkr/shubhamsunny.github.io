@@ -174,12 +174,56 @@ h1, h2, h3, h4 {
 }
 
 /* ── Portrait ── */
+.portrait-wrap {
+  animation: portrait-float 7s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes portrait-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
 .portrait-glow {
-  background: linear-gradient(135deg, rgba(37,99,235,0.15), rgba(217,119,6,0.12));
+  background: linear-gradient(135deg, rgba(37,99,235,0.22), rgba(217,119,6,0.18), rgba(37,99,235,0.14));
 }
 .portrait-frame {
-  background: linear-gradient(145deg, #2563EB, #D97706);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+  background: linear-gradient(155deg, #3B82F6 0%, #D97706 45%, #2563EB 100%);
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.04),
+    0 8px 20px rgba(37,99,235,0.14),
+    0 20px 48px rgba(0,0,0,0.10),
+    0 32px 64px rgba(217,119,6,0.10);
+}
+.portrait-inner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.18),
+    inset 0 -24px 48px rgba(0,0,0,0.18);
+  pointer-events: none;
+}
+.portrait-expertise-slot {
+  min-height: 2.5rem;
+}
+.portrait-expertise-pill {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+.portrait-expertise-in {
+  animation: portrait-rubber-in 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.portrait-expertise-out {
+  animation: portrait-rubber-out 0.16s ease-in forwards;
+}
+@keyframes portrait-rubber-in {
+  0% { opacity: 0; transform: scale(0.7) translateY(10px); }
+  55% { transform: scale(1.1) translateY(-3px); }
+  75% { transform: scale(0.96) translateY(1px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes portrait-rubber-out {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.85) translateY(-6px); }
 }
 .portrait-shimmer {
   background: linear-gradient(105deg, transparent 42%, rgba(255,255,255,0.4) 50%, transparent 58%);
@@ -280,7 +324,12 @@ h1, h2, h3, h4 {
   margin-left: calc(50% - 50vw);
   mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
 }
-.reviews-marquee-track { animation: reviews-marquee 50s linear infinite; will-change: transform; }
+.reviews-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: reviews-marquee 50s linear infinite;
+  will-change: transform;
+}
 .reviews-marquee:hover .reviews-marquee-track { animation-play-state: paused; }
 
 @keyframes contact-float {
@@ -296,7 +345,7 @@ h1, h2, h3, h4 {
   to { transform: translateX(-50%); }
 }
 .ba-marquee { overflow: hidden; mask-image: linear-gradient(90deg, transparent, black 4%, black 96%, transparent); }
-.ba-marquee-track { animation: ba-marquee 55s linear infinite; }
+.ba-marquee-track { display: flex; width: max-content; animation: ba-marquee 55s linear infinite; will-change: transform; }
 .ba-marquee:hover .ba-marquee-track { animation-play-state: paused; }
 
 @keyframes usecases-marquee {
@@ -310,15 +359,32 @@ h1, h2, h3, h4 {
   margin-left: calc(50% - 50vw);
   mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
 }
-.usecases-marquee-track { animation: usecases-marquee 42s linear infinite; }
+.usecases-marquee-track { display: flex; width: max-content; animation: usecases-marquee 42s linear infinite; will-change: transform; }
 .usecases-marquee:hover .usecases-marquee-track { animation-play-state: paused; }
 
 @keyframes service-stories-marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
-.service-stories-marquee-track { animation: service-stories-marquee 45s linear infinite; will-change: transform; }
+.service-stories-marquee {
+  overflow: hidden;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+}
+.service-stories-marquee-track { display: flex; width: max-content; animation: service-stories-marquee 45s linear infinite; will-change: transform; }
 .service-stories-marquee:hover .service-stories-marquee-track { animation-play-state: paused; }
+
+.marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  gap: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 640px) {
+  .marquee-group { gap: 1.25rem; padding-right: 1.25rem; }
+}
 
 /* ── Hero tech background ── */
 .hero-tech-bg { z-index: 0; }
@@ -484,11 +550,54 @@ h1, h2, h3, h4 {
 
 @media (prefers-reduced-motion: reduce) {
   .reveal-up { opacity: 1; transform: none; transition: none; }
-  .reviews-marquee-track, .ba-marquee-track, .usecases-marquee-track, .service-stories-marquee-track, .portrait-shimmer,
+  .reviews-marquee-track, .ba-marquee-track, .usecases-marquee-track, .service-stories-marquee-track, .portrait-wrap, .portrait-shimmer, .portrait-expertise-pill,
   .hero-tech-grid, .hero-tech-orb, .hero-tech-scan, .hero-tech-chip { animation: none; }
   .service-panel-v2 { transition: none; }
 }
 
 @media (max-width: 639px) {
+  .mobile-swipe-cards {
+    display: flex !important;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    grid-template-columns: unset !important;
+    margin-inline: -1rem;
+    padding-inline: 1rem;
+    scroll-padding-inline: 1rem;
+  }
+  .mobile-swipe-cards::-webkit-scrollbar { display: none; }
+  .mobile-swipe-cards > * {
+    flex: 0 0 min(88vw, 320px);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  .mobile-swipe-cards:has(> :only-child) {
+    justify-content: center;
+  }
+  .mobile-swipe-cards:has(> :only-child) > * {
+    flex-basis: 100%;
+    max-width: 20rem;
+  }
+
+  .usecases-swipe {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-inline: -1rem;
+    padding-inline: 1rem;
+    scroll-padding-inline: 1rem;
+  }
+  .usecases-swipe::-webkit-scrollbar { display: none; }
+  .usecases-swipe-track > * {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
   .chat-panel { border-radius: 1rem; max-height: min(90vh, 640px) !important; }
 }

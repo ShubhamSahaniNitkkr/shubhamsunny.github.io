@@ -356,7 +356,17 @@ export default function ServiceDetailPage({
                           ))}
                         </ul>
                       )}
-                      {locked && (
+                      {proj.liveUrl && (
+                        <a
+                          href={proj.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-accent mt-4 inline-flex !text-xs"
+                        >
+                          Live →
+                        </a>
+                      )}
+                      {locked && !proj.liveUrl && (
                         <p className="mt-4 rounded-lg border border-amber-100 bg-amber-50 px-3 py-2 text-xs leading-relaxed text-amber-900">
                           🔒 Not permitted to show live demo or client branding publicly — description only.
                         </p>

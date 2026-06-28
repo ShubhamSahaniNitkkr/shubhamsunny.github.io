@@ -54,6 +54,13 @@ console.log('\n🚀 Starting dev server (Excel auto-sync enabled)\n');
 
 clearStaleDevServer();
 
+// Drop stale Vite dep cache so a prior production build cannot poison dev React.
+try {
+  fs.rmSync(path.join(root, 'node_modules', '.vite'), { recursive: true, force: true });
+} catch {
+  // Cache may not exist yet.
+}
+
 const child = spawn('npx', ['astro', 'dev', '--force'], {
   cwd: root,
   stdio: 'inherit',

@@ -11,7 +11,7 @@
       "1 revision round",
       "Launch support"
     ],
-    "description": "For sites that need a quick professional upgrade without a full rebuild.",
+    "description": "Quick fixes when your site mostly works but looks dated or slow on phones.",
     "startingFrom": true
   },
   {
@@ -27,7 +27,7 @@
       "WhatsApp / chat link",
       "2 revision rounds"
     ],
-    "description": "Our most popular package — a complete trust makeover for your business.",
+    "description": "Full redesign for small businesses — the package most clients pick when their site needs a proper refresh, not just a patch.",
     "mostPopular": true
   },
   {
@@ -43,6 +43,6 @@
       "Priority support",
       "3 revision rounds"
     ],
-    "description": "For businesses ready to grow online and capture more leads."
+    "description": "For businesses that want blog, analytics, and lead capture built in from day one."
   }
 ]

@@ -1,10 +1,11 @@
 import testimonials from '../../data/testimonials.json';
 import type { Testimonial } from '../../types';
+import { expandMarqueeItems } from '../../lib/marquee';
 
 const items = (testimonials as Testimonial[]).filter(
   (t) => t.type !== 'video' && t.featured && t.rating >= 5,
 );
-const doubled = [...items, ...items];
+const groupItems = expandMarqueeItems(items);
 
 const COUNTRY_FLAG: Record<string, string> = {
   'United States': '🇺🇸',
@@ -53,61 +54,72 @@ function Stars({ rating }: { rating: number }) {
   );
 }
 
+function ReviewCard({ item, index }: { item: Testimonial; index: number }) {
+  const flag = item.country ? COUNTRY_FLAG[item.country] || '🌍' : '';
+  const gradient = CARD_GRADIENTS[index % CARD_GRADIENTS.length];
+
+  return (
+    <article
+      className={`relative flex w-[min(88vw,340px)] shrink-0 flex-col overflow-hidden rounded-2xl bg-gradient-to-br ${gradient} p-4 shadow-lg sm:w-[340px]`}
+    >
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.12),transparent_60%)]" aria-hidden="true" />
+
+      <div className="relative flex items-start gap-3">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/20 text-sm font-bold text-white ring-2 ring-white/30 backdrop-blur-sm">
+          {initials(item.name)}
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="text-sm font-bold text-white">{item.name}</p>
+          <p className="text-[11px] text-white/70">
+            {flag} {item.country}
+            {item.date && <span className="text-white/40"> · </span>}
+            {item.date}
+          </p>
+          <Stars rating={item.rating} />
+        </div>
+      </div>
+
+      {item.projectType && (
+        <span className="relative mt-3 inline-flex w-fit rounded-md bg-white/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white/90 backdrop-blur-sm">
+          {item.projectType}
+        </span>
+      )}
+
+      <p className="relative mt-2 line-clamp-3 flex-1 text-[13px] leading-relaxed text-white/90">&ldquo;{item.text}&rdquo;</p>
+
+      {item.sourceUrl && (
+        <a
+          href={item.sourceUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative mt-3 inline-flex items-center gap-1.5 text-[11px] font-semibold text-white/90 transition hover:text-white"
+        >
+          <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-white text-[9px] font-bold text-emerald-600">f</span>
+          Verified on Fiverr
+        </a>
+      )}
+    </article>
+  );
+}
+
+function ReviewGroup({ groupKey, ariaHidden = false }: { groupKey: string; ariaHidden?: boolean }) {
+  return (
+    <div className="marquee-group" aria-hidden={ariaHidden || undefined}>
+      {groupItems.map((item, i) => (
+        <ReviewCard key={`${groupKey}-${item.id}-${i}`} item={item} index={i % items.length} />
+      ))}
+    </div>
+  );
+}
+
 export default function ReviewsMarquee() {
   if (!items.length) return null;
 
   return (
     <div className="reviews-marquee overflow-hidden pb-2">
-      <div className="reviews-marquee-track flex w-max gap-4 px-4 sm:gap-5 sm:px-6">
-        {doubled.map((item, i) => {
-          const origIndex = i % items.length;
-          const flag = item.country ? COUNTRY_FLAG[item.country] || '🌍' : '';
-          const gradient = CARD_GRADIENTS[origIndex % CARD_GRADIENTS.length];
-
-          return (
-            <article
-              key={`${item.id}-${i}`}
-              className={`relative flex w-[min(88vw,340px)] shrink-0 flex-col overflow-hidden rounded-2xl bg-gradient-to-br ${gradient} p-4 shadow-lg sm:w-[340px]`}
-            >
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.12),transparent_60%)]" aria-hidden="true" />
-
-              <div className="relative flex items-start gap-3">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/20 text-sm font-bold text-white ring-2 ring-white/30 backdrop-blur-sm">
-                  {initials(item.name)}
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold text-white">{item.name}</p>
-                  <p className="text-[11px] text-white/70">
-                    {flag} {item.country}
-                    {item.date && <span className="text-white/40"> · </span>}
-                    {item.date}
-                  </p>
-                  <Stars rating={item.rating} />
-                </div>
-              </div>
-
-              {item.projectType && (
-                <span className="relative mt-3 inline-flex w-fit rounded-md bg-white/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white/90 backdrop-blur-sm">
-                  {item.projectType}
-                </span>
-              )}
-
-              <p className="relative mt-2 line-clamp-3 flex-1 text-[13px] leading-relaxed text-white/90">&ldquo;{item.text}&rdquo;</p>
-
-              {item.sourceUrl && (
-                <a
-                  href={item.sourceUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative mt-3 inline-flex items-center gap-1.5 text-[11px] font-semibold text-white/90 transition hover:text-white"
-                >
-                  <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-white text-[9px] font-bold text-emerald-600">f</span>
-                  Verified on Fiverr
-                </a>
-              )}
-            </article>
-          );
-        })}
+      <div className="reviews-marquee-track flex w-max">
+        <ReviewGroup groupKey="a" />
+        <ReviewGroup groupKey="b" ariaHidden />
       </div>
     </div>
   );

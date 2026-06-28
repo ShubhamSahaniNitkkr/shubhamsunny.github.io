@@ -54,7 +54,7 @@
   },
   {
     "slug": "what-mobile-friendly-means",
-    "title": "What Mobile-Friendly Actually Means (Plain English)",
+    "title": "What Mobile-Friendly Actually Means",
     "excerpt": "No jargon — just what mobile-friendly means for your business and why it matters for US customers.",
     "status": "published",
     "publishDate": "2026-06-10",
@@ -165,8 +165,8 @@
   },
   {
     "slug": "why-we-do-not-take-every-project",
-    "title": "Why We Do Not Take Every Project",
-    "excerpt": "We say no to most inquiries on purpose. Here is what we look for — and what you get when we say yes.",
+    "title": "What It's Like Working With Us",
+    "excerpt": "Eight years and 163+ projects in — here's how we actually work, from first message to handoff.",
     "status": "published",
     "publishDate": "2026-06-22",
     "category": "How we work",
@@ -175,22 +175,23 @@
     "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
     "sections": [
       {
-        "heading": "Selective on purpose",
+        "heading": "Eight years in",
         "paragraphs": [
-          "We say no to most inbound inquiries. Not because we are arrogant — because half-finished projects hurt everyone. We work with clients who have a clear goal, realistic budget, and patience for quality."
+          "I started on Fiverr in 2018 doing website fixes and small builds. Over time that turned into a small studio — same core people, same way of working. We are not a 200-person agency. We are a founder-led team that has shipped 163+ projects for clients in the US, UK, India, and the Middle East."
         ]
       },
       {
-        "heading": "What we look for",
+        "heading": "How a typical project runs",
         "paragraphs": [
-          "A vision for where the business is going. Willingness to share content and feedback on time. Respect for a structured process — discovery, design, build, launch.",
-          "Red flags: “cheapest quote wins,” no decision-maker on calls, scope that changes daily without timeline adjustment."
+          "First message → short call to understand the goal and budget. We send a clear scope and timeline before any payment. During the build you get updates in plain English — mockups to approve, weekly demos on bigger apps, QA on real phones before launch.",
+          "At handoff you get logins, a short guide, and direct contact info. Many clients come back months later for phase two — that is the relationship we care about."
         ]
       },
       {
-        "heading": "What you get when we say yes",
+        "heading": "When we are not the right fit",
         "paragraphs": [
-          "A founder-led team of 20+ specialists, enterprise delivery oversight, and direct access to whoever is building your project. When we commit, you have our full attention until launch."
+          "If you need the absolute cheapest quote with no discovery call, we are probably not it. If scope changes every day with no timeline adjustment, projects stall — we will say that upfront.",
+          "If you want a reliable partner who answers messages, documents handoff, and has been doing this for eight years — that is us."
         ]
       }
     ]

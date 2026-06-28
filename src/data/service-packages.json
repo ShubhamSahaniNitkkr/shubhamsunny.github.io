@@ -12,7 +12,7 @@
       "1 revision round",
       "Launch support"
     ],
-    "description": "Quick professional upgrade — no full rebuild needed.",
+    "description": "Targeted fixes without a full rebuild — good when the structure is fine but mobile and speed need work.",
     "startingFrom": true,
     "emoji": "✨"
   },
@@ -64,7 +64,7 @@
       "WhatsApp link",
       "2 revision rounds"
     ],
-    "description": "Complete trust makeover — our most popular for small businesses.",
+    "description": "Full redesign — our most common pick for small businesses ready to look current online.",
     "mostPopular": true,
     "emoji": "🏆"
   },
@@ -118,7 +118,7 @@
       "Priority support",
       "3 revision rounds"
     ],
-    "description": "For businesses ready to capture more leads online.",
+    "description": "Everything in Business plus blog, analytics, and lead forms for growing companies.",
     "emoji": "📈"
   },
   {

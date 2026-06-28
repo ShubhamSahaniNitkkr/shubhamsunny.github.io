@@ -1,8 +1,12 @@
 ---
 import media from '../../data/media.json';
+import about from '../../data/about.json';
 import { getCloudinaryUrl } from '../../lib/utils';
 
 const members = media.team;
+const teamIntro =
+  about.teamIntro ||
+  'A small core team we have worked with for years — founder-led development, QA, delivery, and HR.';
 ---
 
 <section id="team" class="bg-zinc-50 section-padding">
@@ -10,13 +14,10 @@ const members = media.team;
     <div class="mx-auto max-w-3xl text-center">
       <p class="section-eyebrow">Our People</p>
       <h2 class="section-title mt-2">The talent behind every delivery</h2>
-      <p class="section-subtitle mx-auto">
-        A founder-led core team — development, QA, HR, and delivery.
-        For larger builds we bring in trusted specialists we have worked with for years.
-      </p>
+      <p class="section-subtitle mx-auto">{teamIntro}</p>
     </div>
 
-    <div class={`mt-10 grid gap-5 ${members.length === 1 ? 'mx-auto max-w-sm' : members.length === 2 ? 'sm:grid-cols-2 max-w-3xl mx-auto' : 'sm:grid-cols-2 lg:grid-cols-4'}`}>
+    <div class={`mobile-swipe-cards mt-10 grid gap-5 ${members.length === 1 ? 'mx-auto max-w-sm' : members.length === 2 ? 'sm:grid-cols-2 max-w-3xl mx-auto' : 'sm:grid-cols-2 lg:grid-cols-4'}`}>
       {members.map((member, idx) => {
         const img = member.image ? getCloudinaryUrl(member.image, 480, 480) : '';
         const phoneHref = member.phone ? `tel:${member.phone.replace(/\s/g, '')}` : '';

@@ -1,4 +1,5 @@
 import { useEffect, useCallback, useState } from 'react';
+import { createPortal } from 'react-dom';
 import type { UseCase } from '../../types';
 import { getContactUrl } from '../../lib/utils';
 
@@ -20,13 +21,37 @@ const PAIN_ICONS: Record<string, string> = {
   trust: '🔒',
 };
 
+const DELIVERABLE_ICONS: Record<string, string> = {
+  database: '💾',
+  camera: '📷',
+  sync: '🔄',
+  map: '🗺',
+  signature: '✍️',
+  dashboard: '📊',
+  bot: '🤖',
+  scrape: '🔍',
+  api: '🔌',
+  security: '🔐',
+  mobile: '📱',
+  web: '🌐',
+  alert: '🔔',
+  pdf: '📄',
+  payment: '💳',
+  search: '🔎',
+};
+
 export default function UseCaseModal({ item, onClose }: Props) {
   const [imgError, setImgError] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   const handleKey = useCallback(
     (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); },
     [onClose],
   );
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     document.addEventListener('keydown', handleKey);
@@ -40,16 +65,23 @@ export default function UseCaseModal({ item, onClose }: Props) {
   const heroImg = !imgError ? (item.image || item.thumbnail) : '';
   const isPdf = item.pdfUrl.endsWith('.pdf') || (item.pdfUrl.includes('pdf') && item.pdfUrl !== '#');
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <div
-      className="fixed inset-0 z-[100] flex items-end justify-center bg-black/70 p-0 backdrop-blur-sm sm:items-center sm:p-4"
+      className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/70 p-4 backdrop-blur-sm"
+      style={{
+        paddingTop: 'max(1rem, env(safe-area-inset-top, 0px))',
+        paddingBottom: 'max(1rem, env(safe-area-inset-bottom, 0px))',
+      }}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-label={item.title}
     >
       <div
-        className="flex max-h-[96vh] w-full max-w-5xl flex-col overflow-hidden rounded-t-2xl bg-white shadow-2xl sm:rounded-2xl"
+        className="my-auto flex w-full max-w-5xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl"
+        style={{ maxHeight: 'min(900px, calc(100dvh - 2rem - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)))' }}
         onClick={(e) => e.stopPropagation()}
       >
         {heroImg ? (
@@ -91,37 +123,36 @@ export default function UseCaseModal({ item, onClose }: Props) {
             <strong className="font-semibold">Note:</strong> Composite scenario based on real project patterns.
             Client names, branding, and exact metrics are withheld under NDA.
           </p>
-          {/* Executive summary */}
-          {(item.context?.length || item.summary) && (
-            <div className="rounded-2xl border border-zinc-200 bg-gradient-to-br from-zinc-50 to-white p-5 sm:p-6">
-              <p className="text-xs font-bold uppercase tracking-wider text-violet-600">Executive summary</p>
-              {item.context?.map((para) => (
-                <p key={para.slice(0, 40)} className="mt-3 text-base leading-relaxed text-zinc-700">{para}</p>
-              ))}
-              {!item.context?.length && item.summary && (
-                <p className="mt-3 text-base leading-relaxed text-zinc-700">{item.summary}</p>
+
+          {/* Executive summary + key metrics — unified card */}
+          {(item.summary || item.context?.length || item.highlights?.length) && (
+            <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-gradient-to-br from-zinc-50 to-white">
+              {(item.summary || (!item.deepSections?.length && item.context?.length)) && (
+                <div className="border-b border-zinc-100 p-5 sm:p-6">
+                  <p className="text-xs font-bold uppercase tracking-wider text-violet-600">Executive summary</p>
+                  {item.summary && (
+                    <p className="mt-3 text-base font-medium leading-relaxed text-zinc-800">{item.summary}</p>
+                  )}
+                  {!item.deepSections?.length && item.context?.map((para) => (
+                    <p key={para.slice(0, 40)} className="mt-3 text-sm leading-relaxed text-zinc-600">{para}</p>
+                  ))}
+                </div>
+              )}
+              {item.highlights && item.highlights.length > 0 && (
+                <div className={`grid grid-cols-2 gap-px bg-zinc-200 ${item.highlights.length >= 4 ? 'sm:grid-cols-4' : ''}`}>
+                  {item.highlights.map((h) => (
+                    <div key={h.label} className="bg-white p-4 text-center sm:p-5">
+                      <p className="font-display text-xl font-bold text-violet-600 sm:text-2xl">{h.value}</p>
+                      <p className="mt-1 text-[10px] font-semibold uppercase tracking-wide text-zinc-400">{h.label}</p>
+                    </div>
+                  ))}
+                </div>
               )}
             </div>
           )}
 
-          {/* Quick stats row */}
-          {item.highlights && item.highlights.length > 0 && (
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-              {item.highlights.map((h) => (
-                <div key={h.label} className="rounded-xl border border-zinc-100 bg-zinc-50 p-3 text-center">
-                  <p className="font-display text-lg font-bold text-violet-600 sm:text-xl">{h.value}</p>
-                  <p className="mt-0.5 text-[10px] font-semibold uppercase tracking-wide text-zinc-400">{h.label}</p>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {item.summary && item.context?.length ? (
-            <p className="mt-6 text-sm font-medium text-zinc-500">{item.summary}</p>
-          ) : null}
-
           {item.deepSections && item.deepSections.length > 0 && (
-            <div className="mt-8 space-y-8">
+            <div className="mt-8 space-y-6">
               {item.deepSections.map((section) => (
                 <div key={section.title} className="rounded-2xl border border-zinc-200 bg-white p-5 sm:p-6">
                   <p className="text-xs font-bold uppercase tracking-wider text-violet-600">{section.title}</p>
@@ -130,6 +161,26 @@ export default function UseCaseModal({ item, onClose }: Props) {
                   ))}
                 </div>
               ))}
+            </div>
+          )}
+
+          {/* Deliverables — visual showcase of what was built */}
+          {item.deliverables && item.deliverables.length > 0 && (
+            <div className="mt-8">
+              <p className="text-xs font-bold uppercase tracking-wider text-zinc-400">What we delivered</p>
+              <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                {item.deliverables.map((d) => (
+                  <div key={d.title} className="flex gap-3 rounded-xl border border-violet-100 bg-violet-50/40 p-4">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white text-xl shadow-sm">
+                      {DELIVERABLE_ICONS[d.icon] || '📦'}
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold text-zinc-900">{d.title}</p>
+                      <p className="mt-1 text-xs leading-relaxed text-zinc-600">{d.detail}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
 
@@ -279,6 +330,7 @@ export default function UseCaseModal({ item, onClose }: Props) {
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

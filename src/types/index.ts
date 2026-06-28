@@ -143,7 +143,6 @@ export interface SeoPageConfig {
   h1: string;
   description: string;
   keywords: string;
-  galleryCategory: string;
   featuredPackageId: string;
 }
 
@@ -261,6 +260,12 @@ export interface UseCaseQuote {
   role: string;
 }
 
+export interface UseCaseDeliverable {
+  icon: string;
+  title: string;
+  detail: string;
+}
+
 export interface UseCase {
   id: string;
   title: string;
@@ -290,6 +295,7 @@ export interface UseCase {
   quote?: UseCaseQuote;
   serviceId?: string;
   deepSections?: { title: string; paragraphs: string[] }[];
+  deliverables?: UseCaseDeliverable[];
 }
 
 export interface AboutConfig {

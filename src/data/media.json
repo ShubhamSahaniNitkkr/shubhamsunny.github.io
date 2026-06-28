@@ -6,19 +6,19 @@
   "logo": "/media/logo.svg",
   "logoAlt": "Shubham Sunny — Website Modernization",
   "hero": {
-    "overline": "Premium Development Studio",
+    "overline": "8+ Years · Websites & Software",
     "titleLine1": "Your website should",
     "titleLine2": "win customers, not lose them",
     "badge": "8+ Years · 163+ Projects",
     "location": "Remote · US Time Zones Welcome",
-    "description": "A selective team of developers for premium clients with a vision — not a factory that takes every job. If you care about quality, clarity, and long-term results, you are in the right place.",
+    "description": "Founder-led studio since 2018 — websites, data scraping, and custom software for business owners who want someone accountable, not a faceless agency.",
     "services": "Website Redesign | Mobile-First | Speed & SEO | WhatsApp Integration",
-    "philosophy": "We say no to most inquiries — so the yes means something.",
+    "philosophy": "I'd rather take a week longer and ship something solid than rush something you'll need fixed in a month.",
     "rotation": [
       {
         "type": "image",
         "src": "/media/team/shubham.jpg",
-        "alt": "Shubham Sunny — founder & lead developer"
+        "alt": "Shubham Sunny — website modernization expert"
       }
     ]
   },
@@ -49,7 +49,7 @@
       "id": "transform-3",
       "clientName": "Law Office",
       "industry": "Professional Services",
-      "story": "Generic template → premium look that matches their reputation. Clear practice areas and a simple contact form.",
+      "story": "Generic template → professional look that matches their reputation. Clear practice areas and a simple contact form.",
       "packageUsed": "Growth Website",
       "before": "/media/transformations/transform-3/before.jpg",
       "after": "/media/transformations/transform-3/after.jpg",
@@ -61,14 +61,14 @@
     {
       "name": "Shubham Sunny",
       "role": "Founder & Lead Developer",
-      "certification": "8+ years · Founder",
+      "certification": "8+ years · Founder since 2018",
       "expertise": [
         "Full-Stack",
         "Web Apps",
         "Data Scraping",
         "Custom Software"
       ],
-      "bio": "I founded this studio and own technical direction on every project — architecture, code quality, and client outcomes. We scale with trusted specialists per project, not a bloated bench for show.",
+      "bio": "I started freelancing on Fiverr in 2018 and built this into a small studio over eight years. I still review architecture and code on every project — websites, scrapers, and custom apps for clients who need someone reliable.",
       "philosophy": "A website should make a stranger feel confident enough to call you.",
       "image": "/media/team/shubham.jpg",
       "linkedin": "https://www.linkedin.com/in/shubham-sunny-09b013129/",
@@ -85,7 +85,7 @@
         "Client Onboarding",
         "UAT"
       ],
-      "bio": "Deep handles the rest of day-to-day delivery — QA on real devices, client kickoff calls, milestone tracking, and making sure nothing goes live until it is right.",
+      "bio": "Deep has been with us for years handling QA on real devices, client kickoff calls, milestone tracking, and making sure nothing goes live until it passes her checklist.",
       "philosophy": "Quality is not a phase — it is the reason clients come back.",
       "image": "/media/team/deep-shikha.png",
       "phone": "+91 9142760891"
@@ -100,7 +100,7 @@
         "Brand Marketing",
         "Client Outreach"
       ],
-      "bio": "Shushma builds and runs the people side — hiring, culture, marketing outreach, and keeping the right specialists on every project.",
+      "bio": "Shushma runs hiring, team culture, and client outreach — the reason we can keep the same trusted people on projects instead of rotating strangers.",
       "philosophy": "Great delivery starts with great people — and great people need clear direction.",
       "image": "/media/team/shushma-devi.png",
       "phone": "+91 9939067781"
@@ -115,7 +115,7 @@
         "Enterprise Clients",
         "Mentoring"
       ],
-      "bio": "Vinay handles program management on larger builds — timelines, milestones, and mentoring developers through complex delivery.",
+      "bio": "Vinay manages timelines and delivery on larger builds — weekly check-ins, milestone tracking, and keeping complex projects moving without surprises.",
       "philosophy": "Ship on time, communicate early, and never hide bad news.",
       "image": "/media/team/vinay-thakur.png",
       "phone": "+91 9931230810"

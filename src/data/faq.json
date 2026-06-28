@@ -1,23 +1,23 @@
 [
   {
-    "question": "Do you take every project?",
-    "answer": "Not every one. We pick work where the goal is clear and we can do it properly — if we say yes, you get our full attention."
+    "question": "How long has your team been in business?",
+    "answer": "Since 2018 — about 8 years now. Most clients find us on Fiverr or through referrals. We have delivered 163+ projects across websites, data scraping, and custom software."
   },
   {
-    "question": "Website modernization — what do I get?",
+    "question": "What is included in a website modernization project?",
     "answer": "A mobile-first site that loads fast and makes calling or booking easy. Hosting, SSL, and handoff included."
   },
   {
-    "question": "Is data scraping legal?",
+    "question": "Is web data scraping legal and compliant?",
     "answer": "We collect publicly visible data only — no private logins. Every project starts with a scope review."
   },
   {
-    "question": "What is custom software?",
+    "question": "What does custom software development include?",
     "answer": "Web apps, mobile apps, bots, and tools built for your workflow when off-the-shelf products do not fit."
   },
   {
     "question": "Price and timeline?",
-    "answer": "Websites from ~$800. Scraping from ~$200. Custom software after discovery. Most web projects: 2–4 weeks."
+    "answer": "Websites from $499 (Starter Refresh). Business modernization from $1,499. Scraping from ~$200. Custom software after discovery. Most web projects: 2–4 weeks."
   },
   {
     "question": "Do I need technical knowledge?",
