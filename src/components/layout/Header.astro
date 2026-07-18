@@ -10,7 +10,7 @@ const navLinks = [
 ---
 
 <header class="fixed top-0 right-0 left-0 z-50" id="site-header">
-  <div class="border-b border-[var(--color-border)] bg-white/90 backdrop-blur-xl" id="header-inner">
+  <div class="border-b border-[var(--color-border)] bg-white/85 backdrop-blur-xl transition-shadow duration-300" id="header-inner">
     <div class="container-wide flex w-full items-center justify-between px-4 py-3.5 sm:px-6">
       <a href="/" class="shrink-0 font-display text-lg font-bold tracking-tight text-[var(--color-navy)] sm:text-xl">
         Shubham Sunny
@@ -42,6 +42,8 @@ const navLinks = [
 <script>
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
+  const header = document.getElementById('site-header');
+
   btn?.addEventListener('click', () => {
     const open = menu?.classList.toggle('hidden') === false;
     btn.setAttribute('aria-expanded', String(open));
@@ -52,4 +54,10 @@ const navLinks = [
       btn?.setAttribute('aria-expanded', 'false');
     });
   });
+
+  const onScroll = () => {
+    header?.classList.toggle('header-scrolled', window.scrollY > 12);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
 </script>

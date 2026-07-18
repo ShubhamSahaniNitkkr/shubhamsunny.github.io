@@ -8,24 +8,29 @@ const { contact } = portfolio;
 const web3formsAccessKey = notifications.web3formsAccessKey || '';
 ---
 
-<section id="contact" class="section-padding border-t border-[var(--color-border)] bg-white">
-  <div class="container-wide">
-    <div class="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
-      <div class="reveal">
-        <p class="section-eyebrow">Contact</p>
+<section id="contact" class="section-padding relative overflow-hidden border-t border-[var(--color-border)] bg-[var(--color-surface-alt)]">
+  <div
+    class="pointer-events-none absolute inset-0 opacity-50"
+    aria-hidden="true"
+    style="background: radial-gradient(ellipse 50% 60% at 0% 100%, rgba(27,58,107,0.1), transparent 55%), radial-gradient(ellipse 40% 50% at 100% 0%, rgba(42,79,138,0.08), transparent 50%);"
+  ></div>
+  <div class="container-wide relative">
+    <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
+      <div class="reveal panel p-6 sm:p-8">
+        <p class="section-index">09 — Contact</p>
         <h2 class="section-title mt-3">{contact.headline}</h2>
         <p class="section-lead mt-4">{contact.description}</p>
 
-        <ul class="mt-8 space-y-4 text-sm">
+        <ul class="mt-8 space-y-5 text-sm">
           <li>
-            <p class="text-xs font-bold uppercase tracking-wider text-[var(--color-muted)]">Email</p>
-            <a href={`mailto:${contact.email}`} class="mt-1 block font-semibold text-[var(--color-navy)] hover:underline">
+            <p class="text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-muted)]">Email</p>
+            <a href={`mailto:${contact.email}`} class="mt-1.5 block break-all font-semibold text-[var(--color-navy)] hover:underline">
               {contact.email}
             </a>
           </li>
           <li>
-            <p class="text-xs font-bold uppercase tracking-wider text-[var(--color-muted)]">Phone</p>
-            <a href={`tel:${contact.phone.replace(/\s/g, '')}`} class="mt-1 block font-semibold text-[var(--color-navy)] hover:underline">
+            <p class="text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-muted)]">Phone</p>
+            <a href={`tel:${contact.phone.replace(/\s/g, '')}`} class="mt-1.5 block font-semibold text-[var(--color-navy)] hover:underline">
               {contact.phone}
             </a>
             {contact.phoneAlt && (
@@ -35,7 +40,7 @@ const web3formsAccessKey = notifications.web3formsAccessKey || '';
             )}
           </li>
           <li>
-            <p class="text-xs font-bold uppercase tracking-wider text-[var(--color-muted)]">Profiles</p>
+            <p class="text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-muted)]">Profiles</p>
             <div class="mt-2 flex flex-wrap gap-4 font-semibold text-[var(--color-navy)]">
               <a href={social.linkedin.url} target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn</a>
               <a href={social.github.url} target="_blank" rel="noopener noreferrer" class="hover:underline">GitHub</a>
@@ -45,9 +50,9 @@ const web3formsAccessKey = notifications.web3formsAccessKey || '';
         </ul>
       </div>
 
-      <div class="reveal rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] p-6 sm:p-8" style="transition-delay: 80ms">
+      <div class="reveal panel p-6 sm:p-8" style="transition-delay: 80ms">
         <h3 class="font-display text-xl font-bold text-[var(--color-navy)]">Send a message</h3>
-        <p class="mt-2 text-sm text-[var(--color-muted)]">Recruiters and hiring managers — include the role and company if you can.</p>
+        <p class="mt-2 text-sm text-[var(--color-muted)]">Recruiters — include the role and company if you can.</p>
         <div class="mt-6">
           <ContactForm client:visible web3formsAccessKey={web3formsAccessKey} />
         </div>

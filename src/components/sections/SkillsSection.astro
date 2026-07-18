@@ -7,15 +7,15 @@ const { skills } = portfolio;
 <section id="skills" class="section-padding border-t border-[var(--color-border)] bg-white">
   <div class="container-wide">
     <div class="reveal max-w-2xl">
-      <p class="section-eyebrow">Technical Skills</p>
+      <p class="section-index">05 — Skills</p>
       <h2 class="section-title mt-3">Stack & core competencies</h2>
       <p class="section-lead mt-4">
         Deep frontend expertise backed by full-stack delivery, cloud deployment, and AI integration.
       </p>
     </div>
 
-    <div class="reveal mt-10">
-      <p class="text-xs font-bold uppercase tracking-wider text-[var(--color-navy)]">Core competencies</p>
+    <div class="reveal mt-10 panel p-6 sm:p-8">
+      <p class="text-xs font-bold uppercase tracking-[0.14em] text-[var(--color-navy)]">Core competencies</p>
       <div class="mt-4 flex flex-wrap gap-2.5">
         {skills.competencies.map((c) => (
           <span class="skill-pill">{c}</span>
@@ -23,11 +23,14 @@ const { skills } = portfolio;
       </div>
     </div>
 
-    <div class="mt-12 grid gap-8 md:grid-cols-2">
+    <div class="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
       {skills.groups.map((group, i) => (
-        <div class="reveal" style={`transition-delay: ${i * 40}ms`}>
-          <h3 class="font-display text-lg font-bold text-[var(--color-navy)]">{group.name}</h3>
-          <div class="divider-navy mt-2 mb-4 max-w-[8rem]"></div>
+        <div class="reveal panel panel-hover p-5 sm:p-6" style={`transition-delay: ${i * 35}ms`}>
+          <div class="flex items-center justify-between gap-3">
+            <h3 class="font-display text-lg font-bold text-[var(--color-navy)]">{group.name}</h3>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-[var(--color-muted-light)]">0{i + 1}</span>
+          </div>
+          <div class="divider-navy mt-3 mb-4 max-w-[5rem]"></div>
           <div class="flex flex-wrap gap-2">
             {group.items.map((item) => (
               <span class="skill-pill !font-medium">{item}</span>

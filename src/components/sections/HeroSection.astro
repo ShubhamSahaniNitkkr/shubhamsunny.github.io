@@ -7,51 +7,75 @@ import { siteConfig } from '../../lib/utils';
 const { hero } = portfolio;
 ---
 
-<section id="about" class="hero-atmosphere relative overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-24">
-  <div class="pointer-events-none absolute inset-0 opacity-[0.35]" aria-hidden="true"
-    style="background-image: linear-gradient(rgba(27,58,107,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(27,58,107,0.04) 1px, transparent 1px); background-size: 48px 48px;"
+<section id="about" class="hero-atmosphere relative overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-28">
+  <div
+    class="pointer-events-none absolute inset-0 opacity-[0.4]"
+    aria-hidden="true"
+    style="background-image: linear-gradient(rgba(27,58,107,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(27,58,107,0.045) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse 70% 65% at 50% 30%, black, transparent);"
   ></div>
+
   <div class="container-wide relative px-4 sm:px-6">
-    <div class="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
+    <div class="grid items-center gap-12 lg:grid-cols-[1.12fr_0.88fr] lg:gap-16">
       <div class="reveal">
-        <p class="section-eyebrow">Portfolio · Open to opportunities</p>
-        <h1 class="mt-4 font-display text-4xl font-bold tracking-tight text-[var(--color-navy)] sm:text-5xl lg:text-[3.5rem] lg:leading-[1.1]">
+        <div class="inline-flex items-center gap-2 rounded-full border border-[var(--color-steel-border)] bg-white/80 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-[var(--color-navy)] shadow-sm backdrop-blur">
+          <span class="relative flex h-2 w-2">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+          </span>
+          Open to opportunities
+        </div>
+
+        <h1 class="mt-6 font-display text-4xl font-bold tracking-tight text-[var(--color-navy)] sm:text-5xl lg:text-[3.65rem] lg:leading-[1.08]">
           {hero.name}
         </h1>
-        <p class="mt-4 text-base font-medium italic text-[var(--color-muted)] sm:text-lg">
+        <span class="name-underline" aria-hidden="true"></span>
+
+        <p class="mt-5 max-w-xl text-base font-medium italic leading-relaxed text-[var(--color-muted)] sm:text-lg">
           {hero.titles.join(' · ')}
         </p>
         <p class="mt-6 max-w-xl text-base leading-relaxed text-[var(--color-charcoal)] sm:text-[1.0625rem]">
           {hero.summary}
         </p>
+
         <div class="mt-8 flex flex-wrap gap-3">
           <a href={hero.ctas.primary.href} class="btn-accent">{hero.ctas.primary.label}</a>
           <a href={hero.ctas.secondary.href} class="btn-ghost">{hero.ctas.secondary.label}</a>
           <a href={hero.ctas.tertiary.href} class="btn-ghost">{hero.ctas.tertiary.label}</a>
         </div>
-        <div class="mt-8 flex flex-wrap gap-2">
+
+        <div class="mt-9 flex flex-wrap gap-2">
           {hero.trust.map((item) => (
             <span class="skill-pill">{item}</span>
           ))}
         </div>
-        <div class="mt-8 flex flex-wrap items-center gap-4 text-sm font-semibold text-[var(--color-navy)]">
-          <a href={social.linkedin.url} target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn</a>
-          <span class="text-[var(--color-steel-border)]">|</span>
-          <a href={social.github.url} target="_blank" rel="noopener noreferrer" class="hover:underline">GitHub</a>
-          <span class="text-[var(--color-steel-border)]">|</span>
-          <a href={`mailto:${siteConfig.email}`} class="hover:underline">Email</a>
+
+        <div class="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-semibold text-[var(--color-navy)]">
+          <a href={social.linkedin.url} target="_blank" rel="noopener noreferrer" class="transition hover:text-[var(--color-navy-soft)]">LinkedIn</a>
+          <span class="text-[var(--color-steel-border)]">·</span>
+          <a href={social.github.url} target="_blank" rel="noopener noreferrer" class="transition hover:text-[var(--color-navy-soft)]">GitHub</a>
+          <span class="text-[var(--color-steel-border)]">·</span>
+          <a href={`mailto:${siteConfig.email}`} class="transition hover:text-[var(--color-navy-soft)]">Email</a>
         </div>
       </div>
+
       <div class="reveal relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none" style="transition-delay: 120ms">
-        <div class="absolute -inset-3 rounded-[1.5rem] bg-gradient-to-br from-[var(--color-navy)]/15 via-transparent to-[var(--color-navy-soft)]/10" aria-hidden="true"></div>
-        <img
-          src={media.portrait.src}
-          alt={media.portrait.alt}
-          width="640"
-          height="800"
-          class="relative aspect-[4/5] w-full rounded-[1.25rem] object-cover object-top shadow-[0_24px_60px_-28px_rgba(18,40,71,0.45)]"
-          fetchpriority="high"
-        />
+        <div class="float-soft absolute -right-4 -top-4 hidden h-28 w-28 rounded-full border border-[var(--color-steel-border)] bg-white/70 shadow-sm backdrop-blur sm:block" aria-hidden="true"></div>
+        <div class="absolute -bottom-5 -left-5 hidden h-24 w-24 rounded-2xl bg-[var(--color-steel)] sm:block" aria-hidden="true"></div>
+        <div class="relative">
+          <div class="absolute -inset-[1px] rounded-[1.4rem] bg-gradient-to-br from-[var(--color-navy)]/40 via-[var(--color-steel-border)] to-transparent" aria-hidden="true"></div>
+          <img
+            src={media.portrait.src}
+            alt={media.portrait.alt}
+            width="640"
+            height="800"
+            class="relative aspect-[4/5] w-full rounded-[1.35rem] object-cover object-top shadow-[0_30px_70px_-32px_rgba(18,40,71,0.55)]"
+            fetchpriority="high"
+          />
+          <div class="absolute bottom-4 left-4 right-4 rounded-xl border border-white/40 bg-white/85 px-4 py-3 shadow-lg backdrop-blur-md">
+            <p class="text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-muted)]">Currently</p>
+            <p class="mt-0.5 text-sm font-bold text-[var(--color-navy)]">Senior Software Developer · Yum! Brands</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

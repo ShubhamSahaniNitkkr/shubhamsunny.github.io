@@ -142,6 +142,7 @@
       "tagline": "Full-stack analytics for 1M+ records",
       "featured": true,
       "url": "https://mde-web.onrender.com",
+      "videoUrl": "",
       "cover": "/media/portfolio/massive-data-explorer/cover.jpg",
       "highlights": [
         "Cursor-based pagination, server-side filtering & sorting",
@@ -158,6 +159,7 @@
       "tagline": "JSON schemas that drive UI, forms & workflows",
       "featured": true,
       "url": "https://sdui-pypy.onrender.com",
+      "videoUrl": "",
       "cover": "/media/portfolio/sdui/cover.jpg",
       "highlights": [
         "Schema-defined UI structure, forms, workflow, and actions",
@@ -171,8 +173,9 @@
       "id": "fpp",
       "title": "Frontend Plugin Platform",
       "tagline": "VS Code–inspired extensibility for web apps",
-      "featured": true,
+      "featured": false,
       "url": "https://fpp-host.onrender.com",
+      "videoUrl": "",
       "cover": "/media/portfolio/fpp/cover.jpg",
       "highlights": [
         "Marketplace-style plugin install without core redeploy",
@@ -188,6 +191,7 @@
       "tagline": "Local-first writes with production-grade sync",
       "featured": false,
       "url": "https://offline-first-task-management-app-ui.onrender.com",
+      "videoUrl": "",
       "cover": "/media/portfolio/offline-first/cover.jpg",
       "highlights": [
         "IndexedDB as primary write layer for full offline use",
@@ -203,6 +207,7 @@
       "tagline": "3 production-ready packages for schema-driven UIs",
       "featured": false,
       "url": "https://www.npmjs.com/~shubhamsunnynitkkr",
+      "videoUrl": "",
       "cover": "/media/portfolio/sdui/cover.jpg",
       "highlights": [
         "Modular SDUI framework with registry-based architecture",
@@ -306,36 +311,36 @@
   ],
   "digitalProducts": [
     {
-      "id": "mde-product",
-      "name": "Massive Data Explorer",
-      "tagline": "Explore and operate on 1M+ records without freezing the UI.",
+      "id": "sdui-packages",
+      "name": "SDUI npm Framework",
+      "tagline": "3 packages · schema-driven UI · 80%+ coverage",
       "videoUrl": "",
-      "useUrl": "https://mde-web.onrender.com",
-      "cover": "/media/portfolio/massive-data-explorer/cover.jpg"
+      "useUrl": "https://www.npmjs.com/~shubhamsunnynitkkr",
+      "kind": "npm"
     },
     {
-      "id": "sdui-product",
+      "id": "sdui-studio",
       "name": "SDUI Live Studio",
-      "tagline": "Design, debug, and simulate role-based server-driven interfaces.",
+      "tagline": "Schema debug · role simulation · live preview",
       "videoUrl": "",
       "useUrl": "https://sdui-pypy.onrender.com",
-      "cover": "/media/portfolio/sdui/cover.jpg"
+      "kind": "studio"
     },
     {
-      "id": "fpp-product",
-      "name": "Frontend Plugin Host",
-      "tagline": "Install features like plugins — no core redeploy required.",
+      "id": "plugin-host",
+      "name": "Plugin Marketplace Host",
+      "tagline": "Install features without redeploying the core app",
       "videoUrl": "",
       "useUrl": "https://fpp-host.onrender.com",
-      "cover": "/media/portfolio/fpp/cover.jpg"
+      "kind": "platform"
     },
     {
-      "id": "offline-product",
-      "name": "Offline-First Tasks",
-      "tagline": "A production-minded PWA with sync you can trust.",
+      "id": "mde-control",
+      "name": "Data Explorer Control Center",
+      "tagline": "21 toggles to feel performance trade-offs live",
       "videoUrl": "",
-      "useUrl": "https://offline-first-task-management-app-ui.onrender.com",
-      "cover": "/media/portfolio/offline-first/cover.jpg"
+      "useUrl": "https://mde-web.onrender.com",
+      "kind": "tool"
     }
   ],
   "usecases": [
