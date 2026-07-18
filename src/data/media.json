@@ -2,8 +2,6 @@
   "settings": {
     "cacheVersion": "2.0.0"
   },
-  "logo": "/media/logo.svg",
-  "logoAlt": "Shubham Sunny",
   "portrait": {
     "src": "/media/team/shubham.jpg",
     "alt": "Shubham Sunny — Senior Software Developer"

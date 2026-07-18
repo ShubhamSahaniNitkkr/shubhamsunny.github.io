@@ -3,11 +3,11 @@
     "name": "Shubham Sunny",
     "titles": [
       "Senior Software Developer",
-      "Front-end Engineering",
-      "Full Stack Development",
-      "Enterprise Platform Development"
+      "Full-Stack & Frontend Lead",
+      "Platform Architecture",
+      "Enterprise Product Engineering"
     ],
-    "summary": "Results-oriented Software Engineering Professional targeting to contribute expertise in product development, technical leadership, and solution delivery to build impactful digital experiences.",
+    "summary": "I lead full-stack delivery for enterprise products — from UI architecture and APIs to performance and AI features. 8+ years shipping systems that teams actually depend on, including platforms handling 1M+ records.",
     "trust": [
       "8+ Years Experience",
       "NIT Kurukshetra",
@@ -15,42 +15,50 @@
       "1M+ Record Systems"
     ],
     "ctas": {
-      "primary": { "label": "Watch Intro", "href": "#intro" },
-      "secondary": { "label": "View Projects", "href": "#projects" },
-      "tertiary": { "label": "Get in Touch", "href": "#contact" }
+      "primary": {
+        "label": "Watch Intro",
+        "href": "#intro"
+      },
+      "secondary": {
+        "label": "View Projects",
+        "href": "#projects"
+      },
+      "tertiary": {
+        "label": "Get in Touch",
+        "href": "#contact"
+      }
     }
   },
   "intro": {
-    "youtubeId": "",
+    "youtubeId": "ikNDJfJGyv4",
     "title": "Intro Video",
-    "description": "A short introduction to my background, how I work, and the kinds of problems I love solving.",
-    "placeholderNote": "Add your YouTube intro video ID in portfolio.json → intro.youtubeId",
+    "description": "Three minutes on who I am, how I lead engineering work, and the kind of problems I take ownership of end to end.",
     "interviews": [
       {
         "id": "javascript",
         "label": "JavaScript",
-        "title": "JavaScript Deep Dive",
+        "title": "Coming soon",
         "url": "",
         "youtubeId": ""
       },
       {
         "id": "frontend",
         "label": "Frontend",
-        "title": "Frontend Engineering Interview",
+        "title": "Coming soon",
         "url": "",
         "youtubeId": ""
       },
       {
         "id": "architecture",
         "label": "Architecture",
-        "title": "System & Frontend Architecture",
+        "title": "Coming soon",
         "url": "",
         "youtubeId": ""
       },
       {
         "id": "ai",
         "label": "AI & Automation",
-        "title": "AI-Powered Applications",
+        "title": "Coming soon",
         "url": "",
         "youtubeId": ""
       }
@@ -58,18 +66,18 @@
   },
   "about": {
     "eyebrow": "Profile Summary",
-    "headline": "8+ years building scalable products from UI architecture to cloud delivery.",
+    "headline": "Full-stack leadership across product UI, APIs, and platform architecture.",
     "paragraphs": [
-      "Software Engineering Professional with 8+ years of experience specializing in Front-end Development and building scalable web applications and enterprise platforms. Proven expertise in modern front-end technologies, performance optimization, and delivering high-quality digital products.",
-      "Experienced across the full stack — from front-end architecture to APIs and cloud deployment — with a strong track record of shipping production systems used at enterprise scale.",
-      "Architected solutions including Server-Driven UI (SDUI), Plugin-Based Platforms, and Offline-First PWAs. Led mentoring, technical decisions, and integration of AI-powered capabilities into real products."
+      "I'm a Senior Software Developer with 8+ years building and leading work on enterprise web products. My sweet spot is owning the full path — frontend architecture, APIs, data-heavy UIs, and the decisions that keep systems fast and maintainable as they grow.",
+      "At Yum! Brands I lead design and delivery of production platforms used at scale: Server-Driven UI systems, real-time dashboards, and analytics surfaces over million-row datasets. I partner closely with product, data science, and engineering — and I mentor through reviews, design discussions, and clear technical direction.",
+      "Before that I shipped B2B commerce frontends and full-stack features in Node and Angular. Today I also bring AI into real workflows — agents, RAG, and automation — without turning the product into a science project."
     ],
     "highlights": [
-      "Enterprise web apps & analytics platforms",
-      "Server-Driven UI & plugin architectures",
-      "Performance for 1M+ record datasets",
-      "AI agents, RAG & intelligent automation",
-      "Technical leadership & mentoring"
+      "Full-stack ownership: UI → API → cloud",
+      "Technical leadership & mentoring",
+      "Server-Driven UI & plugin platforms",
+      "1M+ record analytics performance",
+      "AI agents & production automation"
     ],
     "education": {
       "institution": "National Institute of Technology, Kurukshetra (NIT KKR)",
@@ -151,7 +159,15 @@
         "Runtime Control Center with 21 performance toggles",
         "TypeScript monorepo, Zod schemas, Vitest + Playwright + axe-core"
       ],
-      "tech": ["TypeScript", "React", "Redux", "RTK Query", "TanStack Virtual", "Zod", "IndexedDB"]
+      "tech": [
+        "TypeScript",
+        "React",
+        "Redux",
+        "RTK Query",
+        "TanStack Virtual",
+        "Zod",
+        "IndexedDB"
+      ]
     },
     {
       "id": "sdui",
@@ -167,7 +183,13 @@
         "RBAC and feature-flag-driven UI personalization",
         "SDUI Live Studio for schema debugging and role simulation"
       ],
-      "tech": ["TypeScript", "React", "SDUI", "JSON Schema", "RBAC"]
+      "tech": [
+        "TypeScript",
+        "React",
+        "SDUI",
+        "JSON Schema",
+        "RBAC"
+      ]
     },
     {
       "id": "fpp",
@@ -183,7 +205,13 @@
         "Zod-validated contracts between host and plugins",
         "Runtime isolation, lifecycle management & fault tolerance"
       ],
-      "tech": ["TypeScript", "React", "Plugin SDK", "Zod", "Event Bus"]
+      "tech": [
+        "TypeScript",
+        "React",
+        "Plugin SDK",
+        "Zod",
+        "Event Bus"
+      ]
     },
     {
       "id": "offline-pwa",
@@ -199,7 +227,13 @@
         "RTK Query + Dexie offline persistence",
         "Cross-tab sync and Workbox caching strategies"
       ],
-      "tech": ["PWA", "IndexedDB", "Dexie", "RTK Query", "Workbox"]
+      "tech": [
+        "PWA",
+        "IndexedDB",
+        "Dexie",
+        "RTK Query",
+        "Workbox"
+      ]
     },
     {
       "id": "npm-sdui",
@@ -215,7 +249,13 @@
         "Tree-shakable ESM/CJS builds with TypeScript contracts",
         "80%+ test coverage"
       ],
-      "tech": ["npm", "TypeScript", "SDUI", "ESM/CJS", "Vitest"]
+      "tech": [
+        "npm",
+        "TypeScript",
+        "SDUI",
+        "ESM/CJS",
+        "Vitest"
+      ]
     }
   ],
   "skills": {
@@ -223,43 +263,84 @@
       {
         "name": "Front-end Engineering",
         "items": [
-          "HTML5", "CSS3", "JavaScript (ES6+)", "TypeScript", "React", "Next.js",
-          "Redux", "Zustand", "TanStack Query", "Tailwind CSS", "Ant Design",
-          "Material UI", "Responsive UI", "Performance Optimization"
+          "HTML5",
+          "CSS3",
+          "JavaScript (ES6+)",
+          "TypeScript",
+          "React",
+          "Next.js",
+          "Redux",
+          "Zustand",
+          "TanStack Query",
+          "Tailwind CSS",
+          "Ant Design",
+          "Material UI",
+          "Responsive UI",
+          "Performance Optimization"
         ]
       },
       {
         "name": "Back-end & APIs",
         "items": [
-          "Node.js", "Express.js", "REST APIs", "GraphQL", "WebSockets",
-          "JWT", "OAuth 2.0", "API Development & Integration"
+          "Node.js",
+          "Express.js",
+          "REST APIs",
+          "GraphQL",
+          "WebSockets",
+          "JWT",
+          "OAuth 2.0",
+          "API Development & Integration"
         ]
       },
       {
         "name": "AI & Automation",
         "items": [
-          "OpenAI APIs", "LangChain", "LangGraph", "PydanticAI", "AI Agents",
-          "RAG Systems", "Prompt Engineering", "Browser Automation", "Web Scraping"
+          "OpenAI APIs",
+          "LangChain",
+          "LangGraph",
+          "PydanticAI",
+          "AI Agents",
+          "RAG Systems",
+          "Prompt Engineering",
+          "Browser Automation",
+          "Web Scraping"
         ]
       },
       {
         "name": "Databases & Cloud",
         "items": [
-          "MongoDB", "PostgreSQL", "Firebase", "Supabase", "AWS", "Vercel", "Netlify"
+          "MongoDB",
+          "PostgreSQL",
+          "Firebase",
+          "Supabase",
+          "AWS",
+          "Vercel",
+          "Netlify"
         ]
       },
       {
         "name": "DevOps & Tools",
         "items": [
-          "Git", "GitHub", "GitHub Actions", "Docker", "Kubernetes", "CI/CD",
-          "Vite", "Webpack", "Postman"
+          "Git",
+          "GitHub",
+          "GitHub Actions",
+          "Docker",
+          "Kubernetes",
+          "CI/CD",
+          "Vite",
+          "Webpack",
+          "Postman"
         ]
       },
       {
         "name": "Architecture & System Design",
         "items": [
-          "Scalable System Design", "Frontend Architecture", "Component-Driven Development",
-          "State Management", "Performance Engineering", "Distributed UI Systems",
+          "Scalable System Design",
+          "Frontend Architecture",
+          "Component-Driven Development",
+          "State Management",
+          "Performance Engineering",
+          "Distributed UI Systems",
           "Server-Driven UI (SDUI)"
         ]
       }
@@ -351,7 +432,12 @@
       "problem": "Decision makers needed interactive analytics over millions of marketing and operational records without sacrificing responsiveness.",
       "solution": "Designed high-performance React dashboards with virtualization, server-side pagination, and disciplined state architecture.",
       "outcome": "Smooth exploration of 1M+ records with maintainable UI systems used across enterprise workflows.",
-      "stack": ["React", "Redux", "TypeScript", "Ant Design"]
+      "stack": [
+        "React",
+        "Redux",
+        "TypeScript",
+        "Ant Design"
+      ]
     },
     {
       "id": "sdui-platform",
@@ -360,7 +446,12 @@
       "problem": "Shipping new workflows required frequent frontend redeploys and duplicated UI logic across teams.",
       "solution": "Built a Server-Driven UI platform where JSON schemas define screens, forms, permissions, and actions.",
       "outcome": "Faster feature delivery with RBAC-aware personalization and a live studio for schema debugging.",
-      "stack": ["SDUI", "TypeScript", "React", "JSON Schema"]
+      "stack": [
+        "SDUI",
+        "TypeScript",
+        "React",
+        "JSON Schema"
+      ]
     },
     {
       "id": "b2b-ecommerce",
@@ -369,7 +460,11 @@
       "problem": "High-traffic buyer–seller flows suffered from inconsistent UI and slow page loads.",
       "solution": "Engineered a scalable frontend architecture and reusable component library with performance-focused delivery.",
       "outcome": "Faster pages, consistent UX, and higher engineering velocity for product teams.",
-      "stack": ["React", "Component Libraries", "Performance"]
+      "stack": [
+        "React",
+        "Component Libraries",
+        "Performance"
+      ]
     },
     {
       "id": "ai-automation",
@@ -378,12 +473,17 @@
       "problem": "Manual operational workflows slowed teams and buried useful insights in raw data.",
       "solution": "Integrated OpenAI APIs and agent-style automation into production applications alongside existing platforms.",
       "outcome": "Automated repetitive work and unlocked faster insight loops for business stakeholders.",
-      "stack": ["OpenAI", "LangChain", "React", "Node.js"]
+      "stack": [
+        "OpenAI",
+        "LangChain",
+        "React",
+        "Node.js"
+      ]
     }
   ],
   "contact": {
-    "headline": "Let's build something that lasts.",
-    "description": "Open to Senior / Staff Frontend, Full-Stack, and Platform Engineering roles. Happy to discuss architecture, products, or a specific hiring need.",
+    "headline": "Looking for someone who can own the stack — and lead the work?",
+    "description": "Open to Senior / Staff Frontend, Full-Stack, and Platform roles. Happy to talk architecture, leadership scope, or a concrete hiring need.",
     "email": "shubhamsahaninitkkr@gmail.com",
     "phone": "+91 97718 23804",
     "phoneAlt": "+91 99312 30810"

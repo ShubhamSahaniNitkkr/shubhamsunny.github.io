@@ -1,29 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
-
-/** @type {import('vite').Plugin} */
-function devReactOptimize() {
-  return {
-    name: 'dev-react-optimize',
-    config(_, { command }) {
-      if (command !== 'serve') return;
-      return {
-        optimizeDeps: {
-          rolldownOptions: {
-            transform: {
-              define: {
-                'process.env.NODE_ENV': '"development"',
-              },
-            },
-          },
-        },
-      };
-    },
-  };
-}
 
 export default defineConfig({
   site: 'https://shubhamsunny.com',
@@ -33,24 +11,12 @@ export default defineConfig({
     inlineStylesheets: 'auto',
   },
   vite: {
-    plugins: [tailwindcss(), devReactOptimize()],
-    resolve: {
-      dedupe: ['react', 'react-dom'],
-    },
-    optimizeDeps: {
-      include: [
-        'react',
-        'react-dom',
-        'react/jsx-runtime',
-        'react/jsx-dev-runtime',
-      ],
-    },
+    plugins: [tailwindcss()],
     build: {
       cssMinify: true,
     },
   },
   integrations: [
-    react(),
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,

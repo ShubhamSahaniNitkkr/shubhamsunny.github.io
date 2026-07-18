@@ -7,73 +7,66 @@ import { siteConfig } from '../../lib/utils';
 const { hero } = portfolio;
 ---
 
-<section id="about" class="hero-atmosphere relative overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-28">
-  <div
-    class="pointer-events-none absolute inset-0 opacity-[0.4]"
-    aria-hidden="true"
-    style="background-image: linear-gradient(rgba(27,58,107,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(27,58,107,0.045) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse 70% 65% at 50% 30%, black, transparent);"
-  ></div>
-
-  <div class="container-wide relative px-4 sm:px-6">
-    <div class="grid items-center gap-12 lg:grid-cols-[1.12fr_0.88fr] lg:gap-16">
-      <div class="reveal">
-        <div class="inline-flex items-center gap-2 rounded-full border border-[var(--color-steel-border)] bg-white/80 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-[var(--color-navy)] shadow-sm backdrop-blur">
-          <span class="relative flex h-2 w-2">
-            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60"></span>
-            <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
-          </span>
+<section id="about" class="hero-atmosphere relative overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-24">
+  <div class="container-wide relative">
+    <div class="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+      <div class="hero-cascade min-w-0">
+        <div class="inline-flex items-center gap-2 rounded-full border border-[var(--color-sky)]/20 bg-white/90 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-navy)]">
+          <span class="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true"></span>
           Open to opportunities
         </div>
 
-        <h1 class="mt-6 font-display text-4xl font-bold tracking-tight text-[var(--color-navy)] sm:text-5xl lg:text-[3.65rem] lg:leading-[1.08]">
-          {hero.name}
-        </h1>
-        <span class="name-underline" aria-hidden="true"></span>
+        <div>
+          <p class="mt-6 text-sm font-semibold tracking-[0.14em] text-[var(--color-sky)] uppercase">
+            Senior Software Developer · Full-Stack Leadership
+          </p>
+          <h1 class="mt-3 font-display text-[clamp(2.75rem,7.5vw,4.75rem)] font-semibold leading-[1.05] tracking-tight text-[var(--color-navy)]">
+            {hero.name}
+          </h1>
+          <span class="name-underline" aria-hidden="true"></span>
+        </div>
 
-        <p class="mt-5 max-w-xl text-base font-medium italic leading-relaxed text-[var(--color-muted)] sm:text-lg">
-          {hero.titles.join(' · ')}
+        <p class="mt-5 max-w-xl text-base italic leading-relaxed text-[var(--color-muted)] sm:text-lg">
+          Frontend platforms · APIs · Enterprise products · AI that ships
         </p>
-        <p class="mt-6 max-w-xl text-base leading-relaxed text-[var(--color-charcoal)] sm:text-[1.0625rem]">
+        <p class="mt-4 max-w-xl text-[1.05rem] leading-relaxed text-[var(--color-charcoal)]/90">
           {hero.summary}
         </p>
 
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href={hero.ctas.primary.href} class="btn-accent">{hero.ctas.primary.label}</a>
+        <div class="mt-8 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <a href={hero.ctas.primary.href} class="btn-accent group">
+            {hero.ctas.primary.label}
+            <span aria-hidden="true">→</span>
+          </a>
           <a href={hero.ctas.secondary.href} class="btn-ghost">{hero.ctas.secondary.label}</a>
           <a href={hero.ctas.tertiary.href} class="btn-ghost">{hero.ctas.tertiary.label}</a>
         </div>
 
-        <div class="mt-9 flex flex-wrap gap-2">
-          {hero.trust.map((item) => (
-            <span class="skill-pill">{item}</span>
-          ))}
-        </div>
-
-        <div class="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-semibold text-[var(--color-navy)]">
-          <a href={social.linkedin.url} target="_blank" rel="noopener noreferrer" class="transition hover:text-[var(--color-navy-soft)]">LinkedIn</a>
+        <div class="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-semibold">
+          <a href={social.linkedin.url} target="_blank" rel="noopener noreferrer" class="link-accent">LinkedIn</a>
           <span class="text-[var(--color-steel-border)]">·</span>
-          <a href={social.github.url} target="_blank" rel="noopener noreferrer" class="transition hover:text-[var(--color-navy-soft)]">GitHub</a>
+          <a href={social.github.url} target="_blank" rel="noopener noreferrer" class="link-accent">GitHub</a>
           <span class="text-[var(--color-steel-border)]">·</span>
-          <a href={`mailto:${siteConfig.email}`} class="transition hover:text-[var(--color-navy-soft)]">Email</a>
+          <a href={`mailto:${siteConfig.email}`} class="link-accent">Email</a>
         </div>
       </div>
 
-      <div class="reveal relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none" style="transition-delay: 120ms">
-        <div class="float-soft absolute -right-4 -top-4 hidden h-28 w-28 rounded-full border border-[var(--color-steel-border)] bg-white/70 shadow-sm backdrop-blur sm:block" aria-hidden="true"></div>
-        <div class="absolute -bottom-5 -left-5 hidden h-24 w-24 rounded-2xl bg-[var(--color-steel)] sm:block" aria-hidden="true"></div>
-        <div class="relative">
-          <div class="absolute -inset-[1px] rounded-[1.4rem] bg-gradient-to-br from-[var(--color-navy)]/40 via-[var(--color-steel-border)] to-transparent" aria-hidden="true"></div>
-          <img
-            src={media.portrait.src}
-            alt={media.portrait.alt}
-            width="640"
-            height="800"
-            class="relative aspect-[4/5] w-full rounded-[1.35rem] object-cover object-top shadow-[0_30px_70px_-32px_rgba(18,40,71,0.55)]"
-            fetchpriority="high"
-          />
-          <div class="absolute bottom-4 left-4 right-4 rounded-xl border border-white/40 bg-white/85 px-4 py-3 shadow-lg backdrop-blur-md">
-            <p class="text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-muted)]">Currently</p>
-            <p class="mt-0.5 text-sm font-bold text-[var(--color-navy)]">Senior Software Developer · Yum! Brands</p>
+      <div class="reveal-right relative mx-auto w-full max-w-sm lg:mx-0 lg:max-w-none">
+        <div class="portrait-ring relative">
+          <div class="relative overflow-hidden rounded-[1.5rem] bg-[var(--color-navy-deep)]">
+            <img
+              src={media.portrait.src}
+              alt={media.portrait.alt}
+              width="560"
+              height="700"
+              class="aspect-[4/5] w-full object-cover object-top"
+              fetchpriority="high"
+            />
+            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[var(--color-navy-deep)] via-[var(--color-navy-deep)]/65 to-transparent px-5 pb-5 pt-20">
+              <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-teal-300">Currently</p>
+              <p class="mt-1 font-display text-lg font-semibold text-white">Yum! Brands</p>
+              <p class="text-sm text-white/70">Senior Software Developer</p>
+            </div>
           </div>
         </div>
       </div>

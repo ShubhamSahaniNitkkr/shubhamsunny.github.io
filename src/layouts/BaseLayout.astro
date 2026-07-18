@@ -3,7 +3,8 @@ import '../styles/global.css';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import SchemaMarkup from '../components/seo/SchemaMarkup.astro';
-import { siteConfig, getCloudinaryUrl } from '../lib/utils';
+import NetworkBackground from '../components/ui/NetworkBackground.astro';
+import { siteConfig } from '../lib/utils';
 import media from '../data/media.json';
 import type { SchemaPageType } from '../lib/schema';
 
@@ -40,7 +41,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteConfig.domain}$
 const resolvedOgImageAlt = ogImageAlt || title;
 const resolvedPageTitle = pageTitle || title;
 const resolvedPageDescription = pageDescription || description;
-const portraitPreload = getCloudinaryUrl(media.portrait.src, 640, 800);
+const portraitSrc = media.portrait.src;
 ---
 
 <!doctype html>
@@ -52,10 +53,11 @@ const portraitPreload = getCloudinaryUrl(media.portrait.src, 640, 800);
     <meta name="keywords" content={keywords} />
     <meta name="author" content={siteConfig.brand} />
     <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
-    <meta name="theme-color" content="#1B3A6B" />
+    <meta name="theme-color" content="#FFFFFF" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap-index.xml" />
     <link rel="manifest" href="/site.webmanifest" />
+    <link rel="alternate" type="text/plain" href="/.well-known/llms.txt" title="LLM Site Summary" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={ogType} />
@@ -70,10 +72,11 @@ const portraitPreload = getCloudinaryUrl(media.portrait.src, 640, 800);
     <meta name="twitter:image" content={ogImageUrl} />
     <title>{title}</title>
     <link rel="icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href={getCloudinaryUrl(media.portrait.src, 180, 180)} />
-    <link rel="preload" href={portraitPreload} as="image" fetchpriority="high" />
+    <link rel="apple-touch-icon" href={portraitSrc} />
+    <link rel="preload" href={portraitSrc} as="image" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://api.iconify.design" crossorigin />
     <SchemaMarkup
       type={schemaType}
       pageUrl={canonical}
@@ -82,9 +85,10 @@ const portraitPreload = getCloudinaryUrl(media.portrait.src, 640, 800);
     />
   </head>
   <body>
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-[var(--color-navy)] focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-navy)]">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-[var(--color-navy)] focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-sky)]">
       Skip to main content
     </a>
+    <NetworkBackground />
     <Header />
     <div class="site-content relative z-[1]">
       <main id="main-content">
@@ -93,18 +97,27 @@ const portraitPreload = getCloudinaryUrl(media.portrait.src, 640, 800);
       <Footer />
     </div>
     <script>
+      const motionSelector = '.reveal, .reveal-left, .reveal-right, .reveal-scale';
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target);
-            }
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
           });
         },
-        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' },
+        { threshold: 0.1, rootMargin: '0px 0px -4% 0px' },
       );
-      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+      const bootMotion = () => {
+        document.querySelectorAll(motionSelector).forEach((el) => {
+          if (el.classList.contains('is-visible')) return;
+          observer.observe(el);
+        });
+      };
+
+      bootMotion();
+      document.addEventListener('astro:page-load', bootMotion);
     </script>
   </body>
 </html>

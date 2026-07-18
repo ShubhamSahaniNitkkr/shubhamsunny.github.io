@@ -22,12 +22,3 @@ export interface SiteConfig {
     flagshipProjects: number;
   };
 }
-
-export interface LegalPage {
-  slug: string;
-  title: string;
-  shortTitle: string;
-  lastUpdated: string;
-  summary?: string;
-  sections: { heading: string; paragraphs: string[] }[];
-}

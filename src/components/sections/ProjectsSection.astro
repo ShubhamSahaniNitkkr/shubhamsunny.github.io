@@ -6,58 +6,51 @@ const featured = projects.filter((p) => p.featured);
 const rest = projects.filter((p) => !p.featured);
 ---
 
-<section id="projects" class="section-padding border-t border-[var(--color-border)] surface-mesh">
+<section id="projects" class="section-padding surface-mesh border-t border-[var(--color-border)]">
   <div class="container-wide">
-    <div class="reveal flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-      <div class="max-w-2xl">
-        <p class="section-index">04 — Projects</p>
-        <h2 class="section-title mt-3">Architecture you can click</h2>
-        <p class="section-lead mt-4">
-          Deep case studies — not thumbnails. SDUI, plugins, offline sync, and million-row UIs with live demos.
-        </p>
-      </div>
-      <p class="text-sm font-semibold text-[var(--color-muted)]">{projects.length} flagship builds</p>
+    <div class="section-head reveal">
+      <p class="section-index">04 — Projects</p>
+      <h2 class="section-title">Architecture you can click</h2>
+      <p class="section-lead">
+        Deep case studies — SDUI, plugins, offline sync, and million-row UIs with live demos.
+      </p>
     </div>
 
-    <div class="mt-12 space-y-7">
+    <div class="space-y-6">
       {featured.map((project, i) => (
         <article
           class:list={[
-            'reveal panel panel-hover overflow-hidden lg:grid lg:min-h-[380px]',
+            'reveal panel panel-hover overflow-hidden lg:grid lg:min-h-[360px]',
             i % 2 === 1 ? 'lg:grid-cols-[1.05fr_0.95fr]' : 'lg:grid-cols-[0.95fr_1.05fr]',
           ]}
-          style={`transition-delay: ${i * 50}ms`}
         >
           <a
             href={project.url}
             target="_blank"
             rel="noopener noreferrer"
-            class:list={['media-frame block min-h-[220px] lg:min-h-full', i % 2 === 1 ? 'lg:order-2' : '']}
+            class:list={['media-frame relative block min-h-[220px] lg:min-h-full', i % 2 === 1 ? 'lg:order-2' : '']}
           >
             <img
               src={project.cover}
               alt={`${project.title} cover`}
-              class="h-full min-h-[220px] w-full object-cover transition duration-700 hover:scale-[1.04] lg:absolute lg:inset-0 lg:min-h-full"
+              width="960"
+              height="640"
+              class="h-full min-h-[220px] w-full object-cover lg:absolute lg:inset-0 lg:min-h-full"
               loading={i === 0 ? 'eager' : 'lazy'}
             />
+            <div class="pointer-events-none absolute left-4 top-4 z-10 rounded-full bg-white/95 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--color-navy)]">
+              Featured 0{i + 1}
+            </div>
           </a>
           <div class:list={['flex flex-col justify-center p-6 sm:p-8 lg:p-10', i % 2 === 1 ? 'lg:order-1' : '']}>
-            <div class="flex flex-wrap items-center gap-2">
-              <span class="rounded-md bg-[var(--color-navy)] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-white">
-                Featured
-              </span>
-              <span class="text-xs font-semibold uppercase tracking-wider text-[var(--color-muted-light)]">
-                0{i + 1}
-              </span>
-            </div>
-            <h3 class="mt-4 font-display text-2xl font-bold text-[var(--color-navy)] sm:text-[1.85rem]">
+            <h3 class="font-display text-2xl font-semibold text-[var(--color-navy)] sm:text-[1.85rem]">
               {project.title}
             </h3>
             <p class="mt-2 text-sm font-medium italic text-[var(--color-muted)] sm:text-base">{project.tagline}</p>
             <ul class="mt-5 space-y-2.5">
               {project.highlights.slice(0, 4).map((h) => (
-                <li class="flex gap-2.5 text-sm leading-relaxed text-[var(--color-charcoal)]">
-                  <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-navy)]" aria-hidden="true"></span>
+                <li class="flex gap-2.5 text-sm leading-relaxed text-[var(--color-charcoal)]/90">
+                  <span class="accent-dot mt-2 shrink-0" aria-hidden="true"></span>
                   {h}
                 </li>
               ))}
@@ -67,34 +60,24 @@ const rest = projects.filter((p) => !p.featured);
                 <span class="skill-pill !py-1 !text-[11px]">{t}</span>
               ))}
             </div>
-            <div class="mt-7 flex flex-wrap gap-3">
+            <div class="mt-7">
               <a href={project.url} target="_blank" rel="noopener noreferrer" class="btn-accent !min-h-[42px] !text-xs">
                 Live demo →
               </a>
-              {project.videoUrl ? (
-                <a href={project.videoUrl} target="_blank" rel="noopener noreferrer" class="btn-ghost !min-h-[42px] !text-xs">
-                  Watch walkthrough
-                </a>
-              ) : null}
             </div>
           </div>
         </article>
       ))}
     </div>
 
-    <div class="mt-7 grid gap-5 md:grid-cols-3">
-      {rest.map((project, i) => (
-        <article class="reveal panel panel-hover flex flex-col overflow-hidden" style={`transition-delay: ${i * 50}ms`}>
-          <a href={project.url} target="_blank" rel="noopener noreferrer" class="media-frame block aspect-[16/10]">
-            <img
-              src={project.cover}
-              alt={`${project.title} cover`}
-              class="h-full w-full object-cover transition duration-500 hover:scale-[1.04]"
-              loading="lazy"
-            />
+    <div class="mt-6 grid gap-5 md:grid-cols-3">
+      {rest.map((project) => (
+        <article class="reveal panel panel-hover flex flex-col overflow-hidden">
+          <a href={project.url} target="_blank" rel="noopener noreferrer" class="media-frame !rounded-none block aspect-[16/10]">
+            <img src={project.cover} alt={`${project.title} cover`} class="h-full w-full object-cover" loading="lazy" />
           </a>
           <div class="flex flex-1 flex-col p-5">
-            <h3 class="font-display text-lg font-bold text-[var(--color-navy)]">{project.title}</h3>
+            <h3 class="font-display text-lg font-semibold text-[var(--color-navy)]">{project.title}</h3>
             <p class="mt-1.5 text-sm leading-relaxed text-[var(--color-muted)]">{project.tagline}</p>
             <div class="mt-4 flex flex-wrap gap-1.5">
               {project.tech.slice(0, 3).map((t) => (
@@ -105,7 +88,7 @@ const rest = projects.filter((p) => !p.featured);
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              class="mt-auto pt-5 text-sm font-bold text-[var(--color-navy)] transition hover:text-[var(--color-navy-soft)]"
+              class="mt-auto pt-5 text-sm font-bold text-[var(--color-navy)] transition hover:text-[var(--color-sky)]"
             >
               Open live →
             </a>

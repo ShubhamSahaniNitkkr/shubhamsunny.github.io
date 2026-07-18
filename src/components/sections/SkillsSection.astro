@@ -1,40 +1,61 @@
 ---
 import portfolio from '../../data/portfolio.json';
+import { getTechLogo } from '../../lib/tech-logos';
 
 const { skills } = portfolio;
+
+const groups = skills.groups.map((group) => ({
+  ...group,
+  items: group.items.map((name) => ({
+    name,
+    logo: getTechLogo(name),
+  })),
+}));
 ---
 
-<section id="skills" class="section-padding border-t border-[var(--color-border)] bg-white">
+<section id="skills" class="section-padding surface-mesh border-t border-[var(--color-border)]">
   <div class="container-wide">
-    <div class="reveal max-w-2xl">
+    <div class="section-head reveal">
       <p class="section-index">05 — Skills</p>
-      <h2 class="section-title mt-3">Stack & core competencies</h2>
-      <p class="section-lead mt-4">
-        Deep frontend expertise backed by full-stack delivery, cloud deployment, and AI integration.
+      <h2 class="section-title">Stack & core competencies</h2>
+      <p class="section-lead">
+        Deep frontend craft with full-stack ownership — APIs, cloud, and the leadership to ship it.
       </p>
     </div>
 
-    <div class="reveal mt-10 panel p-6 sm:p-8">
-      <p class="text-xs font-bold uppercase tracking-[0.14em] text-[var(--color-navy)]">Core competencies</p>
-      <div class="mt-4 flex flex-wrap gap-2.5">
+    <div class="reveal">
+      <p class="text-xs font-bold uppercase tracking-[0.14em] text-[var(--color-sky)]">Core competencies</p>
+      <div class="mt-4 flex flex-wrap gap-2">
         {skills.competencies.map((c) => (
           <span class="skill-pill">{c}</span>
         ))}
       </div>
     </div>
 
-    <div class="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-      {skills.groups.map((group, i) => (
-        <div class="reveal panel panel-hover p-5 sm:p-6" style={`transition-delay: ${i * 35}ms`}>
-          <div class="flex items-center justify-between gap-3">
-            <h3 class="font-display text-lg font-bold text-[var(--color-navy)]">{group.name}</h3>
-            <span class="text-[10px] font-bold uppercase tracking-wider text-[var(--color-muted-light)]">0{i + 1}</span>
-          </div>
-          <div class="divider-navy mt-3 mb-4 max-w-[5rem]"></div>
+    <div class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      {groups.map((group) => (
+        <div class="reveal panel p-5 sm:p-6">
+          <h3 class="font-display text-lg font-semibold text-[var(--color-navy)]">{group.name}</h3>
+          <div class="divider-navy mt-3 mb-4 max-w-[4rem]"></div>
           <div class="flex flex-wrap gap-2">
-            {group.items.map((item) => (
-              <span class="skill-pill !font-medium">{item}</span>
-            ))}
+            {group.items.map((item) =>
+              item.logo ? (
+                <span class="skill-pill !gap-2">
+                  <img
+                    src={item.logo.src}
+                    alt=""
+                    width="16"
+                    height="16"
+                    class="h-4 w-4 shrink-0"
+                    loading="lazy"
+                    onerror="this.remove()"
+                  />
+                  {item.name}
+                </span>
+              ) : (
+                <span class="skill-pill">{item.name}</span>
+              ),
+            )}
           </div>
         </div>
       ))}

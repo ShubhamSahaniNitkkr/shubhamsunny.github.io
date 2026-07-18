@@ -1,14 +1,14 @@
 {
   "brand": "Shubham Sunny",
-  "tagline": "Senior Software Developer · Front-end Engineering · Full Stack",
-  "headline": "Building scalable enterprise platforms, high-performance UIs, and AI-powered products.",
-  "bioShort": "Senior Software Developer with 8+ years of experience architecting scalable web applications, Server-Driven UI systems, and full-stack platforms.",
-  "bioLong": "Results-oriented Software Engineering Professional targeting to contribute expertise in product development, technical leadership, and solution delivery to build impactful digital experiences. Passionate about driving innovation, enabling business growth, and creating long-term value through collaboration, continuous improvement, and engineering excellence.",
+  "tagline": "Senior Software Developer · Full-Stack Leadership · Frontend Platforms",
+  "headline": "I lead full-stack product engineering — UI architecture, APIs, performance, and AI that ships.",
+  "bioShort": "Senior Software Developer with 8+ years leading full-stack delivery: scalable web apps, Server-Driven UI platforms, and production AI workflows.",
+  "bioLong": "I own product engineering end to end — frontend architecture, APIs, performance, and technical leadership. At Yum! Brands I ship enterprise platforms teams rely on daily, including analytics over 1M+ records and SDUI systems. NIT Kurukshetra alumnus.",
   "expertise": [
+    "Full-Stack Leadership",
     "Front-end Architecture",
     "Server-Driven UI (SDUI)",
     "Performance Engineering",
-    "Full-Stack Development",
     "AI Agent Systems",
     "Enterprise Platforms"
   ],
@@ -18,9 +18,9 @@
   "address": "India · Open to Remote & Hybrid roles",
   "domain": "https://shubhamsunny.com",
   "seo": {
-    "title": "Shubham Sunny | Senior Software Engineer | React, SDUI, Full Stack",
-    "description": "Senior Software Developer with 8+ years building enterprise platforms, Server-Driven UI systems, high-performance frontends, and AI-powered applications. NIT Kurukshetra · Yum! Brands.",
-    "keywords": "Senior Software Engineer, Front-end Engineer, React, Next.js, TypeScript, Server-Driven UI, SDUI, Full Stack Developer, Performance Engineering, AI Agents",
+    "title": "Shubham Sunny | Senior Full-Stack Engineer | React, TypeScript, Leadership",
+    "description": "Hire Shubham Sunny — Senior Software Developer at Yum! Brands. Full-stack leadership across React, TypeScript, SDUI platforms, performance engineering, and production AI. NIT Kurukshetra.",
+    "keywords": "Shubham Sunny, Senior Software Engineer, Full Stack Lead, Front-end Engineer, React, Next.js, TypeScript, Server-Driven UI, SDUI, Technical Leadership, Yum Brands, NIT Kurukshetra",
     "ogImage": "/media/team/shubham.jpg"
   },
   "stats": {

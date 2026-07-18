@@ -4,36 +4,33 @@ import portfolio from '../../data/portfolio.json';
 const { usecases } = portfolio;
 ---
 
-<section id="usecases" class="section-padding border-t border-[var(--color-border)] bg-white">
+<section id="usecases" class="section-padding surface-mesh border-t border-[var(--color-border)]">
   <div class="container-wide">
-    <div class="reveal max-w-2xl">
-      <p class="section-index">08 — Client Use Cases</p>
-      <h2 class="section-title mt-3">Outcomes from real delivery</h2>
-      <p class="section-lead mt-4">
+    <div class="section-head reveal">
+      <p class="section-index">07 — Client Use Cases</p>
+      <h2 class="section-title">Outcomes from real delivery</h2>
+      <p class="section-lead">
         Selected engagements across enterprise analytics, configurable platforms, e-commerce, and AI automation.
       </p>
     </div>
 
-    <div class="mt-12 grid gap-5 lg:grid-cols-2">
+    <div class="grid gap-5 lg:grid-cols-2">
       {usecases.map((uc, i) => (
         <article class="reveal panel panel-hover p-6 sm:p-7" style={`transition-delay: ${i * 40}ms`}>
-          <div class="flex items-start justify-between gap-3">
-            <p class="text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-muted)]">{uc.client}</p>
-            <span class="text-[10px] font-bold text-[var(--color-muted-light)]">0{i + 1}</span>
-          </div>
-          <h3 class="mt-2 font-display text-xl font-bold text-[var(--color-navy)]">{uc.title}</h3>
+          <p class="text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-muted)]">{uc.client}</p>
+          <h3 class="mt-2 font-display text-xl font-semibold text-[var(--color-navy)]">{uc.title}</h3>
           <dl class="mt-5 space-y-4 text-sm leading-relaxed">
-            <div class="rounded-xl bg-[var(--color-surface-alt)] px-4 py-3">
-              <dt class="text-xs font-bold uppercase tracking-wider text-[var(--color-navy)]">Problem</dt>
-              <dd class="mt-1.5 text-[var(--color-charcoal)]">{uc.problem}</dd>
+            <div>
+              <dt class="text-xs font-bold uppercase tracking-wider text-[var(--color-sky)]">Problem</dt>
+              <dd class="mt-1.5 text-[var(--color-charcoal)]/90">{uc.problem}</dd>
             </div>
             <div>
-              <dt class="text-xs font-bold uppercase tracking-wider text-[var(--color-navy)]">Solution</dt>
-              <dd class="mt-1.5 text-[var(--color-charcoal)]">{uc.solution}</dd>
+              <dt class="text-xs font-bold uppercase tracking-wider text-[var(--color-sky)]">Solution</dt>
+              <dd class="mt-1.5 text-[var(--color-charcoal)]/90">{uc.solution}</dd>
             </div>
             <div>
-              <dt class="text-xs font-bold uppercase tracking-wider text-[var(--color-navy)]">Outcome</dt>
-              <dd class="mt-1.5 text-[var(--color-charcoal)]">{uc.outcome}</dd>
+              <dt class="text-xs font-bold uppercase tracking-wider text-[var(--color-sky)]">Outcome</dt>
+              <dd class="mt-1.5 text-[var(--color-charcoal)]/90">{uc.outcome}</dd>
             </div>
           </dl>
           <div class="mt-5 flex flex-wrap gap-2">

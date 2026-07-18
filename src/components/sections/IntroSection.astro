@@ -7,18 +7,18 @@ const embed = youtubeEmbedUrl(intro.youtubeId);
 const interviews = intro.interviews;
 ---
 
-<section id="intro" class="section-padding border-t border-[var(--color-border)] bg-white">
+<section id="intro" class="section-padding surface-mesh border-t border-[var(--color-border)]">
   <div class="container-wide">
-    <div class="reveal max-w-2xl">
+    <div class="section-head reveal">
       <p class="section-index">01 — Intro</p>
-      <h2 class="section-title mt-3">Meet me in under a few minutes</h2>
-      <p class="section-lead mt-4">{intro.description}</p>
+      <h2 class="section-title">Meet me in under 3 min</h2>
+      <p class="section-lead">{intro.description}</p>
     </div>
 
-    <div class="reveal mt-10 grid gap-6 lg:grid-cols-[1.45fr_0.55fr] lg:gap-8">
-      <div class="panel overflow-hidden !rounded-2xl bg-[var(--color-navy-deep)]">
+    <div class="reveal grid gap-6 lg:grid-cols-[1.4fr_0.6fr] lg:gap-8">
+      <div class="panel overflow-hidden !rounded-[1.25rem] !p-0">
         {embed ? (
-          <div class="aspect-video w-full">
+          <div class="aspect-video w-full bg-[var(--color-navy-deep)]">
             <iframe
               class="h-full w-full"
               src={embed}
@@ -29,46 +29,40 @@ const interviews = intro.interviews;
             ></iframe>
           </div>
         ) : (
-          <div class="relative flex aspect-video flex-col items-center justify-center gap-4 overflow-hidden px-6 text-center text-white">
-            <div class="pointer-events-none absolute inset-0 opacity-40" aria-hidden="true"
-              style="background: radial-gradient(circle at 30% 40%, rgba(42,79,138,0.9), transparent 50%), radial-gradient(circle at 80% 70%, rgba(27,58,107,0.8), transparent 45%);"
-            ></div>
-            <button type="button" class="relative flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-white/10 backdrop-blur transition hover:scale-105" aria-hidden="true">
-              <svg class="ml-1 h-7 w-7" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </button>
-            <div class="relative">
-              <p class="text-lg font-semibold">Intro video coming soon</p>
-              <p class="mt-2 max-w-sm text-sm text-white/65">Add your YouTube ID in <code class="rounded bg-white/10 px-1.5 py-0.5 text-xs">portfolio.json</code></p>
-            </div>
+          <div class="flex aspect-video items-center justify-center bg-[var(--color-navy-deep)] text-white">
+            <p class="font-semibold">Intro video coming soon</p>
           </div>
         )}
       </div>
 
-      <div class="panel flex flex-col p-5 sm:p-6">
-        <p class="text-xs font-bold uppercase tracking-[0.14em] text-[var(--color-navy)]">Interview clips</p>
-        <p class="mt-2 text-sm text-[var(--color-muted)]">JavaScript · Frontend · Architecture · AI</p>
+      <div class="panel flex flex-col p-6 sm:p-7">
+        <p class="text-xs font-bold uppercase tracking-[0.14em] text-[var(--color-sky)]">Interview clips</p>
+        <p class="mt-2 text-sm text-[var(--color-muted)]">More deep-dives coming soon</p>
         <ul class="mt-5 flex flex-1 flex-col gap-2.5">
           {interviews.map((item) => {
-            const href = item.url || youtubeWatchUrl(item.youtubeId) || '#';
-            const ready = Boolean(item.url || item.youtubeId);
+            const href = item.url || youtubeWatchUrl(item.youtubeId);
+            const ready = Boolean(href);
             return (
-              <li class="flex-1">
-                <a
-                  href={href}
-                  target={ready ? '_blank' : undefined}
-                  rel={ready ? 'noopener noreferrer' : undefined}
-                  class:list={[
-                    'group flex h-full items-center justify-between gap-3 rounded-xl border border-[var(--color-steel-border)] bg-[var(--color-steel)]/60 px-4 py-3.5 transition',
-                    ready ? 'hover:border-[var(--color-navy)] hover:bg-white hover:shadow-sm' : 'cursor-default opacity-65',
-                  ]}
-                  aria-disabled={!ready}
-                >
-                  <div>
-                    <p class="text-sm font-bold text-[var(--color-navy)]">{item.label}</p>
-                    <p class="text-xs text-[var(--color-muted)]">{ready ? item.title : 'Link pending'}</p>
+              <li>
+                {ready ? (
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center justify-between gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-steel)]/80 px-4 py-3.5 transition hover:border-[var(--color-sky)] hover:bg-white"
+                  >
+                    <div>
+                      <p class="text-sm font-semibold text-[var(--color-navy)]">{item.label}</p>
+                      <p class="mt-0.5 text-xs text-[var(--color-muted)]">{item.title}</p>
+                    </div>
+                    <span class="text-[var(--color-sky)]" aria-hidden="true">→</span>
+                  </a>
+                ) : (
+                  <div class="flex items-center justify-between gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-steel)]/60 px-4 py-3.5">
+                    <p class="min-w-0 flex-1 truncate text-sm font-semibold text-[var(--color-navy)]">{item.label}</p>
+                    <p class="shrink-0 text-xs font-medium text-[var(--color-muted)]">Coming soon</p>
                   </div>
-                  <span class="text-[var(--color-navy)] transition group-hover:translate-x-0.5" aria-hidden="true">→</span>
-                </a>
+                )}
               </li>
             );
           })}

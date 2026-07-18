@@ -1,0 +1,134 @@
+---
+import { siteConfig } from '../../lib/utils';
+
+interface Props {
+  web3formsAccessKey?: string;
+}
+
+const { web3formsAccessKey = '' } = Astro.props;
+const accessKey = String(web3formsAccessKey || import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || '').trim();
+const field =
+  'w-full rounded-xl border border-[var(--color-border)] bg-white px-3.5 py-2.5 text-sm text-[var(--color-charcoal)] placeholder:text-[var(--color-muted-light)] outline-none transition focus:border-[var(--color-sky)] focus:ring-2 focus:ring-[var(--color-sky)]/15';
+---
+
+<form
+  id="contact-form"
+  class="space-y-4"
+  data-access-key={accessKey}
+  data-to-email={siteConfig.email}
+>
+  <div class="grid gap-4 sm:grid-cols-2">
+    <label class="block text-sm">
+      <span class="mb-1.5 block font-semibold text-[var(--color-navy)]">Name</span>
+      <input class={field} name="name" autocomplete="name" />
+    </label>
+    <label class="block text-sm">
+      <span class="mb-1.5 block font-semibold text-[var(--color-navy)]">Email *</span>
+      <input class={field} type="email" name="email" required autocomplete="email" />
+    </label>
+  </div>
+  <div class="grid gap-4 sm:grid-cols-2">
+    <label class="block text-sm">
+      <span class="mb-1.5 block font-semibold text-[var(--color-navy)]">Phone</span>
+      <input class={field} name="phone" autocomplete="tel" />
+    </label>
+    <label class="block text-sm">
+      <span class="mb-1.5 block font-semibold text-[var(--color-navy)]">Company / Role</span>
+      <input class={field} name="company" placeholder="e.g. Acme · Senior Frontend" />
+    </label>
+  </div>
+  <label class="block text-sm">
+    <span class="mb-1.5 block font-semibold text-[var(--color-navy)]">Message *</span>
+    <textarea
+      class={`${field} min-h-[120px] resize-y`}
+      name="message"
+      required
+      placeholder="Tell me about the role or what you'd like to discuss…"
+    ></textarea>
+  </label>
+  <button type="submit" class="btn-accent w-full sm:w-auto" data-submit>Send message</button>
+  <p class="hidden text-sm font-medium text-emerald-700" data-status="success">Thanks — your message was sent.</p>
+  <p class="hidden text-sm text-[var(--color-muted)]" data-status="gmail">Opened your email client as a fallback.</p>
+  <p class="hidden text-sm text-red-600" data-status="error">Something went wrong. Please email me directly.</p>
+</form>
+
+<script>
+  function gmailUrl(to: string, name: string, email: string, phone: string, company: string, message: string) {
+    const visitor = name.trim() || 'Website visitor';
+    const subject = `Portfolio inquiry — ${visitor}`;
+    const body = [
+      'Hi Shubham,',
+      '',
+      message.trim(),
+      '',
+      '---',
+      `Name: ${visitor}`,
+      email.trim() ? `Email: ${email.trim()}` : '',
+      phone.trim() ? `Phone: ${phone.trim()}` : '',
+      company.trim() ? `Company / Role: ${company.trim()}` : '',
+      'Sent via portfolio contact form',
+    ]
+      .filter(Boolean)
+      .join('\n');
+    const params = new URLSearchParams({ view: 'cm', fs: '1', to, su: subject, body });
+    return `https://mail.google.com/mail/?${params.toString()}`;
+  }
+
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  if (form) {
+    const accessKey = form.dataset.accessKey || '';
+    const toEmail = form.dataset.toEmail || '';
+    const submitBtn = form.querySelector('[data-submit]') as HTMLButtonElement | null;
+    const show = (key: string) => {
+      form.querySelectorAll('[data-status]').forEach((el) => el.classList.add('hidden'));
+      form.querySelector(`[data-status="${key}"]`)?.classList.remove('hidden');
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!submitBtn || submitBtn.disabled) return;
+      const data = new FormData(form);
+      const name = String(data.get('name') || '');
+      const email = String(data.get('email') || '').trim();
+      const phone = String(data.get('phone') || '');
+      const company = String(data.get('company') || '');
+      const message = String(data.get('message') || '').trim();
+      if (!email || !message) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+      show('');
+
+      try {
+        if (accessKey) {
+          const res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify({
+              access_key: accessKey,
+              subject: `Portfolio inquiry — ${name || 'Visitor'}`,
+              name: name || 'Website visitor',
+              email,
+              phone,
+              message: [message, '', company ? `Company / Role: ${company}` : ''].filter(Boolean).join('\n'),
+            }),
+          });
+          const json = await res.json().catch(() => ({}));
+          if (res.ok && json.success) {
+            form.reset();
+            show('success');
+            return;
+          }
+        }
+        window.open(gmailUrl(toEmail, name, email, phone, company, message), '_blank');
+        show('gmail');
+      } catch {
+        window.open(gmailUrl(toEmail, name, email, phone, company, message), '_blank');
+        show('gmail');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send message';
+      }
+    });
+  }
+</script>

@@ -4,27 +4,25 @@ import portfolio from '../../data/portfolio.json';
 const { blogs } = portfolio;
 ---
 
-<section id="blogs" class="section-padding border-t border-[var(--color-border)] surface-mesh">
+<section id="blogs" class="section-padding section-glass border-t border-[var(--color-border)]">
   <div class="container-wide">
-    <div class="reveal flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-      <div class="max-w-2xl">
-        <p class="section-index">06 — Technical Blogs</p>
-        <h2 class="section-title mt-3">Writing on LinkedIn</h2>
-        <p class="section-lead mt-4">
-          Architecture notes, performance patterns, and engineering lessons — published as LinkedIn posts.
-        </p>
-      </div>
+    <div class="section-head reveal">
+      <p class="section-index">06 — Technical Blogs</p>
+      <h2 class="section-title">Writing on LinkedIn</h2>
+      <p class="section-lead">
+        Architecture notes, performance patterns, and engineering lessons — published as LinkedIn posts.
+      </p>
       <a
         href="https://www.linkedin.com/in/shubham-sunny-09b013129/"
         target="_blank"
         rel="noopener noreferrer"
-        class="btn-ghost shrink-0 !min-h-[40px] !text-xs"
+        class="btn-ghost mt-5 !min-h-[40px] !text-xs"
       >
         View LinkedIn →
       </a>
     </div>
 
-    <div class="mt-10 grid gap-5 sm:grid-cols-2">
+    <div class="grid gap-5 sm:grid-cols-2">
       {blogs.map((post, i) => (
         <a
           href={post.url}
@@ -33,11 +31,8 @@ const { blogs } = portfolio;
           class="reveal panel panel-hover group block p-6"
           style={`transition-delay: ${i * 40}ms`}
         >
-          <div class="flex items-center justify-between gap-3">
-            <span class="skill-pill !py-1 !text-[11px]">{post.topic}</span>
-            <span class="text-xs font-bold text-[var(--color-muted-light)]">0{i + 1}</span>
-          </div>
-          <h3 class="mt-4 font-display text-xl font-bold text-[var(--color-navy)] transition group-hover:text-[var(--color-navy-soft)]">
+          <span class="skill-pill !py-1 !text-[11px]">{post.topic}</span>
+          <h3 class="mt-4 font-display text-xl font-semibold text-[var(--color-navy)] transition group-hover:text-[var(--color-sky)]">
             {post.title}
           </h3>
           <p class="mt-2 text-sm leading-relaxed text-[var(--color-muted)]">{post.excerpt}</p>
