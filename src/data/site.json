@@ -1,50 +1,31 @@
 {
   "brand": "Shubham Sunny",
-  "tagline": "Website & Software Development · Since 2018",
-  "headline": "I help businesses fix websites, scrape data, and build software that works",
-  "bioShort": "I've been building websites and custom software for US and global clients since 2018 — 163+ projects, mostly repeat work and referrals.",
-  "bioLong": "Eight years in, the work is still straightforward: understand what you need, build it properly, and hand it over with clear docs so you are not stuck for every small change. I review every project personally. Deep handles QA, Shushma runs people and outreach, and Vinay keeps larger builds on track.",
+  "tagline": "Senior Software Developer · Front-end Engineering · Full Stack",
+  "headline": "Building scalable enterprise platforms, high-performance UIs, and AI-powered products.",
+  "bioShort": "Senior Software Developer with 8+ years of experience architecting scalable web applications, Server-Driven UI systems, and full-stack platforms.",
+  "bioLong": "Results-oriented Software Engineering Professional targeting to contribute expertise in product development, technical leadership, and solution delivery to build impactful digital experiences. Passionate about driving innovation, enabling business growth, and creating long-term value through collaboration, continuous improvement, and engineering excellence.",
   "expertise": [
-    "Website Modernization",
-    "Data Scraping",
-    "Custom Software",
-    "Mobile Apps",
-    "Chrome Extensions",
-    "Telegram & WhatsApp Bots",
-    "Automation"
+    "Front-end Architecture",
+    "Server-Driven UI (SDUI)",
+    "Performance Engineering",
+    "Full-Stack Development",
+    "AI Agent Systems",
+    "Enterprise Platforms"
   ],
-  "location": "Remote · US Time Zones Welcome",
+  "location": "India · Open to Remote",
   "phone": "+91 97718 23804",
-  "whatsapp": "919771823804",
   "email": "shubhamsahaninitkkr@gmail.com",
-  "address": "Remote · Serving US & Global Clients",
+  "address": "India · Open to Remote & Hybrid roles",
   "domain": "https://shubhamsunny.com",
   "seo": {
-    "title": "Shubham Sunny | Website Modernization, Data Scraping & Custom Software",
-    "description": "Founder-led development since 2018 — website modernization, data scraping, and custom software. 8+ years, 163+ projects. Based in India, serving US & global clients.",
-    "keywords": "website modernization, data scraping, custom software, web app development, mobile app, chrome extension, telegram bot, whatsapp bot",
+    "title": "Shubham Sunny | Senior Software Engineer | React, SDUI, Full Stack",
+    "description": "Senior Software Developer with 8+ years building enterprise platforms, Server-Driven UI systems, high-performance frontends, and AI-powered applications. NIT Kurukshetra · Yum! Brands.",
+    "keywords": "Senior Software Engineer, Front-end Engineer, React, Next.js, TypeScript, Server-Driven UI, SDUI, Full Stack Developer, Performance Engineering, AI Agents",
     "ogImage": "/media/team/shubham.jpg"
   },
   "stats": {
-    "happyClients": 120,
-    "projectsDelivered": 163,
     "yearsExperience": 8,
-    "fiverrRating": 4.9,
-    "googleRating": 4.9
-  },
-  "certifications": [
-    "8+ Years · Since 2018"
-  ],
-  "whatsappMessages": {
-    "consultation": "Hi Shubham, I saw your website. I'd like a free review of my business website.",
-    "package": "Hi Shubham, I'm interested in the {packageName} package (${price}). Can we discuss?",
-    "general": "Hi Shubham, I visited your website and would like to know more about website modernization.",
-    "payment": "Hi Shubham, I have a question about getting started. Name: {name}, Package: {package}."
-  },
-  "emailMessages": {
-    "consultation": "Hi Shubham, I saw your website. I'd like a free review of my business website.",
-    "package": "Hi Shubham, I'm interested in the {packageName} package (${price}). Can we discuss?",
-    "general": "Hi Shubham, I visited your website and would like to know more about website modernization.",
-    "payment": "Hi Shubham, I have a question about getting started. Name: {name}, Package: {package}."
+    "companies": 4,
+    "flagshipProjects": 5
   }
 }

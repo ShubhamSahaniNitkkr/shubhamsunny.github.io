@@ -1,0 +1,45 @@
+---
+import portfolio from '../../data/portfolio.json';
+
+const { about, achievements } = portfolio;
+---
+
+<section id="profile" class="section-padding border-t border-[var(--color-border)] bg-[var(--color-surface-alt)]">
+  <div class="container-wide">
+    <div class="grid gap-12 lg:grid-cols-[1.35fr_0.65fr]">
+      <div class="reveal">
+        <p class="section-eyebrow">{about.eyebrow}</p>
+        <h2 class="section-title mt-3">{about.headline}</h2>
+        <div class="mt-6 space-y-4 text-[1.015rem] leading-relaxed text-[var(--color-charcoal)]">
+          {about.paragraphs.map((p) => (
+            <p>{p}</p>
+          ))}
+        </div>
+        <ul class="mt-8 space-y-2.5">
+          {about.highlights.map((item) => (
+            <li class="flex items-start gap-3 text-sm font-medium text-[var(--color-navy-deep)]">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-navy)]" aria-hidden="true"></span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <aside class="reveal space-y-6" style="transition-delay: 100ms">
+        <div class="rounded-xl border border-[var(--color-steel-border)] bg-white p-6">
+          <p class="text-xs font-bold uppercase tracking-wider text-[var(--color-navy)]">Education</p>
+          <p class="mt-3 font-display text-lg font-bold text-[var(--color-navy)]">{about.education.institution}</p>
+          <p class="mt-1 text-sm text-[var(--color-muted)]">{about.education.degree}</p>
+        </div>
+        <div class="rounded-xl border border-[var(--color-steel-border)] bg-white p-6">
+          <p class="text-xs font-bold uppercase tracking-wider text-[var(--color-navy)]">Achievements</p>
+          <ul class="mt-4 space-y-3">
+            {achievements.map((item) => (
+              <li class="text-sm leading-relaxed text-[var(--color-charcoal)]">{item}</li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

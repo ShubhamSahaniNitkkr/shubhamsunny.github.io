@@ -1,63 +1,26 @@
-import { useState, useEffect, useLayoutEffect } from 'react';
+import { useState } from 'react';
 import { getContactFormEmailUrl } from '../../lib/utils';
-import {
-  applyContactPrefillToDom,
-  bootContactPrefill,
-  readCachedContactPrefill,
-} from '../../lib/contact-prefill';
-
-const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 interface Props {
   web3formsAccessKey?: string;
 }
 
 export default function ContactForm({ web3formsAccessKey = '' }: Props) {
-  const initial = readCachedContactPrefill();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [service, setService] = useState(initial.service);
-  const [message, setMessage] = useState(initial.message);
+  const [company, setCompany] = useState('');
+  const [message, setMessage] = useState('');
   const [sending, setSending] = useState(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'gmail' | 'error'>('idle');
 
   const accessKey = String(web3formsAccessKey || import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || '').trim();
-
-  useIsomorphicLayoutEffect(() => {
-    const applied = applyContactPrefillToDom();
-    if (applied?.service) setService(applied.service);
-    if (applied?.message) setMessage(applied.message);
-  }, []);
-
-  useEffect(() => {
-    const syncPrefill = () => {
-      bootContactPrefill();
-      const applied = readCachedContactPrefill();
-      if (applied.service) setService(applied.service);
-      if (applied.message) setMessage(applied.message);
-    };
-
-    syncPrefill();
-    window.addEventListener('hashchange', syncPrefill);
-    window.addEventListener('popstate', syncPrefill);
-    window.addEventListener('pageshow', syncPrefill);
-    window.addEventListener('ss-prefill-contact', syncPrefill);
-    return () => {
-      window.removeEventListener('hashchange', syncPrefill);
-      window.removeEventListener('popstate', syncPrefill);
-      window.removeEventListener('pageshow', syncPrefill);
-      window.removeEventListener('ss-prefill-contact', syncPrefill);
-    };
-  }, []);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (sending || !email.trim() || !message.trim()) return;
     setSending(true);
     setStatus('idle');
-
-    const payload = { name, email, phone, service, message };
 
     try {
       if (accessKey) {
@@ -66,12 +29,11 @@ export default function ContactForm({ web3formsAccessKey = '' }: Props) {
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
           body: JSON.stringify({
             access_key: accessKey,
-            subject: `Contact — ${name || 'Visitor'}`,
+            subject: `Portfolio inquiry — ${name || 'Visitor'}`,
             name: name || 'Website visitor',
-            email: payload.email,
-            phone: payload.phone,
-            service: payload.service || 'General',
-            message: [payload.message, '', `Service: ${payload.service || 'Not specified'}`].join('\n'),
+            email,
+            phone,
+            message: [message, '', company ? `Company / Role: ${company}` : ''].filter(Boolean).join('\n'),
           }),
         });
         const data = await res.json().catch(() => ({}));
@@ -80,81 +42,79 @@ export default function ContactForm({ web3formsAccessKey = '' }: Props) {
           setName('');
           setEmail('');
           setPhone('');
-          setService('');
+          setCompany('');
           setMessage('');
-          setSending(false);
           return;
         }
       }
-
-      const gmailUrl = getContactFormEmailUrl(name, email, phone, service, message);
-      window.open(gmailUrl, '_blank', 'noopener,noreferrer');
+      window.open(getContactFormEmailUrl(name, email, phone, company, message), '_blank');
       setStatus('gmail');
     } catch {
-      setStatus('error');
+      window.open(getContactFormEmailUrl(name, email, phone, company, message), '_blank');
+      setStatus('gmail');
     } finally {
       setSending(false);
     }
   }
 
+  const field =
+    'w-full rounded-lg border border-[var(--color-border)] bg-white px-3.5 py-2.5 text-sm text-[var(--color-charcoal)] outline-none transition focus:border-[var(--color-navy)] focus:ring-2 focus:ring-[var(--color-navy)]/15';
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-5 text-left">
-      <div className="grid gap-5 sm:grid-cols-2">
-        <div className="form-field">
-          <label htmlFor="contact-name" className="form-label">Full name</label>
-          <input id="contact-name" type="text" name="name" placeholder="John Smith" value={name} onChange={(e) => setName(e.target.value)} className="form-input" />
-        </div>
-        <div className="form-field">
-          <label htmlFor="contact-email" className="form-label">Email address *</label>
-          <input id="contact-email" type="email" name="email" placeholder="john@company.com" value={email} onChange={(e) => setEmail(e.target.value)} required className="form-input" />
-        </div>
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="grid gap-4 sm:grid-cols-2">
+        <label className="block text-sm">
+          <span className="mb-1.5 block font-semibold text-[var(--color-navy)]">Name</span>
+          <input className={field} value={name} onChange={(e) => setName(e.target.value)} autoComplete="name" />
+        </label>
+        <label className="block text-sm">
+          <span className="mb-1.5 block font-semibold text-[var(--color-navy)]">Email *</span>
+          <input
+            className={field}
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            autoComplete="email"
+          />
+        </label>
       </div>
-      <div className="grid gap-5 sm:grid-cols-2">
-        <div className="form-field">
-          <label htmlFor="contact-phone" className="form-label">Phone number</label>
-          <input id="contact-phone" type="tel" name="phone" placeholder="+1 (555) 000-0000" value={phone} onChange={(e) => setPhone(e.target.value)} className="form-input" />
-        </div>
-        <div className="form-field">
-          <label htmlFor="contact-service" className="form-label">Service interest</label>
-          <select id="contact-service" name="service" value={service} onChange={(e) => setService(e.target.value)} className="form-input">
-            <option value="">Select a service…</option>
-            <option value="Website Modernization">Website Modernization</option>
-            <option value="Data Scraping">Data Scraping</option>
-            <option value="Custom Software">Custom Software</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <label className="block text-sm">
+          <span className="mb-1.5 block font-semibold text-[var(--color-navy)]">Phone</span>
+          <input className={field} value={phone} onChange={(e) => setPhone(e.target.value)} autoComplete="tel" />
+        </label>
+        <label className="block text-sm">
+          <span className="mb-1.5 block font-semibold text-[var(--color-navy)]">Company / Role</span>
+          <input
+            className={field}
+            value={company}
+            onChange={(e) => setCompany(e.target.value)}
+            placeholder="e.g. Acme · Senior Frontend"
+          />
+        </label>
       </div>
-      <div className="form-field">
-        <label htmlFor="contact-message" className="form-label">Tell me about your project *</label>
-        <textarea id="contact-message" name="message" placeholder="Describe what you need — your current website, goals, timeline…" value={message} onChange={(e) => setMessage(e.target.value)} required rows={10} className="form-input resize-y" />
-      </div>
-      <button type="submit" disabled={sending || !email.trim() || !message.trim()} className="btn-accent w-full disabled:opacity-50">
-        {sending ? 'Sending…' : 'Send Message'}
+      <label className="block text-sm">
+        <span className="mb-1.5 block font-semibold text-[var(--color-navy)]">Message *</span>
+        <textarea
+          className={`${field} min-h-[120px] resize-y`}
+          required
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder="Tell me about the role or what you'd like to discuss…"
+        />
+      </label>
+      <button type="submit" className="btn-accent w-full sm:w-auto" disabled={sending}>
+        {sending ? 'Sending…' : 'Send message'}
       </button>
-      <p className="text-center text-xs leading-relaxed text-zinc-500">
-        By submitting, you agree to our{' '}
-        <a href="/legal/privacy-policy" className="font-medium text-violet-600 hover:text-violet-700">
-          Privacy Policy
-        </a>{' '}
-        and{' '}
-        <a href="/legal/terms-of-service" className="font-medium text-violet-600 hover:text-violet-700">
-          Terms of Service
-        </a>
-        . We use your details only to respond to your inquiry.
-      </p>
       {status === 'success' && (
-        <p className="rounded-lg bg-emerald-50 px-4 py-3 text-center text-sm text-emerald-700">Message sent — we&apos;ll reply within one business day.</p>
+        <p className="text-sm font-medium text-emerald-700">Thanks — your message was sent.</p>
       )}
       {status === 'gmail' && (
-        <p className="rounded-lg bg-blue-50 px-4 py-3 text-center text-sm text-blue-700">
-          Could not send automatically — please try again or use the contact form fields above.
-        </p>
+        <p className="text-sm text-[var(--color-muted)]">Opened your email client as a fallback. You can send from there.</p>
       )}
       {status === 'error' && (
-        <p className="rounded-lg bg-red-50 px-4 py-3 text-center text-sm text-red-600">
-          Something went wrong. Please try again in a moment.
-        </p>
+        <p className="text-sm text-red-600">Something went wrong. Please email me directly.</p>
       )}
     </form>
   );

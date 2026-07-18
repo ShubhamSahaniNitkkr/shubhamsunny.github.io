@@ -1,0 +1,65 @@
+---
+import portfolio from '../../data/portfolio.json';
+
+const projects = portfolio.projects;
+---
+
+<section id="projects" class="section-padding border-t border-[var(--color-border)] bg-[var(--color-surface-alt)]">
+  <div class="container-wide">
+    <div class="reveal max-w-2xl">
+      <p class="section-eyebrow">Projects</p>
+      <h2 class="section-title mt-3">Architecture you can click</h2>
+      <p class="section-lead mt-4">
+        Flagship systems covering SDUI, plugin platforms, offline-first sync, and million-row data exploration — with live demos.
+      </p>
+    </div>
+
+    <div class="mt-12 space-y-8">
+      {projects.map((project, i) => (
+        <article
+          class:list={[
+            'reveal overflow-hidden rounded-2xl border border-[var(--color-border)] bg-white shadow-sm',
+            project.featured ? 'lg:grid lg:grid-cols-[0.9fr_1.1fr]' : 'md:grid md:grid-cols-[0.75fr_1.25fr]',
+          ]}
+          style={`transition-delay: ${i * 40}ms`}
+        >
+          <a href={project.url} target="_blank" rel="noopener noreferrer" class="block overflow-hidden bg-[var(--color-navy-deep)]">
+            <img
+              src={project.cover}
+              alt={`${project.title} cover`}
+              class="h-full min-h-[200px] w-full object-cover transition duration-500 hover:scale-[1.03]"
+              loading="lazy"
+            />
+          </a>
+          <div class="flex flex-col justify-center p-6 sm:p-8">
+            {project.featured && (
+              <span class="mb-3 w-fit rounded-md bg-[var(--color-steel)] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-[var(--color-navy)]">
+                Featured
+              </span>
+            )}
+            <h3 class="font-display text-2xl font-bold text-[var(--color-navy)]">{project.title}</h3>
+            <p class="mt-2 text-sm font-medium italic text-[var(--color-muted)]">{project.tagline}</p>
+            <ul class="mt-5 space-y-2">
+              {project.highlights.map((h) => (
+                <li class="flex gap-2.5 text-sm leading-relaxed text-[var(--color-charcoal)]">
+                  <span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-[var(--color-navy)]" aria-hidden="true"></span>
+                  {h}
+                </li>
+              ))}
+            </ul>
+            <div class="mt-5 flex flex-wrap gap-2">
+              {project.tech.map((t) => (
+                <span class="skill-pill !py-1 !text-[11px]">{t}</span>
+              ))}
+            </div>
+            <div class="mt-6">
+              <a href={project.url} target="_blank" rel="noopener noreferrer" class="btn-accent !min-h-[40px] !text-xs">
+                Live demo →
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

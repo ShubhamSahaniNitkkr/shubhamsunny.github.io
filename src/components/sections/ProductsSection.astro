@@ -1,0 +1,51 @@
+---
+import portfolio from '../../data/portfolio.json';
+
+const { digitalProducts } = portfolio;
+---
+
+<section id="products" class="section-padding border-t border-[var(--color-border)] bg-white">
+  <div class="container-wide">
+    <div class="reveal max-w-2xl">
+      <p class="section-eyebrow">Digital Products</p>
+      <h2 class="section-title mt-3">Watch · Use</h2>
+      <p class="section-lead mt-4">
+        Production-minded products and platforms you can try live — with video walkthroughs when available.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2">
+      {digitalProducts.map((product, i) => (
+        <article
+          class="reveal overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-alt)]"
+          style={`transition-delay: ${i * 40}ms`}
+        >
+          <div class="aspect-[16/10] overflow-hidden bg-[var(--color-navy-deep)]">
+            <img
+              src={product.cover}
+              alt={product.name}
+              class="h-full w-full object-cover opacity-95"
+              loading="lazy"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-bold text-[var(--color-navy)]">{product.name}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-[var(--color-muted)]">{product.tagline}</p>
+            <div class="mt-5 flex flex-wrap gap-3">
+              {product.videoUrl ? (
+                <a href={product.videoUrl} target="_blank" rel="noopener noreferrer" class="btn-ghost !min-h-[40px] !text-xs">
+                  Watch video
+                </a>
+              ) : (
+                <span class="btn-ghost !min-h-[40px] !cursor-default !text-xs !opacity-50">Video soon</span>
+              )}
+              <a href={product.useUrl} target="_blank" rel="noopener noreferrer" class="btn-accent !min-h-[40px] !text-xs">
+                Use demo →
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

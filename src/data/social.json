@@ -3,15 +3,13 @@
     "handle": "Shubham Sunny",
     "url": "https://www.linkedin.com/in/shubham-sunny-09b013129/"
   },
-  "fiverr": {
-    "url": "https://www.fiverr.com/shubhamsunny?public_mode=true"
-  },
   "github": {
     "url": "https://github.com/ShubhamSahaniNitkkr"
   },
-  "fiverrReviews": {
-    "url": "https://www.fiverr.com/shubhamsunny?public_mode=true",
-    "rating": 4.9,
-    "totalReviews": 15
+  "npm": {
+    "url": "https://www.npmjs.com/~shubhamsunnynitkkr"
+  },
+  "website": {
+    "url": "https://shubhamsunny.com"
   }
 }

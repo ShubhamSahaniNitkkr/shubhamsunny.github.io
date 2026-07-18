@@ -1,40 +1,15 @@
 ---
-import { getAllSchemas, type SchemaPageType, type BlogPostSchemaInput } from '../../lib/schema';
+import { buildSchemaGraph, type SchemaPageType } from '../../lib/schema';
 
 interface Props {
   type?: SchemaPageType;
-  serviceName?: string;
-  serviceDescription?: string;
   pageUrl?: string;
   pageTitle?: string;
   pageDescription?: string;
-  blogPost?: BlogPostSchemaInput;
-  blogPosts?: BlogPostSchemaInput[];
 }
 
-const {
-  type = 'page',
-  serviceName,
-  serviceDescription,
-  pageUrl,
-  pageTitle,
-  pageDescription,
-  blogPost,
-  blogPosts,
-} = Astro.props;
-
-const schemas = getAllSchemas({
-  type,
-  serviceName,
-  serviceDescription,
-  pageUrl,
-  pageTitle,
-  pageDescription,
-  blogPost,
-  blogPosts,
-});
+const { type = 'page', pageUrl, pageTitle, pageDescription } = Astro.props;
+const schema = buildSchemaGraph({ type, pageUrl, pageTitle, pageDescription });
 ---
 
-{schemas.map((schema) => (
-  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-))}
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

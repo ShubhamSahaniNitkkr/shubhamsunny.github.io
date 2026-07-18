@@ -1,0 +1,46 @@
+---
+import portfolio from '../../data/portfolio.json';
+
+const { blogs } = portfolio;
+---
+
+<section id="blogs" class="section-padding border-t border-[var(--color-border)] bg-[var(--color-surface-alt)]">
+  <div class="container-wide">
+    <div class="reveal flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div class="max-w-2xl">
+        <p class="section-eyebrow">Technical Blogs</p>
+        <h2 class="section-title mt-3">Writing on LinkedIn</h2>
+        <p class="section-lead mt-4">
+          Architecture notes, performance patterns, and engineering lessons — published as LinkedIn posts.
+        </p>
+      </div>
+      <a
+        href="https://www.linkedin.com/in/shubham-sunny-09b013129/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-ghost shrink-0 !min-h-[40px] !text-xs"
+      >
+        View LinkedIn →
+      </a>
+    </div>
+
+    <div class="mt-10 grid gap-5 sm:grid-cols-2">
+      {blogs.map((post, i) => (
+        <a
+          href={post.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="reveal group block rounded-xl border border-[var(--color-border)] bg-white p-6 transition hover:border-[var(--color-navy)] hover:shadow-md"
+          style={`transition-delay: ${i * 40}ms`}
+        >
+          <span class="skill-pill !py-1 !text-[11px]">{post.topic}</span>
+          <h3 class="mt-4 font-display text-xl font-bold text-[var(--color-navy)] group-hover:underline">
+            {post.title}
+          </h3>
+          <p class="mt-2 text-sm leading-relaxed text-[var(--color-muted)]">{post.excerpt}</p>
+          <p class="mt-4 text-sm font-semibold text-[var(--color-navy)]">Read on LinkedIn →</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

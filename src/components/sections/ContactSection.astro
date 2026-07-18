@@ -1,61 +1,57 @@
 ---
-import ContactForm from './ContactForm';
-import SectionBackdrop from '../ui/SectionBackdrop.astro';
-import ContactFloatingReviews from '../ui/ContactFloatingReviews';
+import portfolio from '../../data/portfolio.json';
+import social from '../../data/social.json';
 import notifications from '../../data/notifications.json';
-import about from '../../data/about.json';
+import ContactForm from './ContactForm';
 
-const contactQuote =
-  about.contactQuote ||
-  "I've been running this studio since 2018. If we take your project, you talk to real people — not a ticket queue — and get straight answers on timeline and cost.";
+const { contact } = portfolio;
+const web3formsAccessKey = notifications.web3formsAccessKey || '';
 ---
 
-<SectionBackdrop
-  id="contact"
-  eyebrow="Contact Us"
-  title="Let's talk about your project"
-  subtitle="Tell us what you are building — we reply within one business day."
-  image="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1920&q=80"
-  imageAlt="Team collaboration"
-  overlay="from-violet-600/90 via-violet-800/80 to-violet-950/95"
->
-  <ContactFloatingReviews client:visible slot="floating" />
+<section id="contact" class="section-padding border-t border-[var(--color-border)] bg-white">
+  <div class="container-wide">
+    <div class="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+      <div class="reveal">
+        <p class="section-eyebrow">Contact</p>
+        <h2 class="section-title mt-3">{contact.headline}</h2>
+        <p class="section-lead mt-4">{contact.description}</p>
 
-  <div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2 lg:gap-16">
-    <div>
-      <div class="overflow-hidden rounded-2xl border border-white/20 bg-black/20 shadow-xl">
-        <img
-          src="/media/team/shubham.jpg"
-          alt="Shubham Sunny — founder"
-          class="mx-auto w-full max-h-72 object-contain object-top lg:max-h-80"
-          loading="lazy"
-          width="800"
-          height="1000"
-        />
+        <ul class="mt-8 space-y-4 text-sm">
+          <li>
+            <p class="text-xs font-bold uppercase tracking-wider text-[var(--color-muted)]">Email</p>
+            <a href={`mailto:${contact.email}`} class="mt-1 block font-semibold text-[var(--color-navy)] hover:underline">
+              {contact.email}
+            </a>
+          </li>
+          <li>
+            <p class="text-xs font-bold uppercase tracking-wider text-[var(--color-muted)]">Phone</p>
+            <a href={`tel:${contact.phone.replace(/\s/g, '')}`} class="mt-1 block font-semibold text-[var(--color-navy)] hover:underline">
+              {contact.phone}
+            </a>
+            {contact.phoneAlt && (
+              <a href={`tel:${contact.phoneAlt.replace(/\s/g, '')}`} class="mt-1 block font-semibold text-[var(--color-navy)] hover:underline">
+                {contact.phoneAlt}
+              </a>
+            )}
+          </li>
+          <li>
+            <p class="text-xs font-bold uppercase tracking-wider text-[var(--color-muted)]">Profiles</p>
+            <div class="mt-2 flex flex-wrap gap-4 font-semibold text-[var(--color-navy)]">
+              <a href={social.linkedin.url} target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn</a>
+              <a href={social.github.url} target="_blank" rel="noopener noreferrer" class="hover:underline">GitHub</a>
+              <a href={social.npm.url} target="_blank" rel="noopener noreferrer" class="hover:underline">npm</a>
+            </div>
+          </li>
+        </ul>
       </div>
 
-      <blockquote class="mt-6 rounded-2xl border border-white/15 bg-white/10 p-5 text-sm leading-relaxed text-white/95 backdrop-blur-sm">
-        <p>{contactQuote}</p>
-      </blockquote>
-
-      <ul class="mt-5 space-y-3 text-sm">
-        <li class="flex items-center gap-3 rounded-xl border border-zinc-200 bg-white p-3.5 text-zinc-800 shadow-lg">
-          <span class="text-lg" aria-hidden="true">⚡</span>
-          Fast response within 24 hours
-        </li>
-        <li class="flex items-center gap-3 rounded-xl border border-zinc-200 bg-white p-3.5 text-zinc-800 shadow-lg">
-          <span class="text-lg" aria-hidden="true">🎯</span>
-          Free initial consultation — no obligation
-        </li>
-      </ul>
-    </div>
-    <div id="contact-form" class="scroll-mt-28 rounded-2xl border border-zinc-200 bg-white p-6 shadow-xl sm:p-8">
-      <ContactForm client:load web3formsAccessKey={notifications.web3formsAccessKey} />
+      <div class="reveal rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] p-6 sm:p-8" style="transition-delay: 80ms">
+        <h3 class="font-display text-xl font-bold text-[var(--color-navy)]">Send a message</h3>
+        <p class="mt-2 text-sm text-[var(--color-muted)]">Recruiters and hiring managers — include the role and company if you can.</p>
+        <div class="mt-6">
+          <ContactForm client:visible web3formsAccessKey={web3formsAccessKey} />
+        </div>
+      </div>
     </div>
   </div>
-</SectionBackdrop>
-
-<script>
-  import { initContactPrefill } from '../../lib/contact-prefill';
-  initContactPrefill();
-</script>
+</section>

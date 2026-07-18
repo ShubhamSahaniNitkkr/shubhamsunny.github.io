@@ -1,0 +1,57 @@
+---
+import portfolio from '../../data/portfolio.json';
+
+const { experience } = portfolio;
+---
+
+<section id="experience" class="section-padding border-t border-[var(--color-border)] bg-white">
+  <div class="container-wide">
+    <div class="reveal max-w-2xl">
+      <p class="section-eyebrow">Experience</p>
+      <h2 class="section-title mt-3">Companies & impact</h2>
+      <p class="section-lead mt-4">
+        From associate to senior — shipping enterprise platforms, analytics systems, and frontend architectures used at scale.
+      </p>
+    </div>
+
+    <ol class="reveal mt-12 space-y-0">
+      {experience.map((job, index) => (
+        <li class="relative grid gap-4 border-l-2 border-[var(--color-steel-border)] pl-6 pb-10 last:pb-0 sm:grid-cols-[minmax(0,220px)_1fr] sm:gap-8">
+          <span
+            class:list={[
+              'absolute -left-[7px] top-1.5 h-3 w-3 rounded-full border-2 border-white',
+              job.current ? 'bg-[var(--color-navy)]' : 'bg-[var(--color-steel-border)]',
+            ]}
+            aria-hidden="true"
+          ></span>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-[var(--color-muted)]">{job.period}</p>
+            {job.current && (
+              <span class="mt-2 inline-block rounded-md bg-[var(--color-steel)] px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-[var(--color-navy)]">
+                Current
+              </span>
+            )}
+          </div>
+          <div>
+            <div class="rounded-lg bg-[var(--color-steel)] px-4 py-3">
+              <h3 class="font-display text-xl font-bold text-[var(--color-navy)]">{job.role}</h3>
+              <p class="mt-0.5 text-sm font-semibold text-[var(--color-navy-soft)]">
+                {job.company}
+                {job.note && <span class="font-normal text-[var(--color-muted)]"> · {job.note}</span>}
+              </p>
+            </div>
+            <ul class="mt-4 space-y-2.5">
+              {job.bullets.map((bullet) => (
+                <li class="flex gap-2.5 text-sm leading-relaxed text-[var(--color-charcoal)]">
+                  <span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-[var(--color-navy)]" aria-hidden="true"></span>
+                  {bullet}
+                </li>
+              ))}
+            </ul>
+            {index < experience.length - 1 && <div class="divider-navy mt-8 sm:hidden"></div>}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

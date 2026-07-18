@@ -1,0 +1,40 @@
+---
+import portfolio from '../../data/portfolio.json';
+
+const { skills } = portfolio;
+---
+
+<section id="skills" class="section-padding border-t border-[var(--color-border)] bg-white">
+  <div class="container-wide">
+    <div class="reveal max-w-2xl">
+      <p class="section-eyebrow">Technical Skills</p>
+      <h2 class="section-title mt-3">Stack & core competencies</h2>
+      <p class="section-lead mt-4">
+        Deep frontend expertise backed by full-stack delivery, cloud deployment, and AI integration.
+      </p>
+    </div>
+
+    <div class="reveal mt-10">
+      <p class="text-xs font-bold uppercase tracking-wider text-[var(--color-navy)]">Core competencies</p>
+      <div class="mt-4 flex flex-wrap gap-2.5">
+        {skills.competencies.map((c) => (
+          <span class="skill-pill">{c}</span>
+        ))}
+      </div>
+    </div>
+
+    <div class="mt-12 grid gap-8 md:grid-cols-2">
+      {skills.groups.map((group, i) => (
+        <div class="reveal" style={`transition-delay: ${i * 40}ms`}>
+          <h3 class="font-display text-lg font-bold text-[var(--color-navy)]">{group.name}</h3>
+          <div class="divider-navy mt-2 mb-4 max-w-[8rem]"></div>
+          <div class="flex flex-wrap gap-2">
+            {group.items.map((item) => (
+              <span class="skill-pill !font-medium">{item}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
