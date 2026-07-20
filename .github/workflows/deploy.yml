@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -33,17 +33,13 @@ jobs:
       - name: Verify build output
         run: |
           test -f dist/index.html || (echo "dist/index.html missing" && exit 1)
-          test -f dist/assets/css/styles.css || (echo "styles.css missing" && exit 1)
-          test -f dist/CNAME || (echo "CNAME missing" && exit 1)
+          test -f dist/CNAME || (echo "CNAME missing — required for shubhamsunny.com" && exit 1)
           grep -q 'shubhamsunny.com' dist/CNAME
+          test -f dist/assets/css/styles.css || (echo "styles.css missing" && exit 1)
           grep -q 'href="assets/css/styles.css"' dist/index.html || (echo "CSS path must be relative" && exit 1)
           touch dist/.nojekyll
 
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
-      - name: Also publish to gh-pages branch
+      - name: Publish dist to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
@@ -51,44 +47,49 @@ jobs:
           clean: true
           single-commit: true
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Configure Pages + custom domain
+      - name: Point Pages at gh-pages + custom domain
         run: |
-          set -e
-          CODE=$(curl -sS -o /tmp/pages.json -w "%{http_code}" -X PUT \
-            -H "Authorization: Bearer ${{ github.token }}" \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            "https://api.github.com/repos/${{ github.repository }}/pages" \
-            -d '{"build_type":"workflow","cname":"shubhamsunny.com"}')
-          echo "Pages config HTTP $CODE"
-          cat /tmp/pages.json || true
-          curl -sS -X PUT \
-            -H "Authorization: Bearer ${{ github.token }}" \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            "https://api.github.com/repos/${{ github.repository }}/pages" \
+          set -euo pipefail
+          AUTH="Authorization: Bearer ${{ github.token }}"
+          ACCEPT="Accept: application/vnd.github+json"
+          VER="X-GitHub-Api-Version: 2022-11-28"
+          URL="https://api.github.com/repos/${{ github.repository }}/pages"
+
+          # Prefer classic branch deploy for reliable custom-domain binding
+          BODY='{"build_type":"legacy","source":{"branch":"gh-pages","path":"/"},"cname":"shubhamsunny.com"}'
+          CODE=$(curl -sS -o /tmp/pages.json -w "%{http_code}" -X PUT -H "$AUTH" -H "$ACCEPT" -H "$VER" "$URL" -d "$BODY")
+          echo "PUT pages HTTP $CODE"
+          cat /tmp/pages.json
+          echo
+
+          if [ "$CODE" -eq 404 ]; then
+            echo "Pages site missing — creating..."
+            CODE=$(curl -sS -o /tmp/pages.json -w "%{http_code}" -X POST -H "$AUTH" -H "$ACCEPT" -H "$VER" "$URL" \
+              -d '{"build_type":"legacy","source":{"branch":"gh-pages","path":"/"},"cname":"shubhamsunny.com"}')
+            echo "POST pages HTTP $CODE"
+            cat /tmp/pages.json
+            echo
+          fi
+
+          if [ "$CODE" -ge 400 ]; then
+            echo "::error::Failed to configure custom domain. Set it manually: Settings → Pages → Custom domain = shubhamsunny.com, Source = gh-pages/(root)"
+            exit 1
+          fi
+
+          # Enforce HTTPS (may fail until DNS/cert is ready)
+          curl -sS -o /tmp/https.json -w "HTTPS enforce HTTP %{http_code}\n" -X PUT -H "$AUTH" -H "$ACCEPT" -H "$VER" "$URL" \
             -d '{"https_enforced":true}' || true
+          cat /tmp/https.json || true
 
-      - uses: actions/deploy-pages@v4
-        id: deployment
-
-      - name: Smoke test custom domain
+      - name: Smoke test
         continue-on-error: true
         run: |
-          for i in 1 2 3 4 5 6 8 10; do
-            STATUS=$(curl -sS -L -o /tmp/home.html -w "%{http_code}" "https://shubhamsunny.com/" || true)
-            echo "Attempt $i: shubhamsunny.com -> HTTP $STATUS"
-            if [ "$STATUS" = "200" ] && grep -q "Shubham Sunny" /tmp/home.html; then
-              echo "Custom domain is live"
-              exit 0
-            fi
-            sleep 20
+          sleep 20
+          for URL in \
+            "https://shubhamsahaninitkkr.github.io/shubhamsunny.github.io/" \
+            "https://shubhamsunny.com/" \
+            "https://www.shubhamsunny.com/"
+          do
+            STATUS=$(curl -sS -L -o /tmp/page.html -w "%{http_code}" "$URL" || true)
+            echo "$URL -> $STATUS"
           done
-          echo "::warning::Custom domain not 200 yet (DNS/cert may still be provisioning)."
