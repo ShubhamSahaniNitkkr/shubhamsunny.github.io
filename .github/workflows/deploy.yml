@@ -72,8 +72,9 @@ jobs:
           fi
 
           if [ "$CODE" -ge 400 ]; then
-            echo "::error::Failed to configure custom domain. Set it manually: Settings → Pages → Custom domain = shubhamsunny.com, Source = gh-pages/(root)"
-            exit 1
+            echo "::warning::Could not auto-bind custom domain via API (HTTP $CODE)."
+            echo "::warning::Do this once manually: Settings → Pages → Source = Deploy from a branch → gh-pages / (root), Custom domain = shubhamsunny.com, then Enforce HTTPS."
+            exit 0
           fi
 
           # Enforce HTTPS (may fail until DNS/cert is ready)
