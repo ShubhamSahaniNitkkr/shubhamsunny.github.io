@@ -33,15 +33,14 @@ jobs:
       - name: Verify build output
         run: |
           test -f dist/index.html || (echo "dist/index.html missing" && exit 1)
-          test -f dist/CNAME || (echo "dist/CNAME missing" && exit 1)
-          grep -q "shubhamsunny.com" dist/CNAME
           test -f dist/assets/css/styles.css || (echo "styles.css missing" && exit 1)
           touch dist/.nojekyll
 
-      - name: Point GitHub Pages at gh-pages branch + custom domain
+      - name: Point GitHub Pages at gh-pages branch
         run: |
           set -e
-          BODY='{"build_type":"legacy","source":{"branch":"gh-pages","path":"/"},"cname":"shubhamsunny.com"}'
+          # No cname until DNS www → shubhamsahaninitkkr.github.io is fixed
+          BODY='{"build_type":"legacy","source":{"branch":"gh-pages","path":"/"}}'
           CODE=$(curl -sS -o /tmp/pages.json -w "%{http_code}" -X PUT \
             -H "Authorization: Bearer ${{ github.token }}" \
             -H "Accept: application/vnd.github+json" \
@@ -51,18 +50,8 @@ jobs:
           echo "Pages config HTTP $CODE"
           cat /tmp/pages.json || true
           if [ "$CODE" -ge 400 ]; then
-            echo "::warning::Could not auto-set Pages source. Set Settings → Pages → Deploy from branch → gh-pages / (root), custom domain shubhamsunny.com"
+            echo "::warning::Could not auto-set Pages source. Set Settings → Pages → Deploy from branch → gh-pages / (root)"
           fi
-
-      - name: Enforce HTTPS on custom domain
-        continue-on-error: true
-        run: |
-          curl -sS -X PUT \
-            -H "Authorization: Bearer ${{ github.token }}" \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            "https://api.github.com/repos/${{ github.repository }}/pages" \
-            -d '{"https_enforced":true}' || true
 
       - name: Publish dist to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
