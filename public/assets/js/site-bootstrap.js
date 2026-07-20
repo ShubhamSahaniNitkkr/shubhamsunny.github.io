@@ -1,6 +1,10 @@
 /* Load assets/data/site.json — section visibility, projects (bento + filters), reviews, resume. */
 (function () {
-  var DATA_URL = "/assets/data/site.json";
+  var DATA_URL = (function () {
+    var parts = location.pathname.split("/");
+    var base = parts[1] === "shubhamsunny.github.io" ? "/shubhamsunny.github.io" : "";
+    return base + "/assets/data/site.json";
+  })();
 
   var CARD_ACCENTS = [
     "#0f766e",

@@ -15,7 +15,7 @@
     "intro": true
   },
   "resume": {
-    "pdf": "/assets/pdf/Shubham_Sunny_Resume_2026_updated.pdf"
+    "pdf": "assets/pdf/Shubham_Sunny_Resume_2026_updated.pdf"
   },
   "projectsPreviewCount": 6,
   "projects": [
@@ -102,7 +102,7 @@
       "slug": "dream11-api",
       "title": "Dream11 Basketball Data API",
       "liveUrl": "https://drive.google.com/file/d/15pcdVbEgwEH7nBTaEL5flN88xIre7K2b/view?usp=sharing",
-      "previewImage": "/assets/img/Work/project51.png",
+      "previewImage": "assets/img/Work/project51.png",
       "linkText": "Watch demo clip",
       "bento": "wide",
       "categories": [
@@ -119,7 +119,7 @@
       "slug": "aha-scraper",
       "title": "One-Click Scraper for American Heart Association",
       "liveUrl": "https://github.com/ShubhamSahaniNitkkr/One-Click-Scraper-for-American-Heart-Association",
-      "previewImage": "/assets/img/Work/project12.png",
+      "previewImage": "assets/img/Work/project12.png",
       "linkText": "View on GitHub",
       "bento": "half",
       "categories": [
@@ -228,7 +228,7 @@
       "slug": "coupon-bot",
       "title": "Automated Coupon Handling Bot",
       "liveUrl": "https://drive.google.com/file/d/1XlvzxG5iM4hCWtIsHfdxG7dgHYpvEgbW/view?usp=sharing",
-      "previewImage": "/assets/img/Work/project31.png",
+      "previewImage": "assets/img/Work/project31.png",
       "linkText": "Watch demo clip",
       "bento": "half",
       "categories": [
@@ -438,7 +438,7 @@
   ],
   "reviews": [
     {
-      "avatar": "/assets/img/testimonial-placeholder.png",
+      "avatar": "assets/img/testimonial-placeholder.png",
       "avatarAlt": "markapps",
       "name": "markapps",
       "countryCode": "lu",
@@ -478,7 +478,7 @@
       "sourceUrl": "https://www.fiverr.com/shubhamsunny?public_mode=true"
     },
     {
-      "avatar": "/assets/img/testimonial-placeholder.png",
+      "avatar": "assets/img/testimonial-placeholder.png",
       "avatarAlt": "michaelsmith760",
       "name": "michaelsmith760",
       "countryCode": "us",
@@ -498,7 +498,7 @@
       "sourceUrl": "https://www.fiverr.com/shubhamsunny?public_mode=true"
     },
     {
-      "avatar": "/assets/img/testimonial-placeholder.png",
+      "avatar": "assets/img/testimonial-placeholder.png",
       "avatarAlt": "ahmidifashanu",
       "name": "ahmidifashanu",
       "countryCode": "gb",
@@ -508,7 +508,7 @@
       "sourceUrl": "https://www.fiverr.com/shubhamsunny?public_mode=true"
     },
     {
-      "avatar": "/assets/img/testimonial-placeholder.png",
+      "avatar": "assets/img/testimonial-placeholder.png",
       "avatarAlt": "parshram",
       "name": "parshram",
       "countryCode": "gy",
@@ -518,7 +518,7 @@
       "sourceUrl": "https://www.fiverr.com/shubhamsunny?public_mode=true"
     },
     {
-      "avatar": "/assets/img/testimonial-placeholder.png",
+      "avatar": "assets/img/testimonial-placeholder.png",
       "avatarAlt": "stschuck",
       "name": "stschuck",
       "countryCode": "us",
@@ -548,7 +548,7 @@
       "sourceUrl": "https://www.fiverr.com/shubhamsunny?public_mode=true"
     },
     {
-      "avatar": "/assets/img/testimonial-placeholder.png",
+      "avatar": "assets/img/testimonial-placeholder.png",
       "avatarAlt": "aquanote",
       "name": "aquanote",
       "countryCode": "ca",
@@ -558,7 +558,7 @@
       "sourceUrl": "https://www.fiverr.com/shubhamsunny?public_mode=true"
     },
     {
-      "avatar": "/assets/img/testimonial-placeholder.png",
+      "avatar": "assets/img/testimonial-placeholder.png",
       "avatarAlt": "aquanote",
       "name": "aquanote",
       "countryCode": "ca",
@@ -568,7 +568,7 @@
       "sourceUrl": "https://www.fiverr.com/shubhamsunny?public_mode=true"
     },
     {
-      "avatar": "/assets/img/testimonial-placeholder.png",
+      "avatar": "assets/img/testimonial-placeholder.png",
       "avatarAlt": "jesuszayas74",
       "name": "jesuszayas74",
       "countryCode": "us",

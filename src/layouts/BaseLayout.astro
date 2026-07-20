@@ -27,6 +27,16 @@ const {
     <meta name="theme-color" content="#0f766e" />
     <meta name="color-scheme" content="light" />
     <meta name="format-detection" content="telephone=yes, email=yes" />
+    <!-- Works on both custom domain (/) and GitHub project Pages (/shubhamsunny.github.io/) -->
+    <script is:inline>
+      (function () {
+        var parts = location.pathname.split('/');
+        var base = parts[1] === 'shubhamsunny.github.io' ? '/shubhamsunny.github.io/' : '/';
+        var el = document.createElement('base');
+        el.href = base;
+        document.head.insertBefore(el, document.head.firstChild);
+      })();
+    </script>
     <script is:inline>
       (function () {
         var h = location.hostname;
@@ -73,11 +83,11 @@ const {
     <meta name="twitter:description" content="8+ years building scalable web apps, automation systems, and AI-driven products." />
     <meta name="twitter:image" content={ogImage} />
 
-    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="/assets/img/home.jpg" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="alternate" type="text/plain" title="LLM content" href="/.well-known/llms.txt" />
-    <link rel="alternate" type="text/plain" title="LLM full content" href="/llms.txt" />
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="assets/img/home.jpg" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="alternate" type="text/plain" title="LLM content" href=".well-known/llms.txt" />
+    <link rel="alternate" type="text/plain" title="LLM full content" href="llms.txt" />
 
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
@@ -88,7 +98,7 @@ const {
       href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
 
     <SchemaMarkup />
   </head>
