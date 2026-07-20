@@ -1,0 +1,42 @@
+# Shubham Sunny
+
+> Senior Software Developer (8+ years). Full-stack & frontend leadership — React, TypeScript, Node.js, AI agents, SDUI, and scalable enterprise products.
+> Open to full-time, part-time, and freelance work. Based in India (remote).
+
+## Site
+
+- Homepage: https://shubhamsunny.com/
+- Intro video section: https://shubhamsunny.com/#intro
+- Skills: https://shubhamsunny.com/#skills
+- Projects: https://shubhamsunny.com/#portfolio
+- Contact: https://shubhamsunny.com/#contact
+- Resume PDF: https://shubhamsunny.com/assets/pdf/Shubham_Sunny_Resume_2026_updated.pdf
+- Full LLM index: https://shubhamsunny.com/llms.txt
+
+## Profile
+
+- Education: B.Tech, Information Technology — NIT Kurukshetra
+- Current role: Senior Software Developer at Yum! Brands
+- Email: shubhamsahaninitkkr@gmail.com
+- Phone / WhatsApp: +91 97718 23804
+- LinkedIn: https://www.linkedin.com/in/shubham-sunny-09b013129/
+- GitHub: https://github.com/ShubhamSahaniNitkkr
+- npm: https://www.npmjs.com/~shubhamsunnynitkkr
+
+## Expertise
+
+- Front-end: React, Next.js, TypeScript, Redux, TanStack Query, Tailwind, Ant Design
+- Back-end: Node.js, Express, REST, GraphQL, WebSockets
+- AI: OpenAI, LangChain, LangGraph, RAG, agents, automation
+- Architecture: Server-Driven UI (SDUI), performance engineering, system design
+
+## Featured work
+
+- Massive Data Explorer — https://mde-web.onrender.com
+- Offline First Task Management — https://offline-first-task-management-app-ui.onrender.com
+- Server Driven UI — https://sdui-pypy.onrender.com
+- Frontend Plugin Platform — https://fpp-host.onrender.com
+
+## Contact
+
+Prefer the contact form, email, or LinkedIn for opportunities and project inquiries. Typical reply within one business day.

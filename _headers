@@ -1,0 +1,12 @@
+# Long-cache static assets (GitHub Pages / CDN friendly)
+/assets/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/img/*
+  Cache-Control: public, max-age=604800
+
+/assets/pdf/*
+  Cache-Control: public, max-age=86400
