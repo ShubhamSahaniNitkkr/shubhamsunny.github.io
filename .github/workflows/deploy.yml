@@ -5,8 +5,10 @@ on:
     branches: [master]
   workflow_dispatch:
 
+# Using GitHub Actions as Pages source avoids the broken
+# automatic "pages build and deployment" Jekyll job.
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -15,7 +17,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -26,6 +28,7 @@ jobs:
           cache: npm
 
       - run: npm ci
+
       - run: npm run build
         env:
           PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ secrets.PUBLIC_WEB3FORMS_ACCESS_KEY }}
@@ -33,21 +36,24 @@ jobs:
       - name: Verify build output
         run: |
           test -f dist/index.html || (echo "dist/index.html missing" && exit 1)
-          test -f dist/CNAME || (echo "CNAME missing — required for shubhamsunny.com" && exit 1)
+          test -f dist/CNAME || (echo "CNAME missing" && exit 1)
           grep -q 'shubhamsunny.com' dist/CNAME
           test -f dist/assets/css/styles.css || (echo "styles.css missing" && exit 1)
           grep -q 'href="assets/css/styles.css"' dist/index.html || (echo "CSS path must be relative" && exit 1)
           touch dist/.nojekyll
 
-      - name: Publish dist to gh-pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - uses: actions/upload-pages-artifact@v4
         with:
-          folder: dist
-          branch: gh-pages
-          clean: true
-          single-commit: true
+          path: dist
 
-      - name: Point Pages at gh-pages + custom domain
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Use GitHub Actions as Pages source + custom domain
         run: |
           set -euo pipefail
           AUTH="Authorization: Bearer ${{ github.token }}"
@@ -55,41 +61,40 @@ jobs:
           VER="X-GitHub-Api-Version: 2022-11-28"
           URL="https://api.github.com/repos/${{ github.repository }}/pages"
 
-          # Prefer classic branch deploy for reliable custom-domain binding
-          BODY='{"build_type":"legacy","source":{"branch":"gh-pages","path":"/"},"cname":"shubhamsunny.com"}'
+          BODY='{"build_type":"workflow","cname":"shubhamsunny.com"}'
           CODE=$(curl -sS -o /tmp/pages.json -w "%{http_code}" -X PUT -H "$AUTH" -H "$ACCEPT" -H "$VER" "$URL" -d "$BODY")
           echo "PUT pages HTTP $CODE"
-          cat /tmp/pages.json
+          cat /tmp/pages.json || true
           echo
 
           if [ "$CODE" -eq 404 ]; then
-            echo "Pages site missing — creating..."
             CODE=$(curl -sS -o /tmp/pages.json -w "%{http_code}" -X POST -H "$AUTH" -H "$ACCEPT" -H "$VER" "$URL" \
-              -d '{"build_type":"legacy","source":{"branch":"gh-pages","path":"/"},"cname":"shubhamsunny.com"}')
+              -d '{"build_type":"workflow","source":{"branch":"gh-pages","path":"/"},"cname":"shubhamsunny.com"}')
             echo "POST pages HTTP $CODE"
-            cat /tmp/pages.json
-            echo
+            cat /tmp/pages.json || true
+            # Switch to workflow after create
+            curl -sS -o /tmp/pages2.json -w "switch workflow HTTP %{http_code}\n" -X PUT -H "$AUTH" -H "$ACCEPT" -H "$VER" "$URL" \
+              -d '{"build_type":"workflow","cname":"shubhamsunny.com"}' || true
           fi
 
           if [ "$CODE" -ge 400 ]; then
-            echo "::warning::Could not auto-bind custom domain via API (HTTP $CODE)."
-            echo "::warning::Do this once manually: Settings → Pages → Source = Deploy from a branch → gh-pages / (root), Custom domain = shubhamsunny.com, then Enforce HTTPS."
-            exit 0
+            echo "::warning::Could not auto-set Pages to GitHub Actions (HTTP $CODE)."
+            echo "::warning::Manually: Settings → Pages → Source = GitHub Actions, Custom domain = shubhamsunny.com"
           fi
 
-          # Enforce HTTPS (may fail until DNS/cert is ready)
           curl -sS -o /tmp/https.json -w "HTTPS enforce HTTP %{http_code}\n" -X PUT -H "$AUTH" -H "$ACCEPT" -H "$VER" "$URL" \
             -d '{"https_enforced":true}' || true
-          cat /tmp/https.json || true
+
+      - uses: actions/deploy-pages@v4
+        id: deployment
 
       - name: Smoke test
         continue-on-error: true
         run: |
-          sleep 20
+          sleep 15
           for URL in \
             "https://shubhamsahaninitkkr.github.io/shubhamsunny.github.io/" \
-            "https://shubhamsunny.com/" \
-            "https://www.shubhamsunny.com/"
+            "https://shubhamsunny.com/"
           do
             STATUS=$(curl -sS -L -o /tmp/page.html -w "%{http_code}" "$URL" || true)
             echo "$URL -> $STATUS"
