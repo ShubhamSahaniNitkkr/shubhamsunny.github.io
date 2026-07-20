@@ -1,21 +1,12 @@
-/_astro/*
+# Long-cache static assets (GitHub Pages / CDN friendly)
+/assets/css/*
   Cache-Control: public, max-age=31536000, immutable
 
-/*.ico
-  Cache-Control: public, max-age=86400
+/assets/js/*
+  Cache-Control: public, max-age=31536000, immutable
 
-/*.jpg
+/assets/img/*
   Cache-Control: public, max-age=604800
 
-/*.jpeg
-  Cache-Control: public, max-age=604800
-
-/*.webp
-  Cache-Control: public, max-age=604800
-
-/.well-known/llms.txt
-  Cache-Control: public, max-age=3600
-  Content-Type: text/plain; charset=utf-8
-
-/*.xml
+/assets/pdf/*
   Cache-Control: public, max-age=86400

@@ -2,13 +2,18 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Page not found | Shubham Sunny" description="The page you requested does not exist." noindex>
-  <section class="section-padding pt-32">
-    <div class="container-wide text-center">
-      <p class="section-index justify-center">404</p>
-      <h1 class="section-title mt-3">Page not found</h1>
-      <p class="section-lead mx-auto mt-4">This link doesn’t exist on the portfolio anymore.</p>
-      <a href="/" class="btn-accent mt-8 inline-flex">Back to home</a>
+<BaseLayout
+  title="Page not found | Shubham Sunny"
+  description="The page you requested could not be found."
+  canonical="https://shubhamsunny.com/404"
+  noindex={true}
+>
+  <main class="l-main" id="main-content" style="min-height:70vh;display:grid;place-items:center;padding:3rem 1.25rem;text-align:center;">
+    <div>
+      <p class="section-subtitle">404</p>
+      <h1 class="section-title" style="margin-bottom:0.75rem;">Page not found</h1>
+      <p class="section-lead" style="margin-bottom:1.5rem;">That URL doesn’t exist on this site.</p>
+      <a class="button button--primary" href="/">Back to home</a>
     </div>
-  </section>
+  </main>
 </BaseLayout>

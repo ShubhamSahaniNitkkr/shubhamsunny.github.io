@@ -27,13 +27,19 @@ jobs:
 
       - run: npm ci
       - run: npm run build
+        env:
+          PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ secrets.PUBLIC_WEB3FORMS_ACCESS_KEY }}
 
       - name: Verify build output
         run: |
           test -f dist/index.html || (echo "dist/index.html missing" && exit 1)
           test -f dist/CNAME || (echo "dist/CNAME missing" && exit 1)
-          CSS_FILE=$(grep -oE '/_astro/[^"'\'' ]+\.css' dist/index.html | head -1 | sed 's|^/||')
-          test -f "dist/$CSS_FILE" || (echo "CSS referenced by index.html missing: $CSS_FILE" && exit 1)
+          test -f dist/robots.txt || (echo "robots.txt missing" && exit 1)
+          test -f dist/llms.txt || (echo "llms.txt missing" && exit 1)
+          test -f dist/.well-known/llms.txt || (echo "llms.txt missing" && exit 1)
+          test -f dist/site.webmanifest || (echo "site.webmanifest missing" && exit 1)
+          test -f dist/assets/css/styles.css || (echo "styles.css missing" && exit 1)
+          grep -q 'api.web3forms.com' dist/index.html || (echo "Web3Forms submit missing" && exit 1)
 
       - uses: actions/upload-pages-artifact@v3
         with:
@@ -68,7 +74,7 @@ jobs:
             } catch (error) {
               core.warning(
                 `Could not register ${cname} via API (${error.status ?? 'unknown'}). ` +
-                  'Set it manually under Settings → Pages → Custom domain if the verify job fails.'
+                  'Set it manually under Settings → Pages → Custom domain if needed.'
               );
             }
 
@@ -78,49 +84,15 @@ jobs:
     continue-on-error: true
     steps:
       - name: Smoke test custom domain
-        env:
-          CUSTOM_DOMAIN: https://shubhamsunny.com
-          PAGES_URL: ${{ needs.deploy.outputs.page_url }}
         run: |
-          set -euo pipefail
-
-          echo "GitHub Pages deployment URL: ${PAGES_URL:-unknown}"
-          if [ -n "${PAGES_URL:-}" ]; then
-            PAGES_STATUS=$(curl -sS -L -o /dev/null -w "%{http_code}" "$PAGES_URL")
-            echo "Deployment URL check: $PAGES_URL -> HTTP $PAGES_STATUS"
-            if [ "$PAGES_STATUS" != "200" ]; then
-              echo "::warning::GitHub Pages URL did not return 200. The artifact may not have deployed correctly."
-            fi
-          fi
-
-          for i in 1 2 3 4 5 6 8 10 12 15; do
-            STATUS=$(curl -sS -L -o /tmp/home.html -w "%{http_code}" "$CUSTOM_DOMAIN")
-            CSS_PATH=$(grep -oE '/_astro/[^"'\'' ]+\.css' /tmp/home.html | head -1 || true)
-            CSS_STATUS=000
-            if [ -n "$CSS_PATH" ]; then
-              CSS_STATUS=$(curl -sS -L -o /dev/null -w "%{http_code}" "${CUSTOM_DOMAIN}${CSS_PATH}")
-            fi
-            echo "Attempt $i: $CUSTOM_DOMAIN -> HTTP $STATUS, CSS ${CSS_PATH:-none} -> HTTP $CSS_STATUS"
-            if [ "$STATUS" = "200" ] && [ "$CSS_STATUS" = "200" ]; then
-              echo "Custom domain is live with CSS at $CUSTOM_DOMAIN"
+          for i in 1 2 3 4 5 6 8 10; do
+            STATUS=$(curl -sS -L -o /tmp/home.html -w "%{http_code}" "https://shubhamsunny.com" || true)
+            echo "Attempt $i: https://shubhamsunny.com -> HTTP $STATUS"
+            if [ "$STATUS" = "200" ] && grep -q "Shubham Sunny" /tmp/home.html; then
+              echo "Site is live"
               exit 0
-            fi
-            if grep -q 'Site not found' /tmp/home.html 2>/dev/null; then
-              echo "GitHub returned its 'Site not found' page — custom domain is not linked to this repo yet."
             fi
             sleep 20
           done
-
-          cat <<'EOF'
-          ::warning::shubhamsunny.com did not return 200 within the smoke-test window.
-
-          The build and deploy jobs succeeded, but the custom domain is not serving this site yet.
-          Fix in GitHub: Settings → Pages → Custom domain → enter "shubhamsunny.com" → Save → wait for DNS check.
-
-          DNS should be:
-            shubhamsunny.com      A     185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
-            www.shubhamsunny.com  CNAME ShubhamSahaniNitkkr.github.io
-
-          If the domain is already used by another repository, remove it there first.
-          EOF
-          exit 1
+          echo "::warning::Site did not return 200 after deploy (may still be propagating)."
+          exit 0

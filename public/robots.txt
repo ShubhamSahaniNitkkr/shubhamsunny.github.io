@@ -1,4 +1,11 @@
+# Allow major search + AI crawlers
 User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
 Allow: /
 
 User-agent: GPTBot
@@ -20,6 +27,9 @@ User-agent: Claude-Web
 Allow: /
 
 User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://shubhamsunny.com/sitemap-index.xml

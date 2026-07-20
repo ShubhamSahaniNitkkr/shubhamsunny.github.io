@@ -1,38 +1,42 @@
-# Shubham Sunny — Portfolio
+# Shubham Sunny
 
-> Senior Software Developer (8+ years). Front-end architecture, Server-Driven UI (SDUI), performance engineering, full-stack platforms, and AI-powered applications. NIT Kurukshetra · Yum! Brands.
+> Senior Software Developer (8+ years). Full-stack & frontend leadership — React, TypeScript, Node.js, AI agents, SDUI, and scalable enterprise products.
+> Open to full-time, part-time, and freelance work. Based in India (remote).
+
+## Site
+
+- Homepage: https://shubhamsunny.com/
+- Intro video section: https://shubhamsunny.com/#intro
+- Skills: https://shubhamsunny.com/#skills
+- Projects: https://shubhamsunny.com/#portfolio
+- Contact: https://shubhamsunny.com/#contact
+- Resume PDF: https://shubhamsunny.com/assets/pdf/Shubham_Sunny_Resume_2026_updated.pdf
+- Full LLM index: https://shubhamsunny.com/llms.txt
 
 ## Profile
-- Name: Shubham Sunny
-- Role: Senior Software Developer
-- Focus: Front-end Engineering, Full Stack, Enterprise Platform Development
-- Experience: 8+ years
-- Education: B.Tech. Information Technology — NIT Kurukshetra
-- Location: India · Open to remote
 
-## Experience
-- Senior Software Developer — Yum! Brands (Sept 2020 – Present)
-- Software Developer — Kvantum Marketing Insights / Acquired by Yum! Brands (Sept 2020 – April 2021)
-- Frontend Developer — Tolexo Online Pvt. Ltd. (Sept 2019 – Sept 2020)
-- Software Associate — Triyama Software Pvt. Ltd. (April 2019 – Sept 2019)
-
-## Flagship projects
-- Massive Data Explorer — https://mde-web.onrender.com
-- Server-Driven UI Platform — https://sdui-pypy.onrender.com
-- Frontend Plugin Platform — https://fpp-host.onrender.com
-- Offline-First Task Management PWA — https://offline-first-task-management-app-ui.onrender.com
-- NPM SDUI Framework — https://www.npmjs.com/~shubhamsunnynitkkr
-
-## Core stack
-React, Next.js, TypeScript, Redux, Node.js, GraphQL, TanStack, Zod, Tailwind CSS, OpenAI, LangChain, MongoDB, PostgreSQL, AWS, Docker, Vite
-
-## Contact
-- Website: https://shubhamsunny.com
+- Education: B.Tech, Information Technology — NIT Kurukshetra
+- Current role: Senior Software Developer at Yum! Brands
 - Email: shubhamsahaninitkkr@gmail.com
+- Phone / WhatsApp: +91 97718 23804
 - LinkedIn: https://www.linkedin.com/in/shubham-sunny-09b013129/
 - GitHub: https://github.com/ShubhamSahaniNitkkr
 - npm: https://www.npmjs.com/~shubhamsunnynitkkr
 
-## Optional
-- Full details: https://shubhamsunny.com/llms-full.txt
-- Sitemap: https://shubhamsunny.com/sitemap-index.xml
+## Expertise
+
+- Front-end: React, Next.js, TypeScript, Redux, TanStack Query, Tailwind, Ant Design
+- Back-end: Node.js, Express, REST, GraphQL, WebSockets
+- AI: OpenAI, LangChain, LangGraph, RAG, agents, automation
+- Architecture: Server-Driven UI (SDUI), performance engineering, system design
+
+## Featured work
+
+- Massive Data Explorer — https://mde-web.onrender.com
+- Offline First Task Management — https://offline-first-task-management-app-ui.onrender.com
+- Server Driven UI — https://sdui-pypy.onrender.com
+- Frontend Plugin Platform — https://fpp-host.onrender.com
+
+## Contact
+
+Prefer the contact form, email, or LinkedIn for opportunities and project inquiries. Typical reply within one business day.

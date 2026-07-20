@@ -1,17 +1,23 @@
 {
-  "name": "Shubham Sunny — Senior Software Developer",
+  "name": "Shubham Sunny",
   "short_name": "Shubham Sunny",
-  "description": "Senior Software Developer portfolio — Front-end Engineering, Full Stack, Enterprise Platforms, SDUI, and AI.",
+  "description": "Senior Software Developer — full-stack, frontend leadership, AI automation.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#FFFFFF",
-  "theme_color": "#1B3A6B",
-  "lang": "en-US",
+  "background_color": "#f8fafc",
+  "theme_color": "#0f766e",
+  "lang": "en",
   "icons": [
     {
-      "src": "/favicon.ico",
+      "src": "/assets/img/favicon.ico",
       "sizes": "48x48",
       "type": "image/x-icon"
+    },
+    {
+      "src": "/assets/img/home.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
     }
   ]
 }

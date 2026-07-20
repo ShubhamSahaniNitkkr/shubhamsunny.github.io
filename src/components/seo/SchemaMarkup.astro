@@ -1,15 +1,116 @@
 ---
-import { buildSchemaGraph, type SchemaPageType } from '../../lib/schema';
+import site from '../../../public/assets/data/site.json';
 
-interface Props {
-  type?: SchemaPageType;
-  pageUrl?: string;
-  pageTitle?: string;
-  pageDescription?: string;
-}
+const siteUrl = 'https://shubhamsunny.com';
+const sameAs = [
+  'https://www.linkedin.com/in/shubham-sunny-09b013129/',
+  'https://github.com/ShubhamSahaniNitkkr',
+  'https://www.npmjs.com/~shubhamsunnynitkkr',
+  'https://www.fiverr.com/shubhamsunny',
+];
 
-const { type = 'page', pageUrl, pageTitle, pageDescription } = Astro.props;
-const schema = buildSchemaGraph({ type, pageUrl, pageTitle, pageDescription });
+const skillNames = (site.skills?.groups || []).flatMap((g) => g.items);
+const competencies = site.skills?.competencies || [];
+
+const person = {
+  '@type': 'Person',
+  '@id': siteUrl + '/#person',
+  name: 'Shubham Sunny',
+  givenName: 'Shubham',
+  familyName: 'Sunny',
+  url: siteUrl + '/',
+  image: siteUrl + '/assets/img/home.jpg',
+  jobTitle: 'Senior Software Developer',
+  description:
+    'Senior Software Developer with 8+ years building scalable web applications, intelligent automation, and AI-driven products. Full-stack & frontend leadership across React, TypeScript, Node.js, and Server-Driven UI.',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Yum! Brands',
+  },
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: 'National Institute of Technology, Kurukshetra',
+    alternateName: 'NIT Kurukshetra',
+  },
+  email: 'mailto:shubhamsahaninitkkr@gmail.com',
+  telephone: '+91-9771823804',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Patna',
+    addressRegion: 'Bihar',
+    addressCountry: 'IN',
+  },
+  sameAs,
+  knowsAbout: [...competencies.slice(0, 8), ...skillNames].slice(0, 48),
+};
+
+const website = {
+  '@type': 'WebSite',
+  '@id': siteUrl + '/#website',
+  url: siteUrl + '/',
+  name: 'Shubham Sunny — Portfolio',
+  description:
+    'Portfolio of Shubham Sunny, Senior Software Developer specializing in full-stack web apps, AI automation, and scalable frontend architecture.',
+  publisher: { '@id': siteUrl + '/#person' },
+  inLanguage: 'en-US',
+  potentialAction: {
+    '@type': 'CommunicateAction',
+    target: siteUrl + '/#contact',
+  },
+};
+
+const profilePage = {
+  '@type': 'ProfilePage',
+  '@id': siteUrl + '/#webpage',
+  url: siteUrl + '/',
+  name: 'Shubham Sunny | Senior Software Developer',
+  isPartOf: { '@id': siteUrl + '/#website' },
+  about: { '@id': siteUrl + '/#person' },
+  mainEntity: { '@id': siteUrl + '/#person' },
+  inLanguage: 'en-US',
+  dateModified: new Date().toISOString().slice(0, 10),
+};
+
+const projects = Array.isArray(site.projects) ? site.projects.slice(0, 8) : [];
+const itemList =
+  projects.length > 0
+    ? {
+        '@type': 'ItemList',
+        '@id': siteUrl + '/#projects',
+        name: 'Featured projects by Shubham Sunny',
+        itemListOrder: 'https://schema.org/ItemListOrderAscending',
+        numberOfItems: projects.length,
+        itemListElement: projects.map((p, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          name: p.title,
+          url: p.liveUrl || siteUrl + '/#portfolio',
+          description: Array.isArray(p.highlights) ? p.highlights[0] : undefined,
+        })),
+      }
+    : null;
+
+const professionalService = {
+  '@type': 'ProfessionalService',
+  '@id': siteUrl + '/#services',
+  name: 'Shubham Sunny — Software Engineering',
+  url: siteUrl + '/#contact',
+  image: siteUrl + '/assets/img/home.jpg',
+  description:
+    'Full-time, part-time, and freelance software engineering: React/TypeScript frontends, Node.js APIs, AI automation, and system architecture.',
+  provider: { '@id': siteUrl + '/#person' },
+  areaServed: 'Worldwide',
+  availableChannel: {
+    '@type': 'ServiceChannel',
+    serviceUrl: siteUrl + '/#contact',
+    availableLanguage: ['English', 'Hindi'],
+  },
+};
+
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [person, website, profilePage, professionalService, itemList].filter(Boolean),
+};
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+<script type="application/ld+json" set:html={JSON.stringify(graph)} />
