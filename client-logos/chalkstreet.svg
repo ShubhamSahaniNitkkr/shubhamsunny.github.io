@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="96" viewBox="0 0 320 96">
+  <rect width="320" height="96" fill="#ffffff"/>
+  <rect x="12" y="18" width="60" height="60" rx="14" fill="#6D28D9"/>
+  <path d="M24 58V34h24v24H24zM28 42h16M28 50h10" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+  <text x="88" y="46" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">ChalkStreet</text>
+  <text x="88" y="68" fill="#64748b" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600">Learning</text>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="96" viewBox="0 0 320 96">
+  <rect width="320" height="96" fill="#ffffff"/>
+  <rect x="12" y="18" width="60" height="60" rx="14" fill="#E10600"/>
+  <path d="M32 50c0-8 6-14 14-14h8v8h-8c-3 0-6 3-6 6s3 6 6 6h4l10 10h-10c-8 0-18-7-18-16z" fill="#fff"/>
+  <text x="88" y="46" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Yum! Brands</text>
+  <text x="88" y="68" fill="#64748b" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600">Restaurants</text>
+</svg>

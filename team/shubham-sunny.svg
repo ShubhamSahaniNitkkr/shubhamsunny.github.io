@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <rect width="800" height="1000" fill="#0f172a"/>
+  <rect width="800" height="18" fill="#2dd4bf"/>
+  <text x="72" y="460" fill="#2dd4bf" font-family="Arial, Helvetica, sans-serif" font-size="200" font-weight="700">SS</text>
+  <text x="72" y="560" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" letter-spacing="2">SHUBHAM SUNNY</text>
+  <text x="72" y="620" fill="#99f6e4" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="3">FOUNDER</text>
+  <text x="72" y="900" fill="#94a3b8" font-family="Arial, Helvetica, sans-serif" font-size="22">PATNA · CLIENTS WORLDWIDE</text>
+</svg>
